@@ -1,3 +1,18 @@
+import {
+  PLAYER_COLOR_AQUA,
+  PLAYER_COLOR_BLUE,
+  PLAYER_COLOR_BROWN,
+  PLAYER_COLOR_CYAN,
+  PLAYER_COLOR_GREEN,
+  PLAYER_COLOR_LIGHT_BLUE,
+  PLAYER_COLOR_LIGHT_GRAY,
+  PLAYER_COLOR_ORANGE,
+  PLAYER_COLOR_PINK,
+  PLAYER_COLOR_PURPLE,
+  PLAYER_COLOR_RED,
+  PLAYER_COLOR_YELLOW,
+} from "../globals/define";
+
 export class Color {
   readonly alpha: ColorValue;
 
@@ -63,24 +78,6 @@ export class Color {
       return orderedPlayerColors[index];
     }
     return PLAYER_COLOR_RED;
-  }
-
-  /**
-   * Returns the color between this color and another via linear interpolation.
-   * The provided factor should be between 0 and 1. Any color components
-   * that are outside of the 0-255 range will be clamped.
-   */
-  public lerp(other: Color, factor: number) {
-    const r = MathRound(this.red * (1 - factor) + other.red * factor);
-    const g = MathRound(this.green * (1 - factor) + other.green * factor);
-    const b = MathRound(this.blue * (1 - factor) + other.blue * factor);
-    const a = MathRound(this.alpha * (1 - factor) + other.alpha * factor);
-    return new Color(
-      math.max(0, math.min(255, r)) as ColorValue,
-      math.max(0, math.min(255, g)) as ColorValue,
-      math.max(0, math.min(255, b)) as ColorValue,
-      math.max(0, math.min(255, a)) as ColorValue
-    );
   }
 }
 
@@ -164,18 +161,6 @@ const orderedPlayerColors = [
   PLAYER_COLOR_LIGHT_BLUE,
   PLAYER_COLOR_AQUA,
   PLAYER_COLOR_BROWN,
-  PLAYER_COLOR_MAROON,
-  PLAYER_COLOR_NAVY,
-  PLAYER_COLOR_TURQUOISE,
-  PLAYER_COLOR_VIOLET,
-  PLAYER_COLOR_WHEAT,
-  PLAYER_COLOR_PEACH,
-  PLAYER_COLOR_MINT,
-  PLAYER_COLOR_LAVENDER,
-  PLAYER_COLOR_COAL,
-  PLAYER_COLOR_SNOW,
-  PLAYER_COLOR_EMERALD,
-  PLAYER_COLOR_PEANUT,
 ];
 
 /**
@@ -190,18 +175,22 @@ function toHex(value: ColorValue) {
   return hex;
 }
 
-type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+type Enumerate<
+  N extends number,
+  Acc extends number[] = [],
+> = Acc["length"] extends N
   ? Acc[number]
-  : Enumerate<N, [...Acc, Acc['length']]>
-
+  : Enumerate<N, [...Acc, Acc["length"]]>;
 
 /**
  * Generate a type that is represent a number ranging from [A, B)
  */
-export type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
-
+export type NumberRange<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;
 
 /**
  * The valid values for a color component.
  */
-export type ColorValue = NumberRange<0,256>;
+export type ColorValue = NumberRange<0, 256>;

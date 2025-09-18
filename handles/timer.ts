@@ -11,7 +11,7 @@ export class Timer extends Handle<timer> {
     }
     const handle = CreateTimer();
     if (handle === undefined) {
-      error("w3ts failed to create timer handle.", 3);
+      Error("w3ts failed to create timer handle.");
     }
     super(handle);
   }

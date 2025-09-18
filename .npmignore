@@ -1,0 +1,50 @@
+# Source code - only publish compiled output
+*.ts
+!*.d.ts
+
+# Development files
+tsconfig.json
+.eslintrc.*
+.prettierrc.*
+workspace.code-workspace
+
+# Node modules and build artifacts
+node_modules/
+.npm
+*.tgz
+
+# Git and version control
+.git/
+.gitignore
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files
+test/
+tests/
+*.test.*
+*.spec.*
+
+# Development tools
+.nyc_output/
+coverage/

@@ -31,7 +31,7 @@ export class WeatherEffect extends Handle<weathereffect> {
     effectID: number
   ): WeatherEffect | undefined {
     const handle = AddWeatherEffect(where.handle, effectID);
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as WeatherEffect;
 
       const values: Record<string, unknown> = {};

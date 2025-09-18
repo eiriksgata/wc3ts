@@ -1,15 +1,20 @@
 {
-  "name": "wc3ts",
+  "name": "wc3ts-1.27a",
   "version": "1.0.0",
   "description": "TypeScript API for Warcraft III 1.27a custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
-  "main": "./index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tstl -p tsconfig.json",
-    "prepublish": "npm run build && cp package.json ./dist/"
+    "build": "npm run clean && npm run build:types && npm run copy:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build:lua": "tstl -p tsconfig.json",
+    "copy:types": "xcopy /E /I /Y types dist\\types",
+    "prepublishOnly": "npm run build",
+    "test": "tsc --noEmit",
+    "clean": "if exist dist rmdir /s /q dist"
   },
-  "dependencies": {},
   "peerDependencies": {
     "lua-types": "^2.13.1"
   },
@@ -22,20 +27,22 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
+    "lua-types": "^2.13.1",
     "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
     "typescript-to-lua": "^1.32.0"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
   "files": [
-    "./**/*.lua",
-    "./**/*.d.ts"
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
   ],
-  "types": "./index.d.ts"
+  "keywords": [
+    "warcraft3",
+    "wc3",
+    "typescript",
+    "lua",
+    "tstl",
+    "game-development"
+  ]
 }
