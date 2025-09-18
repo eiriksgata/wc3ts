@@ -1,5 +1,6 @@
 /** @noSelfInFile */
 
+import { bj_MAX_PLAYERS, MAP_CONTROL_USER, PLAYER_SLOT_STATE_PLAYING } from "../globals/define";
 import { MapPlayer } from "../handles/index";
 import { Timer } from "../handles/timer";
 import { addScriptHook, W3TS_HOOK } from "../hooks/index";
@@ -60,9 +61,7 @@ function findHost() {
 
         // skip if the player is not playing
         if (
-          p === undefined ||
-          p.slotState !== PLAYER_SLOT_STATE_PLAYING ||
-          p.controller !== MAP_CONTROL_USER
+          p === undefined
         ) {
           // eslint-disable-next-line no-continue
           continue;

@@ -16,7 +16,7 @@ export class Force extends Handle<force> {
     const handle = CreateForce();
 
     if (handle === undefined) {
-      error("w3ts failed to create force handle.", 3);
+      Error("w3ts failed to create force handle.");
     }
 
     super(handle);
@@ -116,9 +116,9 @@ export class Force extends Handle<force> {
     ForceRemovePlayer(this.handle, whichPlayer.handle);
   }
 
-  public static fromPlayer(whichPlayer: MapPlayer) {
-    return this.fromHandle(GetForceOfPlayer(whichPlayer.handle));
-  }
+  // public static fromPlayer(whichPlayer: MapPlayer) {
+  //   return this.fromHandle(GetForceOfPlayer(whichPlayer.handle));
+  // }
 
   public static fromHandle(handle: force | undefined): Force | undefined {
     return handle ? this.getObject(handle) : undefined;

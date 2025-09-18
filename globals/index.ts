@@ -1,4 +1,5 @@
 import { MapPlayer } from "../handles/player";
+import { bj_MAX_PLAYER_SLOTS } from "./define";
 
 export * from "./order";
 export const Players: MapPlayer[] = [];

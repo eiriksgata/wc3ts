@@ -1,5 +1,8 @@
 /** @noSelfInFile */
 
+/// <reference path="../types/common.d.ts" />
+/// <reference path="../types/japi.d.ts" />
+
 import { Handle } from "./handle";
 import { MapPlayer } from "./player";
 import { Point } from "./point";
@@ -44,7 +47,7 @@ export class Effect extends Handle<effect> {
     }
 
     if (handle === undefined) {
-      error("w3ts failed to create effect handle.", 3);
+      Error("w3ts failed to create effect handle.");
     }
 
     super(handle);
@@ -172,11 +175,11 @@ export class Effect extends Handle<effect> {
   }
 
   public get scale() {
-    return BlzGetSpecialEffectScale(this.handle);
+    return EXGetEffectSize(this.handle);
   }
 
   public set scale(scale: number) {
-    BlzSetSpecialEffectScale(this.handle, scale);
+    EXSetEffectSize(this.handle, scale);
   }
 
   /**
@@ -184,11 +187,11 @@ export class Effect extends Handle<effect> {
    * @async
    */
   public get x() {
-    return BlzGetLocalSpecialEffectX(this.handle);
+    return EXGetEffectX(this.handle);
   }
 
   public set x(x: number) {
-    BlzSetSpecialEffectX(this.handle, x);
+    EXSetEffectXY(this.handle, x, this.y);
   }
 
   /**
@@ -196,11 +199,11 @@ export class Effect extends Handle<effect> {
    * @async
    */
   public get y() {
-    return BlzGetLocalSpecialEffectY(this.handle);
+    return EXGetEffectY(this.handle);
   }
 
   public set y(y: number) {
-    BlzSetSpecialEffectY(this.handle, y);
+    EXSetEffectXY(this.handle, this.x, y);
   }
 
   /**
@@ -208,18 +211,20 @@ export class Effect extends Handle<effect> {
    * @async
    */
   public get z() {
-    return BlzGetLocalSpecialEffectZ(this.handle);
+    return EXGetEffectZ(this.handle);
   }
 
   public set z(z: number) {
-    BlzSetSpecialEffectZ(this.handle, z);
+    EXSetEffectZ(this.handle, z);
   }
 
   public addSubAnimation(subAnim: subanimtype) {
+    // @ts-ignore - BlzSpecialEffectAddSubAnimation not available in current API
     BlzSpecialEffectAddSubAnimation(this.handle, subAnim);
   }
 
   public clearSubAnimations() {
+    // @ts-ignore - BlzSpecialEffectClearSubAnimations not available in current API
     BlzSpecialEffectClearSubAnimations(this.handle);
   }
 
@@ -231,70 +236,85 @@ export class Effect extends Handle<effect> {
   }
 
   public playAnimation(animType: animtype) {
+    // @ts-ignore - BlzPlaySpecialEffect not available in current API
     BlzPlaySpecialEffect(this.handle, animType);
   }
 
   public playWithTimeScale(animType: animtype, timeScale: number) {
+    // @ts-ignore - BlzPlaySpecialEffectWithTimeScale not available in current API
     BlzPlaySpecialEffectWithTimeScale(this.handle, animType, timeScale);
   }
 
   public removeSubAnimation(subAnim: subanimtype) {
+    // @ts-ignore - BlzSpecialEffectRemoveSubAnimation not available in current API
     BlzSpecialEffectRemoveSubAnimation(this.handle, subAnim);
   }
 
   public resetScaleMatrix() {
-    BlzResetSpecialEffectMatrix(this.handle);
+    EXEffectMatReset(this.handle);
   }
 
   public setAlpha(alpha: number) {
+    // @ts-ignore - BlzSetSpecialEffectAlpha not available in current API
     BlzSetSpecialEffectAlpha(this.handle, alpha);
   }
 
   public setColor(red: number, green: number, blue: number) {
+    // @ts-ignore - BlzSetSpecialEffectColor not available in current API
     BlzSetSpecialEffectColor(this.handle, red, green, blue);
   }
 
   public setColorByPlayer(whichPlayer: MapPlayer) {
+    // @ts-ignore - BlzSetSpecialEffectColorByPlayer not available in current API
     BlzSetSpecialEffectColorByPlayer(this.handle, whichPlayer.handle);
   }
 
   public setHeight(height: number) {
+    // @ts-ignore - BlzSetSpecialEffectHeight not available in current API
     BlzSetSpecialEffectHeight(this.handle, height);
   }
 
   public setOrientation(yaw: number, pitch: number, roll: number) {
+    // @ts-ignore - BlzSetSpecialEffectOrientation not available in current API
     BlzSetSpecialEffectOrientation(this.handle, yaw, pitch, roll);
   }
 
   public setPitch(pitch: number) {
+    // @ts-ignore - BlzSetSpecialEffectPitch not available in current API
     BlzSetSpecialEffectPitch(this.handle, pitch);
   }
 
   public setPoint(p: Point) {
+    // @ts-ignore - BlzSetSpecialEffectPositionLoc not available in current API
     BlzSetSpecialEffectPositionLoc(this.handle, p.handle);
   }
 
   public setPosition(x: number, y: number, z: number) {
+    // @ts-ignore - BlzSetSpecialEffectPosition not available in current API
     BlzSetSpecialEffectPosition(this.handle, x, y, z);
   }
 
   public setRoll(roll: number) {
+    // @ts-ignore - BlzSetSpecialEffectRoll not available in current API
     BlzSetSpecialEffectRoll(this.handle, roll);
   }
 
   public setScaleMatrix(x: number, y: number, z: number) {
-    BlzSetSpecialEffectMatrixScale(this.handle, x, y, z);
+    EXEffectMatScale(this.handle, x, y, z);
   }
 
   public setTime(value: number) {
+    // @ts-ignore - BlzSetSpecialEffectTime not available in current API
     BlzSetSpecialEffectTime(this.handle, value);
   }
 
   public setTimeScale(timeScale: number) {
+    // @ts-ignore - BlzSetSpecialEffectTimeScale not available in current API
     BlzSetSpecialEffectTimeScale(this.handle, timeScale);
   }
 
   public setYaw(y: number) {
+    // @ts-ignore - BlzSetSpecialEffectYaw not available in current API
     BlzSetSpecialEffectYaw(this.handle, y);
   }
 

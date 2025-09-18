@@ -1,4 +1,5 @@
-/** @noSelfInFile **/ 
+/** @noSelfInFile **/
+/// <reference path="base.d.ts" />
 declare function DzAPI_Map_ChangeStoreItemCoolDown(...option:any[]):any;
 declare function DzAPI_Map_ChangeStoreItemCount(...option:any[]):any;
 declare function DzAPI_Map_GetActivityData(): string;
@@ -39,7 +40,7 @@ declare function DzChangeTerrain(...option:any[]):any;
 /**
  * 点击
  * 点击${frame}
- * 
+ *
  */
 declare function DzClickFrame(frame: number): void;
 declare function DzConvertWorldPosition(...option:any[]):any;
@@ -69,42 +70,42 @@ declare function DzDestroyFrame(frame: number): void;
 /**
  * 设置可破坏物位置[BZAPI]
  * 设置${可破坏物}的坐标为(${x},${y})
- * 
+ *
  */
 declare function DzDestructablePosition(d: destructable, x: number, y: number): void;
 
 /**
  * 原生-使用宽屏模式
  * 设置宽屏模式:${bool}
- * 
+ *
  */
 declare function DzEnableWideScreen(enable: boolean): void;
 
 /**
  * 异步执行函数
  * 异步执行函数${funcName}
- * 
+ *
  */
 declare function DzExecuteFunc(funcName: string): void;
 
 /**
  * 限制鼠标移动
  * 限制鼠标在${frame}内:${enable}
- * 
+ *
  */
 declare function DzFrameCageMouse(frame: number, enable: boolean): void;
 
 /**
  * 清空所有锚点
  * 清空${frame}的全部锚点
- * 
+ *
  */
 declare function DzFrameClearAllPoints(frame: number): void;
 
 /**
  * 原生-修改游戏渲染黑边范围
  * 修改游戏渲染黑边:上方高度:${upperHeight}下方高度:${bottomHeight}
- * 
+ *
  */
 declare function DzFrameEditBlackBorders(upperHeight: number, bottomHeight: number): void;
 
@@ -118,14 +119,14 @@ declare function DzFrameFindByName(name: string, id: number): number;
 /**
  * 获取Frame的透明度(0-255)
  * 获取${Frame}的透明度
- * 
+ *
  */
 declare function DzFrameGetAlpha(frame: number): number;
 
 /**
  * 原生-玩家聊天信息框
  * 玩家聊天信息框
- * 
+ *
  */
 declare function DzFrameGetChatMessage(): number;
 
@@ -139,14 +140,14 @@ declare function DzFrameGetCommandBarButton(row: number, column: number): number
 /**
  * 控件是否启用
  * ${frame}是否启用
- * 
+ *
  */
 declare function DzFrameGetEnable(frame: number): boolean;
 
 /**
  * 获取Frame的高度[NEW]
  * 获取${frame}的高度
- * 
+ *
  */
 declare function DzFrameGetHeight(frame: number): number;
 
@@ -181,7 +182,7 @@ declare function DzFrameGetItemBarButton(buttonId: number): number;
 /**
  * 原生-小地图
  * 小地图
- * 
+ *
  */
 declare function DzFrameGetMinimap(): number;
 
@@ -195,14 +196,14 @@ declare function DzFrameGetMinimapButton(buttonId: number): number;
 /**
  * 获取Frame的名称[NEW]
  * 获取${frame}的名称
- * 
+ *
  */
 declare function DzFrameGetName(frame: number): string;
 
 /**
  * 获取Frame的Parent[NEW]
  * 获取${frame}的Parent
- * 
+ *
  */
 declare function DzFrameGetParent(frame: number): number;
 
@@ -272,28 +273,28 @@ declare function DzFrameHideInterface(): void;
 /**
  * 设置绝对位置
  * 设置${frame}的${Point}锚点在(${x},${y})
- * 
+ *
  */
 declare function DzFrameSetAbsolutePoint(frame: number, point: number, x: number, y: number): void;
 
 /**
  * 移动所有锚点到Frame
  * 移动${frame}的所有锚点到${frame}上
- * 
+ *
  */
 declare function DzFrameSetAllPoints(frame: number, relativeFrame: number): boolean;
 
 /**
  * 设置透明度(0-255)
  * 设置${frame}的透明度为${alpha}
- * 
+ *
  */
 declare function DzFrameSetAlpha(frame: number, alpha: number): void;
 
 /**
  * 设置动画
  * 设置${frame}播放序号${alpha}的动画自动播放:${autocast}
- * 
+ *
  */
 declare function DzFrameSetAnimate(frame: number, animId: number, autocast: boolean): void;
 
@@ -307,14 +308,14 @@ declare function DzFrameSetAnimateOffset(frame: number, offset: number): void;
 /**
  * 启用/禁用
  * 设置${frame}启用:${bottomHeight}
- * 
+ *
  */
 declare function DzFrameSetEnable(name: number, enable: boolean): void;
 
 /**
  * 设置焦点
  * 设置${frame}获取焦点${enable}
- * 
+ *
  */
 declare function DzFrameSetFocus(frame: number, enable: boolean): boolean;
 
@@ -335,42 +336,42 @@ declare function DzFrameSetMinMaxValue(frame: number, minValue: number, maxValue
 /**
  * 设置模型
  * 设置${frame}的模型文件为${modelFile}ModelType:${modelType}Flag:${flag}
- * 
+ *
  */
 declare function DzFrameSetModel(frame: number, modelFile: string, modelType: number, flag: number): void;
 
 /**
  * 设置父窗口[NEW]
  * 设置${frame}的父窗口为${frame2}
- * 
+ *
  */
 declare function DzFrameSetParent(frame: number, parent: number): void;
 
 /**
  * 设置相对位置
  * 设置${frame}的${Point}锚点(跟随Frame-->${relativeFrame}的${relativePoint}锚点)偏移(${x},${y})
- * 
+ *
  */
 declare function DzFrameSetPoint(frame: number, point: number, relativeFrame: number, relativePoint: number, x: number, y: number): void;
 
 /**
  * 设置优先级[NEW]
  * 设置${frame}优先级:${int}
- * 
+ *
  */
 declare function DzFrameSetPriority(frame: number, priority: number): void;
 
 /**
  * 设置缩放
  * 设置${frame}的缩放${scale}
- * 
+ *
  */
 declare function DzFrameSetScale(frame: number, scale: number): void;
 
 /**
  * 注册UI事件回调(funcname)
  * 注册${frame}的${事件类型}事件运行:${funcname}是否同步:${sync}
- * 
+ *
  */
 declare function DzFrameSetScript(frame: number, eventId: number, func: string, sync: boolean): void;
 
@@ -384,7 +385,7 @@ declare function DzFrameSetScriptByCode(frame: number, eventId: number, funcHand
 /**
  * 设置大小
  * 设置${frame}（宽${w}高${h}）
- * 
+ *
  */
 declare function DzFrameSetSize(frame: number, w: number, h: number): void;
 
@@ -413,7 +414,7 @@ declare function DzFrameSetTextColor(frame: number, color: number): void;
 /**
  * 设置字数限制
  * 设置${frame}的字数限制为${size}
- * 
+ *
  */
 declare function DzFrameSetTextSizeLimit(frame: number, size: number): void;
 
@@ -443,14 +444,14 @@ declare function DzFrameSetValue(frame: number, value: number): void;
 /**
  * 设置颜色
  * 设置${frame}颜色${color}
- * 
+ *
  */
 declare function DzFrameSetVertexColor(frame: number, color: number): void;
 
 /**
  * 显示/隐藏
  * 设置${frame}显示:${bottomHeight}
- * 
+ *
  */
 declare function DzFrameShow(frame: number, enable: boolean): void;
 declare function DzGetClientHeight(...option:any[]):any;
@@ -489,49 +490,49 @@ declare function DzGetMouseFocus(): number;
 /**
  * 获取鼠标在游戏内的坐标X
  * 获取鼠标在游戏内的坐标X
- * 
+ *
  */
 declare function DzGetMouseTerrainX(): number;
 
 /**
  * 获取鼠标在游戏内的坐标Y
  * 获取鼠标在游戏内的坐标Y
- * 
+ *
  */
 declare function DzGetMouseTerrainY(): number;
 
 /**
  * 获取鼠标在游戏内的坐标Z
  * 获取鼠标在游戏内的坐标Z
- * 
+ *
  */
 declare function DzGetMouseTerrainZ(): number;
 
 /**
  * 获取鼠标在屏幕的坐标X
  * 获取鼠标在屏幕的坐标X
- * 
+ *
  */
 declare function DzGetMouseX(): number;
 
 /**
  * 获取鼠标游戏窗口坐标X
  * 获取鼠标游戏窗口坐标X
- * 
+ *
  */
 declare function DzGetMouseXRelative(): number;
 
 /**
  * 获取鼠标在屏幕的坐标Y
  * 获取鼠标在屏幕的坐标Y
- * 
+ *
  */
 declare function DzGetMouseY(): number;
 
 /**
  * 获取鼠标游戏窗口坐标Y
  * 获取鼠标游戏窗口坐标Y
- * 
+ *
  */
 declare function DzGetMouseYRelative(): number;
 
@@ -566,28 +567,28 @@ declare function DzGetTriggerSyncPlayer(): player;
 /**
  * 事件响应-触发的Frame
  * 触发的Frame
- * 
+ *
  */
 declare function DzGetTriggerUIEventFrame(): number;
 
 /**
  * 事件响应-获取触发ui的玩家
  * 获取触发ui的玩家
- * 
+ *
  */
 declare function DzGetTriggerUIEventPlayer(): player;
 
 /**
  * 获取升级所需经验[NEW]
  * 获取单位${unit}的${level}级升级所需经验
- * 
+ *
  */
 declare function DzGetUnitNeededXP(whichUnit: unit, level: number): number;
 
 /**
  * 获取鼠标指向的单位
  * 鼠标指向的单位
- * 
+ *
  */
 declare function DzGetUnitUnderMouse(): unit;
 
@@ -601,49 +602,49 @@ declare function DzGetWheelDelta(): number;
 /**
  * 获取魔兽窗口高度
  * 获取魔兽窗口高度
- * 
+ *
  */
 declare function DzGetWindowHeight(): number;
 
 /**
  * 获取war3窗口宽度
  * 获取魔兽窗口宽度
- * 
+ *
  */
 declare function DzGetWindowWidth(): number;
 
 /**
  * 获取魔兽窗口X坐标
  * 获取魔兽窗口X坐标
- * 
+ *
  */
 declare function DzGetWindowX(): number;
 
 /**
  * 获取魔兽窗口Y坐标
  * 获取魔兽窗口Y坐标
- * 
+ *
  */
 declare function DzGetWindowY(): number;
 
 /**
  * 判断按键是否按下
  * 判断${按键}是否按下
- * 
+ *
  */
 declare function DzIsKeyDown(iKey: number): boolean;
 
 /**
  * 鼠标是否在游戏内
  * 鼠标是否在游戏内
- * 
+ *
  */
 declare function DzIsMouseOverUI(): boolean;
 
 /**
  * 判断游戏窗口是否处于活动状态
  * 判断窗口是否处于活动状态
- * 
+ *
  */
 declare function DzIsWindowActive(): boolean;
 
@@ -658,21 +659,21 @@ declare function DzOriginalUIAutoResetPoint(enable: boolean): void;
 /**
  * 原生-修改屏幕比例(FOV)
  * 修改屏幕比例(FOV):${val}
- * 
+ *
  */
 declare function DzSetCustomFovFix(value: number): void;
 
 /**
  * 设置内存数值
  * 设置内存数据${地址}=${数值}
- * 
+ *
  */
 declare function DzSetMemory(address: number, value: number): void;
 
 /**
  * 设置鼠标的坐标
  * 设置鼠标的坐标为(${x},${y})
- * 
+ *
  */
 declare function DzSetMousePos(x: number, y: number): void;
 
@@ -693,7 +694,7 @@ declare function DzSetUnitModel(whichUnit: unit, path: string): void;
 /**
  * 设置单位位置-本地调用[BZAPI]
  * 设置${单位}的坐标为(${x},${y})
- * 
+ *
  */
 declare function DzSetUnitPosition(whichUnit: unit, x: number, y: number): void;
 
@@ -707,7 +708,7 @@ declare function DzSetUnitTexture(whichUnit: unit, path: string, texId: number):
 /**
  * 原生-设置小地图背景贴图
  * 修改小地图背景贴图为${bottomHeight}
- * 
+ *
  */
 declare function DzSetWar3MapMap(map: string): void;
 
@@ -736,7 +737,7 @@ declare function DzSyncBuffer(...option:any[]):any;
 /**
  * 同步游戏数据
  * 同步标签：${prefix}发送数据：${data}
- * 
+ *
  */
 declare function DzSyncData(prefix: string, data: string): void;
 declare function DzSyncDataImmediately(...option:any[]):any;
@@ -810,28 +811,28 @@ declare function EXGetBuffDataString(buffcode: number, data_type: number): strin
 /**
  * 大小[JAPI][New!]
  * ${特效}的大小
- * 
+ *
  */
 declare function EXGetEffectSize(e: effect): number;
 
 /**
  * X轴坐标[JAPI][New!]
  * ${特效}的X轴坐标
- * 
+ *
  */
 declare function EXGetEffectX(e: effect): number;
 
 /**
  * Y轴坐标[JAPI][New!]
  * ${特效}的Y轴坐标
- * 
+ *
  */
 declare function EXGetEffectY(e: effect): number;
 
 /**
  * 高度[JAPI][New!]
  * ${特效}的高度
- * 
+ *
  */
 declare function EXGetEffectZ(e: effect): number;
 declare function EXGetEventDamageData(edd_type: number): number;
@@ -854,28 +855,28 @@ declare function EXSetBuffDataString(buffcode: number, data_type: number, value:
 /**
  * 设置大小[JAPI][New!]
  * 设置${特效}的大小为${大小}
- * 
+ *
  */
 declare function EXSetEffectSize(e: effect, size: number): void;
 
 /**
  * 设置动画速度[JAPI][New!]
  * 设置${特效}的动画速度为${动画速度}
- * 
+ *
  */
 declare function EXSetEffectSpeed(e: effect, speed: number): void;
 
 /**
  * 移动到坐标[JAPI][New!]
  * 移动${特效}到（${X},${Y}）
- * 
+ *
  */
 declare function EXSetEffectXY(e: effect, x: number, y: number): void;
 
 /**
  * 设置高度[JAPI][New!]
  * 设置${特效}的高度为${高度}
- * 
+ *
  */
 declare function EXSetEffectZ(e: effect, z: number): void;
 declare function EXSetEventDamage(amount: number): boolean;
@@ -885,7 +886,7 @@ declare function EXSetUnitArrayString(...option:any[]):any;
 /**
  * 设置单位的碰撞类型[JAPI][New!]
  * ${启用/禁用}${单位}对${碰撞}的碰撞
- * 
+ *
  */
 declare function EXSetUnitCollisionType(enable: boolean, u: unit, t: number): void;
 
@@ -900,7 +901,7 @@ declare function EXSetUnitInteger(...option:any[]):any;
 /**
  * 设置单位的移动类型[JAPI][New!]
  * 设置${单位}的移动类型为${Value}
- * 
+ *
  */
 declare function EXSetUnitMoveType(u: unit, t: number): void;
 declare function EXSetUnitReal(...option:any[]):any;
@@ -916,7 +917,7 @@ declare function GetEventDamage(): number;
 /**
  * 属性[R]
  * ${单位}的${Property}
- * 
+ *
  */
 declare function GetUnitState(whichUnit: unit, whichUnitState: unitstate): number;
 declare function RequestExtraBooleanData(dataType: number, whichPlayer: player, param1: string, param2: string, param3: boolean, param4: number, param5: number, param6: number): boolean;
@@ -927,6 +928,6 @@ declare function RequestExtraStringData(dataType: number, whichPlayer: player, p
 /**
  * 设置单位属性[R]
  * 设置${单位}的${属性}为${Value}
- * 
+ *
  */
 declare function SetUnitState(whichUnit: unit, whichUnitState: unitstate, newVal: number): void;

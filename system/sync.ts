@@ -1,5 +1,6 @@
 /** @noSelfInFile */
 
+import { bj_MAX_PLAYER_SLOTS } from "../globals/define";
 import { MapPlayer } from "../handles/player";
 import { Timer } from "../handles/timer";
 import { Trigger } from "../handles/trigger";

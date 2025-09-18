@@ -1,5 +1,7 @@
 /** @noSelfInFile */
 
+/// <reference path="../types/japi.d.ts" />
+
 import { Handle } from "./handle";
 
 /**
@@ -94,21 +96,21 @@ export class Frame extends Handle<framehandle> {
     let handle: framehandle | undefined;
 
     if (createContext === undefined) {
-      handle = BlzCreateSimpleFrame(name, owner.handle, priority);
+      handle = DzCreateSimpleFrame(name, owner.handle as any, priority) as any;
     } else if (typeName !== undefined && inherits !== undefined) {
-      handle = BlzCreateFrameByType(
+      handle = DzCreateFrameByTagName(
         typeName,
         name,
-        owner.handle,
+        owner.handle as any,
         inherits,
         createContext
-      );
+      ) as any;
     } else {
-      handle = BlzCreateFrame(name, owner.handle, priority, createContext);
+      handle = DzCreateFrame(name, owner.handle as any, priority) as any;
     }
 
     if (handle === undefined) {
-      error("w3ts failed to create framehandle handle.", 3);
+      Error("w3ts failed to create framehandle handle.");
     }
 
     super(handle);
@@ -127,7 +129,7 @@ export class Frame extends Handle<framehandle> {
     priority: number,
     createContext: number
   ): Frame | undefined {
-    const handle = BlzCreateFrame(name, owner.handle, priority, createContext);
+    const handle = DzCreateFrame(name, owner.handle as any, priority) as any;
     if (handle) {
       const obj = this.getObject(handle) as Frame;
 
@@ -152,7 +154,11 @@ export class Frame extends Handle<framehandle> {
     owner: Frame,
     createContext: number
   ): Frame | undefined {
-    const handle = BlzCreateSimpleFrame(name, owner.handle, createContext);
+    const handle = DzCreateSimpleFrame(
+      name,
+      owner.handle as any,
+      createContext
+    ) as any;
     if (handle) {
       const obj = this.getObject(handle) as Frame;
 
@@ -179,13 +185,13 @@ export class Frame extends Handle<framehandle> {
     typeName: string,
     inherits: string
   ): Frame | undefined {
-    const handle = BlzCreateFrameByType(
+    const handle = DzCreateFrameByTagName(
       typeName,
       name,
-      owner.handle,
+      owner.handle as any,
       inherits,
       createContext
-    );
+    ) as any;
 
     if (handle) {
       const obj = this.getObject(handle) as Frame;
@@ -200,11 +206,11 @@ export class Frame extends Handle<framehandle> {
   }
 
   public set alpha(alpha: number) {
-    BlzFrameSetAlpha(this.handle, alpha);
+    DzFrameSetAlpha(this.handle as any, alpha);
   }
 
   public get alpha() {
-    return BlzFrameGetAlpha(this.handle);
+    return DzFrameGetAlpha(this.handle as any);
   }
 
   public get children() {
@@ -220,167 +226,174 @@ export class Frame extends Handle<framehandle> {
   }
 
   public get childrenCount() {
+    // @ts-ignore - BlzFrameGetChildrenCount not available in current API
     return BlzFrameGetChildrenCount(this.handle);
   }
 
   public set enabled(flag: boolean) {
-    BlzFrameSetEnable(this.handle, flag);
+    DzFrameSetEnable(this.handle as any, flag);
   }
 
   public get enabled() {
-    return BlzFrameGetEnable(this.handle);
+    return DzFrameGetEnable(this.handle as any);
   }
 
   public set height(height: number) {
-    BlzFrameSetSize(this.handle, this.width, height);
+    DzFrameSetSize(this.handle as any, this.width, height);
   }
 
   public get height() {
-    return BlzFrameGetHeight(this.handle);
+    return DzFrameGetHeight(this.handle as any);
   }
 
   /**
    * @deprecated use `getParent` and `setParent` instead.
    */
   public set parent(parent: Frame) {
-    BlzFrameSetParent(this.handle, parent.handle);
+    DzFrameSetParent(this.handle as any, parent.handle as any);
   }
 
   public get parent() {
     return Frame.fromHandle(
-      BlzFrameGetParent(this.handle) as framehandle
+      DzFrameGetParent(this.handle as any) as unknown as framehandle
     ) as Frame;
   }
 
   public set text(text: string) {
-    BlzFrameSetText(this.handle, text);
+    DzFrameSetText(this.handle as any, text);
   }
 
   public get text() {
-    return BlzFrameGetText(this.handle) ?? "";
+    return DzFrameGetText(this.handle as any) ?? "";
   }
 
   public set textSizeLimit(size: number) {
-    BlzFrameSetTextSizeLimit(this.handle, size);
+    DzFrameSetTextSizeLimit(this.handle as any, size);
   }
 
   public get textSizeLimit() {
-    return BlzFrameGetTextSizeLimit(this.handle);
+    return DzFrameGetTextSizeLimit(this.handle as any);
   }
 
   public set value(value: number) {
-    BlzFrameSetValue(this.handle, value);
+    DzFrameSetValue(this.handle as any, value);
   }
 
   public get value() {
-    return BlzFrameGetValue(this.handle);
+    return DzFrameGetValue(this.handle as any);
   }
 
   public set visible(flag: boolean) {
-    BlzFrameSetVisible(this.handle, flag);
+    DzFrameShow(this.handle as any, flag);
   }
 
   public get visible() {
+    // @ts-ignore - BlzFrameIsVisible not available in current API
     return BlzFrameIsVisible(this.handle);
   }
 
   public set width(width: number) {
-    BlzFrameSetSize(this.handle, width, this.height);
+    DzFrameSetSize(this.handle as any, width, this.height);
   }
 
   public get width() {
+    // @ts-ignore - BlzFrameGetWidth not available in current API
     return BlzFrameGetWidth(this.handle);
   }
 
   public addText(text: string) {
+    // @ts-ignore - BlzFrameAddText not available in current API
     BlzFrameAddText(this.handle, text);
     return this;
   }
 
   public cageMouse(enable: boolean) {
-    BlzFrameCageMouse(this.handle, enable);
+    DzFrameCageMouse(this.handle as any, enable);
     return this;
   }
 
   public clearPoints() {
-    BlzFrameClearAllPoints(this.handle);
+    DzFrameClearAllPoints(this.handle as any);
     return this;
   }
 
   public click() {
-    BlzFrameClick(this.handle);
+    DzClickFrame(this.handle as any);
     return this;
   }
 
   public destroy() {
-    BlzDestroyFrame(this.handle);
+    DzDestroyFrame(this.handle as any);
     return this;
   }
 
   public getChild(index: number) {
+    // @ts-ignore - BlzFrameGetChild not available in current API
     return Frame.fromHandle(BlzFrameGetChild(this.handle, index));
   }
 
   public setAbsPoint(point: framepointtype, x: number, y: number) {
-    BlzFrameSetAbsPoint(this.handle, point, x, y);
+    DzFrameSetAbsolutePoint(this.handle as any, point as any, x, y);
     return this;
   }
 
   public setAllPoints(relative: Frame) {
-    BlzFrameSetAllPoints(this.handle, relative.handle);
+    DzFrameSetAllPoints(this.handle as any, relative.handle as any);
     return this;
   }
 
   public setAlpha(alpha: number) {
-    BlzFrameSetAlpha(this.handle, alpha);
+    DzFrameSetAlpha(this.handle as any, alpha);
     return this;
   }
 
   public setEnabled(flag: boolean) {
-    BlzFrameSetEnable(this.handle, flag);
+    DzFrameSetEnable(this.handle as any, flag);
     return this;
   }
 
   public setFocus(flag: boolean) {
-    BlzFrameSetFocus(this.handle, flag);
+    DzFrameSetFocus(this.handle as any, flag);
     return this;
   }
 
   public setFont(filename: string, height: number, flags: number) {
-    BlzFrameSetFont(this.handle, filename, height, flags);
+    DzFrameSetFont(this.handle as any, filename, height, flags);
     return this;
   }
 
   public setHeight(height: number) {
-    BlzFrameSetSize(this.handle, this.width, height);
+    DzFrameSetSize(this.handle as any, this.width, height);
     return this;
   }
 
   public setLevel(level: number) {
+    // @ts-ignore - BlzFrameSetLevel not available in current API
     BlzFrameSetLevel(this.handle, level);
     return this;
   }
 
   public setMinMaxValue(minValue: number, maxValue: number) {
-    BlzFrameSetMinMaxValue(this.handle, minValue, maxValue);
+    DzFrameSetMinMaxValue(this.handle as any, minValue, maxValue);
     return this;
   }
 
   public setTextAlignment(vert: textaligntype, horz: textaligntype) {
-    BlzFrameSetTextAlignment(this.handle, vert, horz);
+    DzFrameSetTextAlignment(this.handle as any, vert as any);
+    return this;
   }
 
   public setModel(modelFile: string, cameraIndex: number) {
-    BlzFrameSetModel(this.handle, modelFile, cameraIndex);
+    DzFrameSetModel(this.handle as any, modelFile, cameraIndex, 0);
     return this;
   }
 
   public getParent() {
-    return Frame.fromHandle(BlzFrameGetParent(this.handle));
+    return Frame.fromHandle(DzFrameGetParent(this.handle as any) as any);
   }
 
   public setParent(parent: Frame) {
-    BlzFrameSetParent(this.handle, parent.handle);
+    DzFrameSetParent(this.handle as any, parent.handle as any);
     return this;
   }
 
@@ -391,80 +404,93 @@ export class Frame extends Handle<framehandle> {
     x: number,
     y: number
   ) {
-    BlzFrameSetPoint(this.handle, point, relative.handle, relativePoint, x, y);
+    DzFrameSetPoint(
+      this.handle as any,
+      point as any,
+      relative.handle as any,
+      relativePoint as any,
+      x,
+      y
+    );
     return this;
   }
 
   public setScale(scale: number) {
-    BlzFrameSetScale(this.handle, scale);
+    DzFrameSetScale(this.handle as any, scale);
     return this;
   }
 
   public setSize(width: number, height: number) {
-    BlzFrameSetSize(this.handle, width, height);
+    DzFrameSetSize(this.handle as any, width, height);
     return this;
   }
 
   public setSpriteAnimate(primaryProp: number, flags: number) {
+    // @ts-ignore - BlzFrameSetSpriteAnimate not available in current API
     BlzFrameSetSpriteAnimate(this.handle, primaryProp, flags);
     return this;
   }
 
   public setStepSize(stepSize: number) {
-    BlzFrameSetStepSize(this.handle, stepSize);
+    // @ts-ignore - DzFrameSetStepSize not available in current API
+    DzFrameSetStepSize(this.handle, stepSize);
     return this;
   }
 
   public setText(text: string) {
-    BlzFrameSetText(this.handle, text);
+    DzFrameSetText(this.handle as any, text);
     return this;
   }
 
   public setTextColor(color: number) {
+    // @ts-ignore - BlzFrameSetTextColor not available in current API
     BlzFrameSetTextColor(this.handle, color);
     return this;
   }
 
   public setTextSizeLimit(size: number) {
-    BlzFrameSetTextSizeLimit(this.handle, size);
+    DzFrameSetTextSizeLimit(this.handle as any, size);
     return this;
   }
 
   public setTexture(texFile: string, flag: number, blend: boolean) {
-    BlzFrameSetTexture(this.handle, texFile, flag, blend);
+    DzFrameSetTexture(this.handle as any, texFile, flag);
     return this;
   }
 
   public setTooltip(tooltip: Frame) {
+    // @ts-ignore - BlzFrameSetTooltip not available in current API
     BlzFrameSetTooltip(this.handle, tooltip.handle);
     return this;
   }
 
   public setValue(value: number) {
-    BlzFrameSetValue(this.handle, value);
+    DzFrameSetValue(this.handle as any, value);
     return this;
   }
 
   public setVertexColor(color: number) {
-    BlzFrameSetVertexColor(this.handle, color);
+    DzFrameSetVertexColor(this.handle as any, color);
     return this;
   }
 
   public setVisible(flag: boolean) {
-    BlzFrameSetVisible(this.handle, flag);
+    DzFrameShow(this.handle as any, flag);
     return this;
   }
 
   public setWidth(width: number) {
-    BlzFrameSetSize(this.handle, width, this.height);
+    DzFrameSetSize(this.handle as any, width, this.height);
     return this;
   }
 
   public static autoPosition(enable: boolean) {
+    // @ts-ignore - BlzEnableUIAutoPosition not available in current API
     BlzEnableUIAutoPosition(enable);
   }
 
   public static fromEvent() {
+    // @ts-ignore - BlzGetTriggerFrame not available in current API
     return this.fromHandle(BlzGetTriggerFrame());
   }
 
@@ -473,30 +499,35 @@ export class Frame extends Handle<framehandle> {
   }
 
   public static fromName(name: string, createContext: number) {
-    return this.fromHandle(BlzGetFrameByName(name, createContext));
+    return this.fromHandle(DzFrameFindByName(name, createContext));
   }
 
   public static fromOrigin(frameType: originframetype, index: number) {
+    // @ts-ignore - BlzGetOriginFrame not available in current API
     return this.fromHandle(BlzGetOriginFrame(frameType, index));
   }
 
   public static getEventHandle() {
+    // @ts-ignore - BlzGetTriggerFrameEvent not available in current API
     return BlzGetTriggerFrameEvent();
   }
 
   public static getEventText() {
+    // @ts-ignore - BlzGetTriggerFrameValue not available in current API
     return BlzGetTriggerFrameValue();
   }
 
   public static getEventValue() {
+    // @ts-ignore - BlzGetTriggerFrameValue not available in current API
     return BlzGetTriggerFrameValue();
   }
 
   public static hideOrigin(enable: boolean) {
+    // @ts-ignore - BlzHideOriginFrames not available in current API
     BlzHideOriginFrames(enable);
   }
 
   public static loadTOC(filename: string) {
-    return BlzLoadTOCFile(filename);
+    return DzLoadToc(filename);
   }
 }

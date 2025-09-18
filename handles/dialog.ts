@@ -28,7 +28,7 @@ export class DialogButton extends Handle<button> {
     }
 
     if (handle === undefined) {
-      error("w3ts failed to create button handle.", 3);
+      Error("w3ts failed to create button handle.");
     }
 
     super(handle);
@@ -108,7 +108,7 @@ export class Dialog extends Handle<dialog> {
     const handle = DialogCreate();
 
     if (handle === undefined) {
-      error("w3ts failed to create dialog handle.", 3);
+      Error("w3ts failed to create dialog handle.");
     }
 
     super(handle);

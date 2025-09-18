@@ -229,10 +229,6 @@ export class Camera {
     SetCineFilterTexture(fileName);
   }
 
-  public static setCinematicAudio(cinematicAudio: boolean) {
-    SetCinematicAudio(cinematicAudio);
-  }
-
   public static setCinematicCamera(cameraModelFile: string) {
     SetCinematicCamera(cameraModelFile);
   }
@@ -255,20 +251,12 @@ export class Camera {
     );
   }
 
-  public static setDepthOfFieldScale(scale: number) {
-    CameraSetDepthOfFieldScale(scale);
-  }
-
   public static setField(
     whichField: camerafield,
     value: number,
     duration: number
   ) {
     SetCameraField(whichField, value, duration);
-  }
-
-  public static setFocalDistance(distance: number) {
-    CameraSetFocalDistance(distance);
   }
 
   public static setPos(x: number, y: number) {
@@ -330,7 +318,7 @@ export class CameraSetup extends Handle<camerasetup> {
 
     const handle = CreateCameraSetup();
     if (handle === undefined) {
-      error("w3ts failed to create camerasetup handle.", 3);
+      throw new Error("w3ts failed to create camerasetup handle.");
     }
 
     super(handle);
@@ -388,20 +376,6 @@ export class CameraSetup extends Handle<camerasetup> {
   }
 
   /**
-   * Sets the label of a CameraSetup.
-   */
-  public set label(label: string) {
-    BlzCameraSetupSetLabel(this.handle, label);
-  }
-
-  /**
-   * Gets the label of a CameraSetup.
-   */
-  public get label() {
-    return BlzCameraSetupGetLabel(this.handle) ?? "";
-  }
-
-  /**
    * Applies the CameraSetup, altering the current camera's fields to match those of the camera setup.
    * @param doPan If set to true, it will move the current camera's target coordinates to the
    * camera setup's target coordinates. If false, the camera will not move
@@ -440,14 +414,15 @@ export class CameraSetup extends Handle<camerasetup> {
     easeOutDuration: number,
     smoothFactor: number
   ) {
-    BlzCameraSetupApplyForceDurationSmooth(
-      this.handle,
-      doPan,
-      forcedDuration,
-      easeInDuration,
-      easeOutDuration,
-      smoothFactor
-    );
+    // Not implemented in JASS
+    // CameraSetupApplyForceDurationSmooth(
+    //   this.handle,
+    //   doPan,
+    //   forcedDuration,
+    //   easeInDuration,
+    //   easeOutDuration,
+    //   smoothFactor
+    // );
   }
 
   /**

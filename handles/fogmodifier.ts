@@ -42,7 +42,7 @@ export class FogModifier extends Handle<fogmodifier> {
     );
 
     if (handle === undefined) {
-      error("w3ts failed to create fogmodifier handle.", 3);
+      Error("w3ts failed to create fogmodifier handle.");
     }
 
     super(handle);

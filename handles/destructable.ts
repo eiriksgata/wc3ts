@@ -4,7 +4,7 @@ import { Handle } from "./handle";
 import { Widget } from "./widget";
 
 export class Destructable extends Widget {
-  public declare readonly handle: destructable;
+  declare public readonly handle: destructable;
 
   public readonly skin?: number;
 
@@ -34,7 +34,7 @@ export class Destructable extends Widget {
     );
 
     if (handle === undefined) {
-      error("w3ts failed to create destructable handle.", 3);
+      Error("w3ts failed to create destructable handle.");
     }
 
     super(handle);
@@ -66,16 +66,6 @@ export class Destructable extends Widget {
     let handle: destructable | undefined;
 
     if (skinId !== undefined) {
-      handle = BlzCreateDestructableWithSkin(
-        objectId,
-        x,
-        y,
-        face,
-        scale,
-        variation,
-        skinId
-      );
-    } else {
       handle = CreateDestructable(objectId, x, y, face, scale, variation);
     }
 
@@ -120,17 +110,6 @@ export class Destructable extends Widget {
 
     let handle: destructable | undefined;
     if (skinId !== undefined) {
-      handle = BlzCreateDestructableZWithSkin(
-        objectId,
-        x,
-        y,
-        z,
-        face,
-        scale,
-        variation,
-        skinId
-      );
-    } else {
       handle = CreateDestructableZ(objectId, x, y, z, face, scale, variation);
     }
 

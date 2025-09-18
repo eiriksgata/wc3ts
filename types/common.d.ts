@@ -1,4 +1,5 @@
 /** @noSelfInFile **/
+/// <reference path="base.d.ts" />
 declare function AbilityId(abilityIdString: string): number;
 declare function AbilityId2String(abilityId: number): string;
 

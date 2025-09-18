@@ -1,3 +1,4 @@
+/// <reference path="../types/common.d.ts" />
 export const MAP_SPEED_NORMAL = () => ConvertGameSpeed(2)
 
 export const bj_PI = 3.14159265358979323846
@@ -507,7 +508,7 @@ export const MAP_DIFFICULTY_HARD = () => ConvertGameDifficulty(2)
 export const MAP_DIFFICULTY_INSANE = () => ConvertGameDifficulty(3)
 export const MAP_SPEED_SLOWEST = () => ConvertGameSpeed(0)
 export const MAP_SPEED_SLOW = () => ConvertGameSpeed(1)
-// export const  MAP_SPEED_NORMAL = () => ConvertGameSpeed(2)  
+// export const  MAP_SPEED_NORMAL = () => ConvertGameSpeed(2)
 export const MAP_SPEED_FAST = () => ConvertGameSpeed(3)
 export const MAP_SPEED_FASTEST = () => ConvertGameSpeed(4)
 export const PLAYER_SLOT_STATE_EMPTY = () => ConvertPlayerSlotState(0)
@@ -876,4 +877,4 @@ export const TEXT_ALIGN_LEFT = 10
 export const TEXT_ALIGN_RIGHT = 34
 export const TEXT_ALIGN_LEFT_BOTTOM = 12
 export const TEXT_ALIGN_BOTTOM = 20
-export const TEXT_ALIGN_RIGHT_BOTTOM = 36  
+export const TEXT_ALIGN_RIGHT_BOTTOM = 36
