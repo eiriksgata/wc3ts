@@ -14,7 +14,7 @@ export function base64Encode(input: string) {
     input.charAt(Math.floor(idx) | 0).length > 0 || ((map = "="), idx % 1);
     output += map.charAt(Math.floor(63 & (block >>> (8 - (idx % 1) * 8))))
   ) {
-    charCode = string.byte(input, Math.floor((idx += 3 / 4)) + 1) || 0;
+    charCode = input.charCodeAt(Math.floor((idx += 3 / 4))) || 0;
 
     if (Math.floor(idx) > input.length && charCode === 0) {
       if (output.length % 4 === 1) {
@@ -24,9 +24,7 @@ export function base64Encode(input: string) {
     }
 
     if (charCode > 0xff) {
-      print(
-        "'base64Encode' failed: The string to be encoded contains characters outside of the Latin1 range."
-      );
+      // Invalid character outside Latin1 range, return current output
       return output;
     }
 

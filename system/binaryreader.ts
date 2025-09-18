@@ -29,57 +29,116 @@
  */
 export class BinaryReader {
   public readonly data: string;
-
-  private pos = 1;
+  private pos = 0; // Changed to 0-based indexing
 
   constructor(binaryString: string) {
     this.data = binaryString;
   }
 
-  public read(fmt: string, size: number) {
-    const unpacked = string.unpack(fmt, this.data, this.pos);
-    this.pos += size;
-    if (unpacked.length <= 0) {
-      return 0;
+  private readBytes(size: number): number[] {
+    const bytes: number[] = [];
+    for (let i = 0; i < size; i++) {
+      if (this.pos + i >= this.data.length) {
+        bytes.push(0); // Pad with zeros if out of bounds
+      } else {
+        bytes.push(this.data.charCodeAt(this.pos + i));
+      }
     }
-    return unpacked[0];
+    this.pos += size;
+    return bytes;
   }
 
   public readDouble(): number {
-    return this.read(">d", 4);
+    // 64-bit double precision floating point (big-endian)
+    const bytes = this.readBytes(8);
+    const arrayBuffer = new ArrayBuffer(8);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 8; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getFloat64(0, false); // false = big-endian
   }
 
   public readFloat(): number {
-    return this.read(">f", 4);
+    // 32-bit single precision floating point (big-endian)
+    const bytes = this.readBytes(4);
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 4; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getFloat32(0, false); // false = big-endian
   }
 
   public readInt16(): number {
-    return this.read(">h", 2);
+    // 16-bit signed integer (big-endian)
+    const bytes = this.readBytes(2);
+    const arrayBuffer = new ArrayBuffer(2);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 2; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getInt16(0, false); // false = big-endian
   }
 
   public readInt32(): number {
-    return this.read(">i4", 4);
+    // 32-bit signed integer (big-endian)
+    const bytes = this.readBytes(4);
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 4; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getInt32(0, false); // false = big-endian
   }
 
   public readInt8(): number {
-    return this.read(">b", 1);
+    // 8-bit signed integer
+    const bytes = this.readBytes(1);
+    const arrayBuffer = new ArrayBuffer(1);
+    const view = new DataView(arrayBuffer);
+    view.setUint8(0, bytes[0]);
+    return view.getInt8(0);
   }
 
   public readString(): string {
-    const value: string = this.read(">z", 0);
-    this.pos += value.length + 1;
-    return value;
+    // Null-terminated string
+    let result = "";
+    let charCode = this.data.charCodeAt(this.pos);
+    while (charCode !== 0 && this.pos < this.data.length) {
+      result += String.fromCharCode(charCode);
+      this.pos++;
+      charCode = this.data.charCodeAt(this.pos);
+    }
+    this.pos++; // Skip the null terminator
+    return result;
   }
 
   public readUInt16(): number {
-    return this.read(">H", 2);
+    // 16-bit unsigned integer (big-endian)
+    const bytes = this.readBytes(2);
+    const arrayBuffer = new ArrayBuffer(2);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 2; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getUint16(0, false); // false = big-endian
   }
 
   public readUInt32(): number {
-    return this.read(">I4", 4);
+    // 32-bit unsigned integer (big-endian)
+    const bytes = this.readBytes(4);
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    for (let i = 0; i < 4; i++) {
+      view.setUint8(i, bytes[i]);
+    }
+    return view.getUint32(0, false); // false = big-endian
   }
 
   public readUInt8(): number {
-    return this.read(">B", 1);
+    // 8-bit unsigned integer
+    const bytes = this.readBytes(1);
+    return bytes[0];
   }
 }

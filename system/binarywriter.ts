@@ -28,56 +28,90 @@
  * ```
  */
 export class BinaryWriter {
-  public readonly values: (string | number)[] = [];
-
-  private fmj = ">";
+  private buffer: number[] = [];
 
   public toString() {
-    return string.pack(this.fmj, ...this.values);
+    return String.fromCharCode(...this.buffer);
   }
 
   public writeDouble(value: number) {
-    this.fmj += "d";
-    this.values.push(value);
+    // 64-bit double precision floating point (big-endian)
+    const arrayBuffer = new ArrayBuffer(8);
+    const view = new DataView(arrayBuffer);
+    view.setFloat64(0, value, false); // false = big-endian
+    for (let i = 0; i < 8; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeFloat(value: number) {
-    this.fmj += "f";
-    this.values.push(value);
+    // 32-bit single precision floating point (big-endian)
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    view.setFloat32(0, value, false); // false = big-endian
+    for (let i = 0; i < 4; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeInt16(value: number) {
-    this.fmj += "h";
-    this.values.push(value);
+    // 16-bit signed integer (big-endian)
+    const arrayBuffer = new ArrayBuffer(2);
+    const view = new DataView(arrayBuffer);
+    view.setInt16(0, value, false); // false = big-endian
+    for (let i = 0; i < 2; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeInt32(value: number) {
-    this.fmj += "i4";
-    this.values.push(value);
+    // 32-bit signed integer (big-endian)
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    view.setInt32(0, value, false); // false = big-endian
+    for (let i = 0; i < 4; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeInt8(value: number) {
-    this.fmj += "b";
-    this.values.push(value);
+    // 8-bit signed integer
+    const arrayBuffer = new ArrayBuffer(1);
+    const view = new DataView(arrayBuffer);
+    view.setInt8(0, value);
+    this.buffer.push(view.getUint8(0));
   }
 
   public writeString(value: string) {
-    this.fmj += "z";
-    this.values.push(value);
+    // Null-terminated string
+    for (let i = 0; i < value.length; i++) {
+      this.buffer.push(value.charCodeAt(i));
+    }
+    this.buffer.push(0); // null terminator
   }
 
   public writeUInt16(value: number) {
-    this.fmj += "H";
-    this.values.push(value);
+    // 16-bit unsigned integer (big-endian)
+    const arrayBuffer = new ArrayBuffer(2);
+    const view = new DataView(arrayBuffer);
+    view.setUint16(0, value, false); // false = big-endian
+    for (let i = 0; i < 2; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeUInt32(value: number) {
-    this.fmj += "I4";
-    this.values.push(value);
+    // 32-bit unsigned integer (big-endian)
+    const arrayBuffer = new ArrayBuffer(4);
+    const view = new DataView(arrayBuffer);
+    view.setUint32(0, value, false); // false = big-endian
+    for (let i = 0; i < 4; i++) {
+      this.buffer.push(view.getUint8(i));
+    }
   }
 
   public writeUInt8(value: number) {
-    this.fmj += "B";
-    this.values.push(value);
+    // 8-bit unsigned integer
+    this.buffer.push(value & 0xff);
   }
 }
