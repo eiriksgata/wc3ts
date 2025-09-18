@@ -13,7 +13,7 @@ export class MultiboardItem extends Handle<multiboarditem> {
     }
     const handle = MultiboardGetItem(board.handle, x - 1, y - 1);
     if (handle === undefined) {
-      error("w3ts failed to create multiboarditem handle.", 3);
+      Error("w3ts failed to create multiboarditem handle.");
     }
     super(handle);
   }
@@ -81,7 +81,7 @@ export class Multiboard extends Handle<multiboard> {
     }
     const handle = CreateMultiboard();
     if (handle === undefined) {
-      error("w3ts failed to create multiboard handle.", 3);
+      Error("w3ts failed to create multiboard handle.");
     }
     super(handle);
   }

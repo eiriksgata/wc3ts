@@ -1,5 +1,6 @@
 /** @noSelfInFile */
 
+import { bj_MAX_PLAYER_SLOTS } from "../globals/define";
 import { Dialog, DialogButton } from "./dialog";
 import { Frame } from "./frame";
 import { Handle } from "./handle";
@@ -17,7 +18,7 @@ export class Trigger extends Handle<trigger> {
     }
     const handle = CreateTrigger();
     if (handle === undefined) {
-      error("w3ts failed to create trigger handle.", 3);
+      Error("w3ts failed to create trigger handle.");
     }
     super(handle);
   }
@@ -143,11 +144,16 @@ export class Trigger extends Handle<trigger> {
   }
 
   public registerAnyUnitEvent(whichPlayerUnitEvent: playerunitevent) {
-    return TriggerRegisterAnyUnitEventBJ(this.handle, whichPlayerUnitEvent);
-  }
-
-  public registerCommandEvent(whichAbility: number, order: string) {
-    return TriggerRegisterCommandEvent(this.handle, whichAbility, order);
+    for (let i = 0; i < bj_MAX_PLAYER_SLOTS; i++) {
+      TriggerRegisterPlayerUnitEvent(
+        this.handle,
+        Player(i),
+        whichPlayerUnitEvent,
+        () => {
+          return true;
+        }
+      );
+    }
   }
 
   public registerDeathEvent(whichWidget: Widget) {
@@ -169,7 +175,7 @@ export class Trigger extends Handle<trigger> {
     return TriggerRegisterEnterRegion(
       this.handle,
       whichRegion.handle,
-      typeof filter === "function" ? Filter(filter) : filter
+      typeof filter === "function" ? Filter(filter) : filter || null
     );
   }
 
@@ -182,7 +188,7 @@ export class Trigger extends Handle<trigger> {
       this.handle,
       whichUnit.handle,
       whichEvent,
-      typeof filter === "function" ? Filter(filter) : filter
+      typeof filter === "function" ? Filter(filter) : filter || null
     );
   }
 
@@ -210,7 +216,7 @@ export class Trigger extends Handle<trigger> {
     return TriggerRegisterLeaveRegion(
       this.handle,
       whichRegion.handle,
-      typeof filter === "function" ? Filter(filter) : filter
+      typeof filter === "function" ? Filter(filter) : filter || null
     );
   }
 
@@ -250,28 +256,28 @@ export class Trigger extends Handle<trigger> {
   }
 
   public registerPlayerKeyEvent(
-    whichPlayer: MapPlayer,
-    whichKey: oskeytype,
-    metaKey: number,
-    fireOnKeyDown: boolean
+    trig: trigger,
+    key: number,
+    status: number,
+    sync: boolean,
+    funcHandle: () => void
   ) {
-    return BlzTriggerRegisterPlayerKeyEvent(
-      this.handle,
-      whichPlayer.handle,
-      whichKey,
-      metaKey,
-      fireOnKeyDown
-    );
+    return DzTriggerRegisterKeyEventByCode(trig, key, status, sync, funcHandle);
   }
 
   public registerPlayerMouseEvent(
-    whichPlayer: MapPlayer,
-    whichMouseEvent: number
+    trig: trigger,
+    btn: number,
+    status: number,
+    sync: boolean,
+    funcHandle: () => void
   ) {
-    return TriggerRegisterPlayerMouseEventBJ(
-      this.handle,
-      whichPlayer.handle,
-      whichMouseEvent
+    return DzTriggerRegisterMouseEventByCode(
+      trig,
+      btn,
+      status,
+      sync,
+      funcHandle
     );
   }
 
@@ -290,19 +296,6 @@ export class Trigger extends Handle<trigger> {
     );
   }
 
-  public registerPlayerSyncEvent(
-    whichPlayer: MapPlayer,
-    prefix: string,
-    fromServer: boolean
-  ) {
-    return BlzTriggerRegisterPlayerSyncEvent(
-      this.handle,
-      whichPlayer.handle,
-      prefix,
-      fromServer
-    );
-  }
-
   public registerPlayerUnitEvent(
     whichPlayer: MapPlayer,
     whichPlayerUnitEvent: playerunitevent,
@@ -312,7 +305,7 @@ export class Trigger extends Handle<trigger> {
       this.handle,
       whichPlayer.handle,
       whichPlayerUnitEvent,
-      typeof filter === "function" ? Filter(filter) : filter
+      typeof filter === "function" ? Filter(filter) : filter || null
     );
   }
 
@@ -347,7 +340,7 @@ export class Trigger extends Handle<trigger> {
       this.handle,
       whichUnit.handle,
       range,
-      typeof filter === "function" ? Filter(filter) : filter
+      typeof filter === "function" ? Filter(filter) : filter || null
     );
   }
 
@@ -364,10 +357,6 @@ export class Trigger extends Handle<trigger> {
       opcode,
       limitval
     );
-  }
-
-  public registerUpgradeCommandEvent(whichUpgrade: number) {
-    return TriggerRegisterUpgradeCommandEvent(this.handle, whichUpgrade);
   }
 
   public registerVariableEvent(
@@ -396,10 +385,6 @@ export class Trigger extends Handle<trigger> {
 
   public reset() {
     ResetTrigger(this.handle);
-  }
-
-  public triggerRegisterFrameEvent(frame: Frame, eventId: frameeventtype) {
-    return BlzTriggerRegisterFrameEvent(this.handle, frame.handle, eventId);
   }
 
   public static fromEvent() {

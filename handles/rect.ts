@@ -14,7 +14,7 @@ export class Rectangle extends Handle<rect> {
     }
     const handle = Rect(minX, minY, maxX, maxY);
     if (handle === undefined) {
-      error("w3ts failed to create rect handle.", 3);
+      Error("w3ts failed to create rect handle.");
     }
     super(handle);
   }

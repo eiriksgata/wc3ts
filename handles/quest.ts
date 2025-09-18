@@ -13,7 +13,7 @@ export class QuestItem extends Handle<questitem> {
     }
     const handle = QuestCreateItem(whichQuest.handle);
     if (handle === undefined) {
-      error("w3ts failed to create questitem handle.", 3);
+      Error("w3ts failed to create questitem handle.");
     }
     super(handle);
     this.quest = whichQuest;
@@ -58,7 +58,7 @@ export class Quest extends Handle<quest> {
     }
     const handle = CreateQuest();
     if (handle === undefined) {
-      error("w3ts failed to create quest handle.", 3);
+      Error("w3ts failed to create quest handle.");
     }
     super(handle);
   }

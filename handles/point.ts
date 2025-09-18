@@ -1,4 +1,5 @@
 /** @noSelfInFile */
+/// <reference path="../types/base.d.ts" />
 
 import { Handle } from "./handle";
 
@@ -13,7 +14,7 @@ export class Point extends Handle<location> {
     }
     const handle = Location(x, y);
     if (handle === undefined) {
-      error("w3ts failed to create player handle.", 3);
+      Error("w3ts failed to create player handle.");
     }
     super(handle);
   }

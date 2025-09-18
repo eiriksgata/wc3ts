@@ -29,7 +29,7 @@ export class Sound extends Handle<sound> {
       eaxSetting
     );
     if (handle === undefined) {
-      error("w3ts failed to create sound handle.", 3);
+      Error("w3ts failed to create sound handle.");
     }
     super(handle);
   }
@@ -77,22 +77,6 @@ export class Sound extends Handle<sound> {
       return Object.assign(obj, values);
     }
     return undefined;
-  }
-
-  public get dialogueSpeakerNameKey() {
-    return GetDialogueSpeakerNameKey(this.handle) ?? "";
-  }
-
-  public set dialogueSpeakerNameKey(speakerName: string) {
-    SetDialogueSpeakerNameKey(this.handle, speakerName);
-  }
-
-  public get dialogueTextKey() {
-    return GetDialogueTextKey(this.handle) ?? "";
-  }
-
-  public set dialogueTextKey(dialogueText: string) {
-    SetDialogueTextKey(this.handle, dialogueText);
   }
 
   public get duration() {
@@ -150,18 +134,6 @@ export class Sound extends Handle<sound> {
    */
   public setDistances(minDist: number, maxDist: number) {
     SetSoundDistances(this.handle, minDist, maxDist);
-  }
-
-  public setFacialAnimationFilepath(animationSetFilepath: string) {
-    SetSoundFacialAnimationSetFilepath(this.handle, animationSetFilepath);
-  }
-
-  public setFacialAnimationGroupLabel(groupLabel: string) {
-    SetSoundFacialAnimationGroupLabel(this.handle, groupLabel);
-  }
-
-  public setFacialAnimationLabel(animationLabel: string) {
-    SetSoundFacialAnimationLabel(this.handle, animationLabel);
   }
 
   /**

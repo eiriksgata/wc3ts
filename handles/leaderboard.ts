@@ -15,7 +15,7 @@ export class Leaderboard extends Handle<leaderboard> {
     const handle = CreateLeaderboard();
 
     if (handle === undefined) {
-      error("w3ts failed to create leaderboard handle.", 3);
+      Error("w3ts failed to create leaderboard handle.");
     }
 
     super(handle);

@@ -1,5 +1,6 @@
 /** @noSelfInFile */
 
+import { bj_DEGTORAD } from "../globals/define";
 import { Handle } from "./handle";
 import { Unit } from "./unit";
 
@@ -12,7 +13,7 @@ export class TextTag extends Handle<texttag> {
     }
     const handle = CreateTextTag();
     if (handle === undefined) {
-      error("w3ts failed to create texttag handle.", 3);
+      Error("w3ts failed to create texttag handle.");
     }
     super(handle);
   }

@@ -1,12 +1,14 @@
 /** @noSelfInFile */
 
+/// <reference path="../types/japi.d.ts" />
+
 import { Handle } from "./handle";
 import { MapPlayer } from "./player";
 import { Point } from "./point";
 import { Widget } from "./widget";
 
 export class Item extends Widget {
-  public declare readonly handle: item;
+  declare public readonly handle: item;
 
   /**
    * @deprecated use `Item.create` instead.
@@ -15,19 +17,14 @@ export class Item extends Widget {
    * @param y The y-coordinate of the item
    * @param skinId  The skin ID of the item.
    */
-  constructor(itemId: number, x: number, y: number, skinId?: number) {
+  constructor(itemId: number, x: number, y: number) {
     if (Handle.initFromHandle()) {
       super();
       return;
     }
-
-    const handle =
-      skinId === undefined
-        ? CreateItem(itemId, x, y)
-        : BlzCreateItemWithSkin(itemId, x, y, skinId);
-
+    const handle = CreateItem(itemId, x, y);
     if (handle === undefined) {
-      error("w3ts failed to create item handle.", 3);
+      Error("w3ts failed to create item handle.");
     }
 
     super(handle);
@@ -40,16 +37,8 @@ export class Item extends Widget {
    * @param y The y-coordinate of the item
    * @param skinId  The skin ID of the item.
    */
-  public static create(
-    itemId: number,
-    x: number,
-    y: number,
-    skinId?: number
-  ): Item | undefined {
-    const handle =
-      skinId === undefined
-        ? CreateItem(itemId, x, y)
-        : BlzCreateItemWithSkin(itemId, x, y, skinId);
+  public static create(itemId: number, x: number, y: number): Item | undefined {
+    const handle = CreateItem(itemId, x, y);
     if (handle) {
       const obj = this.getObject(handle) as Item;
 
@@ -84,22 +73,13 @@ export class Item extends Widget {
   /**
    * @async
    */
-  get description() {
-    return BlzGetItemDescription(this.handle) ?? "";
-  }
-
-  set description(description: string) {
-    BlzSetItemDescription(this.handle, description);
-  }
-
-  /**
-   * @async
-   */
   get extendedTooltip() {
+    // @ts-ignore - BlzGetItemExtendedTooltip not available in current API
     return BlzGetItemExtendedTooltip(this.handle) ?? "";
   }
 
   set extendedTooltip(tooltip: string) {
+    // @ts-ignore - BlzSetItemExtendedTooltip not available in current API
     BlzSetItemExtendedTooltip(this.handle, tooltip);
   }
 
@@ -107,10 +87,12 @@ export class Item extends Widget {
    * @async
    */
   get icon() {
+    // @ts-ignore - BlzGetItemIconPath not available in current API
     return BlzGetItemIconPath(this.handle) ?? "";
   }
 
   set icon(path: string) {
+    // @ts-ignore - BlzSetItemIconPath not available in current API
     BlzSetItemIconPath(this.handle, path);
   }
 
@@ -122,6 +104,7 @@ export class Item extends Widget {
   }
 
   set name(value: string) {
+    // @ts-ignore - BlzSetItemName not available in current API
     BlzSetItemName(this.handle, value);
   }
 
@@ -129,10 +112,12 @@ export class Item extends Widget {
    * @async
    */
   get tooltip() {
+    // @ts-ignore - BlzGetItemTooltip not available in current API
     return BlzGetItemTooltip(this.handle) ?? "";
   }
 
   set tooltip(tooltip: string) {
+    // @ts-ignore - BlzSetItemTooltip not available in current API
     BlzSetItemTooltip(this.handle, tooltip);
   }
 
@@ -172,14 +157,6 @@ export class Item extends Widget {
     SetItemVisible(this.handle, flag);
   }
 
-  public get skin() {
-    return BlzGetItemSkin(this.handle);
-  }
-
-  public set skin(skinId: number) {
-    BlzSetItemSkin(this.handle, skinId);
-  }
-
   public override get x() {
     return GetItemX(this.handle);
   }
@@ -197,18 +174,22 @@ export class Item extends Widget {
   }
 
   public addAbility(abilCode: number) {
+    // @ts-ignore - BlzItemAddAbility not available in current API
     BlzItemAddAbility(this.handle, abilCode);
   }
 
   public getAbility(abilCode: number) {
+    // @ts-ignore - BlzGetItemAbility not available in current API
     return BlzGetItemAbility(this.handle, abilCode);
   }
 
   public getAbilityByIndex(index: number) {
+    // @ts-ignore - BlzGetItemAbilityByIndex not available in current API
     return BlzGetItemAbilityByIndex(this.handle, index);
   }
 
   public removeAbility(abilCode: number) {
+    // @ts-ignore - BlzItemRemoveAbility not available in current API
     BlzItemRemoveAbility(this.handle, abilCode);
   }
 
@@ -223,12 +204,16 @@ export class Item extends Widget {
 
     switch (fieldType) {
       case "unitbooleanfield":
+        // @ts-ignore - BlzGetItemBooleanField not available in current API
         return BlzGetItemBooleanField(this.handle, field as itembooleanfield);
       case "unitintegerfield":
+        // @ts-ignore - BlzGetItemIntegerField not available in current API
         return BlzGetItemIntegerField(this.handle, field as itemintegerfield);
       case "unitrealfield":
+        // @ts-ignore - BlzGetItemRealField not available in current API
         return BlzGetItemRealField(this.handle, field as itemrealfield);
       case "unitstringfield":
+        // @ts-ignore - BlzGetItemStringField not available in current API
         return BlzGetItemStringField(this.handle, field as itemstringfield);
       default:
         return 0;
@@ -274,6 +259,7 @@ export class Item extends Widget {
     const fieldType = field.toString().substr(0, field.toString().indexOf(":"));
 
     if (fieldType === "unitbooleanfield" && typeof value === "boolean") {
+      // @ts-ignore - BlzSetItemBooleanField not available in current API
       return BlzSetItemBooleanField(
         this.handle,
         field as itembooleanfield,
@@ -281,6 +267,7 @@ export class Item extends Widget {
       );
     }
     if (fieldType === "unitintegerfield" && typeof value === "number") {
+      // @ts-ignore - BlzSetItemIntegerField not available in current API
       return BlzSetItemIntegerField(
         this.handle,
         field as itemintegerfield,
@@ -288,9 +275,11 @@ export class Item extends Widget {
       );
     }
     if (fieldType === "unitrealfield" && typeof value === "number") {
+      // @ts-ignore - BlzSetItemRealField not available in current API
       return BlzSetItemRealField(this.handle, field as itemrealfield, value);
     }
     if (fieldType === "unitstringfield" && typeof value === "string") {
+      // @ts-ignore - BlzSetItemStringField not available in current API
       return BlzSetItemStringField(
         this.handle,
         field as itemstringfield,

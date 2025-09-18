@@ -31,7 +31,7 @@ export class Ubersplat extends Handle<ubersplat> {
       noBirthTime
     );
     if (handle === undefined) {
-      error("w3ts failed to create ubersplat handle.", 3);
+      Error("w3ts failed to create ubersplat handle.");
     }
     super(handle);
   }

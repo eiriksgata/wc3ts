@@ -12,7 +12,7 @@ export class TimerDialog extends Handle<timerdialog> {
     }
     const handle = CreateTimerDialog(t.handle);
     if (handle === undefined) {
-      error("w3ts failed to create timer handle.", 3);
+      Error("w3ts failed to create timer handle.");
     }
     super(handle);
   }

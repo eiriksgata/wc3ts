@@ -48,9 +48,9 @@ export function base64Decode(input: string) {
   const str = input.substr(0, i - 1);
   let output = "";
   if (str.length % 4 === 1) {
-    print(
-      "'base64Decode' failed: The string to be decoded is not correctly encoded."
-    );
+    // print(
+    //   "'base64Decode' failed: The string to be decoded is not correctly encoded."
+    // );
     return output;
   }
   let bs = 0;

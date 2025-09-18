@@ -15,7 +15,7 @@ export class MapPlayer extends Handle<player> {
     }
     const handle = Player(index);
     if (handle === undefined) {
-      error("w3ts failed to create player handle.", 3);
+      Error("w3ts failed to create player handle.");
     }
     super(handle);
   }
@@ -101,9 +101,9 @@ export class MapPlayer extends Handle<player> {
     return GetPlayerTeam(this.handle);
   }
 
-  public get townHallCount() {
-    return BlzGetPlayerTownHallCount(this.handle);
-  }
+  // public get townHallCount() {
+  //   return BlzGetPlayerTownHallCount(this.handle);
+  // }
 
   /**
    * In upgrades that have multiple levels, it will research the upgrade by the number of levels specified.
@@ -114,9 +114,9 @@ export class MapPlayer extends Handle<player> {
     AddPlayerTechResearched(this.handle, techId, levels);
   }
 
-  public decTechResearched(techId: number, levels: number) {
-    BlzDecPlayerTechResearched(this.handle, techId, levels);
-  }
+  // public decTechResearched(techId: number, levels: number) {
+  //   BlzDecPlayerTechResearched(this.handle, techId, levels);
+  // }
 
   /**
    * Used to store hero level data for the scorescreen, before units are moved to neutral passive in melee games.
@@ -325,7 +325,12 @@ export class MapPlayer extends Handle<player> {
     const pl = GetLocalPlayer();
     if (pl === undefined) {
       for (let i = 0; i < 10; i++) {
-        print("$$$$$$$$$ LOCAL PLAYER IS NULL. TELL ME");
+        DisplayTextToPlayer(
+          Player(0),
+          0,
+          0,
+          "$$$$$$$$$ LOCAL PLAYER IS NULL. TELL ME"
+        );
       }
     }
     return this.fromHandle(pl) as MapPlayer;

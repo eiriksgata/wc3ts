@@ -19,7 +19,7 @@ export class Group extends Handle<group> {
     const handle = CreateGroup();
 
     if (handle === undefined) {
-      error("w3ts failed to create group handle.", 3);
+      Error("w3ts failed to create group handle.");
     }
 
     super(handle);
@@ -38,9 +38,9 @@ export class Group extends Handle<group> {
     return undefined;
   }
 
-  public addGroupFast(addGroup: Group): number {
-    return BlzGroupAddGroupFast(this.handle, addGroup.handle);
-  }
+  // public addGroupFast(addGroup: Group): number {
+  //   return BlzGroupAddGroupFast(this.handle, addGroup.handle);
+  // }
 
   public addUnit(whichUnit: Unit): boolean {
     return GroupAddUnit(this.handle, whichUnit.handle);
@@ -208,7 +208,11 @@ export class Group extends Handle<group> {
   }
 
   public get size(): number {
-    return BlzGroupGetSize(this.handle);
+    let size = 0;
+    this.for(() => {
+      size++;
+    });
+    return size;
   }
 
   public getUnits(): Unit[] {
@@ -220,10 +224,6 @@ export class Group extends Handle<group> {
       }
     });
     return units;
-  }
-
-  public getUnitAt(index: number) {
-    return Unit.fromHandle(BlzGroupUnitAt(this.handle, index));
   }
 
   public hasUnit(whichUnit: Unit) {
@@ -260,10 +260,6 @@ export class Group extends Handle<group> {
     } else {
       GroupTargetOrderById(this.handle, order, targetWidget.handle);
     }
-  }
-
-  public removeGroupFast(removeGroup: Group): number {
-    return BlzGroupRemoveGroupFast(this.handle, removeGroup.handle);
   }
 
   public removeUnit(whichUnit: Unit): boolean {

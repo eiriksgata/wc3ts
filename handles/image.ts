@@ -57,7 +57,7 @@ export class Image extends Handle<image> {
     );
 
     if (handle === undefined) {
-      error("w3ts failed to create image handle.", 3);
+      Error("w3ts failed to create image handle.");
     }
     super(handle);
   }

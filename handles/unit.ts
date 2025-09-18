@@ -10,9 +10,21 @@ import { MapPlayer } from "./player";
 import { Point } from "./point";
 import { Sound } from "./sound";
 import { Widget } from "./widget";
+import {
+  bj_UNIT_FACING,
+  UNIT_STATE_ATTACK_BONUS,
+  UNIT_STATE_ATTACK_SPACE,
+  UNIT_STATE_ATTACK_SPEED,
+  UNIT_STATE_ATTACK_WHITE,
+  UNIT_STATE_DEFEND_WHITE,
+  UNIT_STATE_MANA,
+  UNIT_STATE_MAX_LIFE,
+  UNIT_STATE_MAX_MANA,
+  UNIT_TYPE_DEAD,
+} from "../globals/define";
 
 export class Unit extends Widget {
-  public declare readonly handle: unit;
+  declare public readonly handle: unit;
 
   /**
    * @deprecated use `Unit.create` instead.
@@ -28,8 +40,7 @@ export class Unit extends Widget {
     unitId: number,
     x: number,
     y: number,
-    face?: number,
-    skinId?: number
+    face?: number
   ) {
     if (Handle.initFromHandle() === true) {
       super();
@@ -37,13 +48,10 @@ export class Unit extends Widget {
     }
 
     if (face === undefined) face = bj_UNIT_FACING;
-    const handle =
-      skinId === undefined
-        ? CreateUnit(owner.handle, unitId, x, y, face)
-        : BlzCreateUnitWithSkin(owner.handle, unitId, x, y, face, skinId);
+    const handle = CreateUnit(owner.handle, unitId, x, y, face);
 
     if (handle === undefined) {
-      error("w3ts failed to create unit handle.", 3);
+      Error("w3ts failed to create unit handle.");
     }
 
     super(handle);
@@ -67,10 +75,8 @@ export class Unit extends Widget {
     skinId?: number
   ): Unit | undefined {
     if (face === undefined) face = bj_UNIT_FACING;
-    const handle =
-      skinId === undefined
-        ? CreateUnit(owner.handle, unitId, x, y, face)
-        : BlzCreateUnitWithSkin(owner.handle, unitId, x, y, face, skinId);
+    const handle = CreateUnit(owner.handle, unitId, x, y, face);
+
     if (handle) {
       const obj = this.getObject(handle) as Unit;
 
@@ -109,11 +115,11 @@ export class Unit extends Widget {
   }
 
   public get armor() {
-    return BlzGetUnitArmor(this.handle);
+    return GetUnitState(this.handle, UNIT_STATE_DEFEND_WHITE());
   }
 
   public set armor(armorAmount: number) {
-    BlzSetUnitArmor(this.handle, armorAmount);
+    SetUnitState(this.handle, UNIT_STATE_DEFEND_WHITE(), armorAmount);
   }
 
   public set canSleep(flag: boolean) {
@@ -122,10 +128,6 @@ export class Unit extends Widget {
 
   public get canSleep() {
     return UnitCanSleep(this.handle);
-  }
-
-  public get collisionSize() {
-    return BlzGetUnitCollisionSize(this.handle);
   }
 
   public set color(whichColor: playercolor) {
@@ -214,40 +216,32 @@ export class Unit extends Widget {
     SetUnitInvulnerable(this.handle, flag);
   }
 
-  public get invulnerable() {
-    return BlzIsUnitInvulnerable(this.handle);
-  }
-
   public get level() {
     return GetUnitLevel(this.handle);
   }
 
-  public get localZ() {
-    return BlzGetLocalUnitZ(this.handle);
-  }
-
   public get mana() {
-    return this.getState(UNIT_STATE_MANA);
+    return this.getState(UNIT_STATE_MANA());
   }
 
   public set mana(value: number) {
-    this.setState(UNIT_STATE_MANA, value);
+    this.setState(UNIT_STATE_MANA(), value);
   }
 
   public get maxLife() {
-    return BlzGetUnitMaxHP(this.handle);
+    return this.getState(UNIT_STATE_MAX_LIFE());
   }
 
   public set maxLife(value: number) {
-    BlzSetUnitMaxHP(this.handle, value);
+    this.setState(UNIT_STATE_MAX_LIFE(), value);
   }
 
   public get maxMana() {
-    return BlzGetUnitMaxMana(this.handle);
+    return this.getState(UNIT_STATE_MAX_MANA());
   }
 
   public set maxMana(value: number) {
-    BlzSetUnitMaxMana(this.handle, value);
+    this.setState(UNIT_STATE_MAX_MANA(), value);
   }
 
   public set moveSpeed(value: number) {
@@ -266,11 +260,11 @@ export class Unit extends Widget {
   }
 
   set name(value: string) {
-    BlzSetUnitName(this.handle, value);
+    DzSetUnitName(this.handle, value);
   }
 
   public set nameProper(value: string) {
-    BlzSetHeroProperName(this.handle, value);
+    DzSetUnitProperName(this.handle, value);
   }
 
   /**
@@ -377,33 +371,12 @@ export class Unit extends Widget {
     return GetResourceAmount(this.handle);
   }
 
-  public get selectable() {
-    return BlzIsUnitSelectable(this.handle);
-  }
-
-  public set selectionScale(scale: number) {
-    this.setField(UNIT_RF_SELECTION_SCALE, scale);
-  }
-
-  public get selectionScale() {
-    const result = this.getField(UNIT_RF_SELECTION_SCALE);
-    return typeof result === "number" ? result : 0;
-  }
-
   public set show(flag: boolean) {
     ShowUnit(this.handle, flag);
   }
 
   public get show() {
     return !IsUnitHidden(this.handle);
-  }
-
-  public get skin() {
-    return BlzGetUnitSkin(this.handle);
-  }
-
-  public set skin(skinId: number) {
-    BlzSetUnitSkin(this.handle, skinId);
   }
 
   /**
@@ -501,13 +474,6 @@ export class Unit extends Widget {
     SetUnitY(this.handle, value);
   }
 
-  /**
-   * @async
-   */
-  public get z() {
-    return BlzGetUnitZ(this.handle);
-  }
-
   public addAbility(abilityId: number) {
     return UnitAddAbility(this.handle, abilityId);
   }
@@ -595,10 +561,6 @@ export class Unit extends Widget {
 
   public attachSound(sound: Sound) {
     AttachSoundToUnit(sound.handle, this.handle);
-  }
-
-  public cancelTimedLife() {
-    BlzUnitCancelTimedLife(this.handle);
   }
 
   public canSleepPerm() {
@@ -702,10 +664,6 @@ export class Unit extends Widget {
     RemoveUnit(this.handle);
   }
 
-  public disableAbility(abilId: number, flag: boolean, hideUI: boolean) {
-    BlzUnitDisableAbility(this.handle, abilId, flag, hideUI);
-  }
-
   public dropItem(whichItem: Item, x: number, y: number) {
     return UnitDropItemPoint(this.handle, whichItem.handle, x, y);
   }
@@ -721,26 +679,6 @@ export class Unit extends Widget {
     return UnitDropItemTarget(this.handle, whichItem.handle, target.handle);
   }
 
-  public endAbilityCooldown(abilCode: number) {
-    BlzEndUnitAbilityCooldown(this.handle, abilCode);
-  }
-
-  public getAbility(abilId: number) {
-    return BlzGetUnitAbility(this.handle, abilId);
-  }
-
-  public getAbilityByIndex(index: number) {
-    return BlzGetUnitAbilityByIndex(this.handle, index);
-  }
-
-  public getAbilityCooldown(abilId: number, level: number) {
-    return BlzGetUnitAbilityCooldown(this.handle, abilId, level);
-  }
-
-  public getAbilityCooldownRemaining(abilId: number) {
-    return BlzGetUnitAbilityCooldownRemaining(this.handle, abilId);
-  }
-
   /**
    * Returns the level of the ability for the unit.
    * @note This function is **not** zero indexed.
@@ -749,59 +687,8 @@ export class Unit extends Widget {
     return GetUnitAbilityLevel(this.handle, abilCode);
   }
 
-  public getAbilityManaCost(abilId: number, level: number) {
-    return BlzGetUnitAbilityManaCost(this.handle, abilId, level);
-  }
-
   public getAgility(includeBonuses: boolean) {
     return GetHeroAgi(this.handle, includeBonuses);
-  }
-
-  public getAttackCooldown(weaponIndex: number) {
-    return BlzGetUnitAttackCooldown(this.handle, weaponIndex);
-  }
-
-  public getBaseDamage(weaponIndex: number) {
-    return BlzGetUnitBaseDamage(this.handle, weaponIndex);
-  }
-
-  public getDiceNumber(weaponIndex: number) {
-    return BlzGetUnitDiceNumber(this.handle, weaponIndex);
-  }
-
-  public getDiceSides(weaponIndex: number) {
-    return BlzGetUnitDiceSides(this.handle, weaponIndex);
-  }
-
-  public getField(
-    field: unitbooleanfield | unitintegerfield | unitrealfield | unitstringfield
-  ) {
-    const fieldType = field.toString().substr(0, field.toString().indexOf(":"));
-
-    switch (fieldType) {
-      case "unitbooleanfield": {
-        const fieldBool: unitbooleanfield = field as unitbooleanfield;
-
-        return BlzGetUnitBooleanField(this.handle, fieldBool);
-      }
-      case "unitintegerfield": {
-        const fieldInt: unitintegerfield = field as unitintegerfield;
-
-        return BlzGetUnitIntegerField(this.handle, fieldInt);
-      }
-      case "unitrealfield": {
-        const fieldReal: unitrealfield = field as unitrealfield;
-
-        return BlzGetUnitRealField(this.handle, fieldReal);
-      }
-      case "unitstringfield": {
-        const fieldString: unitstringfield = field as unitstringfield;
-
-        return BlzGetUnitStringField(this.handle, fieldString);
-      }
-      default:
-        return 0;
-    }
   }
 
   public getflyHeight() {
@@ -857,10 +744,6 @@ export class Unit extends Widget {
     return UnitHasItem(this.handle, whichItem.handle);
   }
 
-  public hideAbility(abilId: number, flag: boolean) {
-    BlzUnitHideAbility(this.handle, abilId, flag);
-  }
-
   /**
    * Increases the level of a unit's ability by 1.
    * @param abilCode The four digit rawcode representation of the ability.
@@ -904,16 +787,12 @@ export class Unit extends Widget {
     return IsUnitInRange(this.handle, otherUnit.handle, distance);
   }
 
-  public interruptAttack() {
-    BlzUnitInterruptAttack(this.handle);
-  }
-
   public inTransport(whichTransport: Unit) {
     return IsUnitInTransport(this.handle, whichTransport.handle);
   }
 
   public isAlive(): boolean {
-    return UnitAlive(this.handle);
+    return !IsUnitType(this.handle, UNIT_TYPE_DEAD());
   }
 
   public isAlly(whichPlayer: MapPlayer) {
@@ -1105,7 +984,7 @@ export class Unit extends Widget {
   }
 
   public pauseEx(flag: boolean) {
-    BlzPauseUnitEx(this.handle, flag);
+    PauseUnit(this.handle, flag);
   }
 
   public pauseTimedLife(flag: boolean) {
@@ -1209,16 +1088,8 @@ export class Unit extends Widget {
     SelectHeroSkill(this.handle, abilCode);
   }
 
-  public setAbilityCooldown(abilId: number, level: number, cooldown: number) {
-    BlzSetUnitAbilityCooldown(this.handle, abilId, level, cooldown);
-  }
-
   public setAbilityLevel(abilCode: number, level: number) {
     return SetUnitAbilityLevel(this.handle, abilCode, level);
-  }
-
-  public setAbilityManaCost(abilId: number, level: number, manaCost: number) {
-    BlzSetUnitAbilityManaCost(this.handle, abilId, level, manaCost);
   }
 
   public setAgility(value: number, permanent: boolean) {
@@ -1237,12 +1108,12 @@ export class Unit extends Widget {
     SetUnitAnimationWithRarity(this.handle, whichAnimation, rarity);
   }
 
-  public setAttackCooldown(cooldown: number, weaponIndex: number) {
-    BlzSetUnitAttackCooldown(this.handle, cooldown, weaponIndex);
+  public setBaseDamageJAPI(baseDamage: number) {
+    this.setState(UNIT_STATE_ATTACK_WHITE(), baseDamage);
   }
 
-  public setBaseDamage(baseDamage: number, weaponIndex: number) {
-    BlzSetUnitBaseDamage(this.handle, baseDamage, weaponIndex);
+  public setBonusDamageJAPI(bonusDamage: number) {
+    this.setState(UNIT_STATE_ATTACK_BONUS(), bonusDamage);
   }
 
   public setBlendTime(timeScale: number) {
@@ -1257,14 +1128,6 @@ export class Unit extends Widget {
     SetUnitCreepGuard(this.handle, creepGuard);
   }
 
-  public setDiceNumber(diceNumber: number, weaponIndex: number) {
-    BlzSetUnitDiceNumber(this.handle, diceNumber, weaponIndex);
-  }
-
-  public setDiceSides(diceSides: number, weaponIndex: number) {
-    BlzSetUnitDiceSides(this.handle, diceSides, weaponIndex);
-  }
-
   public setExperience(newXpVal: number, showEyeCandy: boolean) {
     SetHeroXP(this.handle, newXpVal, showEyeCandy);
   }
@@ -1274,45 +1137,7 @@ export class Unit extends Widget {
   }
 
   public setFacingEx(facingAngle: number) {
-    BlzSetUnitFacingEx(this.handle, facingAngle);
-  }
-
-  public setField(
-    field:
-      | unitbooleanfield
-      | unitintegerfield
-      | unitrealfield
-      | unitstringfield,
-    value: boolean | number | string
-  ) {
-    const fieldType = field.toString().substr(0, field.toString().indexOf(":"));
-
-    if (fieldType === "unitbooleanfield" && typeof value === "boolean") {
-      return BlzSetUnitBooleanField(
-        this.handle,
-        field as unitbooleanfield,
-        value
-      );
-    }
-    if (fieldType === "unitintegerfield" && typeof value === "number") {
-      return BlzSetUnitIntegerField(
-        this.handle,
-        field as unitintegerfield,
-        value
-      );
-    }
-    if (fieldType === "unitrealfield" && typeof value === "number") {
-      return BlzSetUnitRealField(this.handle, field as unitrealfield, value);
-    }
-    if (fieldType === "unitstringfield" && typeof value === "string") {
-      return BlzSetUnitStringField(
-        this.handle,
-        field as unitstringfield,
-        value
-      );
-    }
-
-    return false;
+    SetUnitFacing(this.handle, facingAngle);
   }
 
   public setflyHeight(value: number, rate: number) {
@@ -1394,8 +1219,12 @@ export class Unit extends Widget {
     SetUnitTimeScale(this.handle, timeScale);
   }
 
-  public setUnitAttackCooldown(cooldown: number, weaponIndex: number) {
-    BlzSetUnitAttackCooldown(this.handle, cooldown, weaponIndex);
+  public setUnitAttackCooldownJAPI(cooldown: number) {
+    this.setState(UNIT_STATE_ATTACK_SPACE(), cooldown);
+  }
+
+  public setUnitAttackSpeedJAPI(attacksPerSecond: number) {
+    this.setState(UNIT_STATE_ATTACK_SPEED(), attacksPerSecond);
   }
 
   public setUnitTypeSlots(slots: number) {
@@ -1432,14 +1261,6 @@ export class Unit extends Widget {
 
   public shareVision(whichPlayer: MapPlayer, share: boolean) {
     UnitShareVision(this.handle, whichPlayer.handle, share);
-  }
-
-  public showTeamGlow(show: boolean) {
-    BlzShowUnitTeamGlow(this.handle, show);
-  }
-
-  public startAbilityCooldown(abilCode: number, cooldown: number) {
-    BlzStartUnitAbilityCooldown(this.handle, abilCode, cooldown);
   }
 
   public stripLevels(howManyLevels: number) {

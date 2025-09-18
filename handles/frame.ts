@@ -499,7 +499,9 @@ export class Frame extends Handle<framehandle> {
   }
 
   public static fromName(name: string, createContext: number) {
-    return this.fromHandle(DzFrameFindByName(name, createContext));
+    return this.fromHandle(
+      DzFrameFindByName(name, createContext) as unknown as framehandle
+    );
   }
 
   public static fromOrigin(frameType: originframetype, index: number) {

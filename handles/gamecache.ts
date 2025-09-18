@@ -18,7 +18,7 @@ export class GameCache extends Handle<gamecache> {
     const handle = InitGameCache(campaignFile);
 
     if (handle === undefined) {
-      error("w3ts failed to create gamecache handle.", 3);
+      Error("w3ts failed to create gamecache handle.");
     }
 
     super(handle);
@@ -187,4 +187,8 @@ export class GameCache extends Handle<gamecache> {
   public static reloadFromDisk() {
     return ReloadGameCachesFromDisk();
   }
+}
+
+function error(arg0: string, arg1: number) {
+  throw new Error("Function not implemented.");
 }

@@ -16,7 +16,7 @@ export class Region extends Handle<region> {
     }
     const handle = CreateRegion();
     if (handle === undefined) {
-      error("w3ts failed to create rect handle.", 3);
+      Error("w3ts failed to create rect handle.");
     }
     super(handle);
   }

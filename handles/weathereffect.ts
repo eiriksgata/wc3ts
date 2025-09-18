@@ -12,7 +12,7 @@ export class WeatherEffect extends Handle<weathereffect> {
     }
     const handle = AddWeatherEffect(where.handle, effectID);
     if (handle === undefined) {
-      error("w3ts failed to create unit handle.", 3);
+      Error("w3ts failed to create unit handle.");
     }
     super(handle);
   }
