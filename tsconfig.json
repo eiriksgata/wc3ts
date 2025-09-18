@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "Classic",
+    "outDir": "./dist",
+    "types": [
+      "@typescript-to-lua/language-extensions",
+      "lua-types/core/coroutine",
+      "lua-types/core/global",
+      "lua-types/core/math",
+      "lua-types/core/metatable",
+      "lua-types/core/modules",
+      "lua-types/core/string",
+      "lua-types/core/table",
+      "lua-types/core/os",
+      "lua-types/special/5.3",
+    ],
+    "declaration": true,
+    "allowJs": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "newLine": "lf"
+  },
+  "include": [
+    "./index.ts",
+    "globals",
+    "handles",
+    "hooks",
+    "system"
+  ],
+  "exclude": [],
+  "tstl": {
+    "buildMode": "library",
+    "luaTarget": "5.3",
+    "noHeader": true,
+    "noImplicitSelf": true,
+    "sourceMapTraceback": false,
+  }
+}
