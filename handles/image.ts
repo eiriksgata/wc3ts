@@ -105,7 +105,7 @@ export class Image extends Handle<image> {
       originZ,
       imageType
     );
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Image;
 
       const values: Record<string, unknown> = {};

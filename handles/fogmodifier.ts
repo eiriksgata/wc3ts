@@ -78,7 +78,7 @@ export class FogModifier extends Handle<fogmodifier> {
       afterUnits
     );
 
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as FogModifier;
 
       const values: Record<string, unknown> = {};

@@ -5,16 +5,7 @@
     "moduleResolution": "Classic",
     "outDir": "./dist",
     "types": [
-      "@typescript-to-lua/language-extensions",
-      "lua-types/core/coroutine",
-      "lua-types/core/global",
-      "lua-types/core/math",
-      "lua-types/core/metatable",
-      "lua-types/core/modules",
-      "lua-types/core/string",
-      "lua-types/core/table",
-      "lua-types/core/os",
-      "lua-types/special/5.3",
+      "lua-types/5.3"
     ],
     "declaration": true,
     "allowJs": false,
@@ -30,10 +21,12 @@
     "./index.ts",
     "globals",
     "handles",
-    "hooks",
-    "system"
+    "system",
+    "types"
   ],
-  "exclude": [],
+  "exclude": [
+    "globals/ydlua.ts"
+  ],
   "tstl": {
     "buildMode": "library",
     "luaTarget": "5.3",

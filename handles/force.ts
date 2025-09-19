@@ -25,7 +25,7 @@ export class Force extends Handle<force> {
   public static create(): Force | undefined {
     const handle = CreateForce();
 
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Force;
 
       const values: Record<string, unknown> = {};

@@ -19,7 +19,7 @@ export class TimerDialog extends Handle<timerdialog> {
 
   public static create(t: Timer): TimerDialog | undefined {
     const handle = CreateTimerDialog(t.handle);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as TimerDialog;
 
       const values: Record<string, unknown> = {};

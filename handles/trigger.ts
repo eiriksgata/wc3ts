@@ -98,7 +98,7 @@ export class Trigger extends Handle<trigger> {
   public addCondition(condition: boolexpr | (() => boolean)) {
     if (typeof condition === "function") {
       const cf = Condition(condition);
-      return cf ? TriggerAddCondition(this.handle, cf) : undefined;
+      return (cf !== null && cf !== undefined) ? TriggerAddCondition(this.handle, cf) : undefined;
     }
     return TriggerAddCondition(this.handle, condition);
   }

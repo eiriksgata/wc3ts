@@ -70,7 +70,7 @@ export class Effect extends Handle<effect> {
     y: number
   ): Effect | undefined {
     const handle = AddSpecialEffect(modelName, x, y);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
 
       const values: Record<string, unknown> = {};
@@ -101,7 +101,7 @@ export class Effect extends Handle<effect> {
       targetWidget.handle,
       attachPointName
     );
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
 
       const values: Record<string, unknown> = {};
@@ -128,7 +128,7 @@ export class Effect extends Handle<effect> {
     y: number
   ): Effect | undefined {
     const handle = AddSpellEffectById(abilityId, effectType, x, y);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
 
       const values: Record<string, unknown> = {};
@@ -161,7 +161,7 @@ export class Effect extends Handle<effect> {
       targetWidget.handle,
       attachPointName
     );
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
 
       const values: Record<string, unknown> = {};

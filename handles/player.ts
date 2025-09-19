@@ -22,7 +22,7 @@ export class MapPlayer extends Handle<player> {
 
   private static create(index: number): MapPlayer | undefined {
     const handle = Player(index);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as MapPlayer;
 
       const values: Record<string, unknown> = {};

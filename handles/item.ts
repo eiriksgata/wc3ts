@@ -39,7 +39,7 @@ export class Item extends Widget {
    */
   public static create(itemId: number, x: number, y: number): Item | undefined {
     const handle = CreateItem(itemId, x, y);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Item;
 
       const values: Record<string, unknown> = {};

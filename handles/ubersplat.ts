@@ -58,7 +58,7 @@ export class Ubersplat extends Handle<ubersplat> {
       forcePaused,
       noBirthTime
     );
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Ubersplat;
 
       const values: Record<string, unknown> = {};

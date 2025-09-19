@@ -24,7 +24,7 @@ export class MultiboardItem extends Handle<multiboarditem> {
     y: number
   ): MultiboardItem | undefined {
     const handle = MultiboardGetItem(board.handle, x - 1, y - 1);
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as MultiboardItem;
 
       const values: Record<string, unknown> = {};
@@ -92,7 +92,7 @@ export class Multiboard extends Handle<multiboard> {
    */
   public static create(): Multiboard | undefined {
     const handle = CreateMultiboard();
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Multiboard;
 
       const values: Record<string, unknown> = {};

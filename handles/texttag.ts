@@ -20,7 +20,7 @@ export class TextTag extends Handle<texttag> {
 
   public static create(): TextTag | undefined {
     const handle = CreateTextTag();
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as TextTag;
 
       const values: Record<string, unknown> = {};

@@ -28,7 +28,7 @@ export class Leaderboard extends Handle<leaderboard> {
    */
   public static create(): Leaderboard | undefined {
     const handle = CreateLeaderboard();
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Leaderboard;
 
       const values: Record<string, unknown> = {};

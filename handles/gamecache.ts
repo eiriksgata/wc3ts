@@ -31,7 +31,7 @@ export class GameCache extends Handle<gamecache> {
   public static create(campaignFile: string): GameCache | undefined {
     const handle = InitGameCache(campaignFile);
 
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as GameCache;
 
       const values: Record<string, unknown> = {};

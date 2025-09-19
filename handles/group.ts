@@ -27,7 +27,7 @@ export class Group extends Handle<group> {
 
   public static create(): Group | undefined {
     const handle = CreateGroup();
-    if (handle) {
+    if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Group;
 
       const values: Record<string, unknown> = {};
