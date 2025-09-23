@@ -15,7 +15,7 @@
     "noImplicitReturns": true,
     "newLine": "lf"
   },
-  "include": ["./index.ts", "globals", "handles", "system", "types", "config.ts"],
+  "include": ["./index.ts", "globals", "handles", "system", "types", "config.ts", "global.d.ts"],
   "exclude": ["globals/ydlua.ts"],
   "tstl": {
     "buildMode": "library",

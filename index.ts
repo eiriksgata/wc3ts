@@ -1,3 +1,5 @@
+/// <reference path="./types/index.d.ts" />
+
 import * as tsGlobals from "./globals/index";
 
 export * from "./handles/index";
