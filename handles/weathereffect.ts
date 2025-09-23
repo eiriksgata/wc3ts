@@ -26,10 +26,7 @@ export class WeatherEffect extends Handle<weathereffect> {
    * @note To get an idea on how to add your own weather effects, you may read
    * CryoniC's article about custom weather effects: [http://www.wc3c.net/showthread.php?t=67949](https://web.archive.org/web/20180507060112/http://www.wc3c.net/showthread.php?t=67949).
    */
-  public static create(
-    where: Rectangle,
-    effectID: number
-  ): WeatherEffect | undefined {
+  public static create(where: Rectangle, effectID: number): WeatherEffect | undefined {
     const handle = AddWeatherEffect(where.handle, effectID);
     if (handle !== undefined) {
       const obj = this.getObject(handle) as WeatherEffect;

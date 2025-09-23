@@ -125,15 +125,8 @@ export class MapPlayer extends Handle<player> {
     CachePlayerHeroData(this.handle);
   }
 
-  public compareAlliance(
-    otherPlayer: MapPlayer,
-    whichAllianceSetting: alliancetype
-  ) {
-    return GetPlayerAlliance(
-      this.handle,
-      otherPlayer.handle,
-      whichAllianceSetting
-    );
+  public compareAlliance(otherPlayer: MapPlayer, whichAllianceSetting: alliancetype) {
+    return GetPlayerAlliance(this.handle, otherPlayer.handle, whichAllianceSetting);
   }
 
   public coordsFogged(x: number, y: number) {
@@ -197,12 +190,7 @@ export class MapPlayer extends Handle<player> {
     includeIncomplete: boolean,
     includeUpgrades: boolean
   ) {
-    return GetPlayerTypedUnitCount(
-      this.handle,
-      unitName,
-      includeIncomplete,
-      includeUpgrades
-    );
+    return GetPlayerTypedUnitCount(this.handle, unitName, includeIncomplete, includeUpgrades);
   }
 
   public inForce(whichForce: Force) {
@@ -257,17 +245,8 @@ export class MapPlayer extends Handle<player> {
     SetPlayerAbilityAvailable(this.handle, abilId, avail);
   }
 
-  public setAlliance(
-    otherPlayer: MapPlayer,
-    whichAllianceSetting: alliancetype,
-    value: boolean
-  ) {
-    SetPlayerAlliance(
-      this.handle,
-      otherPlayer.handle,
-      whichAllianceSetting,
-      value
-    );
+  public setAlliance(otherPlayer: MapPlayer, whichAllianceSetting: alliancetype, value: boolean) {
+    SetPlayerAlliance(this.handle, otherPlayer.handle, whichAllianceSetting, value);
   }
 
   public setOnScoreScreen(flag: boolean) {
@@ -278,11 +257,7 @@ export class MapPlayer extends Handle<player> {
     SetPlayerState(this.handle, whichPlayerState, value);
   }
 
-  public setTaxRate(
-    otherPlayer: MapPlayer,
-    whichResource: playerstate,
-    rate: number
-  ) {
+  public setTaxRate(otherPlayer: MapPlayer, whichResource: playerstate, rate: number) {
     SetPlayerTaxRate(this.handle, otherPlayer.handle, whichResource, rate);
   }
 
@@ -325,12 +300,7 @@ export class MapPlayer extends Handle<player> {
     const pl = GetLocalPlayer();
     if (pl === undefined) {
       for (let i = 0; i < 10; i++) {
-        DisplayTextToPlayer(
-          Player(0),
-          0,
-          0,
-          "$$$$$$$$$ LOCAL PLAYER IS NULL. TELL ME"
-        );
+        DisplayTextToPlayer(Player(0), 0, 0, "$$$$$$$$$ LOCAL PLAYER IS NULL. TELL ME");
       }
     }
     return this.fromHandle(pl) as MapPlayer;

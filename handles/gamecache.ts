@@ -127,26 +127,14 @@ export class GameCache extends Handle<gamecache> {
     y: number,
     face: number
   ) {
-    return RestoreUnit(
-      this.handle,
-      missionKey,
-      key,
-      forWhichPlayer.handle,
-      x,
-      y,
-      face
-    );
+    return RestoreUnit(this.handle, missionKey, key, forWhichPlayer.handle, x, y, face);
   }
 
   public save(): boolean {
     return SaveGameCache(this.handle);
   }
 
-  public store(
-    missionKey: string,
-    key: string,
-    value: number | string | boolean | unit
-  ) {
+  public store(missionKey: string, key: string, value: number | string | boolean | unit) {
     if (typeof value === "string") {
       StoreString(this.handle, missionKey, key, value);
     } else if (typeof value === "boolean") {
@@ -178,9 +166,7 @@ export class GameCache extends Handle<gamecache> {
     return SyncStoredUnit(this.handle, missionKey, key);
   }
 
-  public static fromHandle(
-    handle: gamecache | undefined
-  ): GameCache | undefined {
+  public static fromHandle(handle: gamecache | undefined): GameCache | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 

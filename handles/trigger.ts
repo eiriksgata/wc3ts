@@ -98,7 +98,7 @@ export class Trigger extends Handle<trigger> {
   public addCondition(condition: boolexpr | (() => boolean)) {
     if (typeof condition === "function") {
       const cf = Condition(condition);
-      return (cf !== null && cf !== undefined) ? TriggerAddCondition(this.handle, cf) : undefined;
+      return cf !== null && cf !== undefined ? TriggerAddCondition(this.handle, cf) : undefined;
     }
     return TriggerAddCondition(this.handle, condition);
   }
@@ -145,14 +145,9 @@ export class Trigger extends Handle<trigger> {
 
   public registerAnyUnitEvent(whichPlayerUnitEvent: playerunitevent) {
     for (let i = 0; i < bj_MAX_PLAYER_SLOTS; i++) {
-      TriggerRegisterPlayerUnitEvent(
-        this.handle,
-        Player(i),
-        whichPlayerUnitEvent,
-        () => {
-          return true;
-        }
-      );
+      TriggerRegisterPlayerUnitEvent(this.handle, Player(i), whichPlayerUnitEvent, () => {
+        return true;
+      });
     }
   }
 
@@ -168,10 +163,7 @@ export class Trigger extends Handle<trigger> {
     return TriggerRegisterDialogEvent(this.handle, whichDialog.handle);
   }
 
-  public registerEnterRegion(
-    whichRegion: Region,
-    filter: boolexpr | (() => boolean) | undefined
-  ) {
+  public registerEnterRegion(whichRegion: Region, filter: boolexpr | (() => boolean) | undefined) {
     return TriggerRegisterEnterRegion(
       this.handle,
       whichRegion.handle,
@@ -196,23 +188,11 @@ export class Trigger extends Handle<trigger> {
     return TriggerRegisterGameEvent(this.handle, whichGameEvent);
   }
 
-  public registerGameStateEvent(
-    whichState: gamestate,
-    opcode: limitop,
-    limitval: number
-  ) {
-    return TriggerRegisterGameStateEvent(
-      this.handle,
-      whichState,
-      opcode,
-      limitval
-    );
+  public registerGameStateEvent(whichState: gamestate, opcode: limitop, limitval: number) {
+    return TriggerRegisterGameStateEvent(this.handle, whichState, opcode, limitval);
   }
 
-  public registerLeaveRegion(
-    whichRegion: Region,
-    filter: boolexpr | (() => boolean) | undefined
-  ) {
+  public registerLeaveRegion(whichRegion: Region, filter: boolexpr | (() => boolean) | undefined) {
     return TriggerRegisterLeaveRegion(
       this.handle,
       whichRegion.handle,
@@ -220,15 +200,8 @@ export class Trigger extends Handle<trigger> {
     );
   }
 
-  public registerPlayerAllianceChange(
-    whichPlayer: MapPlayer,
-    whichAlliance: alliancetype
-  ) {
-    return TriggerRegisterPlayerAllianceChange(
-      this.handle,
-      whichPlayer.handle,
-      whichAlliance
-    );
+  public registerPlayerAllianceChange(whichPlayer: MapPlayer, whichAlliance: alliancetype) {
+    return TriggerRegisterPlayerAllianceChange(this.handle, whichPlayer.handle, whichAlliance);
   }
 
   public registerPlayerChatEvent(
@@ -244,15 +217,8 @@ export class Trigger extends Handle<trigger> {
     );
   }
 
-  public registerPlayerEvent(
-    whichPlayer: MapPlayer,
-    whichPlayerEvent: playerevent
-  ) {
-    return TriggerRegisterPlayerEvent(
-      this.handle,
-      whichPlayer.handle,
-      whichPlayerEvent
-    );
+  public registerPlayerEvent(whichPlayer: MapPlayer, whichPlayerEvent: playerevent) {
+    return TriggerRegisterPlayerEvent(this.handle, whichPlayer.handle, whichPlayerEvent);
   }
 
   public registerPlayerKeyEvent(
@@ -272,13 +238,7 @@ export class Trigger extends Handle<trigger> {
     sync: boolean,
     funcHandle: () => void
   ) {
-    return DzTriggerRegisterMouseEventByCode(
-      trig,
-      btn,
-      status,
-      sync,
-      funcHandle
-    );
+    return DzTriggerRegisterMouseEventByCode(trig, btn, status, sync, funcHandle);
   }
 
   public registerPlayerStateEvent(
@@ -359,11 +319,7 @@ export class Trigger extends Handle<trigger> {
     );
   }
 
-  public registerVariableEvent(
-    varName: string,
-    opcode: limitop,
-    limitval: number
-  ) {
+  public registerVariableEvent(varName: string, opcode: limitop, limitval: number) {
     return TriggerRegisterVariableEvent(this.handle, varName, opcode, limitval);
   }
 

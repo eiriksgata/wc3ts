@@ -99,11 +99,7 @@ export class Sound extends Handle<sound> {
     KillSoundWhenDone(this.handle);
   }
 
-  public registerStacked(
-    byPosition: boolean,
-    rectWidth: number,
-    rectHeight: number
-  ) {
+  public registerStacked(byPosition: boolean, rectWidth: number, rectHeight: number) {
     RegisterStackedSound(this.handle, byPosition, rectWidth, rectHeight);
   }
 
@@ -206,11 +202,7 @@ export class Sound extends Handle<sound> {
     StopSound(this.handle, killWhenDone, fadeOut);
   }
 
-  public unregisterStacked(
-    byPosition: boolean,
-    rectWidth: number,
-    rectHeight: number
-  ) {
+  public unregisterStacked(byPosition: boolean, rectWidth: number, rectHeight: number) {
     UnregisterStackedSound(this.handle, byPosition, rectWidth, rectHeight);
   }
 

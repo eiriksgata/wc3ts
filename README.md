@@ -21,17 +21,17 @@ npm install w3ts
 ## Quick Start
 
 ```typescript
-import { Unit, tsGlobals } from 'w3ts';
+import { Unit, tsGlobals } from "w3ts";
 
 // Create a unit
-const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC('Hpal'), 0, 0, 270);
+const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
 
 // Use handle methods
 hero.setName("My Custom Hero");
 hero.setLevel(10, true);
 
 // Access extended APIs
-import { DzCreateFrame } from 'w3ts';
+import { DzCreateFrame } from "w3ts";
 const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
 ```
 
@@ -46,6 +46,7 @@ const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
 ## API Reference
 
 ### Core Handles
+
 - `Unit` - Unit manipulation and control
 - `Player` - Player objects and operations
 - `Trigger` - Event handling and triggers
@@ -56,12 +57,14 @@ const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
 - `Group` - Unit group operations
 
 ### System Utilities
+
 - `BinaryReader/Writer` - Cross-platform binary data handling
 - `Base64` - Base64 encoding/decoding
 - `File` - File operations
 - `Sync` - Multiplayer synchronization
 
 ### Extended APIs
+
 - **DzAPI**: Enhanced UI and frame manipulation
 - **JAPI**: Extended game functions
 - **EX Functions**: Additional game extensions
@@ -96,26 +99,29 @@ This library is designed to work seamlessly with TypeScriptToLua:
 ## Examples
 
 ### Creating and Managing Units
+
 ```typescript
-import { Unit, Player } from 'w3ts';
+import { Unit, Player } from "w3ts";
 
 const player = Player.fromIndex(0);
-const unit = Unit.create(player, FourCC('hfoo'), 0, 0, 270);
+const unit = Unit.create(player, FourCC("hfoo"), 0, 0, 270);
 unit.setName("Custom Footman");
-unit.addAbility(FourCC('Amls'));
+unit.addAbility(FourCC("Amls"));
 ```
 
 ### UI Frame Management
+
 ```typescript
-import { DzCreateFrame, DzFrameSetText } from 'w3ts';
+import { DzCreateFrame, DzFrameSetText } from "w3ts";
 
 const frame = DzCreateFrame("MyTextFrame", DzGetGameUI(), 0, 0);
 DzFrameSetText(frame, "Hello World!");
 ```
 
 ### Binary Data Operations
+
 ```typescript
-import { BinaryWriter, BinaryReader } from 'w3ts';
+import { BinaryWriter, BinaryReader } from "w3ts";
 
 const writer = new BinaryWriter();
 writer.writeInt32(42);

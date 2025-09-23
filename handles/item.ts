@@ -197,9 +197,7 @@ export class Item extends Widget {
     RemoveItem(this.handle);
   }
 
-  public getField(
-    field: itembooleanfield | itemintegerfield | itemrealfield | itemstringfield
-  ) {
+  public getField(field: itembooleanfield | itemintegerfield | itemrealfield | itemstringfield) {
     const fieldType = field.toString().substr(0, field.toString().indexOf(":"));
 
     switch (fieldType) {
@@ -249,30 +247,18 @@ export class Item extends Widget {
   }
 
   public setField(
-    field:
-      | itembooleanfield
-      | itemintegerfield
-      | itemrealfield
-      | itemstringfield,
+    field: itembooleanfield | itemintegerfield | itemrealfield | itemstringfield,
     value: boolean | number | string
   ) {
     const fieldType = field.toString().substr(0, field.toString().indexOf(":"));
 
     if (fieldType === "unitbooleanfield" && typeof value === "boolean") {
       // @ts-ignore - BlzSetItemBooleanField not available in current API
-      return BlzSetItemBooleanField(
-        this.handle,
-        field as itembooleanfield,
-        value
-      );
+      return BlzSetItemBooleanField(this.handle, field as itembooleanfield, value);
     }
     if (fieldType === "unitintegerfield" && typeof value === "number") {
       // @ts-ignore - BlzSetItemIntegerField not available in current API
-      return BlzSetItemIntegerField(
-        this.handle,
-        field as itemintegerfield,
-        value
-      );
+      return BlzSetItemIntegerField(this.handle, field as itemintegerfield, value);
     }
     if (fieldType === "unitrealfield" && typeof value === "number") {
       // @ts-ignore - BlzSetItemRealField not available in current API
@@ -280,11 +266,7 @@ export class Item extends Widget {
     }
     if (fieldType === "unitstringfield" && typeof value === "string") {
       // @ts-ignore - BlzSetItemStringField not available in current API
-      return BlzSetItemStringField(
-        this.handle,
-        field as itemstringfield,
-        value
-      );
+      return BlzSetItemStringField(this.handle, field as itemstringfield, value);
     }
 
     return false;
@@ -306,9 +288,7 @@ export class Item extends Widget {
     return this.fromHandle(GetManipulatedItem());
   }
 
-  public static override fromHandle(
-    handle: item | undefined
-  ): Item | undefined {
+  public static override fromHandle(handle: item | undefined): Item | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 

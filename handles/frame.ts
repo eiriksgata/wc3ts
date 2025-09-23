@@ -44,12 +44,7 @@ export class Frame extends Handle<framehandle> {
    * @param priority
    * @param createContext The ID assigned to a frame to be accessed with `Frame.fromName`. This value does not have to be unique and can be overwritten.
    */
-  constructor(
-    name: string,
-    owner: Frame,
-    priority: number,
-    createContext: number
-  );
+  constructor(name: string, owner: Frame, priority: number, createContext: number);
 
   /**
    * @deprecated use `Frame.createSimple` instead.
@@ -149,16 +144,8 @@ export class Frame extends Handle<framehandle> {
    * @param owner The parent frame.
    * @param createContext The ID assigned to a frame to be accessed with `Frame.fromName`. This value does not have to be unique and can be overwritten.
    */
-  public static createSimple(
-    name: string,
-    owner: Frame,
-    createContext: number
-  ): Frame | undefined {
-    const handle = DzCreateSimpleFrame(
-      name,
-      owner.handle as any,
-      createContext
-    ) as any;
+  public static createSimple(name: string, owner: Frame, createContext: number): Frame | undefined {
+    const handle = DzCreateSimpleFrame(name, owner.handle as any, createContext) as any;
     if (handle) {
       const obj = this.getObject(handle) as Frame;
 
@@ -499,9 +486,7 @@ export class Frame extends Handle<framehandle> {
   }
 
   public static fromName(name: string, createContext: number) {
-    return this.fromHandle(
-      DzFrameFindByName(name, createContext) as unknown as framehandle
-    );
+    return this.fromHandle(DzFrameFindByName(name, createContext) as unknown as framehandle);
   }
 
   public static fromOrigin(frameType: originframetype, index: number) {

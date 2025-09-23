@@ -23,15 +23,7 @@ export class Destructable extends Widget {
       return;
     }
 
-    const handle = CreateDestructableZ(
-      objectId,
-      x,
-      y,
-      z,
-      face,
-      scale,
-      variation
-    );
+    const handle = CreateDestructableZ(objectId, x, y, z, face, scale, variation);
 
     if (handle === undefined) {
       Error("w3ts failed to create destructable handle.");
@@ -218,9 +210,7 @@ export class Destructable extends Widget {
     return this.fromHandle(GetTriggerDestructable());
   }
 
-  public static override fromHandle(
-    handle: destructable | undefined
-  ): Destructable | undefined {
+  public static override fromHandle(handle: destructable | undefined): Destructable | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 }

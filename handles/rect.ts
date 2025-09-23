@@ -19,12 +19,7 @@ export class Rectangle extends Handle<rect> {
     super(handle);
   }
 
-  public static create(
-    minX: number,
-    minY: number,
-    maxX: number,
-    maxY: number
-  ): Rectangle {
+  public static create(minX: number, minY: number, maxX: number, maxY: number): Rectangle {
     const handle = Rect(minX, minY, maxX, maxY);
     const obj = this.getObject(handle) as Rectangle;
 
@@ -62,10 +57,7 @@ export class Rectangle extends Handle<rect> {
     RemoveRect(this.handle);
   }
 
-  public enumDestructables(
-    filter: boolexpr | (() => boolean),
-    actionFunc: () => void
-  ) {
+  public enumDestructables(filter: boolexpr | (() => boolean), actionFunc: () => void) {
     EnumDestructablesInRect(
       this.handle,
       typeof filter === "function" ? Filter(filter) : filter,

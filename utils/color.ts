@@ -31,10 +31,7 @@ export class Color {
 
   /** Create a string code for coloring text. */
   public get code() {
-    return (
-      `|c${toHex(this.alpha)}${toHex(this.red)}` +
-      `${toHex(this.green)}${toHex(this.blue)}`
-    );
+    return `|c${toHex(this.alpha)}${toHex(this.red)}` + `${toHex(this.green)}${toHex(this.blue)}`;
   }
 
   public equals(other: Color) {
@@ -81,12 +78,8 @@ export class Color {
   }
 }
 
-export const color = (
-  red: ColorValue,
-  green: ColorValue,
-  blue: ColorValue,
-  alpha?: ColorValue
-) => new Color(red, green, blue, alpha);
+export const color = (red: ColorValue, green: ColorValue, blue: ColorValue, alpha?: ColorValue) =>
+  new Color(red, green, blue, alpha);
 
 /**
  * The player colors sorted by index. Does not include
@@ -175,20 +168,14 @@ function toHex(value: ColorValue) {
   return hex;
 }
 
-type Enumerate<
-  N extends number,
-  Acc extends number[] = [],
-> = Acc["length"] extends N
+type Enumerate<N extends number, Acc extends number[] = []> = Acc["length"] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc["length"]]>;
 
 /**
  * Generate a type that is represent a number ranging from [A, B)
  */
-export type NumberRange<F extends number, T extends number> = Exclude<
-  Enumerate<T>,
-  Enumerate<F>
->;
+export type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
 
 /**
  * The valid values for a color component.

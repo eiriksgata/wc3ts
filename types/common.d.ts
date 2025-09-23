@@ -15,11 +15,7 @@ declare function Acos(x: number): number;
  * 增加${Hero}${Quantity}点经验值,${Show/Hide}升级动画
  * 经验值不能倒退.
  */
-declare function AddHeroXP(
-  whichHero: unit,
-  xpToAdd: number,
-  showEyeCandy: boolean
-): void;
+declare function AddHeroXP(whichHero: unit, xpToAdd: number, showEyeCandy: boolean): void;
 declare function AddIndicator(
   whichWidget: widget,
   red: number,
@@ -33,11 +29,7 @@ declare function AddIndicator(
  * 添加${物品类型}到所有市场并设置库存量:${Count}最大库存量:${Max}
  * 影响所有拥有'出售物品'技能的单位.
  */
-declare function AddItemToAllStock(
-  itemId: number,
-  currentStock: number,
-  stockMax: number
-): void;
+declare function AddItemToAllStock(itemId: number, currentStock: number, stockMax: number): void;
 declare function AddItemToStock(
   whichUnit: unit,
   itemId: number,
@@ -80,11 +72,7 @@ declare function AddLightningEx(
  * 增加${玩家}的${科技}科技${整数}级
  * 科技等级不能倒退。
  */
-declare function AddPlayerTechResearched(
-  whichPlayer: player,
-  techid: number,
-  levels: number
-): void;
+declare function AddPlayerTechResearched(whichPlayer: player, techid: number, levels: number): void;
 declare function AddResourceAmount(whichUnit: unit, amount: number): void;
 
 /**
@@ -92,21 +80,14 @@ declare function AddResourceAmount(whichUnit: unit, amount: number): void;
  * 新建特效${ModelFile}在(${X},${Y})处
  * 会创建特效.
  */
-declare function AddSpecialEffect(
-  modelName: string,
-  x: number,
-  y: number
-): effect;
+declare function AddSpecialEffect(modelName: string, x: number, y: number): effect;
 
 /**
  * 新建特效(创建到点)[R]
  * 新建特效${ModelFile}在${指定点}处
  * 会创建特效.
  */
-declare function AddSpecialEffectLoc(
-  modelName: string,
-  where: location
-): effect;
+declare function AddSpecialEffectLoc(modelName: string, where: location): effect;
 
 /**
  * 新建特效(创建到单位)[R]
@@ -118,40 +99,22 @@ declare function AddSpecialEffectTarget(
   targetWidget: widget,
   attachPointName: string
 ): effect;
-declare function AddSpellEffect(
-  abilityString: string,
-  t: effecttype,
-  x: number,
-  y: number
-): effect;
+declare function AddSpellEffect(abilityString: string, t: effecttype, x: number, y: number): effect;
 
 /**
  * 新建特效(指定技能，创建到坐标)[R]
  * ${技能}的${EffectType},创建到坐标(${X},${Y})
  * 会创建特效.
  */
-declare function AddSpellEffectById(
-  abilityId: number,
-  t: effecttype,
-  x: number,
-  y: number
-): effect;
+declare function AddSpellEffectById(abilityId: number, t: effecttype, x: number, y: number): effect;
 
 /**
  * 新建特效(指定技能，创建到点)[R]
  * ${技能}的${EffectType},创建到${指定点}
  * 会创建特效.
  */
-declare function AddSpellEffectByIdLoc(
-  abilityId: number,
-  t: effecttype,
-  where: location
-): effect;
-declare function AddSpellEffectLoc(
-  abilityString: string,
-  t: effecttype,
-  where: location
-): effect;
+declare function AddSpellEffectByIdLoc(abilityId: number, t: effecttype, where: location): effect;
+declare function AddSpellEffectLoc(abilityString: string, t: effecttype, where: location): effect;
 declare function AddSpellEffectTarget(
   modelName: string,
   t: effecttype,
@@ -187,11 +150,7 @@ declare function AddUnitAnimationProperties(
  * 添加${单位类型}到所有市场并设置库存量:${Count}最大库存量:${Max}
  * 影响所有拥有'出售单位'技能的单位.
  */
-declare function AddUnitToAllStock(
-  unitId: number,
-  currentStock: number,
-  stockMax: number
-): void;
+declare function AddUnitToAllStock(unitId: number, currentStock: number, stockMax: number): void;
 declare function AddUnitToStock(
   whichUnit: unit,
   unitId: number,
@@ -205,11 +164,7 @@ declare function AddUnitToStock(
  * 会创建天气效果.
  */
 declare function AddWeatherEffect(where: rect, effectID: number): weathereffect;
-declare function AdjustCameraField(
-  whichField: camerafield,
-  offset: number,
-  duration: number
-): void;
+declare function AdjustCameraField(whichField: camerafield, offset: number, duration: number): void;
 declare function And(
   operandA: boolexpr | (() => boolean) | null,
   operandB: boolexpr | (() => boolean) | null
@@ -245,11 +200,7 @@ declare function CameraSetSourceNoise(mag: number, velocity: number): void;
  * 摇晃玩家的镜头源,摇晃幅度:${Magnitude}速率:${Velocity}摇晃方式:${方式}
  * 使用'镜头-重置镜头'或设置摇晃幅度和速率为0来停止摇晃.
  */
-declare function CameraSetSourceNoiseEx(
-  mag: number,
-  velocity: number,
-  vertOnly: boolean
-): void;
+declare function CameraSetSourceNoiseEx(mag: number, velocity: number, vertOnly: boolean): void;
 declare function CameraSetTargetNoise(mag: number, velocity: number): void;
 
 /**
@@ -257,16 +208,8 @@ declare function CameraSetTargetNoise(mag: number, velocity: number): void;
  * 摇晃玩家的镜头源,摇晃幅度:${Magnitude}速率:${Velocity}摇晃方式:${方式}
  * 使用'镜头-重置镜头'或设置摇晃幅度和速率为0来停止摇晃.
  */
-declare function CameraSetTargetNoiseEx(
-  mag: number,
-  velocity: number,
-  vertOnly: boolean
-): void;
-declare function CameraSetupApply(
-  whichSetup: camerasetup,
-  doPan: boolean,
-  panTimed: boolean
-): void;
+declare function CameraSetTargetNoiseEx(mag: number, velocity: number, vertOnly: boolean): void;
+declare function CameraSetupApply(whichSetup: camerasetup, doPan: boolean, panTimed: boolean): void;
 
 /**
  * 应用镜头(所有玩家)(限时)[R]
@@ -283,19 +226,14 @@ declare function CameraSetupApplyForceDurationWithZ(
   zDestOffset: number,
   forceDuration: number
 ): void;
-declare function CameraSetupApplyWithZ(
-  whichSetup: camerasetup,
-  zDestOffset: number
-): void;
+declare function CameraSetupApplyWithZ(whichSetup: camerasetup, zDestOffset: number): void;
 
 /**
  * 镜头目标点
  * ${镜头}的目标点
  * 会创建点.
  */
-declare function CameraSetupGetDestPositionLoc(
-  whichSetup: camerasetup
-): location;
+declare function CameraSetupGetDestPositionLoc(whichSetup: camerasetup): location;
 declare function CameraSetupGetDestPositionX(whichSetup: camerasetup): number;
 declare function CameraSetupGetDestPositionY(whichSetup: camerasetup): number;
 
@@ -304,10 +242,7 @@ declare function CameraSetupGetDestPositionY(whichSetup: camerasetup): number;
  * ${镜头}的${CameraField}
  *
  */
-declare function CameraSetupGetField(
-  whichSetup: camerasetup,
-  whichField: camerafield
-): number;
+declare function CameraSetupGetField(whichSetup: camerasetup, whichField: camerafield): number;
 declare function CameraSetupSetDestPosition(
   whichSetup: camerasetup,
   x: number,
@@ -407,10 +342,7 @@ declare function ConvertVersion(i: number): version;
 declare function ConvertVolumeGroup(i: number): volumegroup;
 declare function ConvertWeaponType(i: number): weapontype;
 declare function ConvertWidgetEvent(i: number): widgetevent;
-declare function CopySaveGame(
-  sourceSaveName: string,
-  destSaveName: string
-): boolean;
+declare function CopySaveGame(sourceSaveName: string, destSaveName: string): boolean;
 
 /**
  * 余弦(弧度)[R]
@@ -424,12 +356,7 @@ declare function Cos(radians: number): number;
  * 新建${玩家}的不死族金矿在(${X},${Y}),面向角度:${Face}度
  *
  */
-declare function CreateBlightedGoldmine(
-  id: player,
-  x: number,
-  y: number,
-  face: number
-): unit;
+declare function CreateBlightedGoldmine(id: player, x: number, y: number, face: number): unit;
 declare function CreateCameraSetup(): camerasetup;
 
 /**
@@ -696,13 +623,7 @@ declare function CreateUbersplat(
  * 为玩家${玩家}创建一个${单位}在(X坐标:${输入坐标}Y坐标:${输入坐标}),面向角度:${facing}
  * 不能被'最后创建的单位'捕获之
  */
-declare function CreateUnit(
-  id: player,
-  unitid: number,
-  x: number,
-  y: number,
-  face: number
-): unit;
+declare function CreateUnit(id: player, unitid: number, x: number, y: number, face: number): unit;
 
 /**
  * 创建单位(指定点)[C]
@@ -735,11 +656,7 @@ declare function CreateUnitByName(
  * 会创建单位池。
  */
 declare function CreateUnitPool(): unitpool;
-declare function CripplePlayer(
-  whichPlayer: player,
-  toWhichPlayers: force,
-  flag: boolean
-): void;
+declare function CripplePlayer(whichPlayer: player, toWhichPlayers: force, flag: boolean): void;
 
 /**
  * 降低技能等级[R]
@@ -751,15 +668,8 @@ declare function DefeatConditionSetDescription(
   whichCondition: defeatcondition,
   description: string
 ): void;
-declare function DefineStartLocation(
-  whichStartLoc: number,
-  x: number,
-  y: number
-): void;
-declare function DefineStartLocationLoc(
-  whichStartLoc: number,
-  whichLocation: location
-): void;
+declare function DefineStartLocation(whichStartLoc: number, x: number, y: number): void;
+declare function DefineStartLocationLoc(whichStartLoc: number, whichLocation: location): void;
 
 /**
  * 转换角度为弧度
@@ -847,22 +757,14 @@ declare function DestroyUnitPool(whichPool: unitpool): void;
  * 复活${Destructible},设置生命值为${Value}并${Show/Hide}生长动画
  *
  */
-declare function DestructableRestoreLife(
-  d: destructable,
-  life: number,
-  birth: boolean
-): void;
+declare function DestructableRestoreLife(d: destructable, life: number, birth: boolean): void;
 
 /**
  * 添加对话框按钮[R]
  * 给${对话框}添加按钮,使用标题:${文字}快捷键:${HotKey}
  * 会创建对话框按钮.
  */
-declare function DialogAddButton(
-  whichDialog: dialog,
-  buttonText: string,
-  hotkey: number
-): button;
+declare function DialogAddButton(whichDialog: dialog, buttonText: string, hotkey: number): button;
 
 /**
  * 添加退出游戏按钮[R]
@@ -896,16 +798,9 @@ declare function DialogDestroy(whichDialog: dialog): void;
  * 对${Player}设置${对话框}的状态为${Show/Hide}
  * 对话框不能应用于地图初始化事件.
  */
-declare function DialogDisplay(
-  whichPlayer: player,
-  whichDialog: dialog,
-  flag: boolean
-): void;
+declare function DialogDisplay(whichPlayer: player, whichDialog: dialog, flag: boolean): void;
 declare function DialogSetAsync(...option: any[]): any;
-declare function DialogSetMessage(
-  whichDialog: dialog,
-  messageText: string
-): void;
+declare function DialogSetMessage(whichDialog: dialog, messageText: string): void;
 
 /**
  * 禁用重新开始任务按钮
@@ -928,12 +823,7 @@ declare function DisplayLoadDialog(): void;
  * 对${玩家}在屏幕位移(${X},${Y})处显示文本:${文字}
  * 显示时间取决于文字长度.位移的取值在0-1之间.可使用'本地玩家'实现对所有玩家发送消息.
  */
-declare function DisplayTextToPlayer(
-  toPlayer: player,
-  x: number,
-  y: number,
-  message: string
-): void;
+declare function DisplayTextToPlayer(toPlayer: player, x: number, y: number, message: string): void;
 declare function DisplayTimedTextFromPlayer(
   toPlayer: player,
   x: number,
@@ -974,10 +864,7 @@ declare function EnableDragSelect(state: boolean, ui: boolean): void;
  * ${Enable/Disable}联盟颜色显示按钮,${Enable/Disable}中立生物显示按钮
  *
  */
-declare function EnableMinimapFilterButtons(
-  enableAlly: boolean,
-  enableCreep: boolean
-): void;
+declare function EnableMinimapFilterButtons(enableAlly: boolean, enableCreep: boolean): void;
 
 /**
  * 允许/禁止闭塞(所有玩家)[R]
@@ -1020,10 +907,7 @@ declare function EnableUserUI(b: boolean): void;
  * 设置${WeatherEffect}的状态为:${On/Off}
  * 可以使用'环境-创建天气效果'动作来创建天气效果.
  */
-declare function EnableWeatherEffect(
-  whichEffect: weathereffect,
-  enable: boolean
-): void;
+declare function EnableWeatherEffect(whichEffect: weathereffect, enable: boolean): void;
 
 /**
  * 允许/禁止边界染色(所有玩家)[R]
@@ -1070,16 +954,8 @@ declare function FlashQuestDialogButton(): void;
 declare function FlushChildHashtable(table: hashtable, parentKey: number): void;
 declare function FlushGameCache(cache: gamecache): void;
 declare function FlushParentHashtable(table: hashtable): void;
-declare function FlushStoredBoolean(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function FlushStoredInteger(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
+declare function FlushStoredBoolean(cache: gamecache, missionKey: string, key: string): void;
+declare function FlushStoredInteger(cache: gamecache, missionKey: string, key: string): void;
 
 /**
  * 删除类别
@@ -1087,21 +963,9 @@ declare function FlushStoredInteger(
  * 清空该类别下的所有缓存数据.
  */
 declare function FlushStoredMission(cache: gamecache, missionKey: string): void;
-declare function FlushStoredReal(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function FlushStoredString(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function FlushStoredUnit(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
+declare function FlushStoredReal(cache: gamecache, missionKey: string, key: string): void;
+declare function FlushStoredString(cache: gamecache, missionKey: string, key: string): void;
+declare function FlushStoredUnit(cache: gamecache, missionKey: string, key: string): void;
 
 /**
  * 启用/禁用战争迷雾[R]
@@ -1173,10 +1037,7 @@ declare function ForceEnumPlayersCounted(
   filter: boolexpr | (() => boolean) | null,
   countLimit: number
 ): void;
-declare function ForcePlayerStartLocation(
-  whichPlayer: player,
-  startLocIndex: number
-): void;
+declare function ForcePlayerStartLocation(whichPlayer: player, startLocIndex: number): void;
 declare function ForceQuestDialogUpdate(): void;
 
 /**
@@ -1184,10 +1045,7 @@ declare function ForceQuestDialogUpdate(): void;
  * 从${玩家组}中移除${玩家}
  * 并不影响玩家本身.
  */
-declare function ForceRemovePlayer(
-  whichForce: force,
-  whichPlayer: player
-): void;
+declare function ForceRemovePlayer(whichForce: force, whichPlayer: player): void;
 declare function ForceUICancel(): void;
 declare function ForceUIKey(key: string): void;
 
@@ -1197,16 +1055,8 @@ declare function ForceUIKey(key: string): void;
  * 对非AI玩家返回普通难度.
  */
 declare function GetAIDifficulty(num: player): aidifficulty;
-declare function GetAbilityEffect(
-  abilityString: string,
-  t: effecttype,
-  index: number
-): string;
-declare function GetAbilityEffectById(
-  abilityId: number,
-  t: effecttype,
-  index: number
-): string;
+declare function GetAbilityEffect(abilityString: string, t: effecttype, index: number): string;
+declare function GetAbilityEffectById(abilityId: number, t: effecttype, index: number): string;
 declare function GetAbilitySound(abilityString: string, t: soundtype): string;
 declare function GetAbilitySoundById(abilityId: number, t: soundtype): string;
 
@@ -1879,10 +1729,7 @@ declare function GetPlayerRace(whichPlayer: player): race;
  * ${Player}${Score}
  *
  */
-declare function GetPlayerScore(
-  whichPlayer: player,
-  whichPlayerScore: playerscore
-): number;
+declare function GetPlayerScore(whichPlayer: player, whichPlayerScore: playerscore): number;
 declare function GetPlayerSelectable(whichPlayer: player): boolean;
 
 /**
@@ -1900,20 +1747,14 @@ declare function GetPlayerStartLocationY(whichPlayer: player): number;
  * ${Player}${Property}
  *
  */
-declare function GetPlayerState(
-  whichPlayer: player,
-  whichPlayerState: playerstate
-): number;
+declare function GetPlayerState(whichPlayer: player, whichPlayerState: playerstate): number;
 
 /**
  * 建筑数量
  * ${Player}拥有的建筑数量(${Include/Exclude}未完成的)
  *
  */
-declare function GetPlayerStructureCount(
-  whichPlayer: player,
-  includeIncomplete: boolean
-): number;
+declare function GetPlayerStructureCount(whichPlayer: player, includeIncomplete: boolean): number;
 
 /**
  * 玩家税率
@@ -1937,10 +1778,7 @@ declare function GetPlayerTechCount(
   techid: number,
   specificonly: boolean
 ): number;
-declare function GetPlayerTechMaxAllowed(
-  whichPlayer: player,
-  techid: number
-): number;
+declare function GetPlayerTechMaxAllowed(whichPlayer: player, techid: number): number;
 declare function GetPlayerTechResearched(
   whichPlayer: player,
   techid: number,
@@ -1958,10 +1796,7 @@ declare function GetPlayerTypedUnitCount(
  * ${Player}拥有的非建筑单位数量(${Include/Exclude}未完成的)
  *
  */
-declare function GetPlayerUnitCount(
-  whichPlayer: player,
-  includeIncomplete: boolean
-): number;
+declare function GetPlayerUnitCount(whichPlayer: player, includeIncomplete: boolean): number;
 
 /**
  * 玩家数量
@@ -2151,14 +1986,8 @@ declare function GetSpellTargetX(): number;
  * 这是1.24的函数，但已加入函数库，在1.20也可以使用。
  */
 declare function GetSpellTargetY(): number;
-declare function GetStartLocPrio(
-  whichStartLoc: number,
-  prioSlotIndex: number
-): startlocprio;
-declare function GetStartLocPrioSlot(
-  whichStartLoc: number,
-  prioSlotIndex: number
-): number;
+declare function GetStartLocPrio(whichStartLoc: number, prioSlotIndex: number): startlocprio;
+declare function GetStartLocPrioSlot(whichStartLoc: number, prioSlotIndex: number): number;
 declare function GetStartLocationLoc(whichStartLocation: number): location;
 declare function GetStartLocationX(whichStartLocation: number): number;
 declare function GetStartLocationY(whichStartLocation: number): number;
@@ -2168,44 +1997,28 @@ declare function GetStartLocationY(whichStartLocation: number): number;
  * 从${GameCache}中读取布尔值,类别:${Category},名称:${文字}
  * 如果该值不存在则返回false.
  */
-declare function GetStoredBoolean(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
+declare function GetStoredBoolean(cache: gamecache, missionKey: string, key: string): boolean;
 
 /**
  * 缓存读取整数[C]
  * 从${GameCache}中读取整数值,类别:${Category},名称:${文字}
  * 如果该值不存在则返回0.
  */
-declare function GetStoredInteger(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): number;
+declare function GetStoredInteger(cache: gamecache, missionKey: string, key: string): number;
 
 /**
  * 缓存读取实数[C]
  * 从${GameCache}中读取实数,类别:${Category}名称:${文字}
  * 如果该值不存在则返回0.
  */
-declare function GetStoredReal(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): number;
+declare function GetStoredReal(cache: gamecache, missionKey: string, key: string): number;
 
 /**
  * 读取字符串[C]
  * 从${GameCache}中读取字符串,类别:${Category}名称:${文字}
  * 如果该值不存在,则返回空字符串.注意,空字符串不等于null
  */
-declare function GetStoredString(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): string;
+declare function GetStoredString(cache: gamecache, missionKey: string, key: string): string;
 
 /**
  * 召唤单位
@@ -2499,10 +2312,7 @@ declare function GetUnitRallyUnit(whichUnit: unit): unit;
  * ${单位}的${Property}
  *
  */
-declare function GetUnitState(
-  whichUnit: unit,
-  whichUnitState: unitstate
-): number;
+declare function GetUnitState(whichUnit: unit, whichUnitState: unitstate): number;
 
 /**
  * 当前转身速度
@@ -2654,22 +2464,14 @@ declare function GroupImmediateOrder(whichGroup: group, order: string): boolean;
  * 对${单位组}发布${Order}
  * 最多只能对单位组中12个单位发布命令.
  */
-declare function GroupImmediateOrderById(
-  whichGroup: group,
-  order: number
-): boolean;
+declare function GroupImmediateOrderById(whichGroup: group, order: number): boolean;
 
 /**
  * 发布命令(指定坐标)[R]
  * 对${单位组}发布${Order}命令,目标点:(${X},${Y})
  * 最多只能对单位组中12个单位发布命令.
  */
-declare function GroupPointOrder(
-  whichGroup: group,
-  order: string,
-  x: number,
-  y: number
-): boolean;
+declare function GroupPointOrder(whichGroup: group, order: string, x: number, y: number): boolean;
 
 /**
  * 发布命令(指定坐标)(ID)
@@ -2717,11 +2519,7 @@ declare function GroupRemoveUnit(whichGroup: group, whichUnit: unit): boolean;
  * 对${单位组}发布${Order}命令,目标:${单位}
  * 最多只能对单位组中12个单位发布命令.
  */
-declare function GroupTargetOrder(
-  whichGroup: group,
-  order: string,
-  targetWidget: widget
-): boolean;
+declare function GroupTargetOrder(whichGroup: group, order: string, targetWidget: widget): boolean;
 
 /**
  * 发布命令(指定单位)(ID)
@@ -2733,56 +2531,16 @@ declare function GroupTargetOrderById(
   order: number,
   targetWidget: widget
 ): boolean;
-declare function HaveSavedBoolean(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
-declare function HaveSavedHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
-declare function HaveSavedInteger(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
-declare function HaveSavedReal(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
-declare function HaveSavedString(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
-declare function HaveStoredBoolean(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
-declare function HaveStoredInteger(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
-declare function HaveStoredReal(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
-declare function HaveStoredString(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
-declare function HaveStoredUnit(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): boolean;
+declare function HaveSavedBoolean(table: hashtable, parentKey: number, childKey: number): boolean;
+declare function HaveSavedHandle(table: hashtable, parentKey: number, childKey: number): boolean;
+declare function HaveSavedInteger(table: hashtable, parentKey: number, childKey: number): boolean;
+declare function HaveSavedReal(table: hashtable, parentKey: number, childKey: number): boolean;
+declare function HaveSavedString(table: hashtable, parentKey: number, childKey: number): boolean;
+declare function HaveStoredBoolean(cache: gamecache, missionKey: string, key: string): boolean;
+declare function HaveStoredInteger(cache: gamecache, missionKey: string, key: string): boolean;
+declare function HaveStoredReal(cache: gamecache, missionKey: string, key: string): boolean;
+declare function HaveStoredString(cache: gamecache, missionKey: string, key: string): boolean;
+declare function HaveStoredUnit(cache: gamecache, missionKey: string, key: string): boolean;
 
 /**
  * 转换整数为实数
@@ -2840,11 +2598,7 @@ declare function IsFogMaskEnabled(): boolean;
  * 坐标(${x},${y})在${玩家}的迷雾范围内
  * 黑色阴影内的坐标不被计算在内。
  */
-declare function IsFoggedToPlayer(
-  x: number,
-  y: number,
-  whichPlayer: player
-): boolean;
+declare function IsFoggedToPlayer(x: number, y: number, whichPlayer: player): boolean;
 declare function IsGameTypeSupported(whichGameType: gametype): boolean;
 declare function IsHeroUnitId(unitId: number): boolean;
 declare function IsItemIdPawnable(itemId: number): boolean;
@@ -2899,40 +2653,28 @@ declare function IsLeaderboardDisplayed(lb: leaderboard): boolean;
  * ${指定点}在${Player}的迷雾范围内
  * 黑色阴影内的点不被计算在内.
  */
-declare function IsLocationFoggedToPlayer(
-  whichLocation: location,
-  whichPlayer: player
-): boolean;
+declare function IsLocationFoggedToPlayer(whichLocation: location, whichPlayer: player): boolean;
 
 /**
  * 包含点
  * ${不规则区域}内包含点:${点}
  * TC_REGION
  */
-declare function IsLocationInRegion(
-  whichRegion: region,
-  whichLocation: location
-): boolean;
+declare function IsLocationInRegion(whichRegion: region, whichLocation: location): boolean;
 
 /**
  * 点在黑色阴影中
  * ${指定点}在${Player}的黑色阴影内
  *
  */
-declare function IsLocationMaskedToPlayer(
-  whichLocation: location,
-  whichPlayer: player
-): boolean;
+declare function IsLocationMaskedToPlayer(whichLocation: location, whichPlayer: player): boolean;
 
 /**
  * 点可见
  * ${指定点}对${Player}可见
  *
  */
-declare function IsLocationVisibleToPlayer(
-  whichLocation: location,
-  whichPlayer: player
-): boolean;
+declare function IsLocationVisibleToPlayer(whichLocation: location, whichPlayer: player): boolean;
 
 /**
  * 地图参数设置
@@ -2946,11 +2688,7 @@ declare function IsMapFlagSet(whichMapFlag: mapflag): boolean;
  * 坐标(${x},${y})在${玩家}的黑色阴影内
  *
  */
-declare function IsMaskedToPlayer(
-  x: number,
-  y: number,
-  whichPlayer: player
-): boolean;
+declare function IsMaskedToPlayer(x: number, y: number, whichPlayer: player): boolean;
 
 /**
  * 多面板显示
@@ -2985,30 +2723,21 @@ declare function IsNoVictoryCheat(): boolean;
  * ${Player}是${Player}的盟友
  * 包括中立状态.单向判断玩家A对玩家B联盟不侵犯,即表示玩家A是玩家B的盟友.
  */
-declare function IsPlayerAlly(
-  whichPlayer: player,
-  otherPlayer: player
-): boolean;
+declare function IsPlayerAlly(whichPlayer: player, otherPlayer: player): boolean;
 
 /**
  * 是玩家的敌人
  * ${Player}是${Player}的敌人
  * 不包括中立状态.单向判断玩家A对玩家B敌对侵犯,即表示玩家A是玩家B的盟友.
  */
-declare function IsPlayerEnemy(
-  whichPlayer: player,
-  otherPlayer: player
-): boolean;
+declare function IsPlayerEnemy(whichPlayer: player, otherPlayer: player): boolean;
 
 /**
  * 在玩家组
  * ${Player}在${玩家组}中
  *
  */
-declare function IsPlayerInForce(
-  whichPlayer: player,
-  whichForce: force
-): boolean;
+declare function IsPlayerInForce(whichPlayer: player, whichForce: force): boolean;
 
 /**
  * 玩家是裁判或观察者[R]
@@ -3022,10 +2751,7 @@ declare function IsPlayerObserver(whichPlayer: player): boolean;
  * ${Player}选择了${RacePreference}
  *
  */
-declare function IsPlayerRacePrefSet(
-  whichPlayer: player,
-  pref: racepreference
-): boolean;
+declare function IsPlayerRacePrefSet(whichPlayer: player, pref: racepreference): boolean;
 
 /**
  * 点被荒芜地表覆盖
@@ -3039,11 +2765,7 @@ declare function IsPointBlighted(x: number, y: number): boolean;
  * ${不规则区域}内包含坐标(${X},${Y})
  * TC_REGION
  */
-declare function IsPointInRegion(
-  whichRegion: region,
-  x: number,
-  y: number
-): boolean;
+declare function IsPointInRegion(whichRegion: region, x: number, y: number): boolean;
 
 /**
  * 任务完成
@@ -3099,11 +2821,7 @@ declare function IsSuspendedXP(whichHero: unit): boolean;
  * ${指定点}处的${PathingType}通行状态为关闭
  * 指定类型单位不能通行即通行状态为关闭.如该点不能造建筑就是'建造'通行状态为关闭.可使用'环境-设置地形通行状态'来改变通行状态.
  */
-declare function IsTerrainPathable(
-  x: number,
-  y: number,
-  t: pathingtype
-): boolean;
+declare function IsTerrainPathable(x: number, y: number, t: pathingtype): boolean;
 declare function IsTimerDialogDisplayed(whichDialog: timerdialog): boolean;
 
 /**
@@ -3177,11 +2895,7 @@ declare function IsUnitInGroup(whichUnit: unit, whichGroup: group): boolean;
  * ${单位}在距离${指定单位}${范围}范围内
  *
  */
-declare function IsUnitInRange(
-  whichUnit: unit,
-  otherUnit: unit,
-  distance: number
-): boolean;
+declare function IsUnitInRange(whichUnit: unit, otherUnit: unit, distance: number): boolean;
 
 /**
  * 在指定点范围内[R]
@@ -3199,12 +2913,7 @@ declare function IsUnitInRangeLoc(
  * ${单位}在距离坐标(${X},${Y})${范围}范围内
  *
  */
-declare function IsUnitInRangeXY(
-  whichUnit: unit,
-  x: number,
-  y: number,
-  distance: number
-): boolean;
+declare function IsUnitInRangeXY(whichUnit: unit, x: number, y: number, distance: number): boolean;
 
 /**
  * 在不规则区域内[R]
@@ -3212,10 +2921,7 @@ declare function IsUnitInRangeXY(
  *
  */
 declare function IsUnitInRegion(whichRegion: region, whichUnit: unit): boolean;
-declare function IsUnitInTransport(
-  whichUnit: unit,
-  whichTransport: unit
-): boolean;
+declare function IsUnitInTransport(whichUnit: unit, whichTransport: unit): boolean;
 
 /**
  * 单位不可见
@@ -3237,10 +2943,7 @@ declare function IsUnitMasked(whichUnit: unit, whichPlayer: player): boolean;
  * ${单位}属于${Player}
  * 判断单位是否属于这个玩家。
  */
-declare function IsUnitOwnedByPlayer(
-  whichUnit: unit,
-  whichPlayer: player
-): boolean;
+declare function IsUnitOwnedByPlayer(whichUnit: unit, whichPlayer: player): boolean;
 declare function IsUnitPaused(whichHero: unit): boolean;
 
 /**
@@ -3276,11 +2979,7 @@ declare function IsUnitVisible(whichUnit: unit, whichPlayer: player): boolean;
  * 坐标(${x},${y})对${玩家}可见
  *
  */
-declare function IsVisibleToPlayer(
-  x: number,
-  y: number,
-  whichPlayer: player
-): boolean;
+declare function IsVisibleToPlayer(x: number, y: number, whichPlayer: player): boolean;
 declare function IssueBuildOrder(
   whichPeon: unit,
   unitToBuild: string,
@@ -3312,10 +3011,7 @@ declare function IssueImmediateOrder(whichUnit: unit, order: string): boolean;
  * 对${单位}发布${Order}命令
  *
  */
-declare function IssueImmediateOrderById(
-  whichUnit: unit,
-  order: number
-): boolean;
+declare function IssueImmediateOrderById(whichUnit: unit, order: number): boolean;
 declare function IssueInstantPointOrder(
   whichUnit: unit,
   order: string,
@@ -3420,24 +3116,14 @@ declare function IssueNeutralTargetOrderById(
  * 对${单位}发布${Order}命令到坐标:(${X},${Y})
  *
  */
-declare function IssuePointOrder(
-  whichUnit: unit,
-  order: string,
-  x: number,
-  y: number
-): boolean;
+declare function IssuePointOrder(whichUnit: unit, order: string, x: number, y: number): boolean;
 
 /**
  * 发布命令(指定坐标)(ID)
  * 对${单位}发布${Order}命令到坐标:(${X},${Y})
  *
  */
-declare function IssuePointOrderById(
-  whichUnit: unit,
-  order: number,
-  x: number,
-  y: number
-): boolean;
+declare function IssuePointOrderById(whichUnit: unit, order: number, x: number, y: number): boolean;
 
 /**
  * 发布命令(指定点)(ID)
@@ -3466,11 +3152,7 @@ declare function IssuePointOrderLoc(
  * 对${单位}发布${Order}命令到目标:${单位}
  *
  */
-declare function IssueTargetOrder(
-  whichUnit: unit,
-  order: string,
-  targetWidget: widget
-): boolean;
+declare function IssueTargetOrder(whichUnit: unit, order: string, targetWidget: widget): boolean;
 
 /**
  * 发布命令(指定单位)(ID)
@@ -3488,21 +3170,14 @@ declare function IssueTargetOrderById(
  * 在${物品池}中添加一个${物品}比重为${数值}
  * 比重越高被选择的机率越大.
  */
-declare function ItemPoolAddItemType(
-  whichItemPool: itempool,
-  itemId: number,
-  weight: number
-): void;
+declare function ItemPoolAddItemType(whichItemPool: itempool, itemId: number, weight: number): void;
 
 /**
  * 删除物品类型[R]
  * 从${物品池}中删除${物品}
  *
  */
-declare function ItemPoolRemoveItemType(
-  whichItemPool: itempool,
-  itemId: number
-): void;
+declare function ItemPoolRemoveItemType(whichItemPool: itempool, itemId: number): void;
 
 /**
  * 杀死
@@ -3518,12 +3193,7 @@ declare function KillSoundWhenDone(soundHandle: sound): void;
  *
  */
 declare function KillUnit(whichUnit: unit): void;
-declare function LeaderboardAddItem(
-  lb: leaderboard,
-  label: string,
-  value: number,
-  p: player
-): void;
+declare function LeaderboardAddItem(lb: leaderboard, label: string, value: number, p: player): void;
 
 /**
  * 清空[R]
@@ -3550,11 +3220,7 @@ declare function LeaderboardGetPlayerIndex(lb: leaderboard, p: player): number;
 declare function LeaderboardHasPlayerItem(lb: leaderboard, p: player): boolean;
 declare function LeaderboardRemoveItem(lb: leaderboard, index: number): void;
 declare function LeaderboardRemovePlayerItem(lb: leaderboard, p: player): void;
-declare function LeaderboardSetItemLabel(
-  lb: leaderboard,
-  whichItem: number,
-  val: string
-): void;
+declare function LeaderboardSetItemLabel(lb: leaderboard, whichItem: number, val: string): void;
 declare function LeaderboardSetItemLabelColor(
   lb: leaderboard,
   whichItem: number,
@@ -3570,11 +3236,7 @@ declare function LeaderboardSetItemStyle(
   showValue: boolean,
   showIcon: boolean
 ): void;
-declare function LeaderboardSetItemValue(
-  lb: leaderboard,
-  whichItem: number,
-  val: number
-): void;
+declare function LeaderboardSetItemValue(lb: leaderboard, whichItem: number, val: number): void;
 declare function LeaderboardSetItemValueColor(
   lb: leaderboard,
   whichItem: number,
@@ -3597,10 +3259,7 @@ declare function LeaderboardSetLabelColor(
   blue: number,
   alpha: number
 ): void;
-declare function LeaderboardSetSizeByItemCount(
-  lb: leaderboard,
-  count: number
-): void;
+declare function LeaderboardSetSizeByItemCount(lb: leaderboard, count: number): void;
 declare function LeaderboardSetStyle(
   lb: leaderboard,
   showLabel: boolean,
@@ -3621,34 +3280,17 @@ declare function LeaderboardSetValueColor(
   blue: number,
   alpha: number
 ): void;
-declare function LeaderboardSortItemsByLabel(
-  lb: leaderboard,
-  ascending: boolean
-): void;
-declare function LeaderboardSortItemsByPlayer(
-  lb: leaderboard,
-  ascending: boolean
-): void;
-declare function LeaderboardSortItemsByValue(
-  lb: leaderboard,
-  ascending: boolean
-): void;
-declare function LoadAbilityHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): ability;
+declare function LeaderboardSortItemsByLabel(lb: leaderboard, ascending: boolean): void;
+declare function LeaderboardSortItemsByPlayer(lb: leaderboard, ascending: boolean): void;
+declare function LeaderboardSortItemsByValue(lb: leaderboard, ascending: boolean): void;
+declare function LoadAbilityHandle(table: hashtable, parentKey: number, childKey: number): ability;
 
 /**
  * <1.24>从哈希表提取布尔
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取布尔
  * 如果不存在则返回False
  */
-declare function LoadBoolean(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): boolean;
+declare function LoadBoolean(table: hashtable, parentKey: number, childKey: number): boolean;
 
 /**
  * <1.24>从哈希表提取布尔表达式
@@ -3666,11 +3308,7 @@ declare function LoadBooleanExprHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取对话框按钮
  * 如果不存在则返回空
  */
-declare function LoadButtonHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): button;
+declare function LoadButtonHandle(table: hashtable, parentKey: number, childKey: number): button;
 
 /**
  * <1.24>从哈希表提取失败条件
@@ -3699,22 +3337,14 @@ declare function LoadDestructableHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取对话框
  * 如果不存在则返回空
  */
-declare function LoadDialogHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): dialog;
+declare function LoadDialogHandle(table: hashtable, parentKey: number, childKey: number): dialog;
 
 /**
  * <1.24>从哈希表提取特效
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取特效
  * 如果不存在则返回空
  */
-declare function LoadEffectHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): effect;
+declare function LoadEffectHandle(table: hashtable, parentKey: number, childKey: number): effect;
 
 /**
  * <1.24>从哈希表提取可见度修正器
@@ -3743,11 +3373,7 @@ declare function LoadFogStateHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取玩家组
  * 如果不存在则返回空
  */
-declare function LoadForceHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): force;
+declare function LoadForceHandle(table: hashtable, parentKey: number, childKey: number): force;
 declare function LoadGame(saveFileName: string, doScoreScreen: boolean): void;
 
 /**
@@ -3755,11 +3381,7 @@ declare function LoadGame(saveFileName: string, doScoreScreen: boolean): void;
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取单位组
  * 如果不存在则返回空
  */
-declare function LoadGroupHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): group;
+declare function LoadGroupHandle(table: hashtable, parentKey: number, childKey: number): group;
 declare function LoadHashtableHandle(
   table: hashtable,
   parentKey: number,
@@ -3771,33 +3393,21 @@ declare function LoadHashtableHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取图象
  * 如果不存在则返回空
  */
-declare function LoadImageHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): image;
+declare function LoadImageHandle(table: hashtable, parentKey: number, childKey: number): image;
 
 /**
  * <1.24>从哈希表提取整数
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取整数
  * 如果不存在则返回0
  */
-declare function LoadInteger(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): number;
+declare function LoadInteger(table: hashtable, parentKey: number, childKey: number): number;
 
 /**
  * <1.24>从哈希表提取物品
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取物品
  * 如果不存在则返回空
  */
-declare function LoadItemHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): item;
+declare function LoadItemHandle(table: hashtable, parentKey: number, childKey: number): item;
 
 /**
  * <1.24>从哈希表提取物品池
@@ -3870,22 +3480,14 @@ declare function LoadMultiboardItemHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取玩家
  * 如果不存在则返回空
  */
-declare function LoadPlayerHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): player;
+declare function LoadPlayerHandle(table: hashtable, parentKey: number, childKey: number): player;
 
 /**
  * <1.24>从哈希表提取任务
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取任务
  * 如果不存在则返回空
  */
-declare function LoadQuestHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): quest;
+declare function LoadQuestHandle(table: hashtable, parentKey: number, childKey: number): quest;
 
 /**
  * <1.24>从哈希表提取任务要求
@@ -3903,60 +3505,36 @@ declare function LoadQuestItemHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取实数
  * 如果不存在则返回0.00
  */
-declare function LoadReal(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): number;
+declare function LoadReal(table: hashtable, parentKey: number, childKey: number): number;
 
 /**
  * <1.24>从哈希表提取区域(矩型)
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取区域(矩型)
  * 如果不存在则返回空
  */
-declare function LoadRectHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): rect;
+declare function LoadRectHandle(table: hashtable, parentKey: number, childKey: number): rect;
 
 /**
  * <1.24>从哈希表提取区域(不规则)
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取区域(不规则)
  * 如果不存在则返回空
  */
-declare function LoadRegionHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): region;
+declare function LoadRegionHandle(table: hashtable, parentKey: number, childKey: number): region;
 
 /**
  * <1.24>从哈希表提取音效
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取音效
  * 如果不存在则返回空
  */
-declare function LoadSoundHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): sound;
-declare function LoadStr(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): string;
+declare function LoadSoundHandle(table: hashtable, parentKey: number, childKey: number): sound;
+declare function LoadStr(table: hashtable, parentKey: number, childKey: number): string;
 
 /**
  * <1.24>从哈希表提取漂浮文字
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取漂浮文字
  * 如果不存在则返回空
  */
-declare function LoadTextTagHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): texttag;
+declare function LoadTextTagHandle(table: hashtable, parentKey: number, childKey: number): texttag;
 
 /**
  * <1.24>从哈希表提取计时器窗口
@@ -3974,11 +3552,7 @@ declare function LoadTimerDialogHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取计时器
  * 如果不存在则返回空
  */
-declare function LoadTimerHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): timer;
+declare function LoadTimerHandle(table: hashtable, parentKey: number, childKey: number): timer;
 
 /**
  * <1.24>从哈希表提取可追踪物
@@ -4029,11 +3603,7 @@ declare function LoadTriggerEventHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取触发器
  * 如果不存在则返回空
  */
-declare function LoadTriggerHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): trigger;
+declare function LoadTriggerHandle(table: hashtable, parentKey: number, childKey: number): trigger;
 
 /**
  * <1.24>从哈希表提取地面纹理变化
@@ -4051,11 +3621,7 @@ declare function LoadUbersplatHandle(
  * 在子索引${Value}主索引${Value}的${Hashtable}内提取单位
  * 如果不存在则返回空
  */
-declare function LoadUnitHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): unit;
+declare function LoadUnitHandle(table: hashtable, parentKey: number, childKey: number): unit;
 
 /**
  * <1.24>从哈希表提取单位池
@@ -4067,11 +3633,7 @@ declare function LoadUnitPoolHandle(
   parentKey: number,
   childKey: number
 ): unitpool;
-declare function LoadWidgetHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): widget;
+declare function LoadWidgetHandle(table: hashtable, parentKey: number, childKey: number): widget;
 
 /**
  * 坐标点 可能不起作用
@@ -4109,22 +3671,14 @@ declare function MoveLightningEx(
  * 移动${点}到(${X},${Y})
  * 该点必须是一个变量.因为移动一个不可重用的点是无意义的.
  */
-declare function MoveLocation(
-  whichLocation: location,
-  newX: number,
-  newY: number
-): void;
+declare function MoveLocation(whichLocation: location, newX: number, newY: number): void;
 
 /**
  * 移动矩形区域(指定坐标)[R]
  * 移动${矩形区域}到(${X},${Y})
  * 该区域必须是一个变量.目标点将作为该区域的新中心点.
  */
-declare function MoveRectTo(
-  whichRect: rect,
-  newCenterX: number,
-  newCenterY: number
-): void;
+declare function MoveRectTo(whichRect: rect, newCenterX: number, newCenterY: number): void;
 
 /**
  * 移动矩形区域(指定点)
@@ -4159,11 +3713,7 @@ declare function MultiboardGetColumnCount(lb: multiboard): number;
  * ${多面板}的第${X}行,第${Y}列项
  * (0,0)作为多面板首项,会创建多面板项目.
  */
-declare function MultiboardGetItem(
-  lb: multiboard,
-  row: number,
-  column: number
-): multiboarditem;
+declare function MultiboardGetItem(lb: multiboard, row: number, column: number): multiboarditem;
 
 /**
  * 行数
@@ -4205,10 +3755,7 @@ declare function MultiboardSetColumnCount(lb: multiboard, count: number): void;
  * 设置${Multiboard}第${Column}列,第${Row}行的项目图标为${IconFile}
  *
  */
-declare function MultiboardSetItemIcon(
-  mbi: multiboarditem,
-  iconFileName: string
-): void;
+declare function MultiboardSetItemIcon(mbi: multiboarditem, iconFileName: string): void;
 
 /**
  * 设置项目显示风格
@@ -4246,10 +3793,7 @@ declare function MultiboardSetItemValueColor(
  * 设置${Multiboard}第${Column}列,第${Row}行的项目宽度为屏幕的${Width}%
  *
  */
-declare function MultiboardSetItemWidth(
-  mbi: multiboarditem,
-  width: number
-): void;
+declare function MultiboardSetItemWidth(mbi: multiboarditem, width: number): void;
 declare function MultiboardSetItemsIcon(lb: multiboard, iconPath: string): void;
 declare function MultiboardSetItemsStyle(
   lb: multiboard,
@@ -4333,11 +3877,7 @@ declare function PanCameraToTimedWithZ(
   zOffsetDest: number,
   duration: number
 ): void;
-declare function PanCameraToWithZ(
-  x: number,
-  y: number,
-  zOffsetDest: number
-): void;
+declare function PanCameraToWithZ(x: number, y: number, zOffsetDest: number): void;
 
 /**
  * 暂停/恢复AI脚本运行[R]
@@ -4394,11 +3934,7 @@ declare function PingMinimapEx(
  * 从${物品池}中任意选择一个物品并放置到(${X},${Y})点
  *
  */
-declare function PlaceRandomItem(
-  whichItemPool: itempool,
-  x: number,
-  y: number
-): item;
+declare function PlaceRandomItem(whichItemPool: itempool, x: number, y: number): item;
 
 /**
  * 选择放置单位[R]
@@ -4415,16 +3951,9 @@ declare function PlaceRandomUnit(
 declare function PlayCinematic(movieName: string): void;
 declare function PlayModelCinematic(modelName: string): void;
 declare function PlayMusic(musicName: string): void;
-declare function PlayMusicEx(
-  musicName: string,
-  frommsecs: number,
-  fadeinmsecs: number
-): void;
+declare function PlayMusicEx(musicName: string, frommsecs: number, fadeinmsecs: number): void;
 declare function PlayThematicMusic(musicFileName: string): void;
-declare function PlayThematicMusicEx(
-  musicFileName: string,
-  frommsecs: number
-): void;
+declare function PlayThematicMusicEx(musicFileName: string, frommsecs: number): void;
 declare function Player(number: number): player;
 declare function PlayerGetLeaderboard(toPlayer: player): leaderboard;
 
@@ -4469,23 +3998,11 @@ declare function PreloadStart(): void;
  */
 declare function Preloader(filename: string): void;
 declare function QuestCreateItem(whichQuest: quest): questitem;
-declare function QuestItemSetCompleted(
-  whichQuestItem: questitem,
-  completed: boolean
-): void;
-declare function QuestItemSetDescription(
-  whichQuestItem: questitem,
-  description: string
-): void;
+declare function QuestItemSetCompleted(whichQuestItem: questitem, completed: boolean): void;
+declare function QuestItemSetDescription(whichQuestItem: questitem, description: string): void;
 declare function QuestSetCompleted(whichQuest: quest, completed: boolean): void;
-declare function QuestSetDescription(
-  whichQuest: quest,
-  description: string
-): void;
-declare function QuestSetDiscovered(
-  whichQuest: quest,
-  discovered: boolean
-): void;
+declare function QuestSetDescription(whichQuest: quest, description: string): void;
+declare function QuestSetDiscovered(whichQuest: quest, discovered: boolean): void;
 
 /**
  * 启用/禁用任务[R]
@@ -4497,14 +4014,8 @@ declare function QuestSetFailed(whichQuest: quest, failed: boolean): void;
 declare function QuestSetIconPath(whichQuest: quest, iconPath: string): void;
 declare function QuestSetRequired(whichQuest: quest, required: boolean): void;
 declare function QuestSetTitle(whichQuest: quest, title: string): void;
-declare function QueueDestructableAnimation(
-  d: destructable,
-  whichAnimation: string
-): void;
-declare function QueueUnitAnimation(
-  whichUnit: unit,
-  whichAnimation: string
-): void;
+declare function QueueDestructableAnimation(d: destructable, whichAnimation: string): void;
+declare function QueueUnitAnimation(whichUnit: unit, whichAnimation: string): void;
 
 /**
  * 转换实数为整数
@@ -4539,12 +4050,7 @@ declare function Rad2Deg(radians: number): number;
  * 左下角为(${X1},${Y1}),右上角为(${X2},${Y2})的矩形区域
  * 会创建矩形区域.
  */
-declare function Rect(
-  minx: number,
-  miny: number,
-  maxx: number,
-  maxy: number
-): rect;
+declare function Rect(minx: number, miny: number, maxx: number, maxy: number): rect;
 
 /**
  * 新建矩形区域(指定边角点)
@@ -4572,10 +4078,7 @@ declare function RegionAddCell(whichRegion: region, x: number, y: number): void;
  * 对${不规则区域}添加单元点:${点}
  * 单元点大小为32x32.
  */
-declare function RegionAddCellAtLoc(
-  whichRegion: region,
-  whichLocation: location
-): void;
+declare function RegionAddCellAtLoc(whichRegion: region, whichLocation: location): void;
 
 /**
  * 添加区域[R]
@@ -4589,21 +4092,14 @@ declare function RegionAddRect(whichRegion: region, r: rect): void;
  * 在${不规则区域}中移除单元点:(${X},${Y})
  * 单元点大小为32x32.
  */
-declare function RegionClearCell(
-  whichRegion: region,
-  x: number,
-  y: number
-): void;
+declare function RegionClearCell(whichRegion: region, x: number, y: number): void;
 
 /**
  * 移除单元点(指定点)[R]
  * 在${不规则区域}中移除单元点:${点}
  * 单元点大小为32x32.
  */
-declare function RegionClearCellAtLoc(
-  whichRegion: region,
-  whichLocation: location
-): void;
+declare function RegionClearCellAtLoc(whichRegion: region, whichLocation: location): void;
 
 /**
  * 移除区域[R]
@@ -4674,10 +4170,7 @@ declare function RemoveLocation(whichLocation: location): void;
  * 踢除${Player}，玩家的游戏结果为${文字}
  *
  */
-declare function RemovePlayer(
-  whichPlayer: player,
-  gameResult: playergameresult
-): void;
+declare function RemovePlayer(whichPlayer: player, gameResult: playergameresult): void;
 
 /**
  * 删除矩形区域[R]
@@ -4693,31 +4186,11 @@ declare function RemoveRect(whichRect: rect): void;
  */
 declare function RemoveRegion(whichRegion: region): void;
 declare function RemoveSaveDirectory(sourceDirName: string): boolean;
-declare function RemoveSavedBoolean(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): void;
-declare function RemoveSavedHandle(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): void;
-declare function RemoveSavedInteger(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): void;
-declare function RemoveSavedReal(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): void;
-declare function RemoveSavedString(
-  table: hashtable,
-  parentKey: number,
-  childKey: number
-): void;
+declare function RemoveSavedBoolean(table: hashtable, parentKey: number, childKey: number): void;
+declare function RemoveSavedHandle(table: hashtable, parentKey: number, childKey: number): void;
+declare function RemoveSavedInteger(table: hashtable, parentKey: number, childKey: number): void;
+declare function RemoveSavedReal(table: hashtable, parentKey: number, childKey: number): void;
+declare function RemoveSavedString(table: hashtable, parentKey: number, childKey: number): void;
 
 /**
  * 删除
@@ -4734,10 +4207,7 @@ declare function RemoveUnit(whichUnit: unit): void;
 declare function RemoveUnitFromAllStock(unitId: number): void;
 declare function RemoveUnitFromStock(whichUnit: unit, unitId: number): void;
 declare function RemoveWeatherEffect(whichEffect: weathereffect): void;
-declare function RenameSaveDirectory(
-  sourceDirName: string,
-  destDirName: string
-): boolean;
+declare function RenameSaveDirectory(sourceDirName: string, destDirName: string): boolean;
 declare function ResetTerrainFog(): void;
 
 /**
@@ -4785,23 +4255,14 @@ declare function ResumeTimer(whichTimer: timer): void;
  * 立即复活${英雄}在(${X},${Y}),${Show/Hide}复活动画
  * 如果英雄正在祭坛复活,则会退回部分花费(默认为100%).
  */
-declare function ReviveHero(
-  whichHero: unit,
-  x: number,
-  y: number,
-  doEyecandy: boolean
-): boolean;
+declare function ReviveHero(whichHero: unit, x: number, y: number, doEyecandy: boolean): boolean;
 
 /**
  * 立即复活(指定点)
  * 立即复活${英雄}在${指定点},${Show/Hide}复活动画
  * 如果英雄正在祭坛复活,则会退回部分花费(默认为100%).
  */
-declare function ReviveHeroLoc(
-  whichHero: unit,
-  loc: location,
-  doEyecandy: boolean
-): boolean;
+declare function ReviveHeroLoc(whichHero: unit, loc: location, doEyecandy: boolean): boolean;
 
 /**
  * 转换字符串为整数
@@ -5384,11 +4845,7 @@ declare function SetBlightPoint(
  * 为${Player}在${Region}${Create/Remove}一块荒芜地表
  *
  */
-declare function SetBlightRect(
-  whichPlayer: player,
-  r: rect,
-  addBlight: boolean
-): void;
+declare function SetBlightRect(whichPlayer: player, r: rect, addBlight: boolean): void;
 
 /**
  * 设置可用镜头区域(所有玩家)[R]
@@ -5411,22 +4868,14 @@ declare function SetCameraBounds(
  * 设置玩家的镜头属性${Field}为${数值},持续${Time}秒
  *
  */
-declare function SetCameraField(
-  whichField: camerafield,
-  value: number,
-  duration: number
-): void;
+declare function SetCameraField(whichField: camerafield, value: number, duration: number): void;
 
 /**
  * 锁定镜头到单位(固定镜头源)(所有玩家)[R]
  * 锁定玩家镜头到${单位},偏移坐标(${X},${Y})
  * 偏移坐标(X,Y)以单位脚底为原点坐标.
  */
-declare function SetCameraOrientController(
-  whichUnit: unit,
-  xoffset: number,
-  yoffset: number
-): void;
+declare function SetCameraOrientController(whichUnit: unit, xoffset: number, yoffset: number): void;
 declare function SetCameraPosition(x: number, y: number): void;
 
 /**
@@ -5459,10 +4908,7 @@ declare function SetCameraTargetController(
   yoffset: number,
   inheritOrientation: boolean
 ): void;
-declare function SetCampaignAvailable(
-  campaignNumber: number,
-  available: boolean
-): void;
+declare function SetCampaignAvailable(campaignNumber: number, available: boolean): void;
 declare function SetCampaignMenuRace(r: race): void;
 declare function SetCampaignMenuRaceEx(campaignIndex: number): void;
 declare function SetCineFilterBlendMode(whichMode: blendmode): void;
@@ -5473,24 +4919,14 @@ declare function SetCineFilterEndColor(
   blue: number,
   alpha: number
 ): void;
-declare function SetCineFilterEndUV(
-  minu: number,
-  minv: number,
-  maxu: number,
-  maxv: number
-): void;
+declare function SetCineFilterEndUV(minu: number, minv: number, maxu: number, maxv: number): void;
 declare function SetCineFilterStartColor(
   red: number,
   green: number,
   blue: number,
   alpha: number
 ): void;
-declare function SetCineFilterStartUV(
-  minu: number,
-  minv: number,
-  maxu: number,
-  maxv: number
-): void;
+declare function SetCineFilterStartUV(minu: number, minv: number, maxu: number, maxv: number): void;
 declare function SetCineFilterTexMapFlags(whichFlags: texmapflags): void;
 declare function SetCineFilterTexture(filename: string): void;
 
@@ -5516,33 +4952,18 @@ declare function SetCreatureDensity(whichdensity: mapdensity): void;
  * 相当于游戏中Alt+R功能.
  */
 declare function SetCreepCampFilterState(state: boolean): void;
-declare function SetCustomCampaignButtonVisible(
-  whichButton: number,
-  visible: boolean
-): void;
-declare function SetDayNightModels(
-  terrainDNCFile: string,
-  unitDNCFile: string
-): void;
+declare function SetCustomCampaignButtonVisible(whichButton: number, visible: boolean): void;
+declare function SetDayNightModels(terrainDNCFile: string, unitDNCFile: string): void;
 declare function SetDefaultDifficulty(g: gamedifficulty): void;
-declare function SetDestructableAnimation(
-  d: destructable,
-  whichAnimation: string
-): void;
+declare function SetDestructableAnimation(d: destructable, whichAnimation: string): void;
 
 /**
  * 改变可破坏物动画播放速度[R]
  * 改变${可破坏物}的动画播放速度为正常的${Percent}倍
  * 设置1倍动画播放速度来恢复正常状态.
  */
-declare function SetDestructableAnimationSpeed(
-  d: destructable,
-  speedFactor: number
-): void;
-declare function SetDestructableInvulnerable(
-  d: destructable,
-  flag: boolean
-): void;
+declare function SetDestructableAnimationSpeed(d: destructable, speedFactor: number): void;
+declare function SetDestructableInvulnerable(d: destructable, flag: boolean): void;
 
 /**
  * 设置生命值(指定值)
@@ -5557,10 +4978,7 @@ declare function SetDestructableMaxLife(d: destructable, max: number): void;
  * 设置${可破坏物}的闭塞高度为${Height}
  *
  */
-declare function SetDestructableOccluderHeight(
-  d: destructable,
-  height: number
-): void;
+declare function SetDestructableOccluderHeight(d: destructable, height: number): void;
 
 /**
  * 播放圆范围内地形装饰物动画[R]
@@ -5588,14 +5006,8 @@ declare function SetDoodadAnimationRect(
   animName: string,
   animRandom: boolean
 ): void;
-declare function SetEdCinematicAvailable(
-  campaignNumber: number,
-  available: boolean
-): void;
-declare function SetFloatGameState(
-  whichFloatGameState: fgamestate,
-  value: number
-): void;
+declare function SetEdCinematicAvailable(campaignNumber: number, available: boolean): void;
+declare function SetFloatGameState(whichFloatGameState: fgamestate, value: number): void;
 
 /**
  * 设置地图迷雾(圆范围)[R]
@@ -5644,70 +5056,43 @@ declare function SetGamePlacement(whichPlacementType: placement): void;
  * 你可以通过'游戏-锁定游戏速度'动作来锁定游戏速度.
  */
 declare function SetGameSpeed(whichspeed: gamespeed): void;
-declare function SetGameTypeSupported(
-  whichGameType: gametype,
-  value: boolean
-): void;
+declare function SetGameTypeSupported(whichGameType: gametype, value: boolean): void;
 
 /**
  * 设置英雄敏捷[R]
  * 设置${英雄}的敏捷为${Value},(${Permanent}永久奖励)
  * 永久奖励貌似无效项,不需要理会.
  */
-declare function SetHeroAgi(
-  whichHero: unit,
-  newAgi: number,
-  permanent: boolean
-): void;
+declare function SetHeroAgi(whichHero: unit, newAgi: number, permanent: boolean): void;
 
 /**
  * 设置英雄智力[R]
  * 设置${英雄}的智力为${Value},(${Permanent}永久奖励)
  * 永久奖励貌似无效项,不需要理会.
  */
-declare function SetHeroInt(
-  whichHero: unit,
-  newInt: number,
-  permanent: boolean
-): void;
-declare function SetHeroLevel(
-  whichHero: unit,
-  level: number,
-  showEyeCandy: boolean
-): void;
+declare function SetHeroInt(whichHero: unit, newInt: number, permanent: boolean): void;
+declare function SetHeroLevel(whichHero: unit, level: number, showEyeCandy: boolean): void;
 
 /**
  * 设置英雄力量[R]
  * 设置${英雄}的力量为${Value},(${Permanent}永久奖励)
  * 永久奖励貌似无效项,不需要理会.
  */
-declare function SetHeroStr(
-  whichHero: unit,
-  newStr: number,
-  permanent: boolean
-): void;
+declare function SetHeroStr(whichHero: unit, newStr: number, permanent: boolean): void;
 
 /**
  * 设置经验值
  * 设置${Hero}的经验值为${Quantity},${Show/Hide}升级动画
  * 经验值不能倒退.
  */
-declare function SetHeroXP(
-  whichHero: unit,
-  newXpVal: number,
-  showEyeCandy: boolean
-): void;
+declare function SetHeroXP(whichHero: unit, newXpVal: number, showEyeCandy: boolean): void;
 
 /**
  * 图像水面显示状态
  * 设置${Image}:${Enable/Disable}水面显示,${Enable/Disable}水的Alpha通道
  * 前者设置图像在水面或是水底显示.后者设置图像是否受水的Alpha通道影响.
  */
-declare function SetImageAboveWater(
-  whichImage: image,
-  flag: boolean,
-  useWaterAlpha: boolean
-): void;
+declare function SetImageAboveWater(whichImage: image, flag: boolean, useWaterAlpha: boolean): void;
 
 /**
  * 改变图像颜色
@@ -5727,23 +5112,14 @@ declare function SetImageColor(
  * 设置${Image}${Enable/Disable}Z轴显示,并设置高度为${Height}
  * 实际显示高度为图像高度+Z轴偏移.只有允许Z轴显示时才有效.
  */
-declare function SetImageConstantHeight(
-  whichImage: image,
-  flag: boolean,
-  height: number
-): void;
+declare function SetImageConstantHeight(whichImage: image, flag: boolean, height: number): void;
 
 /**
  * 改变图像位置(指定点)
  * 改变${Image}的位置为${Position},Z轴偏移为${Z}
  * 指图像的左下角位置.
  */
-declare function SetImagePosition(
-  whichImage: image,
-  x: number,
-  y: number,
-  z: number
-): void;
+declare function SetImagePosition(whichImage: image, x: number, y: number, z: number): void;
 
 /**
  * 设置图像渲染状态
@@ -5765,10 +5141,7 @@ declare function SetImageRenderAlways(whichImage: image, flag: boolean): void;
  *
  */
 declare function SetImageType(whichImage: image, imageType: number): void;
-declare function SetIntegerGameState(
-  whichIntegerGameState: igamestate,
-  value: number
-): void;
+declare function SetIntegerGameState(whichIntegerGameState: igamestate, value: number): void;
 declare function SetIntroShotModel(introModelPath: string): void;
 declare function SetIntroShotText(introText: string): void;
 
@@ -5795,11 +5168,7 @@ declare function SetItemInvulnerable(whichItem: item, flag: boolean): void;
  * 不可抵押物品不能被卖到商店.
  */
 declare function SetItemPawnable(i: item, flag: boolean): void;
-declare function SetItemPlayer(
-  whichItem: item,
-  whichPlayer: player,
-  changeColor: boolean
-): void;
+declare function SetItemPlayer(whichItem: item, whichPlayer: player, changeColor: boolean): void;
 
 /**
  * 移动物品到坐标(立即)(指定坐标)[R]
@@ -5849,11 +5218,7 @@ declare function SetMapFlag(whichMapFlag: mapflag, value: boolean): void;
  * 设置背景音乐列表为:${Music},${允许/禁止}随机播放,开始播放序号为${Index}
  * 可指定播放文件或播放目录.
  */
-declare function SetMapMusic(
-  musicName: string,
-  random: boolean,
-  index: number
-): void;
+declare function SetMapMusic(musicName: string, random: boolean, index: number): void;
 declare function SetMapName(name: string): void;
 declare function SetMissionAvailable(
   campaignNumber: number,
@@ -5868,10 +5233,7 @@ declare function SetMusicPlayPosition(millisecs: number): void;
  * 音量取值范围为0-127.
  */
 declare function SetMusicVolume(volume: number): void;
-declare function SetOpCinematicAvailable(
-  campaignNumber: number,
-  available: boolean
-): void;
+declare function SetOpCinematicAvailable(campaignNumber: number, available: boolean): void;
 
 /**
  * 允许/禁用技能[R]
@@ -5902,10 +5264,7 @@ declare function SetPlayerAlliance(
  * 不改变现有单位的颜色.
  */
 declare function SetPlayerColor(whichPlayer: player, color: playercolor): void;
-declare function SetPlayerController(
-  whichPlayer: player,
-  controlType: mapcontrol
-): void;
+declare function SetPlayerController(whichPlayer: player, controlType: mapcontrol): void;
 
 /**
  * 设置生命上限[R]
@@ -5919,10 +5278,7 @@ declare function SetPlayerHandicap(whichPlayer: player, handicap: number): void;
  * 设置${Player}的经验获得率为正常的${Value}倍
  *
  */
-declare function SetPlayerHandicapXP(
-  whichPlayer: player,
-  handicap: number
-): void;
+declare function SetPlayerHandicapXP(whichPlayer: player, handicap: number): void;
 
 /**
  * 更改名字
@@ -5936,22 +5292,13 @@ declare function SetPlayerName(whichPlayer: player, name: string): void;
  * 设置${Player}${Show/Hide}在计分屏的显示.
  *
  */
-declare function SetPlayerOnScoreScreen(
-  whichPlayer: player,
-  flag: boolean
-): void;
+declare function SetPlayerOnScoreScreen(whichPlayer: player, flag: boolean): void;
 declare function SetPlayerRacePreference(
   whichPlayer: player,
   whichRacePreference: racepreference
 ): void;
-declare function SetPlayerRaceSelectable(
-  whichPlayer: player,
-  value: boolean
-): void;
-declare function SetPlayerStartLocation(
-  whichPlayer: player,
-  startLocIndex: number
-): void;
+declare function SetPlayerRaceSelectable(whichPlayer: player, value: boolean): void;
+declare function SetPlayerStartLocation(whichPlayer: player, startLocIndex: number): void;
 declare function SetPlayerState(
   whichPlayer: player,
   whichPlayerState: playerstate,
@@ -5986,10 +5333,7 @@ declare function SetPlayerTechResearched(
   techid: number,
   setToLevel: number
 ): void;
-declare function SetPlayerUnitsOwner(
-  whichPlayer: player,
-  newOwner: number
-): void;
+declare function SetPlayerUnitsOwner(whichPlayer: player, newOwner: number): void;
 declare function SetPlayers(playercount: number): void;
 
 /**
@@ -6017,11 +5361,7 @@ declare function SetRect(
  * 重新设置${矩形区域},左下角点为${点}右上角点为${点}
  * 该区域必须是一个变量.重新设置矩形区域的大小和位置.
  */
-declare function SetRectFromLoc(
-  whichRect: rect,
-  min: location,
-  max: location
-): void;
+declare function SetRectFromLoc(whichRect: rect, min: location, max: location): void;
 
 /**
  * 保留英雄图标
@@ -6051,32 +5391,17 @@ declare function SetSoundConeAngles(
   outside: number,
   outsideVolume: number
 ): void;
-declare function SetSoundConeOrientation(
-  soundHandle: sound,
-  x: number,
-  y: number,
-  z: number
-): void;
-declare function SetSoundDistanceCutoff(
-  soundHandle: sound,
-  cutoff: number
-): void;
+declare function SetSoundConeOrientation(soundHandle: sound, x: number, y: number, z: number): void;
+declare function SetSoundDistanceCutoff(soundHandle: sound, cutoff: number): void;
 
 /**
  * 设置3D音效衰减范围
  * 设置${3D音效}的衰减最小范围:${数值}最大范围:${数值}
  * 该动作仅用于3D音效.注意不一定要达到最大范围,音量衰减到一定程度也会变没的.
  */
-declare function SetSoundDistances(
-  soundHandle: sound,
-  minDist: number,
-  maxDist: number
-): void;
+declare function SetSoundDistances(soundHandle: sound, minDist: number, maxDist: number): void;
 declare function SetSoundDuration(soundHandle: sound, duration: number): void;
-declare function SetSoundParamsFromLabel(
-  soundHandle: sound,
-  soundLabel: string
-): void;
+declare function SetSoundParamsFromLabel(soundHandle: sound, soundLabel: string): void;
 declare function SetSoundPitch(soundHandle: sound, pitch: number): void;
 
 /**
@@ -6084,28 +5409,15 @@ declare function SetSoundPitch(soundHandle: sound, pitch: number): void;
  * 设置${音效}的播放时间点为${Offset}毫秒
  * 音效必须是正在播放的.不能用于3D音效.
  */
-declare function SetSoundPlayPosition(
-  soundHandle: sound,
-  millisecs: number
-): void;
+declare function SetSoundPlayPosition(soundHandle: sound, millisecs: number): void;
 
 /**
  * 设置3D音效位置(指定坐标)[R]
  * 设置${3D音效}的播放位置为(${X},${Y}),Z轴高度为${Z}
  * 该动作仅用于3D音效.
  */
-declare function SetSoundPosition(
-  soundHandle: sound,
-  x: number,
-  y: number,
-  z: number
-): void;
-declare function SetSoundVelocity(
-  soundHandle: sound,
-  x: number,
-  y: number,
-  z: number
-): void;
+declare function SetSoundPosition(soundHandle: sound, x: number, y: number, z: number): void;
+declare function SetSoundVelocity(soundHandle: sound, x: number, y: number, z: number): void;
 
 /**
  * 设置音效音量[R]
@@ -6121,18 +5433,9 @@ declare function SetStartLocPrio(
   otherStartLocIndex: number,
   priority: startlocprio
 ): void;
-declare function SetStartLocPrioCount(
-  whichStartLoc: number,
-  prioSlotCount: number
-): void;
+declare function SetStartLocPrioCount(whichStartLoc: number, prioSlotCount: number): void;
 declare function SetTeams(teamcount: number): void;
-declare function SetTerrainFog(
-  a: number,
-  b: number,
-  c: number,
-  d: number,
-  e: number
-): void;
+declare function SetTerrainFog(a: number, b: number, c: number, d: number, e: number): void;
 
 /**
  * 设置迷雾[R]
@@ -6154,12 +5457,7 @@ declare function SetTerrainFogEx(
  * 设置${指定点}处单元点的${Pathing}地形通行状态为:${On/Off}
  * 例:设置'建造'通行状态为开,则该点可以建造建筑.一个单元点范围为32x32.
  */
-declare function SetTerrainPathable(
-  x: number,
-  y: number,
-  t: pathingtype,
-  flag: boolean
-): void;
+declare function SetTerrainPathable(x: number, y: number, t: pathingtype, flag: boolean): void;
 
 /**
  * 改变地形类型(指定点)
@@ -6197,17 +5495,8 @@ declare function SetTextTagPermanent(t: texttag, flag: boolean): void;
  * 改变${FloatingText}的位置为${指定点},Z轴高度为${Z}
  *
  */
-declare function SetTextTagPos(
-  t: texttag,
-  x: number,
-  y: number,
-  heightOffset: number
-): void;
-declare function SetTextTagPosUnit(
-  t: texttag,
-  whichUnit: unit,
-  heightOffset: number
-): void;
+declare function SetTextTagPos(t: texttag, x: number, y: number, heightOffset: number): void;
+declare function SetTextTagPosUnit(t: texttag, whichUnit: unit, heightOffset: number): void;
 declare function SetTextTagSuspended(t: texttag, flag: boolean): void;
 
 /**
@@ -6222,11 +5511,7 @@ declare function SetTextTagText(t: texttag, s: string, height: number): void;
  * 设置${FloatingText}的X轴速率:${XSpeed},Y轴速率:${YSpeed}
  * 对移动后的漂浮文字设置速率,该漂浮文字会先回到原点再向设定的角度移动.这里的1约等于游戏中的1800速度.
  */
-declare function SetTextTagVelocity(
-  t: texttag,
-  xvel: number,
-  yvel: number
-): void;
+declare function SetTextTagVelocity(t: texttag, xvel: number, yvel: number): void;
 
 /**
  * 显示/隐藏(所有玩家)[R]
@@ -6262,45 +5547,29 @@ declare function SetUbersplatRender(whichSplat: ubersplat, flag: boolean): void;
  * 设置${Ubersplat}:${Enable/Disable}永久渲染状态
  * 要显示地面纹理变化则必须开启该项.
  */
-declare function SetUbersplatRenderAlways(
-  whichSplat: ubersplat,
-  flag: boolean
-): void;
+declare function SetUbersplatRenderAlways(whichSplat: ubersplat, flag: boolean): void;
 
 /**
  * 设置技能等级[R]
  * 设置${单位}的${技能}等级为${Level}
  * 改变死亡单位的光环技能会导致魔兽崩溃.
  */
-declare function SetUnitAbilityLevel(
-  whichUnit: unit,
-  abilcode: number,
-  level: number
-): number;
-declare function SetUnitAcquireRange(
-  whichUnit: unit,
-  newAcquireRange: number
-): void;
+declare function SetUnitAbilityLevel(whichUnit: unit, abilcode: number, level: number): number;
+declare function SetUnitAcquireRange(whichUnit: unit, newAcquireRange: number): void;
 
 /**
  * 播放单位动画
  * 播放${Unit}的${动画名}动作
  * 通过'重置单位动作'恢复到普通的动作.
  */
-declare function SetUnitAnimation(
-  whichUnit: unit,
-  whichAnimation: string
-): void;
+declare function SetUnitAnimation(whichUnit: unit, whichAnimation: string): void;
 
 /**
  * 播放单位指定序号动动作[R]
  * 播放${单位}的第${序号}号动作
  * 可以指定播放所有的单位动画,不过需要自己多尝试.每个单位的动作序号不一样的.
  */
-declare function SetUnitAnimationByIndex(
-  whichUnit: unit,
-  whichAnimation: number
-): void;
+declare function SetUnitAnimationByIndex(whichUnit: unit, whichAnimation: number): void;
 
 /**
  * 播放单位动运作(指定概率)
@@ -6341,23 +5610,9 @@ declare function SetUnitFacing(whichUnit: unit, facingAngle: number): void;
  * 设置${单位}的面向角度为${Angle}度,使用时间${Time}秒
  * 面向角度采用角度制,0度为正东方向,90度为正北方向。不能超过单位的转身速度。
  */
-declare function SetUnitFacingTimed(
-  whichUnit: unit,
-  facingAngle: number,
-  duration: number
-): void;
-declare function SetUnitFlyHeight(
-  whichUnit: unit,
-  newHeight: number,
-  rate: number
-): void;
-declare function SetUnitFog(
-  a: number,
-  b: number,
-  c: number,
-  d: number,
-  e: number
-): void;
+declare function SetUnitFacingTimed(whichUnit: unit, facingAngle: number, duration: number): void;
+declare function SetUnitFlyHeight(whichUnit: unit, newHeight: number, rate: number): void;
+declare function SetUnitFog(a: number, b: number, c: number, d: number, e: number): void;
 
 /**
  * 设置无敌/可攻击
@@ -6392,11 +5647,7 @@ declare function SetUnitMoveSpeed(whichUnit: unit, newSpeed: number): void;
  * 改变${单位}所属为${Player}并${Change/RetainColor}
  *
  */
-declare function SetUnitOwner(
-  whichUnit: unit,
-  whichPlayer: player,
-  changeColor: boolean
-): void;
+declare function SetUnitOwner(whichUnit: unit, whichPlayer: player, changeColor: boolean): void;
 
 /**
  * 设置碰撞开关
@@ -6410,42 +5661,28 @@ declare function SetUnitPathing(whichUnit: unit, flag: boolean): void;
  * 立即移动${单位}到(${X},${Y})
  *
  */
-declare function SetUnitPosition(
-  whichUnit: unit,
-  newX: number,
-  newY: number
-): void;
+declare function SetUnitPosition(whichUnit: unit, newX: number, newY: number): void;
 
 /**
  * 移动单位(立即)(指定点)
  * 立即移动${单位}到${指定点}
  *
  */
-declare function SetUnitPositionLoc(
-  whichUnit: unit,
-  whichLocation: location
-): void;
+declare function SetUnitPositionLoc(whichUnit: unit, whichLocation: location): void;
 
 /**
  * 改变单位转向角度(弧度制)[R]
  * 改变${单位}的转向角度为${数值}(弧度制)
  * 设置单位转身时的转向角度.数值越大转向幅度越大.
  */
-declare function SetUnitPropWindow(
-  whichUnit: unit,
-  newPropWindowAngle: number
-): void;
+declare function SetUnitPropWindow(whichUnit: unit, newPropWindowAngle: number): void;
 
 /**
  * 设置可否营救(对玩家)[R]
  * 设置${单位}对${玩家}${Rescuable/Unrescuable}
  *
  */
-declare function SetUnitRescuable(
-  whichUnit: unit,
-  byWhichPlayer: player,
-  flag: boolean
-): void;
+declare function SetUnitRescuable(whichUnit: unit, byWhichPlayer: player, flag: boolean): void;
 
 /**
  * 设置营救范围
@@ -6471,11 +5708,7 @@ declare function SetUnitScale(
  * 设置${单位}的${属性}为${Value}
  *
  */
-declare function SetUnitState(
-  whichUnit: unit,
-  whichUnitState: unitstate,
-  newVal: number
-): void;
+declare function SetUnitState(whichUnit: unit, whichUnitState: unitstate, newVal: number): void;
 
 /**
  * 改变单位动画播放速度(按倍数)[R]
@@ -6538,12 +5771,7 @@ declare function SetUnitY(whichUnit: unit, newY: number): void;
  * 设置水颜色为:(${Red},${Green},${Blue}),透明值为:${Transparency}
  * 颜色格式为(红,绿,蓝).透明值0为不可见.颜色值和透明道值取值范围为0-255.
  */
-declare function SetWaterBaseColor(
-  red: number,
-  green: number,
-  blue: number,
-  alpha: number
-): void;
+declare function SetWaterBaseColor(red: number, green: number, blue: number, alpha: number): void;
 
 /**
  * 开启/关闭水面变形
@@ -6624,11 +5852,7 @@ declare function StartSound(soundHandle: sound): void;
  */
 declare function StopCamera(): void;
 declare function StopMusic(fadeOut: boolean): void;
-declare function StopSound(
-  soundHandle: sound,
-  killWhenDone: boolean,
-  fadeOut: boolean
-): void;
+declare function StopSound(soundHandle: sound, killWhenDone: boolean, fadeOut: boolean): void;
 
 /**
  * 记录布尔值
@@ -6659,12 +5883,7 @@ declare function StoreInteger(
  * 缓存:${GameCache}类别名:${Category}使用名称:${文字}记录:${实数}
  * 使用'游戏缓存-读取实数'来读取该数值.名称和类别名不能包含空格.
  */
-declare function StoreReal(
-  cache: gamecache,
-  missionKey: string,
-  key: string,
-  value: number
-): void;
+declare function StoreReal(cache: gamecache, missionKey: string, key: string, value: number): void;
 
 /**
  * 记录字符串
@@ -6720,31 +5939,11 @@ declare function SubString(source: string, start: number, end: number): string;
 declare function SuspendHeroXP(whichHero: unit, flag: boolean): void;
 declare function SuspendTimeOfDay(b: boolean): void;
 declare function SyncSelections(): void;
-declare function SyncStoredBoolean(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function SyncStoredInteger(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function SyncStoredReal(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function SyncStoredString(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
-declare function SyncStoredUnit(
-  cache: gamecache,
-  missionKey: string,
-  key: string
-): void;
+declare function SyncStoredBoolean(cache: gamecache, missionKey: string, key: string): void;
+declare function SyncStoredInteger(cache: gamecache, missionKey: string, key: string): void;
+declare function SyncStoredReal(cache: gamecache, missionKey: string, key: string): void;
+declare function SyncStoredString(cache: gamecache, missionKey: string, key: string): void;
+declare function SyncStoredUnit(cache: gamecache, missionKey: string, key: string): void;
 
 /**
  * 正切(弧度)[R]
@@ -6805,10 +6004,7 @@ declare function TerrainDeformRipple(
  * 停止${TerrainDeformation},衰退时间:${Duration}毫秒
  * 地形变化会平滑地过渡到无.
  */
-declare function TerrainDeformStop(
-  deformation: terraindeformation,
-  duration: number
-): void;
+declare function TerrainDeformStop(deformation: terraindeformation, duration: number): void;
 
 /**
  * 停止所有地形变化
@@ -6840,10 +6036,7 @@ declare function TerrainDeformWave(
  * 设置${计时器窗口}的状态为${Show/Hide}
  * 计时器窗口不能在地图初始化时显示.
  */
-declare function TimerDialogDisplay(
-  whichDialog: timerdialog,
-  display: boolean
-): void;
+declare function TimerDialogDisplay(whichDialog: timerdialog, display: boolean): void;
 declare function TimerDialogSetRealTimeRemaining(
   whichDialog: timerdialog,
   timeRemaining: number
@@ -6854,10 +6047,7 @@ declare function TimerDialogSetRealTimeRemaining(
  * 设置${TimerWindow}的时间流逝速度为${Factor}倍
  * 同时计时器显示时间也会随之变化.就是说60秒的计时器设置为2倍速则显示时间也会变为120秒.
  */
-declare function TimerDialogSetSpeed(
-  whichDialog: timerdialog,
-  speedMultFactor: number
-): void;
+declare function TimerDialogSetSpeed(whichDialog: timerdialog, speedMultFactor: number): void;
 
 /**
  * 改变计时器窗口计时颜色[R]
@@ -6871,10 +6061,7 @@ declare function TimerDialogSetTimeColor(
   blue: number,
   alpha: number
 ): void;
-declare function TimerDialogSetTitle(
-  whichDialog: timerdialog,
-  title: string
-): void;
+declare function TimerDialogSetTitle(whichDialog: timerdialog, title: string): void;
 
 /**
  * 改变计时器窗口文字颜色[R]
@@ -6921,10 +6108,7 @@ declare function TimerStart(
   periodic: boolean,
   handlerFunc: () => void
 ): void;
-declare function TriggerAddAction(
-  whichTrigger: trigger,
-  actionFunc: () => void
-): triggeraction;
+declare function TriggerAddAction(whichTrigger: trigger, actionFunc: () => void): triggeraction;
 declare function TriggerAddCondition(
   whichTrigger: trigger,
   condition: boolexpr | (() => boolean) | null
@@ -6952,10 +6136,7 @@ declare function TriggerExecuteWait(whichTrigger: trigger): void;
  * ${可破坏物}死亡
  * 使用'事件响应-死亡的可破坏物'来获取死亡物体.
  */
-declare function TriggerRegisterDeathEvent(
-  whichTrigger: trigger,
-  whichWidget: widget
-): event;
+declare function TriggerRegisterDeathEvent(whichTrigger: trigger, whichWidget: widget): event;
 
 /**
  * 对话框按钮被点击[R]
@@ -6966,10 +6147,7 @@ declare function TriggerRegisterDialogButtonEvent(
   whichTrigger: trigger,
   whichButton: button
 ): event;
-declare function TriggerRegisterDialogEvent(
-  whichTrigger: trigger,
-  whichDialog: dialog
-): event;
+declare function TriggerRegisterDialogEvent(whichTrigger: trigger, whichDialog: dialog): event;
 
 /**
  * 单位进入不规则区域(指定条件)[R]
@@ -6993,10 +6171,7 @@ declare function TriggerRegisterFilterUnitEvent(
  * 该游戏将在${EventType}后结束
  * 该事件只出现在Battle.net的自动匹配游戏.
  */
-declare function TriggerRegisterGameEvent(
-  whichTrigger: trigger,
-  whichGameEvent: gameevent
-): event;
+declare function TriggerRegisterGameEvent(whichTrigger: trigger, whichGameEvent: gameevent): event;
 declare function TriggerRegisterGameStateEvent(
   whichTrigger: trigger,
   whichState: gamestate,
@@ -7066,30 +6241,21 @@ declare function TriggerRegisterTimerEvent(
   timeout: number,
   periodic: boolean
 ): event;
-declare function TriggerRegisterTimerExpireEvent(
-  whichTrigger: trigger,
-  t: timer
-): event;
+declare function TriggerRegisterTimerExpireEvent(whichTrigger: trigger, t: timer): event;
 
 /**
  * 鼠标点击可追踪物[R]
  * 鼠标点击${可追踪物}
  *
  */
-declare function TriggerRegisterTrackableHitEvent(
-  whichTrigger: trigger,
-  t: trackable
-): event;
+declare function TriggerRegisterTrackableHitEvent(whichTrigger: trigger, t: trackable): event;
 
 /**
  * 鼠标移动到追踪对象[R]
  * 鼠标移动到${可追踪物}
  *
  */
-declare function TriggerRegisterTrackableTrackEvent(
-  whichTrigger: trigger,
-  t: trackable
-): event;
+declare function TriggerRegisterTrackableTrackEvent(whichTrigger: trigger, t: trackable): event;
 
 /**
  * 指定单位事件
@@ -7126,10 +6292,7 @@ declare function TriggerRegisterVariableEvent(
   opcode: limitop,
   limitval: number
 ): event;
-declare function TriggerRemoveAction(
-  whichTrigger: trigger,
-  whichAction: triggeraction
-): void;
+declare function TriggerRemoveAction(whichTrigger: trigger, whichAction: triggeraction): void;
 declare function TriggerRemoveCondition(
   whichTrigger: trigger,
   whichCondition: triggercondition
@@ -7144,10 +6307,7 @@ declare function TriggerSleepAction(timeout: number): void;
 declare function TriggerSyncReady(): void;
 declare function TriggerSyncStart(): void;
 declare function TriggerWaitForSound(s: sound, offset: number): void;
-declare function TriggerWaitOnSleeps(
-  whichTrigger: trigger,
-  flag: boolean
-): void;
+declare function TriggerWaitOnSleeps(whichTrigger: trigger, flag: boolean): void;
 
 /**
  * 添加技能[R]
@@ -7176,11 +6336,7 @@ declare function UnitAddItemById(whichUnit: unit, itemId: number): item;
  * 给予${单位}${物品类型}并放在物品栏#${数值}
  * 注意:物品栏编号从0-5,而不是1-6.该动作创建的物品不被'最后创建的物品'所记录.
  */
-declare function UnitAddItemToSlotById(
-  whichUnit: unit,
-  itemId: number,
-  itemSlot: number
-): boolean;
+declare function UnitAddItemToSlotById(whichUnit: unit, itemId: number, itemSlot: number): boolean;
 declare function UnitAddSleep(whichUnit: unit, add: boolean): void;
 
 /**
@@ -7202,11 +6358,7 @@ declare function UnitAddType(whichUnit: unit, whichUnitType: unittype): boolean;
  * 为${单位}设置${BuffType}类型的生命周期,持续时间为${Duration}秒
  *
  */
-declare function UnitApplyTimedLife(
-  whichUnit: unit,
-  buffId: number,
-  duration: number
-): void;
+declare function UnitApplyTimedLife(whichUnit: unit, buffId: number, duration: number): void;
 declare function UnitCanSleep(whichUnit: unit): boolean;
 declare function UnitCanSleepPerm(whichUnit: unit): boolean;
 
@@ -7260,28 +6412,15 @@ declare function UnitDamageTarget(
   damageType: damagetype,
   weaponType: weapontype
 ): boolean;
-declare function UnitDropItemPoint(
-  whichUnit: unit,
-  whichItem: item,
-  x: number,
-  y: number
-): boolean;
+declare function UnitDropItemPoint(whichUnit: unit, whichItem: item, x: number, y: number): boolean;
 
 /**
  * 移动物品到物品栏
  * 命令${单位}移动${物品}到物品栏第${Index}格
  * 只有当单位持有该物品时才有效.
  */
-declare function UnitDropItemSlot(
-  whichUnit: unit,
-  whichItem: item,
-  slot: number
-): boolean;
-declare function UnitDropItemTarget(
-  whichUnit: unit,
-  whichItem: item,
-  target: widget
-): boolean;
+declare function UnitDropItemSlot(whichUnit: unit, whichItem: item, slot: number): boolean;
+declare function UnitDropItemTarget(whichUnit: unit, whichItem: item, target: widget): boolean;
 declare function UnitHasBuffsEx(
   whichUnit: unit,
   removePositive: boolean,
@@ -7323,10 +6462,7 @@ declare function UnitMakeAbilityPermanent(
  * 增加${英雄}${Value}点剩余技能点
  *
  */
-declare function UnitModifySkillPoints(
-  whichHero: unit,
-  skillPointDelta: number
-): boolean;
+declare function UnitModifySkillPoints(whichHero: unit, skillPointDelta: number): boolean;
 
 /**
  * 暂停/恢复生命周期[R]
@@ -7340,21 +6476,14 @@ declare function UnitPauseTimedLife(whichUnit: unit, flag: boolean): void;
  * 在${单位池}中添加一个${单位}比重为${数值}
  * 比重越高被选择的机率越大
  */
-declare function UnitPoolAddUnitType(
-  whichPool: unitpool,
-  unitId: number,
-  weight: number
-): void;
+declare function UnitPoolAddUnitType(whichPool: unitpool, unitId: number, weight: number): void;
 
 /**
  * 删除单位类型[R]
  * 从${单位池}中删除${单位}
  *
  */
-declare function UnitPoolRemoveUnitType(
-  whichPool: unitpool,
-  unitId: number
-): void;
+declare function UnitPoolRemoveUnitType(whichPool: unitpool, unitId: number): void;
 
 /**
  * 删除技能[R]
@@ -7378,20 +6507,14 @@ declare function UnitRemoveBuffsEx(
   autoDispel: boolean
 ): void;
 declare function UnitRemoveItem(whichUnit: unit, whichItem: item): void;
-declare function UnitRemoveItemFromSlot(
-  whichUnit: unit,
-  itemSlot: number
-): item;
+declare function UnitRemoveItemFromSlot(whichUnit: unit, itemSlot: number): item;
 
 /**
  * 删除类别
  * 删除${Classification}类别从${单位}
  * 并非所有类别都是可以删除的,建议使用新函数.
  */
-declare function UnitRemoveType(
-  whichUnit: unit,
-  whichUnitType: unittype
-): boolean;
+declare function UnitRemoveType(whichUnit: unit, whichUnitType: unittype): boolean;
 
 /**
  * 重置技能CD
@@ -7405,20 +6528,14 @@ declare function UnitResetCooldown(whichUnit: unit): void;
  * 设置${Building}的建造进度条为${Progress}%
  * 只作用于正在建造的建筑.
  */
-declare function UnitSetConstructionProgress(
-  whichUnit: unit,
-  constructionPercentage: number
-): void;
+declare function UnitSetConstructionProgress(whichUnit: unit, constructionPercentage: number): void;
 
 /**
  * 设置建筑升级进度条
  * 设置${Building}的升级进度条为${Progress}%
  * 只作用于正在升级的建筑.是建筑A升级为建筑B的升级,不是科技的研究.
  */
-declare function UnitSetUpgradeProgress(
-  whichUnit: unit,
-  upgradePercentage: number
-): void;
+declare function UnitSetUpgradeProgress(whichUnit: unit, upgradePercentage: number): void;
 declare function UnitSetUsesAltIcon(whichUnit: unit, flag: boolean): void;
 
 /**
@@ -7426,21 +6543,14 @@ declare function UnitSetUsesAltIcon(whichUnit: unit, flag: boolean): void;
  * 设置${单位}的视野对${Player}${on/off}
  *
  */
-declare function UnitShareVision(
-  whichUnit: unit,
-  whichPlayer: player,
-  share: boolean
-): void;
+declare function UnitShareVision(whichUnit: unit, whichPlayer: player, share: boolean): void;
 
 /**
  * 降低等级[R]
  * 降低${Hero}${Level}个等级
  * 只能降低等级.英雄经验将重置为该等级的初始值.
  */
-declare function UnitStripHeroLevel(
-  whichHero: unit,
-  howManyLevels: number
-): boolean;
+declare function UnitStripHeroLevel(whichHero: unit, howManyLevels: number): boolean;
 
 /**
  * 暂停尸体腐烂[R]
@@ -7461,23 +6571,14 @@ declare function UnitUseItem(whichUnit: unit, whichItem: item): boolean;
  * 命令${单位}使用${物品},目标坐标:(${X},${Y})
  *
  */
-declare function UnitUseItemPoint(
-  whichUnit: unit,
-  whichItem: item,
-  x: number,
-  y: number
-): boolean;
+declare function UnitUseItemPoint(whichUnit: unit, whichItem: item, x: number, y: number): boolean;
 
 /**
  * 使用物品(对单位)
  * 命令${单位}使用${物品},目标:${单位}
  *
  */
-declare function UnitUseItemTarget(
-  whichUnit: unit,
-  whichItem: item,
-  target: widget
-): boolean;
+declare function UnitUseItemTarget(whichUnit: unit, whichItem: item, target: widget): boolean;
 declare function UnitWakeUp(whichUnit: unit): void;
 declare function UnregisterStackedSound(
   soundHandle: sound,
@@ -7518,8 +6619,4 @@ declare function WaygateIsActive(waygate: unit): boolean;
  * 设置${传送门}的目的地为(${X},${Y})
  *
  */
-declare function WaygateSetDestination(
-  waygate: unit,
-  x: number,
-  y: number
-): void;
+declare function WaygateSetDestination(waygate: unit, x: number, y: number): void;

@@ -1,7 +1,6 @@
 import { Timer } from "../handles/timer";
 
 export * from "./color";
-export * from "./runtime";
 
 export async function sleep(howMuch: number): Promise<null> {
   return new Promise((resolve, reject) => {

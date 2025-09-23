@@ -19,17 +19,7 @@ export class Ubersplat extends Handle<ubersplat> {
       super();
       return;
     }
-    const handle = CreateUbersplat(
-      x,
-      y,
-      name,
-      red,
-      green,
-      blue,
-      alpha,
-      forcePaused,
-      noBirthTime
-    );
+    const handle = CreateUbersplat(x, y, name, red, green, blue, alpha, forcePaused, noBirthTime);
     if (handle === undefined) {
       Error("w3ts failed to create ubersplat handle.");
     }
@@ -47,17 +37,7 @@ export class Ubersplat extends Handle<ubersplat> {
     forcePaused: boolean,
     noBirthTime: boolean
   ): Ubersplat | undefined {
-    const handle = CreateUbersplat(
-      x,
-      y,
-      name,
-      red,
-      green,
-      blue,
-      alpha,
-      forcePaused,
-      noBirthTime
-    );
+    const handle = CreateUbersplat(x, y, name, red, green, blue, alpha, forcePaused, noBirthTime);
     if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Ubersplat;
 
@@ -99,9 +79,7 @@ export class Ubersplat extends Handle<ubersplat> {
     ShowUbersplat(this.handle, flag);
   }
 
-  public static fromHandle(
-    handle: ubersplat | undefined
-  ): Ubersplat | undefined {
+  public static fromHandle(handle: ubersplat | undefined): Ubersplat | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 }

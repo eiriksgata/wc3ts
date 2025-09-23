@@ -35,13 +35,7 @@ export class Unit extends Widget {
    * @param face The direction that the unit will be facing in degrees.
    * @param skinId The skin of the unit.
    */
-  constructor(
-    owner: MapPlayer,
-    unitId: number,
-    x: number,
-    y: number,
-    face?: number
-  ) {
+  constructor(owner: MapPlayer, unitId: number, x: number, y: number, face?: number) {
     if (Handle.initFromHandle() === true) {
       super();
       return;
@@ -285,9 +279,7 @@ export class Unit extends Widget {
   }
 
   public get owner(): MapPlayer {
-    return MapPlayer.fromHandle(
-      GetOwningPlayer(this.handle) as player
-    ) as MapPlayer;
+    return MapPlayer.fromHandle(GetOwningPlayer(this.handle) as player) as MapPlayer;
   }
 
   /**
@@ -518,11 +510,7 @@ export class Unit extends Widget {
     return UnitAddItemToSlotById(this.handle, itemId, itemSlot);
   }
 
-  public addItemToStock(
-    itemId: number,
-    currentStock: number,
-    stockMax: number
-  ) {
+  public addItemToStock(itemId: number, currentStock: number, stockMax: number) {
     AddItemToStock(this.handle, itemId, currentStock, stockMax);
   }
 
@@ -547,11 +535,7 @@ export class Unit extends Widget {
     return UnitAddType(this.handle, whichUnitType);
   }
 
-  public addUnitToStock(
-    unitId: number,
-    currentStock: number,
-    stockMax: number
-  ) {
+  public addUnitToStock(unitId: number, currentStock: number, stockMax: number) {
     AddUnitToStock(this.handle, unitId, currentStock, stockMax);
   }
 
@@ -672,10 +656,7 @@ export class Unit extends Widget {
     return UnitDropItemSlot(this.handle, whichItem.handle, slot);
   }
 
-  public dropItemTarget(
-    whichItem: Item,
-    target: Widget /* | Unit | Item | Destructable */
-  ) {
+  public dropItemTarget(whichItem: Item, target: Widget /* | Unit | Item | Destructable */) {
     return UnitDropItemTarget(this.handle, whichItem.handle, target.handle);
   }
 
@@ -850,20 +831,8 @@ export class Unit extends Widget {
     instantTargetWidget: Widget
   ) {
     return typeof order === "string"
-      ? IssueInstantPointOrder(
-          this.handle,
-          order,
-          x,
-          y,
-          instantTargetWidget.handle
-        )
-      : IssueInstantPointOrderById(
-          this.handle,
-          order,
-          x,
-          y,
-          instantTargetWidget.handle
-        );
+      ? IssueInstantPointOrder(this.handle, order, x, y, instantTargetWidget.handle)
+      : IssueInstantPointOrderById(this.handle, order, x, y, instantTargetWidget.handle);
   }
 
   public issueInstantTargetOrder(
@@ -872,12 +841,7 @@ export class Unit extends Widget {
     instantTargetWidget: Widget
   ) {
     return typeof order === "string"
-      ? IssueInstantTargetOrder(
-          this.handle,
-          order,
-          targetWidget.handle,
-          instantTargetWidget.handle
-        )
+      ? IssueInstantTargetOrder(this.handle, order, targetWidget.handle, instantTargetWidget.handle)
       : IssueInstantTargetOrderById(
           this.handle,
           order,
@@ -962,14 +926,7 @@ export class Unit extends Widget {
     offsetY: number,
     offsetZ: number
   ) {
-    SetUnitLookAt(
-      this.handle,
-      whichBone,
-      lookAtTarget.handle,
-      offsetX,
-      offsetY,
-      offsetZ
-    );
+    SetUnitLookAt(this.handle, whichBone, lookAtTarget.handle, offsetX, offsetY, offsetZ);
   }
 
   /**
@@ -1250,12 +1207,7 @@ export class Unit extends Widget {
    * @param blue An integer from 0-255 determining the amount of blue color.
    * @param alpha An integer from 0-255 determining the amount of alpha color.
    */
-  public setVertexColor(
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number
-  ) {
+  public setVertexColor(red: number, green: number, blue: number, alpha: number) {
     SetUnitVertexColor(this.handle, red, green, blue, alpha);
   }
 
@@ -1323,9 +1275,7 @@ export class Unit extends Widget {
     return this.fromHandle(GetFilterUnit());
   }
 
-  public static override fromHandle(
-    handle: unit | undefined
-  ): Unit | undefined {
+  public static override fromHandle(handle: unit | undefined): Unit | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 

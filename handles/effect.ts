@@ -64,11 +64,7 @@ export class Effect extends Handle<effect> {
    * @param x
    * @param y
    */
-  public static create(
-    modelName: string,
-    x: number,
-    y: number
-  ): Effect | undefined {
+  public static create(modelName: string, x: number, y: number): Effect | undefined {
     const handle = AddSpecialEffect(modelName, x, y);
     if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
@@ -96,11 +92,7 @@ export class Effect extends Handle<effect> {
     targetWidget: Widget,
     attachPointName: string
   ): Effect | undefined {
-    const handle = AddSpecialEffectTarget(
-      modelName,
-      targetWidget.handle,
-      attachPointName
-    );
+    const handle = AddSpecialEffectTarget(modelName, targetWidget.handle, attachPointName);
     if (handle !== null && handle !== undefined) {
       const obj = this.getObject(handle) as Effect;
 

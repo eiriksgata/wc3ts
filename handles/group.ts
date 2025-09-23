@@ -147,10 +147,7 @@ export class Group extends Handle<group> {
   /**
    * @note In contrast to other Enum-functions this function enumarates units with locust.
    */
-  public enumUnitsOfPlayer(
-    whichPlayer: MapPlayer,
-    filter: boolexpr | (() => boolean)
-  ) {
+  public enumUnitsOfPlayer(whichPlayer: MapPlayer, filter: boolexpr | (() => boolean)) {
     GroupEnumUnitsOfPlayer(
       this.handle,
       whichPlayer.handle,
@@ -182,10 +179,7 @@ export class Group extends Handle<group> {
     );
   }
 
-  public enumUnitsSelected(
-    whichPlayer: MapPlayer,
-    filter: boolexpr | (() => boolean)
-  ) {
+  public enumUnitsSelected(whichPlayer: MapPlayer, filter: boolexpr | (() => boolean)) {
     GroupEnumUnitsSelected(
       this.handle,
       whichPlayer.handle,

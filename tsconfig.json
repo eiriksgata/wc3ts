@@ -4,9 +4,7 @@
     "lib": ["ESNext"],
     "moduleResolution": "Classic",
     "outDir": "./dist",
-    "types": [
-      "lua-types/5.3"
-    ],
+    "types": ["lua-types/5.3"],
     "declaration": true,
     "allowJs": false,
     "strict": true,
@@ -17,21 +15,13 @@
     "noImplicitReturns": true,
     "newLine": "lf"
   },
-  "include": [
-    "./index.ts",
-    "globals",
-    "handles",
-    "system",
-    "types"
-  ],
-  "exclude": [
-    "globals/ydlua.ts"
-  ],
+  "include": ["./index.ts", "globals", "handles", "system", "types", "config.ts"],
+  "exclude": ["globals/ydlua.ts"],
   "tstl": {
     "buildMode": "library",
     "luaTarget": "5.3",
     "noHeader": true,
     "noImplicitSelf": true,
-    "sourceMapTraceback": false,
+    "sourceMapTraceback": false
   }
 }

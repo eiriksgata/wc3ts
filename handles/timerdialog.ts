@@ -61,12 +61,7 @@ export class TimerDialog extends Handle<timerdialog> {
    * @param blue An integer from 0-255 determining the amount of red color.
    * @param alpha An integer from 0-255 determining the amount of red color.
    */
-  public setTitleColor(
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number
-  ) {
+  public setTitleColor(red: number, green: number, blue: number, alpha: number) {
     TimerDialogSetTitleColor(this.handle, red, green, blue, alpha);
   }
 
@@ -81,9 +76,7 @@ export class TimerDialog extends Handle<timerdialog> {
     TimerDialogSetTimeColor(this.handle, red, green, blue, alpha);
   }
 
-  public static fromHandle(
-    handle: timerdialog | undefined
-  ): TimerDialog | undefined {
+  public static fromHandle(handle: timerdialog | undefined): TimerDialog | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 }

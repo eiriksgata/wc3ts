@@ -104,11 +104,7 @@ export class Camera {
    * @param offset
    * @param duration
    */
-  public static adjustField(
-    whichField: camerafield,
-    offset: number,
-    duration: number
-  ) {
+  public static adjustField(whichField: camerafield, offset: number, duration: number) {
     AdjustCameraField(whichField, offset, duration);
   }
 
@@ -139,12 +135,7 @@ export class Camera {
     }
   }
 
-  public static panTimed(
-    x: number,
-    y: number,
-    duration: number,
-    zOffsetDest: number | undefined
-  ) {
+  public static panTimed(x: number, y: number, duration: number, zOffsetDest: number | undefined) {
     if (zOffsetDest === undefined) {
       PanCameraToTimed(x, y, duration);
     } else {
@@ -169,11 +160,7 @@ export class Camera {
     SetCameraBounds(x1, y1, x2, y2, x3, y3, x4, y4);
   }
 
-  public static setCameraOrientController(
-    whichUnit: unit,
-    xOffset: number,
-    yOffset: number
-  ) {
+  public static setCameraOrientController(whichUnit: unit, xOffset: number, yOffset: number) {
     SetCameraOrientController(whichUnit, xOffset, yOffset);
   }
 
@@ -185,39 +172,19 @@ export class Camera {
     SetCineFilterDuration(duration);
   }
 
-  public static setCineFilterEndColor(
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number
-  ) {
+  public static setCineFilterEndColor(red: number, green: number, blue: number, alpha: number) {
     SetCineFilterEndColor(red, green, blue, alpha);
   }
 
-  public static setCineFilterEndUV(
-    minU: number,
-    minV: number,
-    maxU: number,
-    maxV: number
-  ) {
+  public static setCineFilterEndUV(minU: number, minV: number, maxU: number, maxV: number) {
     SetCineFilterEndUV(minU, minV, maxU, maxV);
   }
 
-  public static setCineFilterStartColor(
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number
-  ) {
+  public static setCineFilterStartColor(red: number, green: number, blue: number, alpha: number) {
     SetCineFilterStartColor(red, green, blue, alpha);
   }
 
-  public static setCineFilterStartUV(
-    minU: number,
-    minV: number,
-    maxU: number,
-    maxV: number
-  ) {
+  public static setCineFilterStartUV(minU: number, minV: number, maxU: number, maxV: number) {
     SetCineFilterStartUV(minU, minV, maxU, maxV);
   }
 
@@ -241,21 +208,10 @@ export class Camera {
     sceneDuration: number,
     voiceoverDuration: number
   ) {
-    SetCinematicScene(
-      portraitUnitId,
-      color,
-      speakerTitle,
-      text,
-      sceneDuration,
-      voiceoverDuration
-    );
+    SetCinematicScene(portraitUnitId, color, speakerTitle, text, sceneDuration, voiceoverDuration);
   }
 
-  public static setField(
-    whichField: camerafield,
-    value: number,
-    duration: number
-  ) {
+  public static setField(whichField: camerafield, value: number, duration: number) {
     SetCameraField(whichField, value, duration);
   }
 
@@ -263,12 +219,7 @@ export class Camera {
     SetCameraPosition(x, y);
   }
 
-  public static setRotateMode(
-    x: number,
-    y: number,
-    radiansToSweep: number,
-    duration: number
-  ) {
+  public static setRotateMode(x: number, y: number, radiansToSweep: number, duration: number) {
     SetCameraRotateMode(x, y, radiansToSweep, duration);
   }
 
@@ -276,11 +227,7 @@ export class Camera {
     CameraSetSmoothingFactor(factor);
   }
 
-  public static setSourceNoise(
-    mag: number,
-    velocity: number,
-    vertOnly = false
-  ) {
+  public static setSourceNoise(mag: number, velocity: number, vertOnly = false) {
     CameraSetSourceNoiseEx(mag, velocity, vertOnly);
   }
 
@@ -293,11 +240,7 @@ export class Camera {
     SetCameraTargetController(whichUnit, xOffset, yOffset, inheritOrientation);
   }
 
-  public static setTargetNoise(
-    mag: number,
-    velocity: number,
-    vertOnly = false
-  ) {
+  public static setTargetNoise(mag: number, velocity: number, vertOnly = false) {
     CameraSetTargetNoiseEx(mag, velocity, vertOnly);
   }
 
@@ -478,9 +421,7 @@ export class CameraSetup extends Handle<camerasetup> {
     CameraSetupSetField(this.handle, whichField, value, duration);
   }
 
-  public static fromHandle(
-    handle: camerasetup | undefined
-  ): CameraSetup | undefined {
+  public static fromHandle(handle: camerasetup | undefined): CameraSetup | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 }

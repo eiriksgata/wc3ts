@@ -102,9 +102,7 @@ export class FogModifier extends Handle<fogmodifier> {
     FogModifierStop(this.handle);
   }
 
-  public static fromHandle(
-    handle: fogmodifier | undefined
-  ): FogModifier | undefined {
+  public static fromHandle(handle: fogmodifier | undefined): FogModifier | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 

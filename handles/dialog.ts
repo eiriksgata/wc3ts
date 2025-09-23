@@ -7,13 +7,7 @@ export class DialogButton extends Handle<button> {
   /**
    * @deprecated use `DialogButton.create` instead.
    */
-  constructor(
-    whichDialog: Dialog,
-    text: string,
-    hotkey = 0,
-    quit = false,
-    score = false
-  ) {
+  constructor(whichDialog: Dialog, text: string, hotkey = 0, quit = false, score = false) {
     if (Handle.initFromHandle()) {
       super();
       return;
@@ -65,9 +59,7 @@ export class DialogButton extends Handle<button> {
     return this.fromHandle(GetClickedButton());
   }
 
-  public static fromHandle(
-    handle: button | undefined
-  ): DialogButton | undefined {
+  public static fromHandle(handle: button | undefined): DialogButton | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 }
