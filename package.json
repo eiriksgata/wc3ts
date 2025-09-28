@@ -28,6 +28,14 @@
     "prettier": "^3.6.2",
     "typescript-to-lua": "^1.32.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eiriksgata/wc3ts-1.27a.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eiriksgata/wc3ts-1.27a/issues"
+  },
+  "homepage": "https://github.com/eiriksgata/wc3ts-1.27a#readme",
   "files": [
     "dist/**/*",
     "README.md",
