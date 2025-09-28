@@ -8,19 +8,23 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "global": ["./dist/types/index.d.ts"],
-      "types": ["./dist/types/index.d.ts"],
-      "types/*": ["./dist/types/*"]
+      "global": [
+        "./dist/types/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
+      ],
+      "types/*": [
+        "./dist/types/*"
+      ]
     }
   },
   "scripts": {
-    "build": "npm run clean && npm run build:types && npm run build:lua && npm run copy:types",
-    "build:types": "tsc -p tsconfig.build.json",
+    "build": "npm run clean && npm run build:lua && npm run copy:types",
+    "clean": "if exist dist rmdir /s /q dist",
     "build:lua": "tstl -p tsconfig.json",
-    "copy:types": "xcopy /E /I /Y types dist\\types && copy global.d.ts dist\\global.d.ts",
-    "prepublishOnly": "npm run build",
-    "test": "tsc --noEmit",
-    "clean": "if exist dist rmdir /s /q dist"
+    "copy:types": "xcopy /E /I /Y types dist\\types",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
