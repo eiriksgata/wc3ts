@@ -32,8 +32,8 @@
     "./index.ts",
     "globals",
     "handles",
-    "system",
-    "types"
+    "types",
+    "system"
   ],
   "exclude": [],
   "tstl": {
