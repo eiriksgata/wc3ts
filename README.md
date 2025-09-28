@@ -91,46 +91,12 @@ This library is designed to work seamlessly with TypeScriptToLua:
 
 ## Compatibility
 
-- **Warcraft III**: Version 1.27a and later
+- **Warcraft III**: Version 1.27a
 - **TypeScript**: 4.0+
 - **TypeScriptToLua**: 1.0+
 - **Lua**: 5.3
 
 ## Examples
-
-### Creating and Managing Units
-
-```typescript
-import { Unit, Player } from "w3ts";
-
-const player = Player.fromIndex(0);
-const unit = Unit.create(player, FourCC("hfoo"), 0, 0, 270);
-unit.setName("Custom Footman");
-unit.addAbility(FourCC("Amls"));
-```
-
-### UI Frame Management
-
-```typescript
-import { DzCreateFrame, DzFrameSetText } from "w3ts";
-
-const frame = DzCreateFrame("MyTextFrame", DzGetGameUI(), 0, 0);
-DzFrameSetText(frame, "Hello World!");
-```
-
-### Binary Data Operations
-
-```typescript
-import { BinaryWriter, BinaryReader } from "w3ts";
-
-const writer = new BinaryWriter();
-writer.writeInt32(42);
-writer.writeString("test");
-
-const data = writer.getBytes();
-const reader = new BinaryReader(data);
-const number = reader.readInt32(); // 42
-const text = reader.readString(); // "test"
 ```
 
 ## Contributing
@@ -144,4 +110,4 @@ MIT License - see LICENSE file for details.
 ## Related Projects
 
 - [TypeScriptToLua](https://typescripttolua.github.io/) - TypeScript to Lua transpiler
-- [wc3-ts-template](https://github.com/cipherxof/wc3-ts-template) - Project template for Warcraft III TypeScript development
+- [wc3-ts-template](https://github.com/Eiriksgata/wc3-map-ts-template) - Project template for Warcraft III TypeScript development
