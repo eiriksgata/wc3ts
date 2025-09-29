@@ -87,7 +87,7 @@ npx tstl
 ```
 src/
 ├── handles/        # Object-oriented wrappers for Warcraft III handles
-├── globals/        # Global constants and utility functions  
+├── globals/        # Global constants and utility functions
 ├── system/         # System utilities (file I/O, binary operations, etc.)
 ├── types/          # TypeScript declaration files for native APIs
 ├── utils/          # Utility functions and helpers
