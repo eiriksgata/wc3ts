@@ -22,10 +22,35 @@ A comprehensive TypeScript library for Warcraft III custom map development, prov
 npm install @eiriksgata/wc3ts
 ```
 
-## Quick Start
+## Usage
 
+This library provides TypeScript type definitions for Warcraft III custom map development. Use it with [TypeScriptToLua](https://typescripttolua.github.io/) in your project.
+
+### In Your Project
+
+1. Install this library and TypeScriptToLua:
+```bash
+npm install @eiriksgata/wc3ts
+npm install --save-dev typescript-to-lua
+```
+
+2. Configure your `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "bundler"
+  },
+  "tstl": {
+    "luaTarget": "5.3"
+  }
+}
+```
+
+3. Use in your code:
 ```typescript
-import { Unit, tsGlobals } from "wc3ts";
+import { Unit, tsGlobals } from "@eiriksgata/wc3ts";
 
 // Create a unit
 const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
@@ -34,9 +59,14 @@ const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0,
 hero.setName("My Custom Hero");
 hero.setLevel(10, true);
 
-// Access extended APIs
-import { DzCreateFrame } from "wc3ts";
+// Access extended APIs  
+import { DzCreateFrame } from "@eiriksgata/wc3ts";
 const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
+```
+
+4. Build your project:
+```bash
+npx tstl
 ```
 
 ## Project Structure

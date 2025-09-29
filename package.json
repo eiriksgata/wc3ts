@@ -4,12 +4,12 @@
   "description": "TypeScript API for Warcraft III custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
-  "main": "./dist/index.lua",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "npm run clean && npm run build:lua && npm run copy:types",
+    "build": "npm run clean && npm run build:ts && npm run copy:types",
     "clean": "rimraf dist",
-    "build:lua": "tstl -p tsconfig.json",
+    "build:ts": "tsc",
     "copy:types": "node scripts/copy-types.js",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext .ts --quiet",
@@ -21,18 +21,14 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@typescript-to-lua/language-extensions": "^1.19.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
-    "glob": "^11.0.3",
-    "lua-types": "^2.13.1",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "typescript": "^5.0.4",
-    "typescript-to-lua": "^1.32.0"
+    "typescript": "^5.6.3"
   },
   "repository": {
     "type": "git",

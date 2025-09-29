@@ -1,46 +1,35 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
-    "moduleResolution": "Classic",
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "bundler",
     "outDir": "./dist",
-    "types": [
-      "@typescript-to-lua/language-extensions",
-      "lua-types/core/coroutine",
-      "lua-types/core/global",
-      "lua-types/core/math",
-      "lua-types/core/metatable",
-      "lua-types/core/modules",
-      "lua-types/core/string",
-      "lua-types/core/table",
-      "lua-types/core/os",
-      "lua-types/special/5.3"
-    ],
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "allowJs": false,
     "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "newLine": "lf"
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": [
     "./index.ts",
-    "globals",
-    "handles",
-    "types",
-    "system"
+    "globals/**/*",
+    "handles/**/*", 
+    "types/**/*",
+    "system/**/*",
+    "utils/**/*"
   ],
-  "exclude": [],
-  "tstl": {
-    "buildMode": "library",
-    "luaTarget": "5.3",
-    "noHeader": true,
-    "noImplicitSelf": true,
-    "sourceMapTraceback": false
-  }
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
