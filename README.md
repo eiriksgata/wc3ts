@@ -24,7 +24,7 @@ npm install @eiriksgata/wc3ts
 
 ## Usage
 
-This library provides TypeScript type definitions for Warcraft III custom map development. Use it with [TypeScriptToLua](https://typescripttolua.github.io/) in your project.
+This library provides TypeScript source code and type definitions for Warcraft III custom map development. Use it directly with [TypeScriptToLua](https://typescripttolua.github.io/) in your project.
 
 ### In Your Project
 
@@ -38,12 +38,13 @@ npm install --save-dev typescript-to-lua
 ```json
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ES2020",
-    "moduleResolution": "bundler"
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "Classic"
   },
   "tstl": {
-    "luaTarget": "5.3"
+    "luaTarget": "5.3",
+    "buildMode": "library"
   }
 }
 ```
