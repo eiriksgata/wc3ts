@@ -8,6 +8,11 @@ on:
   release:
     types: [ created ]
 
+# 防止多个版本升级工作流同时运行
+concurrency:
+  group: version-bump
+  cancel-in-progress: false
+
 permissions:
   contents: write
   packages: write
