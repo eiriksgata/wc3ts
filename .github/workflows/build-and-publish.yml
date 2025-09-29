@@ -1,15 +1,16 @@
-name: Auto Build and Publish
+name: Build and Publish
 
 on:
   push:
     branches: [ main ]
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ created ]
 
 # 防止多个版本升级工作流同时运行
 concurrency:
-  group: version-bump
+  group: version-bump-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
@@ -20,13 +21,78 @@ permissions:
   checks: write
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+
+    - name: Run linting
+      run: npm run lint --if-present
+
+    - name: Run tests
+      run: npm test --if-present
+
+    - name: Build project
+      run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-${{ matrix.node-version }}
+        path: dist/
+
+  publish-release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'created'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@eiriksgata'
+
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+
+    - name: Build project
+      run: npm run build
+
+    - name: Publish to GitHub Packages
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  auto-publish:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Node.js
@@ -38,6 +104,9 @@ jobs:
 
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
+
+    - name: Run linting
+      run: npm run lint
 
     - name: Build project
       run: npm run build
@@ -63,7 +132,13 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
 
-    - name: Bump version if needed
+    - name: Publish current version
+      if: steps.version_check.outputs.needs_bump == 'false'
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Bump version and publish
       if: steps.version_check.outputs.needs_bump == 'true'
       run: |
         # 配置 Git
@@ -79,22 +154,23 @@ jobs:
         # 确定版本升级类型
         if [[ $COMMIT_MSG == *"BREAKING CHANGE"* ]] || [[ $COMMIT_MSG == *"major:"* ]]; then
           VERSION_TYPE="major"
+          echo "检测到重大更改，升级主版本号"
         elif [[ $COMMIT_MSG == *"feat:"* ]] || [[ $COMMIT_MSG == *"feature:"* ]]; then
           VERSION_TYPE="minor"
+          echo "检测到新功能，升级次版本号"
         else
           VERSION_TYPE="patch"
+          echo "升级补丁版本号"
         fi
-
-        echo "升级${VERSION_TYPE}版本号"
 
         # 智能版本升级：重试最多3次
         for attempt in {1..3}; do
           echo "Version bump attempt $attempt"
-          
+
           # 获取当前版本
           current_version=$(node -p "require('./package.json').version")
           echo "Current version: $current_version"
-          
+
           # 尝试升级版本
           if npm version $VERSION_TYPE; then
             echo "Version bump successful"
@@ -104,7 +180,7 @@ jobs:
           else
             echo "Version bump failed, tag may exist. Pulling latest changes..."
             git pull --rebase origin main || true
-            
+
             if [ $attempt -eq 3 ]; then
               echo "All version bump attempts failed. Skipping version bump."
               exit 0
@@ -113,17 +189,21 @@ jobs:
         done
 
         # 推送新标签和分支更改
-        git push --follow-tags
+        git push --follow-tags || {
+          echo "Push failed, trying tags only"
+          git push origin --tags
+        }
 
-    - name: Get updated version
+        # 发布到 GitHub Packages
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Get updated version for release
       if: steps.version_check.outputs.needs_bump == 'true'
       id: updated_version
       run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-
-    - name: Publish to GitHub Packages
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release
       if: steps.version_check.outputs.needs_bump == 'true'
@@ -134,14 +214,18 @@ jobs:
         tag_name: v${{ steps.updated_version.outputs.version }}
         release_name: Release v${{ steps.updated_version.outputs.version }}
         body: |
-          自动发布版本 v${{ steps.updated_version.outputs.version }}
+          🚀 自动发布版本 v${{ steps.updated_version.outputs.version }}
 
-          ## 更改
-          - 自动构建和发布
-
-          ## 安装
+          ## 📦 安装
           ```bash
-          npm install @eiriksgata/wc3ts@${{ steps.package.outputs.version }}
+          npm install @eiriksgata/wc3ts@${{ steps.updated_version.outputs.version }}
           ```
+
+          ## 🔗 Links
+          - [GitHub Packages](https://github.com/eiriksgata/wc3ts/packages)
+          - [文档](https://github.com/eiriksgata/wc3ts#readme)
+
+          ---
+          *This release was automatically created by GitHub Actions*
         draft: false
         prerelease: false
