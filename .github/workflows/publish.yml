@@ -137,9 +137,13 @@ jobs:
         fi
 
         # 拉取最新更改以避免冲突
-        git pull --rebase origin main || true
+        git pull --rebase origin main || {
+          echo "Rebase failed, trying to push tags only"
+          git push origin --tags
+          exit 0
+        }
 
-        # 推送新版本标签
+        # 推送新版本标签和分支更改
         git push --follow-tags
 
         # 发布到 GitHub Packages
