@@ -70,8 +70,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@eiriksgata'
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
@@ -79,10 +78,10 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: Publish to GitHub Packages
-      run: npm publish
+    - name: Publish to NPM
+      run: npm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   auto-publish:
     runs-on: ubuntu-latest
@@ -99,8 +98,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@eiriksgata'
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
@@ -121,22 +119,20 @@ jobs:
       id: version_check
       run: |
         # 检查当前版本是否已存在
-        if npm view ${{ steps.package.outputs.name }}@${{ steps.package.outputs.version }} --registry=https://npm.pkg.github.com > /dev/null 2>&1; then
+        if npm view ${{ steps.package.outputs.name }}@${{ steps.package.outputs.version }} > /dev/null 2>&1; then
           echo "需要更新版本号"
           echo "needs_bump=true" >> $GITHUB_OUTPUT
         else
           echo "版本号可用"
           echo "needs_bump=false" >> $GITHUB_OUTPUT
         fi
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
 
     - name: Publish current version
       if: steps.version_check.outputs.needs_bump == 'false'
-      run: npm publish
+      run: npm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Bump version and publish
       if: steps.version_check.outputs.needs_bump == 'true'
@@ -194,10 +190,10 @@ jobs:
           git push origin --tags
         }
 
-        # 发布到 GitHub Packages
-        npm publish
+        # 发布到 NPM
+        npm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Get updated version for release
@@ -222,7 +218,7 @@ jobs:
           ```
 
           ## 🔗 Links
-          - [GitHub Packages](https://github.com/eiriksgata/wc3ts/packages)
+          - [NPM Package](https://www.npmjs.com/package/@eiriksgata/wc3ts)
           - [文档](https://github.com/eiriksgata/wc3ts#readme)
 
           ---

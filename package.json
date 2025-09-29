@@ -4,19 +4,16 @@
   "description": "TypeScript API for Warcraft III custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "main": "./index.ts",
+  "main": "./dist/index.lua",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "npm run clean && npm run build:lua && npm run copy:types",
     "clean": "rimraf dist",
     "build:lua": "tstl -p tsconfig.json",
     "copy:types": "node scripts/copy-types.js",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint . --ext .ts --quiet",
     "lint:fix": "eslint . --ext .ts --fix",
-    "publish:github": "npm publish --registry=https://npm.pkg.github.com",
     "version:patch": "npm version patch && git push --follow-tags",
     "version:minor": "npm version minor && git push --follow-tags",
     "version:major": "npm version major && git push --follow-tags"
@@ -57,6 +54,5 @@
     "lua",
     "tstl",
     "game-development"
-  ],
-  "types": "./dist/index.d.ts"
+  ]
 }

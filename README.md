@@ -1,8 +1,7 @@
 # WC3TS - TypeScript API for Warcraft III
 
-[![Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/publish.yml)
-[![Auto Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/auto-publish.yml)
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/eiriksgata/wc3ts)](https://github.com/eiriksgata/wc3ts/packages)
+[![Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/build-and-publish.yml)
+[![NPM Version](https://img.shields.io/npm/v/@eiriksgata/wc3ts)](https://www.npmjs.com/package/@eiriksgata/wc3ts)
 
 A comprehensive TypeScript library for Warcraft III custom map development, providing type-safe bindings to the Warcraft III API.
 
@@ -19,20 +18,8 @@ A comprehensive TypeScript library for Warcraft III custom map development, prov
 
 ## Installation
 
-### From GitHub Packages (Recommended)
-
 ```bash
-# Configure npm to use GitHub Packages
-echo "@eiriksgata:registry=https://npm.pkg.github.com" >> .npmrc
-
-# Install the package
 npm install @eiriksgata/wc3ts
-```
-
-### From NPM (if available)
-
-```bash
-npm install wc3ts
 ```
 
 ## Quick Start
