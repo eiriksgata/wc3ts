@@ -1,13 +1,13 @@
-# WC3TS-1.27a 类型定义使用指南
+# WC3TS 类型定义使用指南
 
-本包提供了 Warcraft III 1.27a 的 TypeScript 类型定义，包含 JASS 函数和 WC3 特有的接口定义。
+本包提供了 Warcraft III 的 TypeScript 类型定义，包含 JASS 函数和 WC3 特有的接口定义。
 
 ## 安装
 
 ```bash
-yarn add wc3ts-1.27a
+yarn add wc3ts
 # 或
-npm install wc3ts-1.27a
+npm install wc3ts
 ```
 
 ## 在其他项目中使用类型定义
@@ -17,11 +17,11 @@ npm install wc3ts-1.27a
 在你的项目的主 TypeScript 文件（如 `src/index.ts` 或入口文件）中添加：
 
 ```typescript
-// 导入 WC3 类型定义（这会自动应用全局类型）
-import 'wc3ts-1.27a/global';
+```typescript
+import 'wc3ts/global';
 
-// 现在你可以使用 WC3 的类型和函数了
-import { Unit, Player } from 'wc3ts-1.27a';
+// 现在可以直接使用 WC3 类型和函数
+import { Unit, Player } from 'wc3ts';
 
 // 全局类型现在可用（如 print 函数）
 print("Hello WC3!");
@@ -39,7 +39,7 @@ const unit = Unit.create(player, FourCC('hfoo'), 0, 0, 270);
 {
   "compilerOptions": {
     "types": [
-      "wc3ts-1.27a/types",
+      "wc3ts/types",
       "@typescript-to-lua/language-extensions",
       "lua-types/5.3"
     ],
@@ -47,7 +47,7 @@ const unit = Unit.create(player, FourCC('hfoo'), 0, 0, 270);
   },
   "include": [
     // 或者直接在这里引用
-    "node_modules/wc3ts-1.27a/dist/types/index.d.ts"
+    "node_modules/wc3ts/dist/types/index.d.ts"
   ]
 }
 ```
@@ -57,7 +57,7 @@ const unit = Unit.create(player, FourCC('hfoo'), 0, 0, 270);
 在你的 TypeScript 文件顶部添加：
 
 ```typescript
-/// <reference types="wc3ts-1.27a/types" />
+/// <reference types="wc3ts/types" />
 
 // 现在 WC3 类型可用
 const unit = CreateUnit(Player(0), FourCC('hfoo'), 0, 0, 270);
@@ -87,7 +87,7 @@ const unit = CreateUnit(Player(0), FourCC('hfoo'), 0, 0, 270);
     "types": [
       "@typescript-to-lua/language-extensions",
       "lua-types/5.3",
-      "wc3ts-1.27a/types"
+      "wc3ts/types"
     ],
     "strict": true
   },
@@ -103,7 +103,7 @@ const unit = CreateUnit(Player(0), FourCC('hfoo'), 0, 0, 270);
 ```json
 {
   "dependencies": {
-    "wc3ts-1.27a": "^1.0.0"
+    "wc3ts": "^1.0.0"
   },
   "devDependencies": {
     "@typescript-to-lua/language-extensions": "^1.19.0",

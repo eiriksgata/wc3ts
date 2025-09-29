@@ -1,16 +1,25 @@
 {
-  "name": "wc3ts-1.27a",
+  "name": "@eiriksgata/wc3ts",
   "version": "1.0.0",
-  "description": "TypeScript API for Warcraft III 1.27a custom maps.",
+  "description": "TypeScript API for Warcraft III custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "./index.ts",
   "scripts": {
     "build": "npm run clean && npm run build:lua && npm run copy:types",
     "clean": "if exist dist rmdir /s /q dist",
     "build:lua": "tstl -p tsconfig.json",
     "copy:types": "xcopy /E /I /Y types dist\\types",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "eslint . --ext .ts --quiet",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com",
+    "version:patch": "npm version patch && git push --follow-tags",
+    "version:minor": "npm version minor && git push --follow-tags",
+    "version:major": "npm version major && git push --follow-tags"
   },
   "peerDependencies": {
     "lua-types": "^2.13.1",
@@ -30,12 +39,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eiriksgata/wc3ts-1.27a.git"
+    "url": "git+https://github.com/eiriksgata/wc3ts.git"
   },
   "bugs": {
-    "url": "https://github.com/eiriksgata/wc3ts-1.27a/issues"
+    "url": "https://github.com/eiriksgata/wc3ts/issues"
   },
-  "homepage": "https://github.com/eiriksgata/wc3ts-1.27a#readme",
+  "homepage": "https://github.com/eiriksgata/wc3ts#readme",
   "files": [
     "dist/**/*",
     "README.md",

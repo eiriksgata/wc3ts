@@ -1,0 +1,102 @@
+name: Auto Build and Publish
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@eiriksgata'
+
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+
+    - name: Build project
+      run: npm run build
+
+    - name: Get package info
+      id: package
+      run: |
+        echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+
+    - name: Check if version needs bump
+      id: version_check
+      run: |
+        # 检查当前版本是否已存在
+        if npm view ${{ steps.package.outputs.name }}@${{ steps.package.outputs.version }} --registry=https://npm.pkg.github.com > /dev/null 2>&1; then
+          echo "需要更新版本号"
+          echo "needs_bump=true" >> $GITHUB_OUTPUT
+        else
+          echo "版本号可用"
+          echo "needs_bump=false" >> $GITHUB_OUTPUT
+        fi
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
+
+    - name: Bump version if needed
+      if: steps.version_check.outputs.needs_bump == 'true'
+      run: |
+        # 配置 Git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+        # 获取最新的提交信息来决定版本升级类型
+        COMMIT_MSG=$(git log -1 --pretty=%B)
+
+        if [[ $COMMIT_MSG == *"BREAKING CHANGE"* ]] || [[ $COMMIT_MSG == *"major:"* ]]; then
+          echo "升级主版本号"
+          npm version major
+        elif [[ $COMMIT_MSG == *"feat:"* ]] || [[ $COMMIT_MSG == *"feature:"* ]]; then
+          echo "升级次版本号"
+          npm version minor
+        else
+          echo "升级补丁版本号"
+          npm version patch
+        fi
+
+        # 推送新标签
+        git push --follow-tags
+
+    - name: Publish to GitHub Packages
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create Release
+      if: steps.version_check.outputs.needs_bump == 'true'
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.package.outputs.version }}
+        release_name: Release v${{ steps.package.outputs.version }}
+        body: |
+          自动发布版本 v${{ steps.package.outputs.version }}
+
+          ## 更改
+          - 自动构建和发布
+
+          ## 安装
+          ```bash
+          npm install @eiriksgata/wc3ts@${{ steps.package.outputs.version }}
+          ```
+        draft: false
+        prerelease: false

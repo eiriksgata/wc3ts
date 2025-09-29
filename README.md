@@ -1,6 +1,10 @@
-# w3ts - TypeScript API for Warcraft III
+# WC3TS - TypeScript API for Warcraft III
 
-A comprehensive TypeScript library for Warcraft III 1.27a custom map development, providing type-safe bindings to the Warcraft III API.
+[![Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/publish.yml)
+[![Auto Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/auto-publish.yml)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/eiriksgata/wc3ts)](https://github.com/eiriksgata/wc3ts/packages)
+
+A comprehensive TypeScript library for Warcraft III custom map development, providing type-safe bindings to the Warcraft III API.
 
 ## Features
 
@@ -11,17 +15,30 @@ A comprehensive TypeScript library for Warcraft III 1.27a custom map development
 - ✅ **Handle System**: Object-oriented wrappers for Warcraft III handles
 - ✅ **Binary Operations**: Cross-platform binary data handling
 - ✅ **Extended APIs**: Support for extended APIs (DzAPI, JAPI)
+- 🚀 **Auto Publishing**: Automated builds and releases via GitHub Actions
 
 ## Installation
 
+### From GitHub Packages (Recommended)
+
 ```bash
-npm install w3ts
+# Configure npm to use GitHub Packages
+echo "@eiriksgata:registry=https://npm.pkg.github.com" >> .npmrc
+
+# Install the package
+npm install @eiriksgata/wc3ts
+```
+
+### From NPM (if available)
+
+```bash
+npm install wc3ts
 ```
 
 ## Quick Start
 
 ```typescript
-import { Unit, tsGlobals } from "w3ts";
+import { Unit, tsGlobals } from "wc3ts";
 
 // Create a unit
 const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
@@ -31,7 +48,7 @@ hero.setName("My Custom Hero");
 hero.setLevel(10, true);
 
 // Access extended APIs
-import { DzCreateFrame } from "w3ts";
+import { DzCreateFrame } from "wc3ts";
 const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
 ```
 
@@ -91,7 +108,7 @@ This library is designed to work seamlessly with TypeScriptToLua:
 
 ## Compatibility
 
-- **Warcraft III**: Version 1.27a
+- **Warcraft III**: 1.27a versions
 - **TypeScript**: 4.0+
 - **TypeScriptToLua**: 1.0+
 - **Lua**: 5.3
