@@ -8,6 +8,13 @@ on:
   release:
     types: [ created ]
 
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  actions: read
+  checks: write
+
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -7,6 +7,13 @@ on:
       - '**.md'
       - 'docs/**'
 
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  actions: read
+  checks: write
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest

@@ -10,9 +10,9 @@
   "main": "./index.ts",
   "scripts": {
     "build": "npm run clean && npm run build:lua && npm run copy:types",
-    "clean": "if exist dist rmdir /s /q dist",
+    "clean": "rimraf dist",
     "build:lua": "tstl -p tsconfig.json",
-    "copy:types": "xcopy /E /I /Y types dist\\types",
+    "copy:types": "node scripts/copy-types.js",
     "prepublish": "npm run build",
     "lint": "eslint . --ext .ts --quiet",
     "lint:fix": "eslint . --ext .ts --fix",
@@ -32,6 +32,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "lua-types": "^2.13.1",
     "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
     "typescript": "^5.0.4",
     "typescript-to-lua": "^1.32.0"
   },
