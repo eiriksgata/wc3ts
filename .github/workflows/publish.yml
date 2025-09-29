@@ -131,7 +131,10 @@ jobs:
         git config --local user.name "GitHub Action"
 
         # 自动升级版本号（补丁版本）
-        npm version patch
+        if ! npm version patch; then
+          echo "Version bump failed, tag may already exist"
+          exit 1
+        fi
 
         # 推送新版本标签
         git push --follow-tags

@@ -68,15 +68,25 @@ jobs:
         # 获取最新的提交信息来决定版本升级类型
         COMMIT_MSG=$(git log -1 --pretty=%B)
 
+        # 尝试版本升级，如果失败则跳过
         if [[ $COMMIT_MSG == *"BREAKING CHANGE"* ]] || [[ $COMMIT_MSG == *"major:"* ]]; then
           echo "升级主版本号"
-          npm version major
+          if ! npm version major; then
+            echo "Major version bump failed, tag may already exist"
+            exit 1
+          fi
         elif [[ $COMMIT_MSG == *"feat:"* ]] || [[ $COMMIT_MSG == *"feature:"* ]]; then
           echo "升级次版本号"
-          npm version minor
+          if ! npm version minor; then
+            echo "Minor version bump failed, tag may already exist"
+            exit 1
+          fi
         else
           echo "升级补丁版本号"
-          npm version patch
+          if ! npm version patch; then
+            echo "Patch version bump failed, tag may already exist"
+            exit 1
+          fi
         fi
 
         # 推送新标签
