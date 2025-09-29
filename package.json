@@ -4,14 +4,12 @@
   "description": "TypeScript API for Warcraft III custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts --quiet",
+    "lint:fix": "eslint src --ext .ts --fix",
     "prepublishOnly": "npm run lint",
-    "lint": "eslint . --ext .ts --quiet",
-    "lint:fix": "eslint . --ext .ts --fix",
     "version:patch": "npm version patch && git push --follow-tags",
     "version:minor": "npm version minor && git push --follow-tags",
     "version:major": "npm version major && git push --follow-tags"
@@ -37,12 +35,8 @@
   },
   "homepage": "https://github.com/eiriksgata/wc3ts#readme",
   "files": [
-    "*.ts",
-    "globals/**/*.ts",
-    "handles/**/*.ts",
-    "system/**/*.ts",
-    "utils/**/*.ts",
-    "types/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
     "README.md",
     "LICENSE"
   ],

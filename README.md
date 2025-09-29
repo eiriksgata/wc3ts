@@ -24,13 +24,18 @@ npm install @eiriksgata/wc3ts
 
 ## Usage
 
-This library provides TypeScript source code and type definitions for Warcraft III custom map development. Use it directly with [TypeScriptToLua](https://typescripttolua.github.io/) in your project.
+This is a TypeScript library for Warcraft III custom map development, designed to be used as a dependency in TypeScriptToLua (TSTL) projects.
 
-### In Your Project
+### Installation
 
-1. Install this library and TypeScriptToLua:
 ```bash
 npm install @eiriksgata/wc3ts
+```
+
+### In Your TSTL Project
+
+1. Install TypeScriptToLua in your project:
+```bash
 npm install --save-dev typescript-to-lua
 ```
 
@@ -43,10 +48,17 @@ npm install --save-dev typescript-to-lua
     "moduleResolution": "Classic"
   },
   "tstl": {
-    "luaTarget": "5.3",
-    "buildMode": "library"
+    "luaTarget": "5.3"
   }
 }
+```
+
+3. Import and use in your code:
+```typescript
+import { Unit, tsGlobals } from "@eiriksgata/wc3ts";
+
+// Your code will be compiled to Lua by TSTL
+const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
 ```
 
 3. Use in your code:
@@ -60,7 +72,7 @@ const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0,
 hero.setName("My Custom Hero");
 hero.setLevel(10, true);
 
-// Access extended APIs  
+// Access extended APIs
 import { DzCreateFrame } from "@eiriksgata/wc3ts";
 const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
 ```
@@ -72,11 +84,17 @@ npx tstl
 
 ## Project Structure
 
-- `handles/` - Object-oriented wrappers for Warcraft III handles
-- `globals/` - Global constants and utility functions
-- `system/` - System utilities (file I/O, binary operations, etc.)
-- `types/` - TypeScript declaration files for native APIs
-- `utils/` - Utility functions and helpers
+```
+src/
+├── handles/        # Object-oriented wrappers for Warcraft III handles
+├── globals/        # Global constants and utility functions  
+├── system/         # System utilities (file I/O, binary operations, etc.)
+├── types/          # TypeScript declaration files for native APIs
+├── utils/          # Utility functions and helpers
+└── index.ts        # Main entry point
+```
+
+This library is structured as a pure TypeScript source dependency, allowing TSTL to compile it alongside your project code.
 
 ## API Reference
 
