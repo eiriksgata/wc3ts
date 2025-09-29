@@ -43,7 +43,7 @@ export class DialogButton extends Handle<button> {
       handle = DialogAddQuitButton(whichDialog.handle, score, text, hotkey);
     }
 
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as DialogButton;
 
       const values: Record<string, unknown> = {};
@@ -109,7 +109,7 @@ export class Dialog extends Handle<dialog> {
   public static create(): Dialog | undefined {
     const handle = DialogCreate();
 
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as Dialog;
 
       const values: Record<string, unknown> = {};

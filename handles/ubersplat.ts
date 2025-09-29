@@ -38,7 +38,7 @@ export class Ubersplat extends Handle<ubersplat> {
     noBirthTime: boolean
   ): Ubersplat | undefined {
     const handle = CreateUbersplat(x, y, name, red, green, blue, alpha, forcePaused, noBirthTime);
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as Ubersplat;
 
       const values: Record<string, unknown> = {};

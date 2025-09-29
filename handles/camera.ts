@@ -272,7 +272,7 @@ export class CameraSetup extends Handle<camerasetup> {
    */
   public static create(): CameraSetup | undefined {
     const handle = CreateCameraSetup();
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as CameraSetup;
 
       const values: Record<string, unknown> = {};

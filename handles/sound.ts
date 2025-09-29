@@ -68,7 +68,7 @@ export class Sound extends Handle<sound> {
       fadeOutRate,
       eaxSetting
     );
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as Sound;
 
       const values: Record<string, unknown> = {};

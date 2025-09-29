@@ -21,7 +21,7 @@ export class QuestItem extends Handle<questitem> {
 
   public static create(whichQuest: Quest): QuestItem | undefined {
     const handle = QuestCreateItem(whichQuest.handle);
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as QuestItem;
 
       const values: Record<string, unknown> = {};
@@ -68,7 +68,7 @@ export class Quest extends Handle<quest> {
    */
   public static create(): Quest | undefined {
     const handle = CreateQuest();
-    if (handle !== null && handle !== undefined) {
+    if (handle != null) {
       const obj = this.getObject(handle) as Quest;
 
       const values: Record<string, unknown> = {};

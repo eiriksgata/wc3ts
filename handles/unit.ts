@@ -71,7 +71,7 @@ export class Unit extends Widget {
     if (face === undefined) face = bj_UNIT_FACING;
     const handle = CreateUnit(owner.handle, unitId, x, y, face);
 
-    if (handle != undefined) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Unit;
 
       const values: Record<string, unknown> = {};

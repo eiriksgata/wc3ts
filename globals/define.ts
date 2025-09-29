@@ -1,8 +1,8 @@
 /// <reference path="../types/common.d.ts" />
 export const MAP_SPEED_NORMAL = () => ConvertGameSpeed(2);
 
-export const bj_PI = 3.14159265358979323846;
-export const bj_E = 2.71828182845904523536;
+export const bj_PI = Math.PI;
+export const bj_E = Math.E;
 export const bj_CELLWIDTH = 128.0;
 export const bj_CLIFFHEIGHT = 128.0;
 export const bj_UNIT_FACING = 270.0;
