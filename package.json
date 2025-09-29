@@ -1,6 +1,6 @@
 {
   "name": "@eiriksgata/wc3ts",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "TypeScript API for Warcraft III custom maps.",
   "author": "Eiriksgata",
   "license": "MIT",
