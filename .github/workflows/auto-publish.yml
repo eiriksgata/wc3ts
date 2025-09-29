@@ -82,6 +82,11 @@ jobs:
         # 推送新标签
         git push --follow-tags
 
+    - name: Get updated version
+      if: steps.version_check.outputs.needs_bump == 'true'
+      id: updated_version
+      run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
     - name: Publish to GitHub Packages
       run: npm publish
       env:
@@ -93,10 +98,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.package.outputs.version }}
-        release_name: Release v${{ steps.package.outputs.version }}
+        tag_name: v${{ steps.updated_version.outputs.version }}
+        release_name: Release v${{ steps.updated_version.outputs.version }}
         body: |
-          自动发布版本 v${{ steps.package.outputs.version }}
+          自动发布版本 v${{ steps.updated_version.outputs.version }}
 
           ## 更改
           - 自动构建和发布

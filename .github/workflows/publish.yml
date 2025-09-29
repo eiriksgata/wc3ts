@@ -117,6 +117,12 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Publish current version
+      if: steps.check_version.outputs.exists == 'false'
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Bump version and publish
       if: steps.check_version.outputs.exists == 'true'
       run: |
@@ -135,9 +141,3 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Publish current version
-      if: steps.check_version.outputs.exists == 'false'
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
