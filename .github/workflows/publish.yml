@@ -136,6 +136,9 @@ jobs:
           exit 1
         fi
 
+        # 拉取最新更改以避免冲突
+        git pull --rebase origin main || true
+
         # 推送新版本标签
         git push --follow-tags
 
