@@ -1,166 +1,54 @@
-# WC3TS - TypeScript API for Warcraft III
+# WC3TS - Warcraft III 的 TypeScript API
 
-[![Build and Publish](https://github.com/eiriksgata/wc3ts/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/eiriksgata/wc3ts/actions/workflows/build-and-publish.yml)
-[![NPM Version](https://img.shields.io/npm/v/@eiriksgata/wc3ts)](https://www.npmjs.com/package/@eiriksgata/wc3ts)
+[![NPM 版本](https://img.shields.io/npm/v/@eiriksgata/wc3ts)](https://www.npmjs.com/package/@eiriksgata/wc3ts)
+[![下载量](https://img.shields.io/npm/dm/@eiriksgata/wc3ts)](https://www.npmjs.com/package/@eiriksgata/wc3ts)
+[![许可证](https://img.shields.io/npm/l/@eiriksgata/wc3ts)](https://github.com/eiriksgata/wc3ts/blob/main/LICENSE)
 
-A comprehensive TypeScript library for Warcraft III custom map development, providing type-safe bindings to the Warcraft III API.
+这是一个用于 Warcraft III 自定义地图开发的 TypeScript 库，提供对游戏原生 API 的类型安全绑定。设计为供 [TypeScriptToLua](https://typescripttolua.github.io/) 项目作为源码依赖使用。
 
-## Features
+该项目只是提供接口和类型，并且提供对象封装。具体实现和使用，请参考wc3-map-ts-template
 
-- ✅ **Complete API Coverage**: Full TypeScript bindings for Warcraft III native functions
-- ✅ **Type Safety**: Strong typing for all game objects and functions
-- ✅ **Modern JavaScript**: Support for ES6+ features and modern JavaScript APIs
-- ✅ **Lua Compilation**: Built for use with [TypeScriptToLua](https://typescripttolua.github.io/)
-- ✅ **Handle System**: Object-oriented wrappers for Warcraft III handles
-- ✅ **Binary Operations**: Cross-platform binary data handling
-- ✅ **Extended APIs**: Support for extended APIs (DzAPI, JAPI)
-- 🚀 **Auto Publishing**: Automated builds and releases via GitHub Actions
+## 如何使用
 
-## Installation
+-使用[wc3-map-ts-template](https://github.com/eiriksgata/wc3-map-ts-template) 进行开发，该提供所有的环境集成。
 
-```bash
-npm install @eiriksgata/wc3ts
-```
 
-## Usage
+## ✨ 功能
 
-This is a TypeScript library for Warcraft III custom map development, designed to be used as a dependency in TypeScriptToLua (TSTL) projects.
+- 类型安全：为 Warcraft III API 提供完整的 TypeScript 定义
+- 覆盖全面：包含原生函数、句柄和扩展 API
+- 面向对象：现代化的类封装游戏对象
+- TSTL 兼容：优化用于 TypeScriptToLua 编译
+- 源码库：发布为纯 TypeScript 源码，方便二次编译
+- 扩展 API：支持 DzAPI、JAPI 等扩展
+- 系统工具：二进制 I/O、Base64、文件操作等
 
-### Installation
+## 安装
 
 ```bash
 npm install @eiriksgata/wc3ts
 ```
 
-### In Your TSTL Project
-
-1. Install TypeScriptToLua in your project:
-```bash
-npm install --save-dev typescript-to-lua
-```
-
-2. Configure your `tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext"],
-    "moduleResolution": "Classic"
-  },
-  "tstl": {
-    "luaTarget": "5.3"
-  }
-}
-```
-
-3. Import and use in your code:
-```typescript
-import { Unit, tsGlobals } from "@eiriksgata/wc3ts";
-
-// Your code will be compiled to Lua by TSTL
-const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
-```
-
-3. Use in your code:
-```typescript
-import { Unit, tsGlobals } from "@eiriksgata/wc3ts";
-
-// Create a unit
-const hero = Unit.create(tsGlobals.PLAYER_NEUTRAL_AGGRESSIVE, FourCC("Hpal"), 0, 0, 270);
-
-// Use handle methods
-hero.setName("My Custom Hero");
-hero.setLevel(10, true);
-
-// Access extended APIs
-import { DzCreateFrame } from "@eiriksgata/wc3ts";
-const frame = DzCreateFrame("MyFrame", DzGetGameUI(), 0, 0);
-```
-
-4. Build your project:
-```bash
-npx tstl
-```
-
-## Project Structure
+## 项目结构
 
 ```
 src/
-├── handles/        # Object-oriented wrappers for Warcraft III handles
-├── globals/        # Global constants and utility functions
-├── system/         # System utilities (file I/O, binary operations, etc.)
-├── types/          # TypeScript declaration files for native APIs
-├── utils/          # Utility functions and helpers
-└── index.ts        # Main entry point
+├── handles/        # 句柄封装（Unit、Player、Timer 等）
+├── globals/        # 全局常量、FourCC、命令常量等
+├── system/         # 系统工具（Base64、文件、二进制等）
+├── types/          # 类型声明文件（d.ts）
+├── utils/          # 工具函数（颜色等）
+└── index.ts        # 主入口
 ```
 
-This library is structured as a pure TypeScript source dependency, allowing TSTL to compile it alongside your project code.
+## API 概览
 
-## API Reference
+提供核心游戏对象和系统工具的类与函数，例如 `Unit`、`Player`、`Timer`、`Trigger`，以及 DzAPI/JAPI 相关的 UI 接口。详情请查看 `src/` 源码。
 
-### Core Handles
+## 贡献
 
-- `Unit` - Unit manipulation and control
-- `Player` - Player objects and operations
-- `Trigger` - Event handling and triggers
-- `Timer` - Timer management
-- `Effect` - Visual effects
-- `Frame` - UI frame manipulation (DzAPI)
-- `Item` - Item handling
-- `Group` - Unit group operations
+欢迎贡献！请在 GitHub 上提交 issue 或 PR，保持代码风格和类型安全。
 
-### System Utilities
+## 许可
 
-- `BinaryReader/Writer` - Cross-platform binary data handling
-- `Base64` - Base64 encoding/decoding
-- `File` - File operations
-- `Sync` - Multiplayer synchronization
-
-### Extended APIs
-
-- **DzAPI**: Enhanced UI and frame manipulation
-- **JAPI**: Extended game functions
-- **EX Functions**: Additional game extensions
-
-## Usage with TypeScriptToLua
-
-This library is designed to work seamlessly with TypeScriptToLua:
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext"],
-    "moduleResolution": "Classic",
-    "types": ["@typescript-to-lua/language-extensions", "lua-types/core/global"]
-  },
-  "tstl": {
-    "luaTarget": "5.3",
-    "buildMode": "library"
-  }
-}
-```
-
-## Compatibility
-
-- **Warcraft III**: 1.27a versions
-- **TypeScript**: 4.0+
-- **TypeScriptToLua**: 1.0+
-- **Lua**: 5.3
-
-## Examples
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Related Projects
-
-- [TypeScriptToLua](https://typescripttolua.github.io/) - TypeScript to Lua transpiler
-- [wc3-ts-template](https://github.com/Eiriksgata/wc3-map-ts-template) - Project template for Warcraft III TypeScript development
+MIT 许可 - 详情见 LICENSE 文件。
