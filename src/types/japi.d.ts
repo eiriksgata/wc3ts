@@ -1070,3 +1070,745 @@ declare function SetUnitState(whichUnit: unit, whichUnitState: unitstate, newVal
 
 declare function DzSetUnitName(unit: unit, name: string): void;
 declare function DzSetUnitProperName(unit: unit, properName: string): void;
+
+// ============= KKAPI 扩展函数 =============
+
+/**
+ * 获取当前选中的主要单位
+ * 获取当前选中的主要单位
+ * 返回玩家当前选中的主要单位，通常是选中单位组中的第一个单位
+ */
+declare function DzGetSelectedLeaderUnit(): unit;
+
+/**
+ * 判断聊天框是否打开
+ * 判断聊天框是否打开
+ * 检测玩家是否正在使用聊天框输入文字
+ */
+declare function DzIsChatBoxOpen(): boolean;
+
+/**
+ * 设置单位预选UI可见性
+ * 设置${单位}预选UI显示:${可见性}
+ * 控制单位的预选择界面是否可见
+ */
+declare function DzSetUnitPreselectUIVisible(whichUnit: unit, visible: boolean): void;
+
+/**
+ * 设置特效动画
+ * 设置${特效}播放动画序号${序号}标志${标志}
+ * 控制特效播放指定索引的动画
+ */
+declare function DzSetEffectAnimation(whichEffect: effect, index: number, flag: number): void;
+
+/**
+ * 设置特效位置
+ * 设置${特效}位置到(${X},${Y},${Z})
+ * 移动特效到指定的三维坐标
+ */
+declare function DzSetEffectPos(whichEffect: effect, x: number, y: number, z: number): void;
+
+/**
+ * 设置特效顶点颜色
+ * 设置${特效}颜色${颜色}
+ * 修改特效的整体颜色
+ */
+declare function DzSetEffectVertexColor(whichEffect: effect, color: number): void;
+
+/**
+ * 设置特效透明度
+ * 设置${特效}透明度${透明度}
+ * 修改特效的透明度，范围0-255
+ */
+declare function DzSetEffectVertexAlpha(whichEffect: effect, alpha: number): void;
+
+/**
+ * 设置特效模型
+ * 设置${特效}模型为${模型路径}
+ * 更换特效使用的模型文件
+ */
+declare function DzSetEffectModel(whichEffect: effect, model: string): void;
+
+/**
+ * 设置特效队伍颜色
+ * 设置${特效}队伍颜色为玩家${玩家ID}的颜色
+ * 将特效颜色设置为指定玩家的队伍颜色
+ */
+declare function DzSetEffectTeamColor(whichHandle: effect, playerId: number): void;
+
+/**
+ * 设置Frame剪切
+ * 设置${Frame}剪切${启用}
+ * 控制Frame是否启用剪切功能，超出范围的部分会被裁剪
+ */
+declare function DzFrameSetClip(whichframe: number, enable: boolean): void;
+
+/**
+ * 改变窗口大小
+ * 改变窗口大小为宽度${宽度}高度${高度}
+ * 修改游戏窗口的尺寸，返回是否成功
+ */
+declare function DzChangeWindowSize(width: number, height: number): boolean;
+
+/**
+ * 播放特效动画
+ * 播放${特效}动画${动画名}连接点${连接点}
+ * 播放特效的指定动画，可指定连接点
+ */
+declare function DzPlayEffectAnimation(whichEffect: effect, anim: string, link: string): void;
+
+/**
+ * 绑定特效
+ * 绑定${特效}到${父对象}的${连接点}
+ * 将特效绑定到指定对象的连接点上
+ */
+declare function DzBindEffect(parent: widget, attachPoint: string, whichEffect: effect): void;
+
+/**
+ * 解绑特效
+ * 解绑${特效}
+ * 解除特效与对象的绑定关系
+ */
+declare function DzUnbindEffect(whichEffect: effect): void;
+
+/**
+ * 设置控件精灵缩放
+ * 设置${控件}精灵缩放${缩放值}
+ * 修改控件精灵的缩放比例
+ */
+declare function DzSetWidgetSpriteScale(whichUnit: widget, scale: number): void;
+
+/**
+ * 设置特效缩放
+ * 设置${特效}缩放${缩放值}
+ * 修改特效的整体缩放比例
+ */
+declare function DzSetEffectScale(whichHandle: effect, scale: number): void;
+
+/**
+ * 获取特效顶点颜色
+ * 获取${特效}的顶点颜色
+ * 返回特效当前的顶点颜色值
+ */
+declare function DzGetEffectVertexColor(whichEffect: effect): number;
+
+/**
+ * 获取特效透明度
+ * 获取${特效}的透明度
+ * 返回特效当前的透明度值
+ */
+declare function DzGetEffectVertexAlpha(whichEffect: effect): number;
+
+/**
+ * 获取物品技能
+ * 获取${物品}的第${索引}个技能
+ * 返回物品指定索引位置的技能
+ */
+declare function DzGetItemAbility(whichEffect: item, index: number): ability;
+
+/**
+ * 获取Frame子控件数量
+ * 获取${Frame}的子控件数量
+ * 返回指定Frame包含的子控件数量
+ */
+declare function DzFrameGetChildrenCount(whichframe: number): number;
+
+/**
+ * 获取Frame子控件
+ * 获取${Frame}的第${索引}个子控件
+ * 返回指定Frame的第几个子控件
+ */
+declare function DzFrameGetChild(whichframe: number, index: number): number;
+
+/**
+ * 解锁BLP尺寸限制
+ * 解锁BLP尺寸限制${启用}
+ * 移除BLP贴图文件的尺寸限制
+ */
+declare function DzUnlockBlpSizeLimit(enable: boolean): void;
+
+/**
+ * 获取活跃的商店单位
+ * 获取${商店}对${玩家}的活跃状态
+ * 返回对指定玩家活跃的商店单位
+ */
+declare function DzGetActivePatron(store: unit, p: player): unit;
+
+/**
+ * 获取本地选中单位数量
+ * 获取本地选中单位数量
+ * 返回当前选中的单位数量
+ */
+declare function DzGetLocalSelectUnitCount(): number;
+
+/**
+ * 获取本地选中单位
+ * 获取本地选中单位${索引}
+ * 返回指定索引的选中单位
+ */
+declare function DzGetLocalSelectUnit(index: number): unit;
+
+/**
+ * 获取JASS字符串表数量
+ * 获取JASS字符串表数量
+ * 返回当前JASS字符串表中的条目数量
+ */
+declare function DzGetJassStringTableCount(): number;
+
+/**
+ * 从缓存移除模型
+ * 从缓存移除模型${路径}
+ * 将指定路径的模型从内存缓存中移除
+ */
+declare function DzModelRemoveFromCache(path: string): void;
+
+/**
+ * 清空模型缓存
+ * 清空所有模型缓存
+ * 将所有模型从内存缓存中移除
+ */
+declare function DzModelRemoveAllFromCache(): void;
+
+/**
+ * 获取信息面板选择按钮
+ * 获取信息面板选择按钮${索引}
+ * 返回信息面板中指定索引的选择按钮
+ */
+declare function DzFrameGetInfoPanelSelectButton(index: number): number;
+
+/**
+ * 获取信息面板Buff按钮
+ * 获取信息面板Buff按钮${索引}
+ * 返回信息面板中指定索引的Buff按钮
+ */
+declare function DzFrameGetInfoPanelBuffButton(index: number): number;
+
+/**
+ * 获取农民栏
+ * 获取农民栏Frame
+ * 返回农民/工人显示栏的Frame
+ */
+declare function DzFrameGetPeonBar(): number;
+
+/**
+ * 获取命令栏按钮数字文本
+ * 获取命令栏按钮${按钮}的数字文本Frame
+ * 返回命令栏按钮上显示数字的文本Frame
+ */
+declare function DzFrameGetCommandBarButtonNumberText(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮数字覆盖层
+ * 获取命令栏按钮${按钮}的数字覆盖层Frame
+ * 返回命令栏按钮数字覆盖层的Frame
+ */
+declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮冷却指示器
+ * 获取命令栏按钮${按钮}的冷却指示器Frame
+ * 返回命令栏按钮冷却显示的Frame
+ */
+declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮自动施法指示器
+ * 获取命令栏按钮${按钮}的自动施法指示器Frame
+ * 返回命令栏按钮自动施法指示的Frame
+ */
+declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: number): number;
+
+/**
+ * 切换FPS显示
+ * 切换FPS显示${显示}
+ * 控制是否显示帧率信息
+ */
+declare function DzToggleFPS(show: boolean): void;
+
+/**
+ * 获取FPS
+ * 获取当前FPS
+ * 返回当前的帧率值
+ */
+declare function DzGetFPS(): number;
+
+/**
+ * 世界坐标转小地图X坐标
+ * 世界坐标(${X},${Y})转小地图X坐标
+ * 将世界坐标转换为小地图上的X坐标
+ */
+declare function DzFrameWorldToMinimapPosX(x: number, y: number): number;
+
+/**
+ * 世界坐标转小地图Y坐标
+ * 世界坐标(${X},${Y})转小地图Y坐标
+ * 将世界坐标转换为小地图上的Y坐标
+ */
+declare function DzFrameWorldToMinimapPosY(x: number, y: number): number;
+
+/**
+ * 设置控件小地图图标
+ * 设置${单位}小地图图标为${路径}
+ * 更改单位在小地图上显示的图标
+ */
+declare function DzWidgetSetMinimapIcon(whichunit: unit, path: string): void;
+
+/**
+ * 设置控件小地图图标启用
+ * 设置${单位}小地图图标启用${启用}
+ * 控制单位在小地图上的图标是否显示
+ */
+declare function DzWidgetSetMinimapIconEnable(whichunit: unit, enable: boolean): void;
+
+/**
+ * 获取世界Frame消息
+ * 获取世界Frame消息
+ * 返回世界Frame消息的Frame引用
+ */
+declare function DzFrameGetWorldFrameMessage(): number;
+
+/**
+ * 简单消息Frame添加消息
+ * 向${Frame}添加消息${文本}颜色${颜色}持续时间${持续时间}永久${永久}
+ * 向简单消息Frame添加一条消息
+ */
+declare function DzSimpleMessageFrameAddMessage(
+  whichframe: number,
+  text: string,
+  color: number,
+  duration: number,
+  permanent: boolean
+): void;
+
+/**
+ * 清空简单消息Frame
+ * 清空${Frame}的所有消息
+ * 清除简单消息Frame中的所有消息
+ */
+declare function DzSimpleMessageFrameClear(whichframe: number): void;
+
+/**
+ * 转换屏幕坐标到世界坐标X
+ * 屏幕坐标(${X},${Y})转世界X坐标
+ * 将屏幕坐标转换为世界坐标的X分量
+ */
+declare function DzConvertScreenPositionX(x: number, y: number): number;
+
+/**
+ * 转换屏幕坐标到世界坐标Y
+ * 屏幕坐标(${X},${Y})转世界Y坐标
+ * 将屏幕坐标转换为世界坐标的Y分量
+ */
+declare function DzConvertScreenPositionY(x: number, y: number): number;
+
+/**
+ * 注册建筑选位置事件
+ * 注册建筑选位置事件${函数}
+ * 监听玩家选择建筑位置的本地事件
+ */
+declare function DzRegisterOnBuildLocal(func: () => void): void;
+
+/**
+ * 获取建筑选择命令ID
+ * 获取建筑选择命令ID
+ * 返回当前建筑选择的命令ID，等于0时是结束事件
+ */
+declare function DzGetOnBuildOrderId(): number;
+
+/**
+ * 获取建筑选择命令类型
+ * 获取建筑选择命令类型
+ * 返回当前建筑选择的命令类型
+ */
+declare function DzGetOnBuildOrderType(): number;
+
+/**
+ * 获取建筑选择执行者
+ * 获取建筑选择执行者
+ * 返回执行建筑选择的控件对象
+ */
+declare function DzGetOnBuildAgent(): widget;
+
+/**
+ * 注册技能选目标事件
+ * 注册技能选目标事件${函数}
+ * 监听玩家选择技能目标的本地事件
+ */
+declare function DzRegisterOnTargetLocal(func: () => void): void;
+
+/**
+ * 获取技能选择技能ID
+ * 获取技能选择技能ID
+ * 返回当前技能选择的技能ID，等于0时是结束事件
+ */
+declare function DzGetOnTargetAbilId(): number;
+
+/**
+ * 获取技能选择命令ID
+ * 获取技能选择命令ID
+ * 返回当前技能选择的命令ID
+ */
+declare function DzGetOnTargetOrderId(): number;
+
+/**
+ * 获取技能选择命令类型
+ * 获取技能选择命令类型
+ * 返回当前技能选择的命令类型
+ */
+declare function DzGetOnTargetOrderType(): number;
+
+/**
+ * 获取技能选择执行者
+ * 获取技能选择执行者
+ * 返回执行技能选择的控件对象
+ */
+declare function DzGetOnTargetAgent(): widget;
+
+/**
+ * 获取技能选择即时目标
+ * 获取技能选择即时目标
+ * 返回技能选择的即时目标控件
+ */
+declare function DzGetOnTargetInstantTarget(): widget;
+
+/**
+ * 打开QQ群链接
+ * 打开QQ群链接${URL}
+ * 在浏览器中打开指定的QQ群链接，返回是否成功
+ */
+declare function DzOpenQQGroupUrl(url: string): boolean;
+
+/**
+ * 启用Frame剪切矩形
+ * 启用Frame剪切矩形${启用}
+ * 控制Frame的剪切矩形功能
+ */
+declare function DzFrameEnableClipRect(enable: boolean): void;
+
+/**
+ * 设置单位头像
+ * 设置${单位}头像为${模型文件}
+ * 更改单位在UI中显示的头像模型
+ */
+declare function DzSetUnitPortrait(whichUnit: unit, modelFile: string): void;
+
+/**
+ * 设置单位描述
+ * 设置${单位}描述为${描述}
+ * 更改单位的描述文本
+ */
+declare function DzSetUnitDescription(whichUnit: unit, value: string): void;
+
+/**
+ * 设置单位投射物弧度
+ * 设置${单位}投射物弧度为${弧度}
+ * 修改单位投射物的飞行弧度
+ */
+declare function DzSetUnitMissileArc(whichUnit: unit, arc: number): void;
+
+/**
+ * 设置单位投射物模型
+ * 设置${单位}投射物模型为${模型文件}
+ * 更改单位投射物使用的模型
+ */
+declare function DzSetUnitMissileModel(whichUnit: unit, modelFile: string): void;
+
+/**
+ * 设置单位投射物追踪
+ * 设置${单位}投射物追踪${启用}
+ * 控制单位投射物是否具有追踪能力
+ */
+declare function DzSetUnitMissileHoming(whichUnit: unit, enable: boolean): void;
+
+/**
+ * 设置单位投射物速度
+ * 设置${单位}投射物速度为${速度}
+ * 修改单位投射物的飞行速度
+ */
+declare function DzSetUnitMissileSpeed(whichUnit: unit, speed: number): void;
+
+/**
+ * 设置特效可见性
+ * 设置${特效}可见性${启用}
+ * 控制特效是否可见
+ */
+declare function DzSetEffectVisible(whichHandle: effect, enable: boolean): void;
+
+/**
+ * 复活单位
+ * 复活${单位}给${玩家}生命${生命值}魔法${魔法值}位置(${X},${Y})
+ * 复活指定单位并设置其属性和位置
+ */
+declare function DzReviveUnit(
+  whichUnit: unit,
+  whichPlayer: player,
+  hp: number,
+  mp: number,
+  x: number,
+  y: number
+): void;
+
+/**
+ * 获取攻击技能
+ * 获取${单位}的攻击技能
+ * 返回单位的攻击技能对象
+ */
+declare function DzGetAttackAbility(whichUnit: unit): ability;
+
+/**
+ * 攻击技能结束冷却
+ * 结束${技能}的冷却时间
+ * 立即结束攻击技能的冷却时间
+ */
+declare function DzAttackAbilityEndCooldown(whichHandle: ability): void;
+
+// ============= 装饰物(Doodad)相关函数 =============
+
+/**
+ * 创建装饰物
+ * 创建装饰物ID${ID}变体${变体}位置(${X},${Y},${Z})旋转${旋转}缩放${缩放}
+ * 在指定位置创建一个装饰物对象
+ */
+declare function DzDoodadCreate(
+  id: number,
+  var_: number,
+  x: number,
+  y: number,
+  z: number,
+  rotate: number,
+  scale: number
+): number;
+
+/**
+ * 获取装饰物类型ID
+ * 获取${装饰物}的类型ID
+ * 返回装饰物的类型标识符
+ */
+declare function DzDoodadGetTypeId(doodad: number): number;
+
+/**
+ * 设置装饰物模型
+ * 设置${装饰物}模型为${模型文件}
+ * 更改装饰物使用的模型文件
+ */
+declare function DzDoodadSetModel(doodad: number, modelFile: string): void;
+
+/**
+ * 设置装饰物队伍颜色
+ * 设置${装饰物}队伍颜色为${颜色}
+ * 修改装饰物的队伍颜色
+ */
+declare function DzDoodadSetTeamColor(doodad: number, color: number): void;
+
+/**
+ * 设置装饰物颜色
+ * 设置${装饰物}颜色为${颜色}
+ * 修改装饰物的整体颜色
+ */
+declare function DzDoodadSetColor(doodad: number, color: number): void;
+
+/**
+ * 获取装饰物X坐标
+ * 获取${装饰物}的X坐标
+ * 返回装饰物当前的X坐标
+ */
+declare function DzDoodadGetX(doodad: number): number;
+
+/**
+ * 获取装饰物Y坐标
+ * 获取${装饰物}的Y坐标
+ * 返回装饰物当前的Y坐标
+ */
+declare function DzDoodadGetY(doodad: number): number;
+
+/**
+ * 获取装饰物Z坐标
+ * 获取${装饰物}的Z坐标
+ * 返回装饰物当前的Z坐标
+ */
+declare function DzDoodadGetZ(doodad: number): number;
+
+/**
+ * 设置装饰物位置
+ * 设置${装饰物}位置为(${X},${Y},${Z})
+ * 移动装饰物到指定的三维坐标
+ */
+declare function DzDoodadSetPosition(doodad: number, x: number, y: number, z: number): void;
+
+/**
+ * 设置装饰物方向矩阵旋转
+ * 设置${装饰物}方向矩阵旋转角度${角度}轴(${轴X},${轴Y},${轴Z})
+ * 围绕指定轴旋转装饰物
+ */
+declare function DzDoodadSetOrientMatrixRotate(
+  doodad: number,
+  angle: number,
+  axisX: number,
+  axisY: number,
+  axisZ: number
+): void;
+
+/**
+ * 设置装饰物方向矩阵缩放
+ * 设置${装饰物}方向矩阵缩放(${X},${Y},${Z})
+ * 在各个轴向上缩放装饰物
+ */
+declare function DzDoodadSetOrientMatrixScale(
+  doodad: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+
+/**
+ * 重置装饰物方向矩阵
+ * 重置${装饰物}的方向矩阵
+ * 将装饰物的变换矩阵重置为初始状态
+ */
+declare function DzDoodadSetOrientMatrixResize(doodad: number): void;
+
+/**
+ * 设置装饰物可见性
+ * 设置${装饰物}可见性${启用}
+ * 控制装饰物是否可见
+ */
+declare function DzDoodadSetVisible(doodad: number, enable: boolean): void;
+
+/**
+ * 设置装饰物动画
+ * 设置${装饰物}动画${动画名}随机${随机}
+ * 播放装饰物的指定动画
+ */
+declare function DzDoodadSetAnimation(doodad: number, animName: string, animRandom: boolean): void;
+
+/**
+ * 设置装饰物时间缩放
+ * 设置${装饰物}时间缩放${缩放}
+ * 修改装饰物动画播放的时间缩放
+ */
+declare function DzDoodadSetTimeScale(doodad: number, scale: number): void;
+
+/**
+ * 获取装饰物时间缩放
+ * 获取${装饰物}的时间缩放
+ * 返回装饰物当前的时间缩放值
+ */
+declare function DzDoodadGetTimeScale(doodad: number): number;
+
+/**
+ * 获取装饰物当前动画索引
+ * 获取${装饰物}的当前动画索引
+ * 返回装饰物当前播放的动画索引
+ */
+declare function DzDoodadGetCurrentAnimationIndex(doodad: number): number;
+
+/**
+ * 获取装饰物动画数量
+ * 获取${装饰物}的动画数量
+ * 返回装饰物包含的动画总数
+ */
+declare function DzDoodadGetAnimationCount(doodad: number): number;
+
+/**
+ * 获取装饰物动画名称
+ * 获取${装饰物}第${索引}个动画的名称
+ * 返回指定索引动画的名称
+ */
+declare function DzDoodadGetAnimationName(doodad: number, index: number): string;
+
+/**
+ * 获取装饰物动画时间
+ * 获取${装饰物}第${索引}个动画的时间
+ * 返回指定索引动画的持续时间
+ */
+declare function DzDoodadGetAnimationTime(doodad: number, index: number): number;
+
+/**
+ * 删除装饰物
+ * 删除${装饰物}
+ * 从游戏中移除指定的装饰物
+ */
+declare function DzDoodadRemove(doodad: number): void;
+
+// ============= 其他实用函数 =============
+
+/**
+ * 解锁JASS字节码限制
+ * 解锁JASS字节码限制${启用}
+ * 移除JASS代码的字节码执行限制
+ */
+declare function DzUnlockOpCodeLimit(enable: boolean): void;
+
+/**
+ * 设置剪切板内容
+ * 设置剪切板内容为${内容}
+ * 将文本内容设置到系统剪切板，返回是否成功
+ */
+declare function DzSetClipboard(content: string): boolean;
+
+/**
+ * 移除玩家科技等级
+ * 移除${玩家}的${科技ID}科技${等级}级
+ * 减少玩家指定科技的等级
+ */
+declare function DzRemovePlayerTechResearched(
+  whichPlayer: player,
+  techid: number,
+  removelevels: number
+): void;
+
+/**
+ * 查找单位技能
+ * 查找${单位}的技能${技能代码}
+ * 返回单位的指定技能对象
+ */
+declare function DzUnitFindAbility(whichUnit: unit, abilcode: number): ability;
+
+/**
+ * 修改技能数据-字符串
+ * 修改${技能}的${键}数据为${值}
+ * 修改技能的字符串类型数据
+ */
+declare function DzAbilitySetStringData(whichAbility: ability, key: string, value: string): void;
+
+/**
+ * 启用/禁用技能
+ * 设置${技能}启用${启用}隐藏UI${隐藏UI}
+ * 控制技能的启用状态和UI显示
+ */
+declare function DzAbilitySetEnable(whichAbility: ability, enable: boolean, hideUI: boolean): void;
+
+/**
+ * 设置单位移动类型
+ * 设置${单位}移动类型为${移动类型}
+ * 修改单位的移动类型(如步行、飞行等)
+ */
+declare function DzUnitSetMoveType(whichUnit: unit, moveType: string): void;
+
+/**
+ * 获取控件宽度
+ * 获取${Frame}的宽度
+ * 返回Frame控件的宽度值
+ */
+declare function DzFrameGetWidth(frame: number): number;
+
+/**
+ * 按索引设置Frame动画
+ * 设置${Frame}动画索引${索引}标志${标志}
+ * 通过索引设置Frame的动画
+ */
+declare function DzFrameSetAnimateByIndex(frame: number, index: number, flag: number): void;
+
+/**
+ * 设置单位数据缓存整数
+ * 设置单位ID${单位ID}数据ID${数据ID}索引${索引}值${值}
+ * 修改单位数据缓存中的整数值
+ */
+declare function DzSetUnitDataCacheInteger(uid: number, id: number, index: number, v: number): void;
+
+/**
+ * 单位UI添加等级数组整数
+ * 单位ID${单位ID}数据ID${数据ID}等级${等级}值${值}
+ * 向单位UI的等级数组中添加整数值
+ */
+declare function DzUnitUIAddLevelArrayInteger(uid: number, id: number, lv: number, v: number): void;
