@@ -187,23 +187,6 @@ export class Frame extends Handle<framehandle> {
     return DzFrameGetAlpha(this.handle);
   }
 
-  public get children() {
-    const count = this.childrenCount;
-    const output: Frame[] = [];
-    for (let i = 0; i < count; i++) {
-      const child = this.getChild(i);
-      if (child) {
-        output.push(child);
-      }
-    }
-    return output;
-  }
-
-  public get childrenCount() {
-    // @ts-ignore - BlzFrameGetChildrenCount not available in current API
-    return BlzFrameGetChildrenCount(this.handle);
-  }
-
   public set enabled(flag: boolean) {
     DzFrameSetEnable(this.handle, flag);
   }
@@ -259,24 +242,8 @@ export class Frame extends Handle<framehandle> {
     DzFrameShow(this.handle, flag);
   }
 
-  public get visible() {
-    // @ts-ignore - BlzFrameIsVisible not available in current API
-    return BlzFrameIsVisible(this.handle);
-  }
-
   public set width(width: number) {
     DzFrameSetSize(this.handle, width, this.height);
-  }
-
-  public get width() {
-    // @ts-ignore - BlzFrameGetWidth not available in current API
-    return BlzFrameGetWidth(this.handle);
-  }
-
-  public addText(text: string) {
-    // @ts-ignore - BlzFrameAddText not available in current API
-    BlzFrameAddText(this.handle, text);
-    return this;
   }
 
   public cageMouse(enable: boolean) {
@@ -299,12 +266,7 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public getChild(index: number) {
-    // @ts-ignore - BlzFrameGetChild not available in current API
-    return Frame.fromHandle(BlzFrameGetChild(this.handle, index));
-  }
-
-  public setAbsPoint(point: framepointtype, x: number, y: number) {
+  public setAbsPoint(point: number, x: number, y: number) {
     DzFrameSetAbsolutePoint(this.handle, point, x, y);
     return this;
   }
@@ -339,19 +301,13 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public setLevel(level: number) {
-    // @ts-ignore - BlzFrameSetLevel not available in current API
-    BlzFrameSetLevel(this.handle, level);
-    return this;
-  }
-
   public setMinMaxValue(minValue: number, maxValue: number) {
     DzFrameSetMinMaxValue(this.handle, minValue, maxValue);
     return this;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public setTextAlignment(vert: textaligntype, horz: textaligntype) {
+  public setTextAlignment(vert: number, horz: number) {
     DzFrameSetTextAlignment(this.handle, vert);
     return this;
   }
@@ -370,13 +326,7 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public setPoint(
-    point: framepointtype,
-    relative: Frame,
-    relativePoint: framepointtype,
-    x: number,
-    y: number
-  ) {
+  public setPoint(point: number, relative: Frame, relativePoint: number, x: number, y: number) {
     DzFrameSetPoint(this.handle, point, relative.handle, relativePoint, x, y);
     return this;
   }
@@ -391,12 +341,6 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public setSpriteAnimate(primaryProp: number, flags: number) {
-    // @ts-ignore - BlzFrameSetSpriteAnimate not available in current API
-    BlzFrameSetSpriteAnimate(this.handle, primaryProp, flags);
-    return this;
-  }
-
   public setStepSize(stepSize: number) {
     // @ts-ignore - DzFrameSetStepSize not available in current API
     DzFrameSetStepSize(this.handle, stepSize);
@@ -408,12 +352,6 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public setTextColor(color: number) {
-    // @ts-ignore - BlzFrameSetTextColor not available in current API
-    BlzFrameSetTextColor(this.handle, color);
-    return this;
-  }
-
   public setTextSizeLimit(size: number) {
     DzFrameSetTextSizeLimit(this.handle, size);
     return this;
@@ -422,12 +360,6 @@ export class Frame extends Handle<framehandle> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public setTexture(texFile: string, flag: number, blend: boolean) {
     DzFrameSetTexture(this.handle, texFile, flag);
-    return this;
-  }
-
-  public setTooltip(tooltip: Frame) {
-    // @ts-ignore - BlzFrameSetTooltip not available in current API
-    BlzFrameSetTooltip(this.handle, tooltip.handle);
     return this;
   }
 
@@ -451,47 +383,12 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public static autoPosition(enable: boolean) {
-    // @ts-ignore - BlzEnableUIAutoPosition not available in current API
-    BlzEnableUIAutoPosition(enable);
-  }
-
-  public static fromEvent() {
-    // @ts-ignore - BlzGetTriggerFrame not available in current API
-    return this.fromHandle(BlzGetTriggerFrame());
-  }
-
   public static fromHandle(handle: framehandle | undefined): Frame | undefined {
     return handle ? this.getObject(handle) : undefined;
   }
 
   public static fromName(name: string, createContext: number) {
     return this.fromHandle(DzFrameFindByName(name, createContext) as unknown as framehandle);
-  }
-
-  public static fromOrigin(frameType: originframetype, index: number) {
-    // @ts-ignore - BlzGetOriginFrame not available in current API
-    return this.fromHandle(BlzGetOriginFrame(frameType, index));
-  }
-
-  public static getEventHandle() {
-    // @ts-ignore - BlzGetTriggerFrameEvent not available in current API
-    return BlzGetTriggerFrameEvent();
-  }
-
-  public static getEventText() {
-    // @ts-ignore - BlzGetTriggerFrameValue not available in current API
-    return BlzGetTriggerFrameValue();
-  }
-
-  public static getEventValue() {
-    // @ts-ignore - BlzGetTriggerFrameValue not available in current API
-    return BlzGetTriggerFrameValue();
-  }
-
-  public static hideOrigin(enable: boolean) {
-    // @ts-ignore - BlzHideOriginFrames not available in current API
-    BlzHideOriginFrames(enable);
   }
 
   public static loadTOC(filename: string) {

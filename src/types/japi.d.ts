@@ -295,7 +295,7 @@ declare function DzFrameHideInterface(): void;
  */
 declare function DzFrameSetAbsolutePoint(
   frame: framehandle,
-  point: framepointtype,
+  point: number,
   x: number,
   y: number
 ): void;
@@ -391,9 +391,9 @@ declare function DzFrameSetParent(frame: framehandle, parent: framehandle): void
  */
 declare function DzFrameSetPoint(
   frame: framehandle,
-  point: framepointtype,
+  point: number,
   relativeFrame: framehandle,
-  relativePoint: framepointtype,
+  relativePoint: number,
   x: number,
   y: number
 ): void;
@@ -462,7 +462,7 @@ declare function DzFrameSetText(frame: framehandle, text: string): void;
  * 设置${frame}的对齐方式为${align}
  * 支持TextFrame、SimpleFontString、SimpleMessageFrame
  */
-declare function DzFrameSetTextAlignment(frame: framehandle, align: textaligntype): void;
+declare function DzFrameSetTextAlignment(frame: framehandle, align: number): void;
 declare function DzFrameSetTextColor(frame: number, color: number): void;
 
 /**
