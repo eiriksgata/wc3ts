@@ -1,52 +1,268 @@
 /** @noSelfInFile **/
 /// <reference path="base.d.ts" />
+
+/**
+ * 改变商店物品冷却时间
+ * 改变商店物品冷却时间
+ * 修改商店中物品的冷却时间
+ */
 declare function DzAPI_Map_ChangeStoreItemCoolDown(...option: any[]): any;
+
+/**
+ * 改变商店物品数量
+ * 改变商店物品数量
+ * 修改商店中物品的库存数量
+ */
 declare function DzAPI_Map_ChangeStoreItemCount(...option: any[]): any;
+
+/**
+ * 获取活动数据
+ * 获取活动数据
+ * 获取当前活动的相关数据信息
+ */
 declare function DzAPI_Map_GetActivityData(): string;
+
+/**
+ * 获取游戏开始时间
+ * 获取游戏开始时间
+ * 返回游戏开始的时间戳
+ */
 declare function DzAPI_Map_GetGameStartTime(): number;
+
+/**
+ * 获取公会名称
+ * 获取${玩家}的公会名称
+ * 返回指定玩家所在公会的名称
+ */
 declare function DzAPI_Map_GetGuildName(whichPlayer: player): string;
+
+/**
+ * 获取公会职位
+ * 获取${玩家}的公会职位
+ * 返回指定玩家在公会中的职位等级
+ */
 declare function DzAPI_Map_GetGuildRole(whichPlayer: player): number;
+
+/**
+ * 获取天梯等级
+ * 获取${玩家}的天梯等级
+ * 返回指定玩家的天梯等级
+ */
 declare function DzAPI_Map_GetLadderLevel(whichPlayer: player): number;
+
+/**
+ * 获取天梯排名
+ * 获取${玩家}的天梯排名
+ * 返回指定玩家的天梯排名
+ */
 declare function DzAPI_Map_GetLadderRank(whichPlayer: player): number;
+
+/**
+ * 获取地图配置
+ * 获取地图配置${键名}
+ * 根据键名获取地图的配置信息
+ */
 declare function DzAPI_Map_GetMapConfig(key: string): string;
+
+/**
+ * 获取地图等级
+ * 获取${玩家}的地图等级
+ * 返回指定玩家在当前地图的等级
+ */
 declare function DzAPI_Map_GetMapLevel(whichPlayer: player): number;
+
+/**
+ * 获取地图等级排名
+ * 获取${玩家}的地图等级排名
+ * 返回指定玩家在当前地图的等级排名
+ */
 declare function DzAPI_Map_GetMapLevelRank(whichPlayer: player): number;
+
+/**
+ * 获取匹配类型
+ * 获取当前匹配类型
+ * 返回当前游戏的匹配类型
+ */
 declare function DzAPI_Map_GetMatchType(): number;
+
+/**
+ * 获取平台VIP等级
+ * 获取${玩家}的平台VIP等级
+ * 返回指定玩家的平台VIP等级
+ */
 declare function DzAPI_Map_GetPlatformVIP(whichPlayer: player): number;
+
+/**
+ * 获取公共存档
+ * 获取${玩家}的公共存档${键名}
+ * 获取指定玩家的公共存档数据
+ */
 declare function DzAPI_Map_GetPublicArchive(whichPlayer: player, key: string): string;
+
+/**
+ * 获取服务器存档掉落
+ * 获取${玩家}的服务器存档掉落${键名}
+ * 获取指定玩家的服务器存档掉落数据
+ */
 declare function DzAPI_Map_GetServerArchiveDrop(whichPlayer: player, key: string): string;
+
+/**
+ * 获取服务器存档装备
+ * 获取${玩家}的服务器存档装备${键名}
+ * 获取指定玩家的服务器存档装备数据
+ */
 declare function DzAPI_Map_GetServerArchiveEquip(whichPlayer: player, key: string): number;
+
+/**
+ * 获取服务器数值
+ * 获取${玩家}的服务器数值${键名}
+ * 获取指定玩家的服务器存储数值
+ */
 declare function DzAPI_Map_GetServerValue(whichPlayer: player, key: string): string;
+
+/**
+ * 获取服务器数值错误码
+ * 获取${玩家}的服务器数值错误码
+ * 获取指定玩家的服务器数值操作错误码
+ */
 declare function DzAPI_Map_GetServerValueErrorCode(whichPlayer: player): number;
+
+/**
+ * 获取用户ID
+ * 获取用户ID
+ * 获取玩家的唯一用户标识
+ */
 declare function DzAPI_Map_GetUserID(...option: any[]): any;
+
+/**
+ * 检查商城物品
+ * 检查${玩家}是否拥有商城物品${键名}
+ * 检查指定玩家是否拥有指定的商城物品
+ */
 declare function DzAPI_Map_HasMallItem(whichPlayer: player, key: string): boolean;
+
+/**
+ * 是否为蓝钻VIP
+ * 检查${玩家}是否为蓝钻VIP
+ * 检查指定玩家是否为蓝钻VIP用户
+ */
 declare function DzAPI_Map_IsBlueVIP(whichPlayer: player): boolean;
+
+/**
+ * 是否为RPG天梯
+ * 检查当前是否为RPG天梯模式
+ * 检查当前游戏模式是否为RPG天梯
+ */
 declare function DzAPI_Map_IsRPGLadder(): boolean;
+
+/**
+ * 是否为RPG大厅
+ * 检查当前是否为RPG大厅模式
+ * 检查当前游戏模式是否为RPG大厅
+ */
 declare function DzAPI_Map_IsRPGLobby(): boolean;
+
+/**
+ * 是否为红钻VIP
+ * 检查${玩家}是否为红钻VIP
+ * 检查指定玩家是否为红钻VIP用户
+ */
 declare function DzAPI_Map_IsRedVIP(whichPlayer: player): boolean;
+
+/**
+ * 设置天梯玩家统计
+ * 设置${玩家}的天梯统计${键名}为${数值}
+ * 设置指定玩家的天梯统计数据
+ */
 declare function DzAPI_Map_Ladder_SetPlayerStat(
   whichPlayer: player,
   key: string,
   value: string
 ): void;
+
+/**
+ * 设置天梯统计
+ * 设置${玩家}的天梯统计${键名}为${数值}
+ * 设置指定玩家的天梯统计信息
+ */
 declare function DzAPI_Map_Ladder_SetStat(whichPlayer: player, key: string, value: string): void;
+
+/**
+ * 任务完成
+ * ${玩家}完成任务${键名}数值${数值}
+ * 标记指定玩家完成某个任务
+ */
 declare function DzAPI_Map_MissionComplete(whichPlayer: player, key: string, value: string): void;
+
+/**
+ * ORPG触发器
+ * 触发${玩家}的ORPG事件${键名}
+ * 触发指定玩家的ORPG相关事件
+ */
 declare function DzAPI_Map_OrpgTrigger(whichPlayer: player, key: string): void;
+
+/**
+ * 保存公共存档
+ * 保存${玩家}的公共存档${键名}为${数值}
+ * 保存指定玩家的公共存档数据，返回是否成功
+ */
 declare function DzAPI_Map_SavePublicArchive(
   whichPlayer: player,
   key: string,
   value: string
 ): boolean;
+
+/**
+ * 保存服务器数值
+ * 保存${玩家}的服务器数值${键名}为${数值}
+ * 保存指定玩家的服务器数值，返回是否成功
+ */
 declare function DzAPI_Map_SaveServerValue(
   whichPlayer: player,
   key: string,
   value: string
 ): boolean;
+
+/**
+ * 设置统计数据
+ * 设置${玩家}的统计${键名}为${数值}
+ * 设置指定玩家的统计数据
+ */
 declare function DzAPI_Map_Stat_SetStat(whichPlayer: player, key: string, value: string): void;
+
+/**
+ * 统计数据
+ * 统计数据操作
+ * 执行统计数据相关操作
+ */
 declare function DzAPI_Map_Statistics(...option: any[]): any;
+
+/**
+ * 切换商店
+ * 切换商店状态
+ * 切换商店的显示或隐藏状态
+ */
 declare function DzAPI_Map_ToggleStore(...option: any[]): any;
+
+/**
+ * 更新玩家英雄
+ * 更新玩家英雄信息
+ * 更新玩家的英雄相关信息
+ */
 declare function DzAPI_Map_UpdatePlayerHero(...option: any[]): any;
+
+/**
+ * 使用消耗品
+ * ${玩家}使用消耗品${键名}
+ * 玩家使用指定的消耗品物品
+ */
 declare function DzAPI_Map_UseConsumablesItem(whichPlayer: player, key: string): void;
+
+/**
+ * 改变地形
+ * 改变地形
+ * 修改地图的地形数据
+ */
 declare function DzChangeTerrain(...option: any[]): any;
 
 /**
@@ -55,7 +271,6 @@ declare function DzChangeTerrain(...option: any[]): any;
  *
  */
 declare function DzClickFrame(frame: framehandle): void;
-declare function DzConvertWorldPosition(...option: any[]): any;
 
 /**
  * 新建Frame
@@ -146,14 +361,14 @@ declare function DzFrameGetAlpha(frame: framehandle): number;
  * 玩家聊天信息框
  *
  */
-declare function DzFrameGetChatMessage(): number;
+declare function DzFrameGetChatMessage(): framehandle;
 
 /**
  * 原生-技能按钮
  * 技能按钮:(${row},${calumn})
  * 参考物编中的技能按钮(x,y)坐标
  */
-declare function DzFrameGetCommandBarButton(row: number, column: number): number;
+declare function DzFrameGetCommandBarButton(row: number, column: number): framehandle;
 
 /**
  * 控件是否启用
@@ -174,42 +389,42 @@ declare function DzFrameGetHeight(frame: framehandle): number;
  * 英雄按钮:${buttnoid}
  * 左侧的英雄头像，参数表示第N+1个英雄，索引从0开始
  */
-declare function DzFrameGetHeroBarButton(buttonId: number): number;
+declare function DzFrameGetHeroBarButton(buttonId: number): framehandle;
 
 /**
  * 原生-英雄血条
  * 英雄血条:${buttnoid}
  * 左侧的英雄头像下的血条，参数表示第N+1个英雄，索引从0开始
  */
-declare function DzFrameGetHeroHPBar(buttonId: number): number;
+declare function DzFrameGetHeroHPBar(buttonId: number): framehandle;
 
 /**
  * 原生-英雄蓝条
  * 英雄蓝条:${buttnoid}
  * 左侧的英雄头像下的蓝条，参数表示第N+1个英雄，索引从0开始
  */
-declare function DzFrameGetHeroManaBar(buttonId: number): number;
+declare function DzFrameGetHeroManaBar(buttonId: number): framehandle;
 
 /**
  * 原生-物品栏按钮
  * 物品栏按钮:${buttnoid}
  * 索引从0开始
  */
-declare function DzFrameGetItemBarButton(buttonId: number): number;
+declare function DzFrameGetItemBarButton(buttonId: number): framehandle;
 
 /**
  * 原生-小地图
  * 小地图
  *
  */
-declare function DzFrameGetMinimap(): number;
+declare function DzFrameGetMinimap(): framehandle;
 
 /**
  * 原生-小地图按钮
  * 小地图按钮:${buttnoid}
  * 小地图右侧竖排按钮，索引从0开始
  */
-declare function DzFrameGetMinimapButton(buttonId: number): number;
+declare function DzFrameGetMinimapButton(buttonId: number): framehandle;
 
 /**
  * 获取Frame的名称[NEW]
@@ -230,7 +445,7 @@ declare function DzFrameGetParent(frame: framehandle): framehandle;
  * 单位大头像
  * 小地图右侧的大头像
  */
-declare function DzFrameGetPortrait(): number;
+declare function DzFrameGetPortrait(): framehandle;
 
 /**
  * 获取Frame内的文字
@@ -251,28 +466,28 @@ declare function DzFrameGetTextSizeLimit(frame: framehandle): number;
  * 鼠标提示
  * 鼠标移动到物品或技能按钮上显示的提示窗，初始位于技能栏上方
  */
-declare function DzFrameGetTooltip(): number;
+declare function DzFrameGetTooltip(): framehandle;
 
 /**
  * 原生-上方消息框
  * 上方消息框
  * 高维修费用等消息
  */
-declare function DzFrameGetTopMessage(): number;
+declare function DzFrameGetTopMessage(): framehandle;
 
 /**
  * 原生-系统消息框
  * 系统消息框
  * 包含显示消息给玩家及显示Debug消息等，
  */
-declare function DzFrameGetUnitMessage(): number;
+declare function DzFrameGetUnitMessage(): framehandle;
 
 /**
  * 原生-界面按钮
  * 界面按钮:${buttnoid}
  * 左上的菜单等按钮，索引从0开始
  */
-declare function DzFrameGetUpperButtonBarButton(buttonId: number): number;
+declare function DzFrameGetUpperButtonBarButton(buttonId: number): framehandle;
 
 /**
  * 获取当前值
@@ -319,14 +534,14 @@ declare function DzFrameSetAlpha(frame: framehandle, alpha: number): void;
  * 设置${frame}播放序号${alpha}的动画自动播放:${autocast}
  *
  */
-declare function DzFrameSetAnimate(frame: number, animId: number, autocast: boolean): void;
+declare function DzFrameSetAnimate(frame: framehandle, animId: number, autocast: boolean): void;
 
 /**
  * 设置动画进度
  * 设置${frame}的动画进度为:${offset}
  * 自动播放为false是可用
  */
-declare function DzFrameSetAnimateOffset(frame: number, offset: number): void;
+declare function DzFrameSetAnimateOffset(frame: framehandle, offset: number): void;
 
 /**
  * 启用/禁用
@@ -403,7 +618,7 @@ declare function DzFrameSetPoint(
  * 设置${frame}优先级:${int}
  *
  */
-declare function DzFrameSetPriority(frame: number, priority: number): void;
+declare function DzFrameSetPriority(frame: framehandle, priority: number): void;
 
 /**
  * 设置缩放
@@ -418,7 +633,7 @@ declare function DzFrameSetScale(frame: framehandle, scale: number): void;
  *
  */
 declare function DzFrameSetScript(
-  frame: number,
+  frame: framehandle,
   eventId: number,
   func: string,
   sync: boolean
@@ -430,7 +645,7 @@ declare function DzFrameSetScript(
  * 运行触发器时需要打开同步
  */
 declare function DzFrameSetScriptByCode(
-  frame: number,
+  frame: framehandle,
   eventId: number,
   funcHandle: () => void,
   sync: boolean
@@ -448,7 +663,7 @@ declare function DzFrameSetSize(frame: framehandle, w: number, h: number): void;
  * 设置${frame}的步进值为${step}
  * （支持Slider）
  */
-declare function DzFrameSetStepValue(frame: number, step: number): void;
+declare function DzFrameSetStepValue(frame: framehandle, step: number): void;
 
 /**
  * 设置文本
@@ -463,7 +678,13 @@ declare function DzFrameSetText(frame: framehandle, text: string): void;
  * 支持TextFrame、SimpleFontString、SimpleMessageFrame
  */
 declare function DzFrameSetTextAlignment(frame: framehandle, align: number): void;
-declare function DzFrameSetTextColor(frame: number, color: number): void;
+
+/**
+ * 设置文本颜色
+ * 设置${frame}的文本颜色为${color}
+ * 修改Frame的文本显示颜色
+ */
+declare function DzFrameSetTextColor(frame: framehandle, color: number): void;
 
 /**
  * 设置字数限制
@@ -484,7 +705,7 @@ declare function DzFrameSetTexture(frame: framehandle, texture: string, flag: nu
  * 设置${frame}的提示Frame为${tooltip}
  * 设置tooltip
  */
-declare function DzFrameSetTooltip(frame: number, tooltip: number): void;
+declare function DzFrameSetTooltip(frame: framehandle, tooltip: framehandle): void;
 declare function DzFrameSetUpdateCallback(func: string): void;
 declare function DzFrameSetUpdateCallbackByCode(funcHandle: () => void): void;
 
@@ -525,7 +746,7 @@ declare function DzGetConvertWorldPositionY(...option: any[]): any;
  * 游戏UI
  * 一般用作创建自定义UI的父节点
  */
-declare function DzGetGameUI(): number;
+declare function DzGetGameUI(): framehandle;
 
 /**
  * 获取客户端语言[NEW]
@@ -536,20 +757,16 @@ declare function DzGetLocale(): string;
 
 /**
  * 鼠标所在的Frame控件指针
- * 鼠标所在的Frame控件指针
  * 不是所有类型的Frame都能响应鼠标，能响应的有BUTTON，TEXT等
  */
-declare function DzGetMouseFocus(): number;
+declare function DzGetMouseFocus(): framehandle;
 
 /**
  * 获取鼠标在游戏内的坐标X
- * 获取鼠标在游戏内的坐标X
- *
  */
 declare function DzGetMouseTerrainX(): number;
 
 /**
- * 获取鼠标在游戏内的坐标Y
  * 获取鼠标在游戏内的坐标Y
  *
  */
@@ -557,13 +774,11 @@ declare function DzGetMouseTerrainY(): number;
 
 /**
  * 获取鼠标在游戏内的坐标Z
- * 获取鼠标在游戏内的坐标Z
  *
  */
 declare function DzGetMouseTerrainZ(): number;
 
 /**
- * 获取鼠标在屏幕的坐标X
  * 获取鼠标在屏幕的坐标X
  *
  */
@@ -571,20 +786,17 @@ declare function DzGetMouseX(): number;
 
 /**
  * 获取鼠标游戏窗口坐标X
- * 获取鼠标游戏窗口坐标X
  *
  */
 declare function DzGetMouseXRelative(): number;
 
 /**
  * 获取鼠标在屏幕的坐标Y
- * 获取鼠标在屏幕的坐标Y
  *
  */
 declare function DzGetMouseY(): number;
 
 /**
- * 获取鼠标游戏窗口坐标Y
  * 获取鼠标游戏窗口坐标Y
  *
  */
@@ -623,7 +835,7 @@ declare function DzGetTriggerSyncPlayer(): player;
  * 触发的Frame
  *
  */
-declare function DzGetTriggerUIEventFrame(): number;
+declare function DzGetTriggerUIEventFrame(): framehandle;
 
 /**
  * 事件响应-获取触发ui的玩家
@@ -655,7 +867,6 @@ declare function DzGetWheelDelta(): number;
 
 /**
  * 获取魔兽窗口高度
- * 获取魔兽窗口高度
  *
  */
 declare function DzGetWindowHeight(): number;
@@ -669,13 +880,11 @@ declare function DzGetWindowWidth(): number;
 
 /**
  * 获取魔兽窗口X坐标
- * 获取魔兽窗口X坐标
  *
  */
 declare function DzGetWindowX(): number;
 
 /**
- * 获取魔兽窗口Y坐标
  * 获取魔兽窗口Y坐标
  *
  */
@@ -690,14 +899,12 @@ declare function DzIsKeyDown(iKey: number): boolean;
 
 /**
  * 鼠标是否在游戏内
- * 鼠标是否在游戏内
  *
  */
 declare function DzIsMouseOverUI(): boolean;
 
 /**
  * 判断游戏窗口是否处于活动状态
- * 判断窗口是否处于活动状态
  *
  */
 declare function DzIsWindowActive(): boolean;
@@ -771,22 +978,21 @@ declare function DzSetWar3MapMap(map: string): void;
  * 获取名字为${name}的子SimpleFontStringID:${Id}
  * ID默认填0，同名时优先获取最后被创建的。SimpleFontString为fdf中的Frame类型。
  */
-declare function DzSimpleFontStringFindByName(name: string, id: number): number;
+declare function DzSimpleFontStringFindByName(name: string, id: number): framehandle;
 
 /**
  * 获取子SimpleFrame
  * 获取名字为${name}的子SimpleFrameID:${Id}
  * ID默认填0，同名时优先获取最后被创建的。SimpleFrame为fdf中的Frame类型。
  */
-declare function DzSimpleFrameFindByName(name: string, id: number): number;
+declare function DzSimpleFrameFindByName(name: string, id: number): framehandle;
 
 /**
  * 获取子SimpleTexture
  * 获取名字为${name}的子SimpleTextureID:${Id}
  * ID默认填0，同名时优先获取最后被创建的。SimpleTexture为fdf中的Frame类型。
  */
-declare function DzSimpleTextureFindByName(name: string, id: number): number;
-declare function DzSyncBuffer(...option: any[]): any;
+declare function DzSimpleTextureFindByName(name: string, id: number): framehandle;
 
 /**
  * 同步游戏数据
@@ -852,9 +1058,6 @@ declare function DzTriggerRegisterWindowResizeEventByCode(
   sync: boolean,
   funcHandle: () => void
 ): void;
-declare function DzUnitDisableAttack(...option: any[]): any;
-declare function DzUnitDisableInventory(...option: any[]): any;
-declare function DzUnitSilence(...option: any[]): any;
 declare function EXBlendButtonIcon(...option: any[]): any;
 declare function EXDclareButtonIcon(...option: any[]): any;
 declare function EXDisplayChat(p: player, chat_recipient: number, message: string): void;
@@ -1150,7 +1353,7 @@ declare function DzSetEffectTeamColor(whichHandle: effect, playerId: number): vo
  * 设置${Frame}剪切${启用}
  * 控制Frame是否启用剪切功能，超出范围的部分会被裁剪
  */
-declare function DzFrameSetClip(whichframe: number, enable: boolean): void;
+declare function DzFrameSetClip(whichframe: framehandle, enable: boolean): void;
 
 /**
  * 改变窗口大小
@@ -1220,14 +1423,14 @@ declare function DzGetItemAbility(whichEffect: item, index: number): ability;
  * 获取${Frame}的子控件数量
  * 返回指定Frame包含的子控件数量
  */
-declare function DzFrameGetChildrenCount(whichframe: number): number;
+declare function DzFrameGetChildrenCount(whichframe: framehandle): number;
 
 /**
  * 获取Frame子控件
  * 获取${Frame}的第${索引}个子控件
  * 返回指定Frame的第几个子控件
  */
-declare function DzFrameGetChild(whichframe: number, index: number): number;
+declare function DzFrameGetChild(whichframe: framehandle, index: number): framehandle;
 
 /**
  * 解锁BLP尺寸限制
@@ -1283,49 +1486,49 @@ declare function DzModelRemoveAllFromCache(): void;
  * 获取信息面板选择按钮${索引}
  * 返回信息面板中指定索引的选择按钮
  */
-declare function DzFrameGetInfoPanelSelectButton(index: number): number;
+declare function DzFrameGetInfoPanelSelectButton(index: number): framehandle;
 
 /**
  * 获取信息面板Buff按钮
  * 获取信息面板Buff按钮${索引}
  * 返回信息面板中指定索引的Buff按钮
  */
-declare function DzFrameGetInfoPanelBuffButton(index: number): number;
+declare function DzFrameGetInfoPanelBuffButton(index: number): framehandle;
 
 /**
  * 获取农民栏
  * 获取农民栏Frame
  * 返回农民/工人显示栏的Frame
  */
-declare function DzFrameGetPeonBar(): number;
+declare function DzFrameGetPeonBar(): framehandle;
 
 /**
  * 获取命令栏按钮数字文本
  * 获取命令栏按钮${按钮}的数字文本Frame
  * 返回命令栏按钮上显示数字的文本Frame
  */
-declare function DzFrameGetCommandBarButtonNumberText(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonNumberText(whichframe: framehandle): framehandle;
 
 /**
  * 获取命令栏按钮数字覆盖层
  * 获取命令栏按钮${按钮}的数字覆盖层Frame
  * 返回命令栏按钮数字覆盖层的Frame
  */
-declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: framehandle): framehandle;
 
 /**
  * 获取命令栏按钮冷却指示器
  * 获取命令栏按钮${按钮}的冷却指示器Frame
  * 返回命令栏按钮冷却显示的Frame
  */
-declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: framehandle): framehandle;
 
 /**
  * 获取命令栏按钮自动施法指示器
  * 获取命令栏按钮${按钮}的自动施法指示器Frame
  * 返回命令栏按钮自动施法指示的Frame
  */
-declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: framehandle): framehandle;
 
 /**
  * 切换FPS显示
@@ -1374,7 +1577,7 @@ declare function DzWidgetSetMinimapIconEnable(whichunit: unit, enable: boolean):
  * 获取世界Frame消息
  * 返回世界Frame消息的Frame引用
  */
-declare function DzFrameGetWorldFrameMessage(): number;
+declare function DzFrameGetWorldFrameMessage(): framehandle;
 
 /**
  * 简单消息Frame添加消息
@@ -1382,7 +1585,7 @@ declare function DzFrameGetWorldFrameMessage(): number;
  * 向简单消息Frame添加一条消息
  */
 declare function DzSimpleMessageFrameAddMessage(
-  whichframe: number,
+  whichframe: framehandle,
   text: string,
   color: number,
   duration: number,
@@ -1394,7 +1597,7 @@ declare function DzSimpleMessageFrameAddMessage(
  * 清空${Frame}的所有消息
  * 清除简单消息Frame中的所有消息
  */
-declare function DzSimpleMessageFrameClear(whichframe: number): void;
+declare function DzSimpleMessageFrameClear(whichframe: framehandle): void;
 
 /**
  * 转换屏幕坐标到世界坐标X
@@ -1806,7 +2009,7 @@ declare function DzFrameGetWidth(frame: framehandle): number;
  * 设置${Frame}动画索引${索引}标志${标志}
  * 通过索引设置Frame的动画
  */
-declare function DzFrameSetAnimateByIndex(frame: number, index: number, flag: number): void;
+declare function DzFrameSetAnimateByIndex(frame: framehandle, index: number, flag: number): void;
 
 /**
  * 设置单位数据缓存整数
@@ -1821,3 +2024,232 @@ declare function DzSetUnitDataCacheInteger(uid: number, id: number, index: numbe
  * 向单位UI的等级数组中添加整数值
  */
 declare function DzUnitUIAddLevelArrayInteger(uid: number, id: number, lv: number, v: number): void;
+
+// ============= 补全缺失的函数声明 =============
+
+/**
+ * 获取同步触发前缀
+ * 获取同步触发前缀
+ * 响应同步数据事件时获取触发的前缀
+ */
+declare function DzGetTriggerSyncPrefix(): string;
+
+/**
+ * 同步缓冲区数据
+ * 同步缓冲区数据前缀${prefix}数据${data}长度${dataLen}
+ * 同步指定长度的缓冲区数据
+ */
+declare function DzSyncBuffer(prefix: string, data: string, dataLen: number): void;
+
+/**
+ * Frame是否可见
+ * 检查${frame}是否可见
+ * 返回Frame当前的可见状态
+ */
+declare function DzFrameIsVisible(frame: framehandle): boolean;
+
+/**
+ * 显示/隐藏SimpleFrame
+ * 设置${frame}显示${enable}
+ * 控制SimpleFrame的显示或隐藏
+ */
+declare function DzSimpleFrameShow(frame: framehandle, enable: boolean): void;
+
+/**
+ * 追加文字
+ * 向${frame}追加文字${text}
+ * 向Frame追加文本内容（支持TextArea）
+ */
+declare function DzFrameAddText(frame: framehandle, text: string): void;
+
+/**
+ * 沉默单位-禁用技能
+ * 设置${unit}沉默状态${disable}
+ * 禁用或启用单位的技能使用
+ */
+declare function DzUnitSilence(whichUnit: unit, disable: boolean): void;
+
+/**
+ * 禁用攻击
+ * 设置${unit}禁用攻击${disable}
+ * 禁用或启用单位的攻击能力
+ */
+declare function DzUnitDisableAttack(whichUnit: unit, disable: boolean): void;
+
+/**
+ * 禁用道具
+ * 设置${unit}禁用道具${disable}
+ * 禁用或启用单位的道具使用
+ */
+declare function DzUnitDisableInventory(whichUnit: unit, disable: boolean): void;
+
+/**
+ * 刷新小地图
+ * 刷新小地图显示
+ * 强制刷新小地图的显示内容
+ */
+declare function DzUpdateMinimap(): void;
+
+/**
+ * 修改单位透明度
+ * 设置${unit}透明度${alpha}强制更新${forceUpdate}
+ * 修改单位的透明度值
+ */
+declare function DzUnitChangeAlpha(whichUnit: unit, alpha: number, forceUpdate: boolean): void;
+
+/**
+ * 设置单位是否可选中
+ * 设置${unit}可选中状态${state}
+ * 控制单位是否可以被玩家选中
+ */
+declare function DzUnitSetCanSelect(whichUnit: unit, state: boolean): void;
+
+/**
+ * 设置单位是否可作为目标
+ * 设置${unit}可作为目标${state}
+ * 控制单位是否可以被设置为技能或攻击目标
+ */
+declare function DzUnitSetTargetable(whichUnit: unit, state: boolean): void;
+
+/**
+ * 保存内存数据
+ * 保存内存缓存${cache}
+ * 将数据保存到内存缓存中
+ */
+declare function DzSaveMemoryCache(cache: string): void;
+
+/**
+ * 读取内存数据
+ * 读取内存缓存
+ * 从内存缓存中读取数据
+ */
+declare function DzGetMemoryCache(): string;
+
+/**
+ * 设置加速倍率
+ * 设置游戏速度倍率${ratio}
+ * 修改游戏的运行速度倍率
+ */
+declare function DzSetSpeed(ratio: number): void;
+
+/**
+ * 转换世界坐标为屏幕坐标-异步
+ * 转换世界坐标(${x},${y},${z})为屏幕坐标回调${callback}
+ * 异步转换世界坐标为屏幕坐标，结果通过回调函数获取
+ */
+declare function DzConvertWorldPosition(
+  x: number,
+  y: number,
+  z: number,
+  callback: () => void
+): boolean;
+
+/**
+ * 创建命令按钮
+ * 创建命令按钮父节点${parent}图标${icon}名称${name}描述${desc}
+ * 创建一个新的命令按钮控件
+ */
+declare function DzCreateCommandButton(
+  parent: framehandle,
+  icon: string,
+  name: string,
+  desc: string
+): framehandle;
+
+/**
+ * 触发器注册鼠标事件-简化版
+ * 注册${trigger}的鼠标事件状态${status}按钮${btn}
+ * 简化版本的鼠标事件注册函数
+ */
+declare function DzTriggerRegisterMouseEventTrg(trg: trigger, status: number, btn: number): void;
+
+/**
+ * 触发器注册按键事件-简化版
+ * 注册${trigger}的按键事件状态${status}按键${btn}
+ * 简化版本的按键事件注册函数
+ */
+declare function DzTriggerRegisterKeyEventTrg(trg: trigger, status: number, btn: number): void;
+
+/**
+ * 触发器注册鼠标移动事件-简化版
+ * 注册${trigger}的鼠标移动事件
+ * 简化版本的鼠标移动事件注册函数
+ */
+declare function DzTriggerRegisterMouseMoveEventTrg(trg: trigger): void;
+
+/**
+ * 触发器注册鼠标滚轮事件-简化版
+ * 注册${trigger}的鼠标滚轮事件
+ * 简化版本的鼠标滚轮事件注册函数
+ */
+declare function DzTriggerRegisterMouseWheelEventTrg(trg: trigger): void;
+
+/**
+ * 触发器注册窗口大小变化事件-简化版
+ * 注册${trigger}的窗口大小变化事件
+ * 简化版本的窗口大小变化事件注册函数
+ */
+declare function DzTriggerRegisterWindowResizeEventTrg(trg: trigger): void;
+
+/**
+ * 浮点数转整数
+ * 将浮点数${i}转换为整数
+ * Frame专用的浮点数到整数转换函数
+ */
+declare function DzF2I(i: number): number;
+
+/**
+ * 整数转浮点数
+ * 将整数${i}转换为浮点数
+ * Frame专用的整数到浮点数转换函数
+ */
+declare function DzI2F(i: number): number;
+
+/**
+ * 按键码转整数
+ * 将按键码${i}转换为整数
+ * 按键码到整数的转换函数
+ */
+declare function DzK2I(i: number): number;
+
+/**
+ * 整数转按键码
+ * 将整数${i}转换为按键码
+ * 整数到按键码的转换函数
+ */
+declare function DzI2K(i: number): number;
+
+/**
+ * 注册商城道具同步数据
+ * 注册${trigger}的商城道具同步数据事件
+ * 监听商城道具相关的同步数据事件
+ */
+declare function DzTriggerRegisterMallItemSyncData(trig: trigger): void;
+
+/**
+ * 注册商城道具消耗事件
+ * 注册${trigger}的商城道具消耗事件
+ * 监听玩家消耗/使用商城道具的事件
+ */
+declare function DzTriggerRegisterMallItemConsumeEvent(trig: trigger): void;
+
+/**
+ * 注册商城道具删除事件
+ * 注册${trigger}的商城道具删除事件
+ * 监听玩家删除商城道具的事件
+ */
+declare function DzTriggerRegisterMallItemRemoveEvent(trig: trigger): void;
+
+/**
+ * 获取触发商城道具的玩家
+ * 获取触发商城道具事件的玩家
+ * 在商城道具事件中获取触发事件的玩家
+ */
+declare function DzGetTriggerMallItemPlayer(): player;
+
+/**
+ * 获取触发的商城道具
+ * 获取触发事件的商城道具
+ * 在商城道具事件中获取相关的道具信息
+ */
+declare function DzGetTriggerMallItem(): string;
