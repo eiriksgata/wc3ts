@@ -61,7 +61,7 @@ export class Destructable extends Widget {
       handle = CreateDestructable(objectId, x, y, face, scale, variation);
     }
 
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Destructable;
 
       const values: Record<string, unknown> = {};
@@ -105,7 +105,7 @@ export class Destructable extends Widget {
       handle = CreateDestructableZ(objectId, x, y, z, face, scale, variation);
     }
 
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Destructable;
 
       const values: Record<string, unknown> = {};

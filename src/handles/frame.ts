@@ -118,7 +118,7 @@ export class Frame extends Handle<framehandle> {
     createContext: number
   ): Frame | undefined {
     const handle = DzCreateFrame(name, owner.handle, priority);
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Frame;
 
       const values: Record<string, unknown> = {};
@@ -139,7 +139,7 @@ export class Frame extends Handle<framehandle> {
    */
   public static createSimple(name: string, owner: Frame, createContext: number): Frame | undefined {
     const handle = DzCreateSimpleFrame(name, owner.handle, createContext);
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Frame;
 
       const values: Record<string, unknown> = {};
@@ -167,7 +167,7 @@ export class Frame extends Handle<framehandle> {
   ): Frame | undefined {
     const handle = DzCreateFrameByTagName(typeName, name, owner.handle, inherits, createContext);
 
-    if (handle) {
+    if (handle !== undefined) {
       const obj = this.getObject(handle) as Frame;
 
       const values: Record<string, unknown> = {};

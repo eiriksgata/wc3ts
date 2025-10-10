@@ -95,6 +95,7 @@ npm run version:major  # Major version + push tags
 - Uses `@noSelfInFile` directive to prevent 'self' parameter injection
 - Classic module resolution for TSTL compatibility
 - Source-only distribution (no transpiled output)
+- **CRITICAL**: Use explicit comparisons (`!== undefined`) instead of implicit truthiness checks (`if (handle)`) to avoid TSTL warnings
 
 ### Warcraft III API Coverage
 - Comprehensive native API coverage via declaration files
@@ -107,6 +108,20 @@ npm run version:major  # Major version + push tags
 - Provides type safety layer over Lua-transpiled code
 
 ## Common Patterns
+
+### Handle Null Checking
+```typescript
+// CORRECT: Explicit comparison for TSTL compatibility
+const handle = CreateUnit(owner.handle, unitId, x, y, face);
+if (handle !== undefined) {
+  // Handle is valid
+}
+
+// INCORRECT: Implicit truthiness check causes TSTL warnings
+if (handle) { // Warning: Only false and nil evaluate to 'false' in Lua
+  // Handle is valid
+}
+```
 
 ### Creating Game Objects
 ```typescript
