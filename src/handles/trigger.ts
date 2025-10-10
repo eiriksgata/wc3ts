@@ -2,7 +2,6 @@
 
 import { bj_MAX_PLAYER_SLOTS } from "../globals/define";
 import { Dialog, DialogButton } from "./dialog";
-import { Frame } from "./frame";
 import { Handle } from "./handle";
 import { MapPlayer } from "./player";
 import { Region } from "./region";

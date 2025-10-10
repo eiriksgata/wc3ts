@@ -54,7 +54,7 @@ declare function DzChangeTerrain(...option: any[]): any;
  * 点击${frame}
  *
  */
-declare function DzClickFrame(frame: number): void;
+declare function DzClickFrame(frame: framehandle): void;
 declare function DzConvertWorldPosition(...option: any[]): any;
 
 /**
@@ -62,7 +62,7 @@ declare function DzConvertWorldPosition(...option: any[]): any;
  * 新建Frame名字:${frame}父节点:${parent}ID:${Id}
  * 名字为fdf文件中的名字，ID默认填0。重复创建同名Frame会导致游戏退出时显示崩溃消息，如需避免可以使用Tag创建
  */
-declare function DzCreateFrame(frame: string, parent: number, id: number): number;
+declare function DzCreateFrame(frame: string, parent: framehandle, id: number): framehandle;
 
 /**
  * 新建Frame[Tag]
@@ -72,18 +72,18 @@ declare function DzCreateFrame(frame: string, parent: number, id: number): numbe
 declare function DzCreateFrameByTagName(
   frameType: string,
   name: string,
-  parent: number,
+  parent: framehandle,
   template: string,
   id: number
-): number;
-declare function DzCreateSimpleFrame(frame: string, parent: number, id: number): number;
+): framehandle;
+declare function DzCreateSimpleFrame(frame: string, parent: framehandle, id: number): framehandle;
 
 /**
  * 销毁
  * 销毁${frame}
  * 销毁一个被重复创建过的Frame会导致游戏崩溃，重复创建同名Frame请使用Tag创建
  */
-declare function DzDestroyFrame(frame: number): void;
+declare function DzDestroyFrame(frame: framehandle): void;
 
 /**
  * 设置可破坏物位置[BZAPI]
@@ -111,14 +111,14 @@ declare function DzExecuteFunc(funcName: string): void;
  * 限制鼠标在${frame}内:${enable}
  *
  */
-declare function DzFrameCageMouse(frame: number, enable: boolean): void;
+declare function DzFrameCageMouse(frame: framehandle, enable: boolean): void;
 
 /**
  * 清空所有锚点
  * 清空${frame}的全部锚点
  *
  */
-declare function DzFrameClearAllPoints(frame: number): void;
+declare function DzFrameClearAllPoints(frame: framehandle): void;
 
 /**
  * 原生-修改游戏渲染黑边范围
@@ -132,14 +132,14 @@ declare function DzFrameEditBlackBorders(upperHeight: number, bottomHeight: numb
  * 获取名字为${name}的子FrameID:${Id}
  * ID默认填0，同名时优先获取最后被创建的。非Simple类的Frame类型都用此函数来获取子Frame。
  */
-declare function DzFrameFindByName(name: string, id: number): number;
+declare function DzFrameFindByName(name: string, id: number): framehandle;
 
 /**
  * 获取Frame的透明度(0-255)
  * 获取${Frame}的透明度
  *
  */
-declare function DzFrameGetAlpha(frame: number): number;
+declare function DzFrameGetAlpha(frame: framehandle): number;
 
 /**
  * 原生-玩家聊天信息框
@@ -160,14 +160,14 @@ declare function DzFrameGetCommandBarButton(row: number, column: number): number
  * ${frame}是否启用
  *
  */
-declare function DzFrameGetEnable(frame: number): boolean;
+declare function DzFrameGetEnable(frame: framehandle): boolean;
 
 /**
  * 获取Frame的高度[NEW]
  * 获取${frame}的高度
  *
  */
-declare function DzFrameGetHeight(frame: number): number;
+declare function DzFrameGetHeight(frame: framehandle): number;
 
 /**
  * 原生-英雄按钮
@@ -216,14 +216,14 @@ declare function DzFrameGetMinimapButton(buttonId: number): number;
  * 获取${frame}的名称
  *
  */
-declare function DzFrameGetName(frame: number): string;
+declare function DzFrameGetName(frame: framehandle): string;
 
 /**
  * 获取Frame的Parent[NEW]
  * 获取${frame}的Parent
  *
  */
-declare function DzFrameGetParent(frame: number): number;
+declare function DzFrameGetParent(frame: framehandle): framehandle;
 
 /**
  * 原生-单位大头像
@@ -237,14 +237,14 @@ declare function DzFrameGetPortrait(): number;
  * 获取${buttnoid}的文字
  * （支持EditBox,TextFrame,TextArea,SimpleFontString）
  */
-declare function DzFrameGetText(frame: number): string;
+declare function DzFrameGetText(frame: framehandle): string;
 
 /**
  * 获取Frame的字数限制
  * 获取${frame}的字数限制
  * （支持EditBox）
  */
-declare function DzFrameGetTextSizeLimit(frame: number): number;
+declare function DzFrameGetTextSizeLimit(frame: framehandle): number;
 
 /**
  * 原生-鼠标提示
@@ -279,7 +279,7 @@ declare function DzFrameGetUpperButtonBarButton(buttonId: number): number;
  * 获取${frame}当前值
  * （支持Slider、SimpleStatusBar、StatusBar）
  */
-declare function DzFrameGetValue(frame: number): number;
+declare function DzFrameGetValue(frame: framehandle): number;
 
 /**
  * 原生-隐藏界面元素
@@ -293,21 +293,26 @@ declare function DzFrameHideInterface(): void;
  * 设置${frame}的${Point}锚点在(${x},${y})
  *
  */
-declare function DzFrameSetAbsolutePoint(frame: number, point: number, x: number, y: number): void;
+declare function DzFrameSetAbsolutePoint(
+  frame: framehandle,
+  point: framepointtype,
+  x: number,
+  y: number
+): void;
 
 /**
  * 移动所有锚点到Frame
  * 移动${frame}的所有锚点到${frame}上
  *
  */
-declare function DzFrameSetAllPoints(frame: number, relativeFrame: number): boolean;
+declare function DzFrameSetAllPoints(frame: framehandle, relativeFrame: framehandle): boolean;
 
 /**
  * 设置透明度(0-255)
  * 设置${frame}的透明度为${alpha}
  *
  */
-declare function DzFrameSetAlpha(frame: number, alpha: number): void;
+declare function DzFrameSetAlpha(frame: framehandle, alpha: number): void;
 
 /**
  * 设置动画
@@ -328,14 +333,14 @@ declare function DzFrameSetAnimateOffset(frame: number, offset: number): void;
  * 设置${frame}启用:${bottomHeight}
  *
  */
-declare function DzFrameSetEnable(name: number, enable: boolean): void;
+declare function DzFrameSetEnable(name: framehandle, enable: boolean): void;
 
 /**
  * 设置焦点
  * 设置${frame}获取焦点${enable}
  *
  */
-declare function DzFrameSetFocus(frame: number, enable: boolean): boolean;
+declare function DzFrameSetFocus(frame: framehandle, enable: boolean): boolean;
 
 /**
  * 设置字体[NEW]
@@ -343,7 +348,7 @@ declare function DzFrameSetFocus(frame: number, enable: boolean): boolean;
  * 支持EditBox、SimpleFontString、SimpleMessageFrame以及非SimpleFrame类型的例如TEXT，flag作用未知
  */
 declare function DzFrameSetFont(
-  frame: number,
+  frame: framehandle,
   fileName: string,
   height: number,
   flag: number
@@ -354,7 +359,11 @@ declare function DzFrameSetFont(
  * 设置${frame}的最小值为${Min}最大值为${Max}
  * （支持Slider、SimpleStatusBar、StatusBar）
  */
-declare function DzFrameSetMinMaxValue(frame: number, minValue: number, maxValue: number): void;
+declare function DzFrameSetMinMaxValue(
+  frame: framehandle,
+  minValue: number,
+  maxValue: number
+): void;
 
 /**
  * 设置模型
@@ -362,7 +371,7 @@ declare function DzFrameSetMinMaxValue(frame: number, minValue: number, maxValue
  *
  */
 declare function DzFrameSetModel(
-  frame: number,
+  frame: framehandle,
   modelFile: string,
   modelType: number,
   flag: number
@@ -373,7 +382,7 @@ declare function DzFrameSetModel(
  * 设置${frame}的父窗口为${frame2}
  *
  */
-declare function DzFrameSetParent(frame: number, parent: number): void;
+declare function DzFrameSetParent(frame: framehandle, parent: framehandle): void;
 
 /**
  * 设置相对位置
@@ -381,10 +390,10 @@ declare function DzFrameSetParent(frame: number, parent: number): void;
  *
  */
 declare function DzFrameSetPoint(
-  frame: number,
-  point: number,
-  relativeFrame: number,
-  relativePoint: number,
+  frame: framehandle,
+  point: framepointtype,
+  relativeFrame: framehandle,
+  relativePoint: framepointtype,
   x: number,
   y: number
 ): void;
@@ -401,7 +410,7 @@ declare function DzFrameSetPriority(frame: number, priority: number): void;
  * 设置${frame}的缩放${scale}
  *
  */
-declare function DzFrameSetScale(frame: number, scale: number): void;
+declare function DzFrameSetScale(frame: framehandle, scale: number): void;
 
 /**
  * 注册UI事件回调(funcname)
@@ -432,7 +441,7 @@ declare function DzFrameSetScriptByCode(
  * 设置${frame}（宽${w}高${h}）
  *
  */
-declare function DzFrameSetSize(frame: number, w: number, h: number): void;
+declare function DzFrameSetSize(frame: framehandle, w: number, h: number): void;
 
 /**
  * 设置步进值
@@ -446,14 +455,14 @@ declare function DzFrameSetStepValue(frame: number, step: number): void;
  * 设置${frame}的文本为${string}
  * (支持EditBox,TextFrame,TextArea,SimpleFontString、GlueEditBoxWar3、SlashChatBox、TimerTextFrame、TextButtonFrame、GlueTextButton)
  */
-declare function DzFrameSetText(frame: number, text: string): void;
+declare function DzFrameSetText(frame: framehandle, text: string): void;
 
 /**
  * 设置对齐方式[NEW]
  * 设置${frame}的对齐方式为${align}
  * 支持TextFrame、SimpleFontString、SimpleMessageFrame
  */
-declare function DzFrameSetTextAlignment(frame: number, align: number): void;
+declare function DzFrameSetTextAlignment(frame: framehandle, align: textaligntype): void;
 declare function DzFrameSetTextColor(frame: number, color: number): void;
 
 /**
@@ -461,14 +470,14 @@ declare function DzFrameSetTextColor(frame: number, color: number): void;
  * 设置${frame}的字数限制为${size}
  *
  */
-declare function DzFrameSetTextSizeLimit(frame: number, size: number): void;
+declare function DzFrameSetTextSizeLimit(frame: framehandle, size: number): void;
 
 /**
  * 设置贴图
  * 设置${frame}的贴图为:${texture}是否平铺${flag}
  * （支持Backdrop、SimpleStatusBar）
  */
-declare function DzFrameSetTexture(frame: number, texture: string, flag: number): void;
+declare function DzFrameSetTexture(frame: framehandle, texture: string, flag: number): void;
 
 /**
  * 设置提示
@@ -484,21 +493,21 @@ declare function DzFrameSetUpdateCallbackByCode(funcHandle: () => void): void;
  * 设置${frame}的当前值为${value}
  * （支持Slider、SimpleStatusBar、StatusBar）
  */
-declare function DzFrameSetValue(frame: number, value: number): void;
+declare function DzFrameSetValue(frame: framehandle, value: number): void;
 
 /**
  * 设置颜色
  * 设置${frame}颜色${color}
  *
  */
-declare function DzFrameSetVertexColor(frame: number, color: number): void;
+declare function DzFrameSetVertexColor(frame: framehandle, color: number): void;
 
 /**
  * 显示/隐藏
  * 设置${frame}显示:${bottomHeight}
  *
  */
-declare function DzFrameShow(frame: number, enable: boolean): void;
+declare function DzFrameShow(frame: framehandle, enable: boolean): void;
 declare function DzGetClientHeight(...option: any[]): any;
 declare function DzGetClientWidth(...option: any[]): any;
 
@@ -1790,7 +1799,7 @@ declare function DzUnitSetMoveType(whichUnit: unit, moveType: string): void;
  * 获取${Frame}的宽度
  * 返回Frame控件的宽度值
  */
-declare function DzFrameGetWidth(frame: number): number;
+declare function DzFrameGetWidth(frame: framehandle): number;
 
 /**
  * 按索引设置Frame动画

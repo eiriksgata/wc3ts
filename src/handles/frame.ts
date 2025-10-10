@@ -1,5 +1,4 @@
 /** @noSelfInFile */
-
 /// <reference path="../types/japi.d.ts" />
 
 import { Handle } from "./handle";
@@ -91,17 +90,11 @@ export class Frame extends Handle<framehandle> {
     let handle: framehandle | undefined;
 
     if (createContext === undefined) {
-      handle = DzCreateSimpleFrame(name, owner.handle as any, priority) as any;
+      handle = DzCreateSimpleFrame(name, owner.handle, priority);
     } else if (typeName !== undefined && inherits !== undefined) {
-      handle = DzCreateFrameByTagName(
-        typeName,
-        name,
-        owner.handle as any,
-        inherits,
-        createContext
-      ) as any;
+      handle = DzCreateFrameByTagName(typeName, name, owner.handle, inherits, createContext);
     } else {
-      handle = DzCreateFrame(name, owner.handle as any, priority) as any;
+      handle = DzCreateFrame(name, owner.handle, priority);
     }
 
     if (handle === undefined) {
@@ -124,7 +117,7 @@ export class Frame extends Handle<framehandle> {
     priority: number,
     createContext: number
   ): Frame | undefined {
-    const handle = DzCreateFrame(name, owner.handle as any, priority) as any;
+    const handle = DzCreateFrame(name, owner.handle, priority);
     if (handle) {
       const obj = this.getObject(handle) as Frame;
 
@@ -145,7 +138,7 @@ export class Frame extends Handle<framehandle> {
    * @param createContext The ID assigned to a frame to be accessed with `Frame.fromName`. This value does not have to be unique and can be overwritten.
    */
   public static createSimple(name: string, owner: Frame, createContext: number): Frame | undefined {
-    const handle = DzCreateSimpleFrame(name, owner.handle as any, createContext) as any;
+    const handle = DzCreateSimpleFrame(name, owner.handle, createContext);
     if (handle) {
       const obj = this.getObject(handle) as Frame;
 
@@ -172,13 +165,7 @@ export class Frame extends Handle<framehandle> {
     typeName: string,
     inherits: string
   ): Frame | undefined {
-    const handle = DzCreateFrameByTagName(
-      typeName,
-      name,
-      owner.handle as any,
-      inherits,
-      createContext
-    ) as any;
+    const handle = DzCreateFrameByTagName(typeName, name, owner.handle, inherits, createContext);
 
     if (handle) {
       const obj = this.getObject(handle) as Frame;
@@ -193,11 +180,11 @@ export class Frame extends Handle<framehandle> {
   }
 
   public set alpha(alpha: number) {
-    DzFrameSetAlpha(this.handle as any, alpha);
+    DzFrameSetAlpha(this.handle, alpha);
   }
 
   public get alpha() {
-    return DzFrameGetAlpha(this.handle as any);
+    return DzFrameGetAlpha(this.handle);
   }
 
   public get children() {
@@ -218,60 +205,58 @@ export class Frame extends Handle<framehandle> {
   }
 
   public set enabled(flag: boolean) {
-    DzFrameSetEnable(this.handle as any, flag);
+    DzFrameSetEnable(this.handle, flag);
   }
 
   public get enabled() {
-    return DzFrameGetEnable(this.handle as any);
+    return DzFrameGetEnable(this.handle);
   }
 
   public set height(height: number) {
-    DzFrameSetSize(this.handle as any, this.width, height);
+    DzFrameSetSize(this.handle, this.width, height);
   }
 
   public get height() {
-    return DzFrameGetHeight(this.handle as any);
+    return DzFrameGetHeight(this.handle);
   }
 
   /**
    * @deprecated use `getParent` and `setParent` instead.
    */
   public set parent(parent: Frame) {
-    DzFrameSetParent(this.handle as any, parent.handle as any);
+    DzFrameSetParent(this.handle, parent.handle);
   }
 
   public get parent() {
-    return Frame.fromHandle(
-      DzFrameGetParent(this.handle as any) as unknown as framehandle
-    ) as Frame;
+    return Frame.fromHandle(DzFrameGetParent(this.handle) as unknown as framehandle) as Frame;
   }
 
   public set text(text: string) {
-    DzFrameSetText(this.handle as any, text);
+    DzFrameSetText(this.handle, text);
   }
 
   public get text() {
-    return DzFrameGetText(this.handle as any) ?? "";
+    return DzFrameGetText(this.handle) ?? "";
   }
 
   public set textSizeLimit(size: number) {
-    DzFrameSetTextSizeLimit(this.handle as any, size);
+    DzFrameSetTextSizeLimit(this.handle, size);
   }
 
   public get textSizeLimit() {
-    return DzFrameGetTextSizeLimit(this.handle as any);
+    return DzFrameGetTextSizeLimit(this.handle);
   }
 
   public set value(value: number) {
-    DzFrameSetValue(this.handle as any, value);
+    DzFrameSetValue(this.handle, value);
   }
 
   public get value() {
-    return DzFrameGetValue(this.handle as any);
+    return DzFrameGetValue(this.handle);
   }
 
   public set visible(flag: boolean) {
-    DzFrameShow(this.handle as any, flag);
+    DzFrameShow(this.handle, flag);
   }
 
   public get visible() {
@@ -280,7 +265,7 @@ export class Frame extends Handle<framehandle> {
   }
 
   public set width(width: number) {
-    DzFrameSetSize(this.handle as any, width, this.height);
+    DzFrameSetSize(this.handle, width, this.height);
   }
 
   public get width() {
@@ -295,22 +280,22 @@ export class Frame extends Handle<framehandle> {
   }
 
   public cageMouse(enable: boolean) {
-    DzFrameCageMouse(this.handle as any, enable);
+    DzFrameCageMouse(this.handle, enable);
     return this;
   }
 
   public clearPoints() {
-    DzFrameClearAllPoints(this.handle as any);
+    DzFrameClearAllPoints(this.handle);
     return this;
   }
 
   public click() {
-    DzClickFrame(this.handle as any);
+    DzClickFrame(this.handle);
     return this;
   }
 
   public destroy() {
-    DzDestroyFrame(this.handle as any);
+    DzDestroyFrame(this.handle);
     return this;
   }
 
@@ -320,37 +305,37 @@ export class Frame extends Handle<framehandle> {
   }
 
   public setAbsPoint(point: framepointtype, x: number, y: number) {
-    DzFrameSetAbsolutePoint(this.handle as any, point as any, x, y);
+    DzFrameSetAbsolutePoint(this.handle, point, x, y);
     return this;
   }
 
   public setAllPoints(relative: Frame) {
-    DzFrameSetAllPoints(this.handle as any, relative.handle as any);
+    DzFrameSetAllPoints(this.handle, relative.handle);
     return this;
   }
 
   public setAlpha(alpha: number) {
-    DzFrameSetAlpha(this.handle as any, alpha);
+    DzFrameSetAlpha(this.handle, alpha);
     return this;
   }
 
   public setEnabled(flag: boolean) {
-    DzFrameSetEnable(this.handle as any, flag);
+    DzFrameSetEnable(this.handle, flag);
     return this;
   }
 
   public setFocus(flag: boolean) {
-    DzFrameSetFocus(this.handle as any, flag);
+    DzFrameSetFocus(this.handle, flag);
     return this;
   }
 
   public setFont(filename: string, height: number, flags: number) {
-    DzFrameSetFont(this.handle as any, filename, height, flags);
+    DzFrameSetFont(this.handle, filename, height, flags);
     return this;
   }
 
   public setHeight(height: number) {
-    DzFrameSetSize(this.handle as any, this.width, height);
+    DzFrameSetSize(this.handle, this.width, height);
     return this;
   }
 
@@ -361,26 +346,27 @@ export class Frame extends Handle<framehandle> {
   }
 
   public setMinMaxValue(minValue: number, maxValue: number) {
-    DzFrameSetMinMaxValue(this.handle as any, minValue, maxValue);
+    DzFrameSetMinMaxValue(this.handle, minValue, maxValue);
     return this;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public setTextAlignment(vert: textaligntype, horz: textaligntype) {
-    DzFrameSetTextAlignment(this.handle as any, vert as any);
+    DzFrameSetTextAlignment(this.handle, vert);
     return this;
   }
 
   public setModel(modelFile: string, cameraIndex: number) {
-    DzFrameSetModel(this.handle as any, modelFile, cameraIndex, 0);
+    DzFrameSetModel(this.handle, modelFile, cameraIndex, 0);
     return this;
   }
 
   public getParent() {
-    return Frame.fromHandle(DzFrameGetParent(this.handle as any) as any);
+    return Frame.fromHandle(DzFrameGetParent(this.handle));
   }
 
   public setParent(parent: Frame) {
-    DzFrameSetParent(this.handle as any, parent.handle as any);
+    DzFrameSetParent(this.handle, parent.handle);
     return this;
   }
 
@@ -391,24 +377,17 @@ export class Frame extends Handle<framehandle> {
     x: number,
     y: number
   ) {
-    DzFrameSetPoint(
-      this.handle as any,
-      point as any,
-      relative.handle as any,
-      relativePoint as any,
-      x,
-      y
-    );
+    DzFrameSetPoint(this.handle, point, relative.handle, relativePoint, x, y);
     return this;
   }
 
   public setScale(scale: number) {
-    DzFrameSetScale(this.handle as any, scale);
+    DzFrameSetScale(this.handle, scale);
     return this;
   }
 
   public setSize(width: number, height: number) {
-    DzFrameSetSize(this.handle as any, width, height);
+    DzFrameSetSize(this.handle, width, height);
     return this;
   }
 
@@ -425,7 +404,7 @@ export class Frame extends Handle<framehandle> {
   }
 
   public setText(text: string) {
-    DzFrameSetText(this.handle as any, text);
+    DzFrameSetText(this.handle, text);
     return this;
   }
 
@@ -436,12 +415,13 @@ export class Frame extends Handle<framehandle> {
   }
 
   public setTextSizeLimit(size: number) {
-    DzFrameSetTextSizeLimit(this.handle as any, size);
+    DzFrameSetTextSizeLimit(this.handle, size);
     return this;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public setTexture(texFile: string, flag: number, blend: boolean) {
-    DzFrameSetTexture(this.handle as any, texFile, flag);
+    DzFrameSetTexture(this.handle, texFile, flag);
     return this;
   }
 
@@ -452,22 +432,22 @@ export class Frame extends Handle<framehandle> {
   }
 
   public setValue(value: number) {
-    DzFrameSetValue(this.handle as any, value);
+    DzFrameSetValue(this.handle, value);
     return this;
   }
 
   public setVertexColor(color: number) {
-    DzFrameSetVertexColor(this.handle as any, color);
+    DzFrameSetVertexColor(this.handle, color);
     return this;
   }
 
   public setVisible(flag: boolean) {
-    DzFrameShow(this.handle as any, flag);
+    DzFrameShow(this.handle, flag);
     return this;
   }
 
   public setWidth(width: number) {
-    DzFrameSetSize(this.handle as any, width, this.height);
+    DzFrameSetSize(this.handle, width, this.height);
     return this;
   }
 

@@ -1290,4 +1290,8 @@ export class Unit extends Widget {
   public static isUnitIdType(unitId: number, whichUnitType: unittype) {
     return IsUnitIdType(unitId, whichUnitType);
   }
+
+  public setPreselectUIVisible(value: boolean) {
+    DzSetUnitPreselectUIVisible(this.handle, value);
+  }
 }
