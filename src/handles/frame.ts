@@ -394,4 +394,11 @@ export class Frame extends Handle<framehandle> {
   public static loadTOC(filename: string) {
     return DzLoadToc(filename);
   }
+
+  public static fromOrigin(frameType: originframetype, index: number) {
+    if (frameType === ORIGIN_FRAME_GAME_UI) {
+      return this.fromHandle(DzGetGameUI());
+    }
+    return null;
+  }
 }

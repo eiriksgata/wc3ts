@@ -805,6 +805,7 @@ export const MOVE_TYPE_FLOAT = 0x40;
 export const MOVE_TYPE_AMPH = 0x80;
 export const COLLISION_TYPE_UNIT = 1;
 export const COLLISION_TYPE_BUILDING = 3;
+
 export const FRAME_ALIGN_LEFT_TOP = 0;
 export const FRAME_ALIGN_TOP = 1;
 export const FRAME_ALIGN_RIGHT_TOP = 2;
@@ -814,6 +815,17 @@ export const FRAME_ALIGN_RIGHT = 5;
 export const FRAME_ALIGN_LEFT_BOTTOM = 6;
 export const FRAME_ALIGN_BOTTOM = 7;
 export const FRAME_ALIGN_RIGHT_BOTTOM = 8;
+
+export const FRAMEPOINT_BOTTOM = 7;
+export const FRAMEPOINT_BOTTOMLEFT = 6;
+export const FRAMEPOINT_BOTTOMRIGHT = 8;
+export const FRAMEPOINT_CENTER = 4;
+export const FRAMEPOINT_LEFT = 3;
+export const FRAMEPOINT_RIGHT = 5;
+export const FRAMEPOINT_TOP = 1;
+export const FRAMEPOINT_TOPLEFT = 0;
+export const FRAMEPOINT_TOPRIGHT = 2;
+
 export const MOUSE_ORDER_CLICK = 1;
 export const MOUSE_ORDER_ENTER = 2;
 export const MOUSE_ORDER_LEAVE = 3;

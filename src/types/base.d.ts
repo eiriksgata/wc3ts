@@ -404,3 +404,5 @@ declare interface pathingflag extends handle {
 declare interface commandbuttoneffect extends handle {
   __commandbuttoneffect: never;
 }
+
+declare const ORIGIN_FRAME_GAME_UI: originframetype;
