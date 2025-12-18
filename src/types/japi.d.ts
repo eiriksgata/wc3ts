@@ -2757,6 +2757,176 @@ declare function DzFrameSetTexCoord(
   bottom: number
 ): void;
 
+// ============= 单位技能美术与投射物扩展函数（KKPRE） =============
+
+/**
+ * 设置单位技能图标
+ * 设置单位${u}的技能${abil_id}图标为${art_path}
+ */
+declare function DzSetUnitAbilityArt(u: unit, abil_id: number, art_path: string): boolean;
+
+/**
+ * 获取单位技能图标
+ * 获取单位${u}的技能${abil_id}图标路径
+ */
+declare function DzGetUnitAbilityArt(u: unit, abil_id: number): string;
+
+/**
+ * 设置单位技能标题
+ * 设置单位${u}的技能${abil_id}标题为${tip}
+ */
+declare function DzSetUnitAbilityTip(u: unit, abil_id: number, tip: string): boolean;
+
+/**
+ * 获取单位技能标题
+ * 获取单位${u}的技能${abil_id}标题
+ */
+declare function DzGetUnitAbilityTip(u: unit, abil_id: number): string;
+
+/**
+ * 设置单位技能详细说明
+ * 设置单位${u}的技能${abil_id}详细说明为${ubertip}
+ */
+declare function DzSetUnitAbilityUberTip(u: unit, abil_id: number, ubertip: string): boolean;
+
+/**
+ * 获取单位技能详细说明
+ * 获取单位${u}的技能${abil_id}详细说明
+ */
+declare function DzGetUnitAbilityUberTip(u: unit, abil_id: number): string;
+
+/**
+ * 刷新单位技能
+ * 刷新单位${u}的技能${abil_id}以应用修改
+ */
+declare function DzSetUnitAbilityUpdate(u: unit, abil_id: number): boolean;
+
+/**
+ * 设置单位技能命令ID
+ * 设置单位${u}的技能${abil_id}命令ID为${order_id}
+ */
+declare function DzSetUnitAbilityOrderId(u: unit, abil_id: number, order_id: number): boolean;
+
+/**
+ * 获取单位技能命令ID
+ * 获取单位${u}的技能${abil_id}命令ID
+ */
+declare function DzGetUnitAbilityOrderId(u: unit, abil_id: number): number;
+
+/**
+ * 设置单位技能法术书列表
+ * 设置单位${u}的技能${abil_id}法术书列表为${abil_list}，是否保存冷却${save_cooldown}
+ */
+declare function DzSetUnitAbilitySpellBookList(
+  u: unit,
+  abil_id: number,
+  abil_list: string,
+  save_cooldown: boolean
+): boolean;
+
+/**
+ * 获取单位技能法术书列表
+ * 获取单位${u}的技能${abil_id}法术书列表
+ */
+declare function DzGetUnitAbilitySpellBookList(u: unit, abil_id: number): string;
+
+/**
+ * 设置单位技能投射物模型
+ * 设置单位${u}的技能${abil_id}投射物模型为${missile_art}
+ */
+declare function DzSetUnitAbilityMissileArt(u: unit, abil_id: number, missile_art: string): boolean;
+
+/**
+ * 获取单位技能投射物模型
+ * 获取单位${u}的技能${abil_id}投射物模型路径
+ */
+declare function DzGetUnitAbilityMissileArt(u: unit, abil_id: number): string;
+
+/**
+ * 设置单位技能投射物速度
+ * 设置单位${u}的技能${abil_id}投射物速度为${missile_speed}
+ */
+declare function DzSetUnitAbilityMissileSpeed(
+  u: unit,
+  abil_id: number,
+  missile_speed: number
+): boolean;
+
+/**
+ * 获取单位技能投射物速度
+ * 获取单位${u}的技能${abil_id}投射物速度
+ */
+declare function DzGetUnitAbilityMissileSpeed(u: unit, abil_id: number): number;
+
+/**
+ * 设置单位技能投射物弧度
+ * 设置单位${u}的技能${abil_id}投射物弧度为${missile_arc}
+ */
+declare function DzSetUnitAbilityMissileArc(u: unit, abil_id: number, missile_arc: number): boolean;
+
+/**
+ * 获取单位技能投射物弧度
+ * 获取单位${u}的技能${abil_id}投射物弧度
+ */
+declare function DzGetUnitAbilityMissileArc(u: unit, abil_id: number): number;
+
+/**
+ * 设置单位技能投射物是否追踪
+ * 设置单位${u}的技能${abil_id}投射物追踪为${missile_homing}
+ */
+declare function DzSetUnitAbilityMissileHoming(
+  u: unit,
+  abil_id: number,
+  missile_homing: boolean
+): boolean;
+
+/**
+ * 获取单位技能投射物是否追踪
+ * 获取单位${u}的技能${abil_id}投射物追踪状态
+ */
+declare function DzGetUnitAbilityMissileHoming(u: unit, abil_id: number): boolean;
+
+/**
+ * 设置单位技能投射物数量
+ * 设置单位${u}的技能${abil_id}投射物数量为${missile_count}
+ */
+declare function DzSetUnitAbilityMissileCount(
+  u: unit,
+  abil_id: number,
+  missile_count: number
+): boolean;
+
+/**
+ * 获取单位技能投射物数量
+ * 获取单位${u}的技能${abil_id}投射物数量
+ */
+declare function DzGetUnitAbilityMissileCount(u: unit, abil_id: number): number;
+
+/**
+ * 设置单位技能投射物伤害
+ * 设置单位${u}的技能${abil_id}投射物伤害${damage}最大伤害${max_damage}攻击类型${atktp}伤害类型${dmgtp}
+ */
+declare function DzSetUnitAbilityMissileDamage(
+  u: unit,
+  abil_id: number,
+  damage: number,
+  max_damage: number,
+  atktp: attacktype,
+  dmgtp: damagetype
+): boolean;
+
+/**
+ * 获取单位技能投射物伤害
+ * 获取单位${u}的技能${abil_id}投射物伤害
+ */
+declare function DzGetUnitAbilityMissileDamage(u: unit, abil_id: number): number;
+
+/**
+ * 获取单位技能投射物最大伤害
+ * 获取单位${u}的技能${abil_id}投射物最大伤害
+ */
+declare function DzGetUnitAbilityMissileMaxDamage(u: unit, abil_id: number): number;
+
 // ============= 单位技能属性设置函数 =============
 
 /**
@@ -3201,6 +3371,391 @@ declare function DzItemSetAlpha(whichItem: item, color: number): void;
  * 更改道具在UI中显示的头像模型
  */
 declare function DzItemSetPortrait(whichItem: item, modelPath: string): void;
+
+/**
+ * 设置禁用Track事件
+ * 设置${frame}是否忽略Track事件${ignore}
+ * 控制Frame是否响应跟踪事件
+ */
+declare function DzFrameSetIgnoreTrackEvents(frame: number, ignore: boolean): void;
+
+/**
+ * 添加模型Frame
+ * 在父控件${parent_frame}下添加一个模型Frame
+ * 返回新创建的模型Frame句柄
+ */
+declare function DzFrameAddModel(parent_frame: number): number;
+
+/**
+ * 设置模型Frame模型
+ * 设置模型Frame${model_frame}的模型文件为${model_file}队伍颜色${team_color_id}
+ */
+declare function DzFrameSetModel2(
+  model_frame: number,
+  model_file: string,
+  team_color_id: number
+): void;
+
+/**
+ * 为模型Frame添加特效
+ * 在模型Frame${model_frame}的连接点${attach_point}添加模型特效${model_file}
+ * 返回特效Frame句柄
+ */
+declare function DzFrameAddModelEffect(
+  model_frame: number,
+  attach_point: string,
+  model_file: string
+): number;
+
+/**
+ * 移除模型Frame上的特效
+ * 从模型Frame${model_frame}移除特效Frame${effect_frame}
+ */
+declare function DzFrameRemoveModelEffect(model_frame: number, effect_frame: number): void;
+
+/**
+ * 设置模型Frame动画（索引）
+ * 设置模型Frame${model_frame}播放索引为${anim_index}的动画
+ */
+declare function DzFrameSetModelAnimationByIndex(model_frame: number, anim_index: number): void;
+
+/**
+ * 设置模型Frame动画（名称）
+ * 设置模型Frame${model_frame}播放动画${animation}
+ */
+declare function DzFrameSetModelAnimation(model_frame: number, animation: string): void;
+
+/**
+ * 设置模型相机源位置
+ * 设置模型Frame${model_frame}相机源位置为(${x},${y},${z})
+ */
+declare function DzFrameSetModelCameraSource(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+
+/**
+ * 设置模型相机目标位置
+ * 设置模型Frame${model_frame}相机目标位置为(${x},${y},${z})
+ */
+declare function DzFrameSetModelCameraTarget(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+
+/**
+ * 设置模型大小
+ * 设置模型Frame${model_frame}大小为${size}
+ */
+declare function DzFrameSetModelSize(model_frame: number, size: number): void;
+
+/**
+ * 获取模型大小
+ * 获取模型Frame${model_frame}的大小
+ */
+declare function DzFrameGetModelSize(model_frame: number): number;
+
+/**
+ * 设置模型位置
+ * 设置模型Frame${model_frame}位置为(${x},${y},${z})
+ */
+declare function DzFrameSetModelPosition(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+
+/**
+ * 设置模型X坐标
+ * 设置模型Frame${model_frame}的X坐标为${x}
+ */
+declare function DzFrameSetModelX(model_frame: number, x: number): void;
+
+/**
+ * 获取模型X坐标
+ * 获取模型Frame${model_frame}的X坐标
+ */
+declare function DzFrameGetModelX(model_frame: number): number;
+
+/**
+ * 设置模型Y坐标
+ * 设置模型Frame${model_frame}的Y坐标为${y}
+ */
+declare function DzFrameSetModelY(model_frame: number, y: number): void;
+
+/**
+ * 获取模型Y坐标
+ * 获取模型Frame${model_frame}的Y坐标
+ */
+declare function DzFrameGetModelY(model_frame: number): number;
+
+/**
+ * 设置模型Z坐标
+ * 设置模型Frame${model_frame}的Z坐标为${z}
+ */
+declare function DzFrameSetModelZ(model_frame: number, z: number): void;
+
+/**
+ * 获取模型Z坐标
+ * 获取模型Frame${model_frame}的Z坐标
+ */
+declare function DzFrameGetModelZ(model_frame: number): number;
+
+/**
+ * 设置模型动画速度
+ * 设置模型Frame${model_frame}动画速度为${speed}
+ */
+declare function DzFrameSetModelSpeed(model_frame: number, speed: number): void;
+
+/**
+ * 获取模型动画速度
+ * 获取模型Frame${model_frame}动画速度
+ */
+declare function DzFrameGetModelSpeed(model_frame: number): number;
+
+/**
+ * 设置模型缩放
+ * 设置模型Frame${model_frame}缩放为(${x},${y},${z})
+ */
+declare function DzFrameSetModelScale(model_frame: number, x: number, y: number, z: number): void;
+
+/**
+ * 重置模型变换矩阵
+ * 重置模型Frame${model_frame}的变换矩阵
+ */
+declare function DzFrameSetModelMatReset(model_frame: number): void;
+
+/**
+ * 模型绕X轴旋转
+ * 设置模型Frame${model_frame}绕X轴旋转${x}
+ */
+declare function DzFrameSetModelRotateX(model_frame: number, x: number): void;
+
+/**
+ * 模型绕Y轴旋转
+ * 设置模型Frame${model_frame}绕Y轴旋转${y}
+ */
+declare function DzFrameSetModelRotateY(model_frame: number, y: number): void;
+
+/**
+ * 模型绕Z轴旋转
+ * 设置模型Frame${model_frame}绕Z轴旋转${z}
+ */
+declare function DzFrameSetModelRotateZ(model_frame: number, z: number): void;
+
+/**
+ * 设置模型颜色
+ * 设置模型Frame${model_frame}颜色为${color}
+ */
+declare function DzFrameSetModelColor(model_frame: number, color: number): void;
+
+/**
+ * 获取模型颜色
+ * 获取模型Frame${model_frame}颜色
+ */
+declare function DzFrameGetModelColor(model_frame: number): number;
+
+/**
+ * 设置模型贴图
+ * 设置模型Frame${model_frame}贴图为${texture_file}替换ID${replace_texutre_id}
+ */
+declare function DzFrameSetModelTexture(
+  model_frame: number,
+  texture_file: string,
+  replace_texutre_id: number
+): void;
+
+/**
+ * 设置模型粒子系统大小
+ * 设置模型Frame${model_frame}粒子系统大小为${scale}
+ */
+declare function DzFrameSetModelParticle2Size(model_frame: number, scale: number): void;
+
+/**
+ * 获取GlueUI
+ * 获取GlueUI根Frame句柄
+ */
+declare function DzGetGlueUI(): number;
+
+/**
+ * 获取鼠标所在Frame
+ * 获取当前鼠标所在的Frame句柄
+ */
+declare function DzFrameGetMouse(): number;
+
+/**
+ * 获取Frame上下文
+ * 获取${frame}的Context值
+ */
+declare function DzFrameGetContext(frame: number): number;
+
+/**
+ * 设置Frame名称与上下文
+ * 设置${frame}的名称为${name}上下文为${context}
+ */
+declare function DzFrameSetNameContext(frame: number, name: string, context: number): void;
+
+/**
+ * 设置文字间距
+ * 设置文字Frame${text_frame}的字体间距为${spacing}
+ */
+declare function DzFrameSetTextFontSpacing(text_frame: number, spacing: number): void;
+
+/**
+ * 获取玩家最后选中的物品
+ * 获取玩家${p}最后选中的物品
+ */
+declare function DzGetPlayerLastSelectedItem(p: player): item;
+
+/**
+ * 获取模型缓存数量
+ * 获取当前缓存的模型数量
+ */
+declare function DzGetCacheModelCount(): number;
+
+/**
+ * 设置最大帧率
+ * 设置游戏最大帧率为${max_fps}
+ */
+declare function DzSetMaxFps(max_fps: number): void;
+
+/**
+ * 启用单位技能面板绘制
+ * 为单位${u}启用技能面板绘制${is_enable}
+ */
+declare function DzEnableDrawSkillPanel(u: unit, is_enable: boolean): void;
+
+/**
+ * 启用玩家技能面板绘制
+ * 为玩家${p}启用技能面板绘制${is_enable}
+ */
+declare function DzEnableDrawSkillPanelByPlayer(p: player, is_enable: boolean): void;
+
+/**
+ * 设置特效雾可见性
+ * 设置特效${eff}在战争迷雾中的可见性${is_visible}
+ */
+declare function DzSetEffectFogVisible(eff: effect, is_visible: boolean): void;
+
+/**
+ * 设置特效黑幕可见性
+ * 设置特效${eff}在地图黑幕中的可见性${is_visible}
+ */
+declare function DzSetEffectMaskVisible(eff: effect, is_visible: boolean): void;
+
+/**
+ * 绑定Frame到世界单位
+ * 绑定Frame${frame}到控件${u} 世界坐标(${world_x},${world_y},${world_z}) 屏幕坐标(${screen_x},${screen_y})
+ */
+declare function DzFrameBindWidget(
+  frame: number,
+  u: widget,
+  world_x: number,
+  world_y: number,
+  world_z: number,
+  screen_x: number,
+  screen_y: number,
+  fog_visible: boolean,
+  unit_visible: boolean,
+  dead_visible: boolean
+): void;
+
+/**
+ * 绑定Frame到世界坐标
+ * 绑定Frame${frame}到世界坐标(${world_x},${world_y},${world_z}) 屏幕坐标(${screen_x},${screen_y})
+ */
+declare function DzFrameBindWorldPos(
+  frame: number,
+  world_x: number,
+  world_y: number,
+  world_z: number,
+  screen_x: number,
+  screen_y: number,
+  fog_visible: boolean
+): void;
+
+/**
+ * 解绑Frame
+ * 解绑Frame${frame}与世界或单位的绑定
+ */
+declare function DzFrameUnBind(frame: number): void;
+
+/**
+ * 禁用单位预选UI
+ * 禁用单位预选UI显示
+ */
+declare function DzDisableUnitPreselectUi(): void;
+
+/**
+ * 禁用道具预选UI
+ * 禁用道具预选UI显示
+ */
+declare function DzDisableItemPreselectUi(): void;
+
+/**
+ * 获取下层Frame
+ * 获取当前下层Frame句柄
+ */
+declare function DzFrameGetLowerLevelFrame(): number;
+
+/**
+ * 设置复选框选中状态
+ * 设置复选框Frame${check_box_frame}选中状态为${checked}
+ */
+declare function DzFrameSetCheckBoxState(check_box_frame: number, checked: boolean): void;
+
+/**
+ * 获取复选框选中状态
+ * 获取复选框Frame${check_box_frame}是否被选中
+ */
+declare function DzFrameGetCheckBoxState(check_box_frame: number): boolean;
+
+/**
+ * 判断Frame是否获得焦点
+ * 判断Frame${frame}是否当前获得焦点
+ */
+declare function DzFrameIsFocus(frame: number): boolean;
+
+/**
+ * 设置编辑框激活状态
+ * 设置编辑框Frame${frame}激活状态为${is_active}
+ */
+declare function DzFrameSetEditBoxActive(frame: number, is_active: boolean): void;
+
+/**
+ * 设置编辑框禁用输入法
+ * 设置编辑框Frame${frame}禁用输入法${is_disable}
+ */
+declare function DzFrameSetEditBoxDisableIme(frame: number, is_disable: boolean): void;
+
+/**
+ * 判断是否窗口模式
+ * 判断游戏是否运行在窗口模式
+ */
+declare function DzIsWindowMode(): boolean;
+
+/**
+ * 获取屏幕宽度
+ * 获取系统屏幕宽度
+ */
+declare function DzGetSystemMetricsWidth(): number;
+
+/**
+ * 获取屏幕高度
+ * 获取系统屏幕高度
+ */
+declare function DzGetSystemMetricsHeight(): number;
+
+/**
+ * 获取装饰物数量
+ * 获取当前地图中装饰物总数量
+ */
+declare function DzGetDoodadsCount(): number;
 
 /**
  * 钩取血条事件

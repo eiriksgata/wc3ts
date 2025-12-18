@@ -1,3 +1,5 @@
+/* eslint-disable camelcase, @typescript-eslint/naming-convention */
+
 export function DzSetHeroTypeProperName(uid: number, name: string): void {
   EXSetUnitArrayString(uid, 61, 0, name);
   EXSetUnitInteger(uid, 61, 1);
@@ -355,3 +357,312 @@ export const DEFENSE_TYPE_DIVINE = 6;
  * 防御类型：无
  */
 export const DEFENSE_TYPE_NONE = 7;
+
+// ============= DzAPI 请求封装（对应 kkwe/DzAPI.j） =============
+/* eslint-disable @typescript-eslint/naming-convention */
+
+/**
+ * 保存服务器数值
+ * 保存${玩家}的服务器数值${键名}为${数值}
+ * 本质调用 RequestExtraBooleanData(4, ...)
+ */
+export function DzAPI_Map_SaveServerValue(
+  whichPlayer: player,
+  key: string,
+  value: string
+): boolean {
+  return RequestExtraBooleanData(4, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 读取服务器数值
+ * 读取${玩家}的服务器数值${键名}
+ */
+export function DzAPI_Map_GetServerValue(whichPlayer: player, key: string): string {
+  return RequestExtraStringData(5, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取游戏开始时间
+ * 返回服务器记录的游戏开始时间戳
+ */
+export function DzAPI_Map_GetGameStartTime(): number {
+  return RequestExtraIntegerData(11, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 是否为RPG天梯
+ * 判断当前是否为RPG天梯模式
+ */
+export function DzAPI_Map_IsRPGLadder(): boolean {
+  return RequestExtraBooleanData(12, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取匹配类型
+ * 返回当前匹配模式类型
+ */
+export function DzAPI_Map_GetMatchType(): number {
+  return RequestExtraIntegerData(13, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 设置统计数据
+ * 统计-提交地图数据
+ */
+export function DzAPI_Map_Stat_SetStat(whichPlayer: player, key: string, value: string): void {
+  RequestExtraIntegerData(7, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 设置天梯统计
+ * 天梯-统计数据
+ */
+export function DzAPI_Map_Ladder_SetStat(whichPlayer: player, key: string, value: string): void {
+  RequestExtraIntegerData(8, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 设置玩家天梯统计
+ * 天梯-统计玩家数据
+ */
+export function DzAPI_Map_Ladder_SetPlayerStat(
+  whichPlayer: player,
+  key: string,
+  value: string
+): void {
+  RequestExtraIntegerData(9, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 获取服务器数值错误码
+ * 读取加载服务器存档时的错误码
+ */
+export function DzAPI_Map_GetServerValueErrorCode(whichPlayer: player): number {
+  return RequestExtraIntegerData(6, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取天梯等级
+ * 提供给地图的接口，用于取天梯等级
+ */
+export function DzAPI_Map_GetLadderLevel(whichPlayer: player): number {
+  return RequestExtraIntegerData(14, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 玩家身份类型
+ * dataType=92 的通用身份判断封装
+ */
+export function KKApiPlayerIdentityType(whichPlayer: player, id: number): boolean {
+  return RequestExtraBooleanData(92, whichPlayer, null as any, null as any, false, id, 0, 0);
+}
+
+/**
+ * 是否为红钻VIP
+ */
+export function DzAPI_Map_IsRedVIP(whichPlayer: player): boolean {
+  return KKApiPlayerIdentityType(whichPlayer, 4);
+}
+
+/**
+ * 是否为蓝钻VIP
+ */
+export function DzAPI_Map_IsBlueVIP(whichPlayer: player): boolean {
+  return KKApiPlayerIdentityType(whichPlayer, 3);
+}
+
+/**
+ * 获取天梯排名
+ */
+export function DzAPI_Map_GetLadderRank(whichPlayer: player): number {
+  return RequestExtraIntegerData(17, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取地图等级排名
+ */
+export function DzAPI_Map_GetMapLevelRank(whichPlayer: player): number {
+  return RequestExtraIntegerData(18, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取公会职责
+ * Member=10 Admin=20 Leader=30
+ */
+export function DzAPI_Map_GetGuildRole(whichPlayer: player): number {
+  return RequestExtraIntegerData(20, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 是否为RPG大厅
+ */
+export function DzAPI_Map_IsRPGLobby(): boolean {
+  return RequestExtraBooleanData(10, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 任务完成
+ * 用作完成某个任务，发奖励
+ */
+export function DzAPI_Map_MissionComplete(whichPlayer: player, key: string, value: string): void {
+  RequestExtraIntegerData(1, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 获取活动数据
+ * 提供给地图的接口，用作取服务器上的活动数据
+ */
+export function DzAPI_Map_GetActivityData(): string {
+  return RequestExtraStringData(2, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取地图配置
+ * 根据 key 读取地图配置
+ */
+export function DzAPI_Map_GetMapConfig(key: string): string {
+  return RequestExtraStringData(21, null as any, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 保存公共存档
+ */
+export function DzAPI_Map_SavePublicArchive(
+  whichPlayer: player,
+  key: string,
+  value: string
+): boolean {
+  return RequestExtraBooleanData(31, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 获取公共存档
+ */
+export function DzAPI_Map_GetPublicArchive(whichPlayer: player, key: string): string {
+  return RequestExtraStringData(32, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 使用消耗品
+ */
+export function DzAPI_Map_UseConsumablesItem(whichPlayer: player, key: string): void {
+  RequestExtraIntegerData(33, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * ORPG触发器
+ * 触发boss击杀等事件
+ */
+export function DzAPI_Map_OrpgTrigger(whichPlayer: player, key: string): void {
+  RequestExtraIntegerData(28, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取服务器掉落数据
+ */
+export function DzAPI_Map_GetServerArchiveDrop(whichPlayer: player, key: string): string {
+  return RequestExtraStringData(27, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取服务器装备数据
+ */
+export function DzAPI_Map_GetServerArchiveEquip(whichPlayer: player, key: string): number {
+  return RequestExtraIntegerData(26, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取平台VIP等级
+ */
+export function DzAPI_Map_GetPlatformVIP(whichPlayer: player): number {
+  return RequestExtraIntegerData(30, whichPlayer, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 是否为平台VIP
+ */
+export function DzAPI_Map_IsPlatformVIP(whichPlayer: player): boolean {
+  return DzAPI_Map_GetPlatformVIP(whichPlayer) > 0;
+}
+
+/**
+ * 读取本地全局字符串存档
+ */
+export function DzAPI_Map_Global_GetStoreString(key: string): string {
+  return RequestExtraStringData(36, GetLocalPlayer(), key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 保存本地全局字符串存档
+ */
+export function DzAPI_Map_Global_StoreString(key: string, value: string): void {
+  RequestExtraBooleanData(37, GetLocalPlayer(), key, value, false, 0, 0, 0);
+}
+
+/**
+ * 地图全局消息同步注册
+ * 等价于 DzAPI_Map_Global_ChangeMsg
+ */
+export function DzAPI_Map_Global_ChangeMsg(trig: trigger): void {
+  DzTriggerRegisterSyncData(trig, "DZGAU", true);
+}
+
+/**
+ * 获取服务器存档
+ */
+export function DzAPI_Map_ServerArchive(whichPlayer: player, key: string): string {
+  return RequestExtraStringData(38, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 保存服务器存档
+ */
+export function DzAPI_Map_SaveServerArchive(whichPlayer: player, key: string, value: string): void {
+  RequestExtraBooleanData(39, whichPlayer, key, value, false, 0, 0, 0);
+}
+
+/**
+ * 是否为RPG快速匹配
+ */
+export function DzAPI_Map_IsRPGQuickMatch(): boolean {
+  return RequestExtraBooleanData(40, null as any, null as any, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 获取商城道具数量
+ */
+export function DzAPI_Map_GetMallItemCount(whichPlayer: player, key: string): number {
+  return RequestExtraIntegerData(41, whichPlayer, key, null as any, false, 0, 0, 0);
+}
+
+/**
+ * 消耗商城道具
+ */
+export function DzAPI_Map_ConsumeMallItem(
+  whichPlayer: player,
+  key: string,
+  count: number
+): boolean {
+  return RequestExtraBooleanData(42, whichPlayer, key, null as any, false, count, 0, 0);
+}
+
+/**
+ * 启用/禁用平台设置
+ */
+export function DzAPI_Map_EnablePlatformSettings(
+  whichPlayer: player,
+  option: number,
+  enable: boolean
+): boolean {
+  return RequestExtraBooleanData(43, whichPlayer, null as any, null as any, enable, option, 0, 0);
+}
+
+/**
+ * 获取读取服务器存档是否成功
+ */
+export function GetPlayerServerValueSuccess(whichPlayer: player): boolean {
+  return DzAPI_Map_GetServerValueErrorCode(whichPlayer) === 0;
+}
+
+/* eslint-enable camelcase, @typescript-eslint/naming-convention */
