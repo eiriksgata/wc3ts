@@ -665,4 +665,41 @@ export function GetPlayerServerValueSuccess(whichPlayer: player): boolean {
   return DzAPI_Map_GetServerValueErrorCode(whichPlayer) === 0;
 }
 
+/**
+ * 判断单位能否在指定位置放置（基于 location）
+ */
+export function KKUnitCanPlaceAroundLoc(obj: widget, loc: location): boolean {
+  return DzUnitCanPlaceAround(obj, GetLocationX(loc), GetLocationY(loc));
+}
+
+/**
+ * 判断单位能否在指定坐标放置
+ */
+export function kkUnitCanPlaceAroundItem(obj: widget, x: number, y: number): boolean {
+  return DzUnitCanPlaceAround(obj, x, y);
+}
+
+/**
+ * 判断单位能否在指定 location 放置（同 KKUnitCanPlaceAroundLoc）
+ */
+export function KKUnitCanPlaceAroundLocItem(obj: widget, loc: location): boolean {
+  return DzUnitCanPlaceAround(obj, GetLocationX(loc), GetLocationY(loc));
+}
+
+/**
+ * 判断指定位置是否可放置单位（带碰撞体积和类型）
+ */
+export function KKPositionCanPlaceAroundLoc(
+  loc: location,
+  collision_size: number,
+  collision_type: number
+): boolean {
+  return DzPositionCanPlaceAround(
+    GetLocationX(loc),
+    GetLocationY(loc),
+    collision_size,
+    collision_type
+  );
+}
+
 /* eslint-enable camelcase, @typescript-eslint/naming-convention */

@@ -2,20 +2,6 @@
 /// <reference path="base.d.ts" />
 
 /**
- * 改变商店物品冷却时间
- * 改变商店物品冷却时间
- * 修改商店中物品的冷却时间
- */
-declare function DzAPI_Map_ChangeStoreItemCoolDown(...option: any[]): any;
-
-/**
- * 改变商店物品数量
- * 改变商店物品数量
- * 修改商店中物品的库存数量
- */
-declare function DzAPI_Map_ChangeStoreItemCount(...option: any[]): any;
-
-/**
  * 获取活动数据
  * 获取活动数据
  * 获取当前活动的相关数据信息
@@ -132,7 +118,11 @@ declare function DzAPI_Map_GetServerValueErrorCode(whichPlayer: player): number;
  * 获取用户ID
  * 获取玩家的唯一用户标识
  */
-declare function DzAPI_Map_GetUserID(...option: any[]): any;
+/**
+ * 获取用户ID
+ * 获取指定玩家的唯一用户标识
+ */
+declare function DzAPI_Map_GetUserID(whichPlayer: player): string;
 
 /**
  * 检查商城物品
@@ -235,21 +225,16 @@ declare function DzAPI_Map_Stat_SetStat(whichPlayer: player, key: string, value:
  * 统计数据操作
  * 执行统计数据相关操作
  */
-declare function DzAPI_Map_Statistics(...option: any[]): any;
-
 /**
- * 切换商店
- * 切换商店状态
- * 切换商店的显示或隐藏状态
+ * 统计数据
+ * 提交统计事件：事件键${eventKey}，类型${eventType}，值${value}
  */
-declare function DzAPI_Map_ToggleStore(...option: any[]): any;
-
-/**
- * 更新玩家英雄
- * 更新玩家英雄信息
- * 更新玩家的英雄相关信息
- */
-declare function DzAPI_Map_UpdatePlayerHero(...option: any[]): any;
+declare function DzAPI_Map_Statistics(
+  whichPlayer: player,
+  eventKey: string,
+  eventType: string,
+  value: number
+): void;
 
 /**
  * 使用消耗品
@@ -257,13 +242,6 @@ declare function DzAPI_Map_UpdatePlayerHero(...option: any[]): any;
  * 玩家使用指定的消耗品物品
  */
 declare function DzAPI_Map_UseConsumablesItem(whichPlayer: player, key: string): void;
-
-/**
- * 改变地形
- * 改变地形
- * 修改地图的地形数据
- */
-declare function DzChangeTerrain(...option: any[]): any;
 
 /**
  * 点击
@@ -729,8 +707,10 @@ declare function DzFrameSetVertexColor(frame: framehandle, color: number): void;
  *
  */
 declare function DzFrameShow(frame: framehandle, enable: boolean): void;
-declare function DzGetClientHeight(...option: any[]): any;
-declare function DzGetClientWidth(...option: any[]): any;
+/** 获取客户端高度（像素） */
+declare function DzGetClientHeight(): number;
+/** 获取客户端宽度（像素） */
+declare function DzGetClientWidth(): number;
 
 /**
  * 取RGBA色值
@@ -738,8 +718,16 @@ declare function DzGetClientWidth(...option: any[]): any;
  * 返回一个整数，用于设置Frame颜色
  */
 declare function DzGetColor(r: number, g: number, b: number, a: number): number;
-declare function DzGetConvertWorldPositionX(...option: any[]): any;
-declare function DzGetConvertWorldPositionY(...option: any[]): any;
+/**
+ * 屏幕坐标转世界坐标X
+ * 输入屏幕坐标(${x}, ${y})，返回世界坐标X
+ */
+declare function DzGetConvertWorldPositionX(x: number, y: number): number;
+/**
+ * 屏幕坐标转世界坐标Y
+ * 输入屏幕坐标(${x}, ${y})，返回世界坐标Y
+ */
+declare function DzGetConvertWorldPositionY(x: number, y: number): number;
 
 /**
  * 原生-游戏UI
@@ -1000,7 +988,12 @@ declare function DzSimpleTextureFindByName(name: string, id: number): framehandl
  *
  */
 declare function DzSyncData(prefix: string, data: string): void;
-declare function DzSyncDataImmediately(...option: any[]): any;
+
+/**
+ * 立即同步游戏数据
+ * 立即同步标签${prefix}的数据${data}
+ */
+declare function DzSyncDataImmediately(prefix: string, data: string): void;
 declare function DzTriggerRegisterKeyEvent(
   trig: trigger,
   key: number,
@@ -1058,8 +1051,6 @@ declare function DzTriggerRegisterWindowResizeEventByCode(
   sync: boolean,
   funcHandle: () => void
 ): void;
-declare function EXBlendButtonIcon(...option: any[]): any;
-declare function EXDclareButtonIcon(...option: any[]): any;
 declare function EXDisplayChat(p: player, chat_recipient: number, message: string): void;
 
 /**
@@ -1102,7 +1093,11 @@ declare function EXGetAbilityDataReal(abil: ability, level: number, data_type: n
 declare function EXGetAbilityDataString(abil: ability, level: number, data_type: number): string;
 declare function EXGetAbilityId(abil: ability): number;
 declare function EXGetAbilityState(abil: ability, state_type: number): number;
-declare function EXGetAbilityString(...option: any[]): any;
+/**
+ * 获取技能字符串属性[JAPI]
+ * 读取技能的字符串字段：键${key}
+ */
+declare function EXGetAbilityString(abil: ability, key: string): string;
 declare function EXGetBuffDataString(buffcode: number, data_type: number): string;
 
 /**
@@ -1136,10 +1131,14 @@ declare function EXGetEventDamageData(edd_type: number): number;
 declare function EXGetItemDataString(itemcode: number, data_type: number): string;
 declare function EXGetUnitAbility(u: unit, abilcode: number): ability;
 declare function EXGetUnitAbilityByIndex(u: unit, index: number): ability;
-declare function EXGetUnitArrayString(...option: any[]): any;
-declare function EXGetUnitInteger(...option: any[]): any;
-declare function EXGetUnitReal(...option: any[]): any;
-declare function EXGetUnitString(...option: any[]): any;
+/** 获取单位数组型字符串数据[JAPI] */
+declare function EXGetUnitArrayString(uid: number, id: number, n: number): string;
+/** 获取单位整型数据[JAPI] */
+declare function EXGetUnitInteger(uid: number, id: number, n: number): number;
+/** 获取单位实数数据[JAPI] */
+declare function EXGetUnitReal(uid: number, id: number, n: number): number;
+/** 获取单位字符串数据[JAPI] */
+declare function EXGetUnitString(uid: number, id: number, n: number): string;
 declare function EXPauseUnit(u: unit, flag: boolean): void;
 declare function EXSetAbilityAEmeDataA(abil: ability, unitid: number): boolean;
 declare function EXSetAbilityDataInteger(
@@ -1161,7 +1160,11 @@ declare function EXSetAbilityDataString(
   value: string
 ): boolean;
 declare function EXSetAbilityState(abil: ability, state_type: number, value: number): boolean;
-declare function EXSetAbilityString(...option: any[]): any;
+/**
+ * 设置技能字符串属性[JAPI]
+ * 写入技能的字符串字段：键${key}，值${value}
+ */
+declare function EXSetAbilityString(abil: ability, key: string, value: string): boolean;
 declare function EXSetBuffDataString(buffcode: number, data_type: number, value: string): boolean;
 
 /**
@@ -1193,7 +1196,12 @@ declare function EXSetEffectXY(e: effect, x: number, y: number): void;
 declare function EXSetEffectZ(e: effect, z: number): void;
 declare function EXSetEventDamage(amount: number): boolean;
 declare function EXSetItemDataString(itemcode: number, data_type: number, value: string): boolean;
-declare function EXSetUnitArrayString(...option: any[]): any;
+/**
+ * 设置单位数组型字符串数据[JAPI]
+ * 为单位类型UID写入字符串数组字段：索引${n}，字段ID${id}，值${name}
+ * 返回是否写入成功
+ */
+declare function EXSetUnitArrayString(uid: number, id: number, n: number, name: string): boolean;
 
 /**
  * 设置单位的碰撞类型[JAPI][New!]
@@ -1208,7 +1216,12 @@ declare function EXSetUnitCollisionType(enable: boolean, u: unit, t: number): vo
  * 立即转身
  */
 declare function EXSetUnitFacing(u: unit, angle: number): void;
-declare function EXSetUnitInteger(...option: any[]): any;
+/**
+ * 设置单位整型数据[JAPI]
+ * 为单位类型UID写入整数字段：字段ID${id}，索引${n}
+ * 返回是否写入成功
+ */
+declare function EXSetUnitInteger(uid: number, id: number, n: number): boolean;
 
 /**
  * 设置单位的移动类型[JAPI][New!]
@@ -1216,8 +1229,6 @@ declare function EXSetUnitInteger(...option: any[]): any;
  *
  */
 declare function EXSetUnitMoveType(u: unit, t: number): void;
-declare function EXSetUnitReal(...option: any[]): any;
-declare function EXSetUnitString(...option: any[]): any;
 
 /**
  * 伤害值
@@ -3444,3 +3455,345 @@ declare function DzUnitOrdersForceStop(u: unit, clearQueue: boolean): void;
  * 将待执行的命令顺序反转
  */
 declare function DzUnitOrdersReverse(u: unit): void;
+
+// ===== KKPER/KKAPI additions (generated) =====
+// Command button helpers
+/**
+ * 新建命令按钮
+ * 创建一个命令按钮并返回按钮句柄ID
+ */
+declare function KKCreateCommandButton(): number;
+/**
+ * 销毁命令按钮
+ * 销毁指定按钮ID对应的命令按钮
+ */
+declare function KKDestroyCommandButton(btn: number): void;
+/**
+ * 触发按钮点击
+ * 模拟在命令按钮上的鼠标点击
+ */
+declare function KKCommandButtonClick(btn: number, mouse_type: number): void;
+/**
+ * 触发目标点击
+ * 以鼠标类型对目标对象进行命令点击
+ */
+declare function KKCommandTargetClick(mouse_type: number, target: widget): boolean;
+/**
+ * 触发地形点击
+ * 在指定坐标触发地形命令点击
+ */
+declare function KKCommandTerrainClick(
+  mouse_type: number,
+  x: number,
+  y: number,
+  z: number
+): boolean;
+/**
+ * 绑定按钮技能
+ * 将按钮绑定到单位的指定技能
+ */
+declare function KKSetCommandUnitAbility(btn: number, Unit: unit, abil_code: number): void;
+
+// Simple converters
+/** 将整数转换为技能ID */
+declare function KKConvertInt2AbilId(i: number): number;
+/** 将技能ID转换为整数 */
+declare function KKConvertAbilId2Int(i: number): number;
+/** 将整数转换为颜色值 */
+declare function KKConvertInt2Color(i: number): number;
+/** 将颜色值转换为整数 */
+declare function KKConvertColor2Int(i: number): number;
+
+// Frame model API
+/**
+ * 忽略轨迹事件
+ * 设置Frame是否忽略追踪事件
+ */
+declare function DzFrameSetIgnoreTrackEvents(frame: number, ignore: boolean): void;
+/**
+ * 添加模型Frame
+ * 在父Frame下创建一个模型子Frame
+ */
+declare function DzFrameAddModel(parent_frame: number): number;
+/**
+ * 设置模型文件(含队伍色)
+ * 为模型Frame设置模型文件与队伍颜色
+ */
+declare function DzFrameSetModel2(
+  model_frame: number,
+  model_file: string,
+  team_color_id: number
+): void;
+/**
+ * 添加模型附加特效
+ * 在模型Frame指定附加点添加模型特效
+ */
+declare function DzFrameAddModelEffect(
+  model_frame: number,
+  attach_point: string,
+  model_file: string
+): number;
+/**
+ * 移除模型特效
+ * 从模型Frame移除指定特效Frame
+ */
+declare function DzFrameRemoveModelEffect(model_frame: number, effect_frame: number): void;
+/**
+ * 设置模型动画(索引)
+ * 通过动画索引设置模型当前动画
+ */
+declare function DzFrameSetModelAnimationByIndex(model_frame: number, anim_index: number): void;
+/**
+ * 设置模型动画(名称)
+ * 通过动画名称设置模型当前动画
+ */
+declare function DzFrameSetModelAnimation(model_frame: number, animation: string): void;
+/**
+ * 设置模型摄像机源
+ * 设定模型摄像机的源位置
+ */
+declare function DzFrameSetModelCameraSource(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+/**
+ * 设置模型摄像机目标
+ * 设定模型摄像机的目标位置
+ */
+declare function DzFrameSetModelCameraTarget(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+/** 设置模型大小 */
+declare function DzFrameSetModelSize(model_frame: number, size: number): void;
+/** 获取模型大小 */
+declare function DzFrameGetModelSize(model_frame: number): number;
+/**
+ * 设置模型位置
+ * 设置模型Frame的世界坐标位置
+ */
+declare function DzFrameSetModelPosition(
+  model_frame: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+/** 设置模型X坐标 */
+declare function DzFrameSetModelX(model_frame: number, x: number): void;
+/** 获取模型X坐标 */
+declare function DzFrameGetModelX(model_frame: number): number;
+/** 设置模型Y坐标 */
+declare function DzFrameSetModelY(model_frame: number, y: number): void;
+/** 获取模型Y坐标 */
+declare function DzFrameGetModelY(model_frame: number): number;
+/** 设置模型Z坐标 */
+declare function DzFrameSetModelZ(model_frame: number, z: number): void;
+/** 获取模型Z坐标 */
+declare function DzFrameGetModelZ(model_frame: number): number;
+/** 设置模型播放速度 */
+declare function DzFrameSetModelSpeed(model_frame: number, speed: number): void;
+/** 获取模型播放速度 */
+declare function DzFrameGetModelSpeed(model_frame: number): number;
+/** 设置模型缩放 */
+declare function DzFrameSetModelScale(model_frame: number, x: number, y: number, z: number): void;
+/** 重置模型变换矩阵 */
+declare function DzFrameSetModelMatReset(model_frame: number): void;
+/** 绕X轴旋转模型 */
+declare function DzFrameSetModelRotateX(model_frame: number, x: number): void;
+/** 绕Y轴旋转模型 */
+declare function DzFrameSetModelRotateY(model_frame: number, y: number): void;
+/** 绕Z轴旋转模型 */
+declare function DzFrameSetModelRotateZ(model_frame: number, z: number): void;
+/** 设置模型顶点颜色 */
+declare function DzFrameSetModelColor(model_frame: number, color: number): void;
+/** 获取模型顶点颜色 */
+declare function DzFrameGetModelColor(model_frame: number): number;
+/**
+ * 设置模型贴图
+ * 设置模型Frame贴图及替换ID
+ */
+declare function DzFrameSetModelTexture(
+  model_frame: number,
+  texture_file: string,
+  replace_texutre_id: number
+): void;
+/** 设置模型粒子尺寸 */
+declare function DzFrameSetModelParticle2Size(model_frame: number, scale: number): void;
+
+// UI helpers / names / spacing
+/** 获取Glue UI Frame */
+declare function DzGetGlueUI(): number;
+/** 获取鼠标所在Frame */
+declare function DzFrameGetMouse(): number;
+/** 获取Frame上下文ID */
+declare function DzFrameGetContext(frame: number): number;
+/** 设置Frame名称与上下文 */
+declare function DzFrameSetNameContext(frame: number, name: string, context: number): void;
+/** 设置文本字距 */
+declare function DzFrameSetTextFontSpacing(text_frame: number, spacing: number): void;
+/** 获取命令按钮的冷却模型Frame */
+declare function KKCommandGetCooldownModel(cmd_btn: number): number;
+/** 设置冷却模型统一尺寸 */
+declare function KKCommandSetCooldownModelSize(cmd_btn: number, size: number): void;
+/**
+ * 设置冷却模型尺寸
+ * 分别设置冷却模型的宽高尺寸
+ */
+declare function KKCommandSetCooldownModelSize2(
+  cmd_btn: number,
+  width: number,
+  height: number
+): void;
+/** 获取玩家最近选择的道具 */
+declare function DzGetPlayerLastSelectedItem(p: player): item;
+/** 获取模型缓存数量 */
+declare function DzGetCacheModelCount(): number;
+/** 设置渲染最大帧率 */
+declare function DzSetMaxFps(max_fps: number): void;
+
+// Draw skill panel & effect visibility
+/** 启用/禁用单位技能面板绘制 */
+declare function DzEnableDrawSkillPanel(u: unit, is_enable: boolean): void;
+/** 启用/禁用玩家技能面板绘制 */
+declare function DzEnableDrawSkillPanelByPlayer(p: player, is_enable: boolean): void;
+/** 设置特效在雾中可见 */
+declare function DzSetEffectFogVisible(eff: effect, is_visible: boolean): void;
+/** 设置特效在遮罩中可见 */
+declare function DzSetEffectMaskVisible(eff: effect, is_visible: boolean): void;
+
+// Frame-world binding
+/**
+ * 绑定Frame到世界单位
+ * 通过世界/屏幕坐标绑定显示
+ */
+declare function DzFrameBindWidget(
+  frame: number,
+  u: widget,
+  world_x: number,
+  world_y: number,
+  world_z: number,
+  screen_x: number,
+  screen_y: number,
+  fog_visible: boolean,
+  unit_visible: boolean,
+  dead_visible: boolean
+): void;
+/**
+ * 绑定Frame到世界坐标
+ * 通过世界坐标与屏幕坐标进行绑定
+ */
+declare function DzFrameBindWorldPos(
+  frame: number,
+  world_x: number,
+  world_y: number,
+  world_z: number,
+  screen_x: number,
+  screen_y: number,
+  fog_visible: boolean
+): void;
+/** 取消Frame绑定 */
+declare function DzFrameUnBind(frame: number): void;
+/**
+ * 绑定Frame到物品
+ * 通过世界/屏幕坐标绑定物品显示
+ */
+declare function KKFrameBindItem(
+  frame: number,
+  u: widget,
+  world_x: number,
+  world_y: number,
+  world_z: number,
+  screen_x: number,
+  screen_y: number,
+  fog_visible: boolean,
+  item_visible: boolean
+): void;
+
+// Frame/IME/checkbox helpers
+/** 禁用单位预选UI */
+declare function DzDisableUnitPreselectUi(): void;
+/** 禁用物品预选UI */
+declare function DzDisableItemPreselectUi(): void;
+/** 获取下层Frame */
+declare function DzFrameGetLowerLevelFrame(): number;
+/** 设置复选框选中状态 */
+declare function DzFrameSetCheckBoxState(check_box_frame: number, checked: boolean): void;
+/** 获取复选框选中状态 */
+declare function DzFrameGetCheckBoxState(check_box_frame: number): boolean;
+/** 判断Frame是否获得焦点 */
+declare function DzFrameIsFocus(frame: number): boolean;
+/** 设置编辑框激活状态 */
+declare function DzFrameSetEditBoxActive(frame: number, is_active: boolean): void;
+/** 设置编辑框禁用输入法 */
+declare function DzFrameSetEditBoxDisableIme(frame: number, is_disable: boolean): void;
+
+// Window / system metrics
+/** 获取窗口模式开启状态 */
+declare function DzIsWindowMode(): boolean;
+/** 设置窗口位置 */
+declare function DzWindowSetPoint(x: number, y: number): void;
+/** 设置窗口大小 */
+declare function DzWindowSetSize(width: number, height: number): void;
+/** 获取系统窗口宽度 */
+declare function DzGetSystemMetricsWidth(): number;
+/** 获取系统窗口高度 */
+declare function DzGetSystemMetricsHeight(): number;
+
+// Doodads
+/** 获取装饰物数量 */
+declare function DzGetDoodadsCount(): number;
+/** 设置装饰物缩放 */
+declare function DzSetDoodadsMatScale(doodads_index: number, x: number, y: number, z: number): void;
+/** 设置装饰物绕X轴旋转 */
+declare function DzSetDoodadsMatRotateX(doodads_index: number, x: number): void;
+/** 设置装饰物绕Y轴旋转 */
+declare function DzSetDoodadsMatRotateY(doodads_index: number, y: number): void;
+/** 设置装饰物绕Z轴旋转 */
+declare function DzSetDoodadsMatRotateZ(doodads_index: number, z: number): void;
+/** 重置装饰物变换矩阵 */
+declare function DzSetDoodadsMatReset(doodads_index: number): void;
+
+// Ability extended (cost/req/unit/build)
+/** 设置单位技能魔法消耗 */
+declare function DzSetUnitAbilityCost(Unit: unit, abil_code: number, value: number): boolean;
+/** 获取单位技能魔法消耗 */
+declare function DzGetUnitAbilityCost(Unit: unit, abil_code: number): number;
+/** 设置单位技能需求等级 */
+declare function DzSetUnitAbilityReqLevel(Unit: unit, abil_code: number, value: number): boolean;
+/** 获取单位技能需求等级 */
+declare function DzGetUnitAbilityReqLevel(Unit: unit, abil_code: number): number;
+/** 设置单位技能关联单位ID */
+declare function DzSetUnitAbilityUnitId(Unit: unit, abil_code: number, value: number): boolean;
+/** 获取单位技能关联单位ID */
+declare function DzGetUnitAbilityUnitId(Unit: unit, abil_code: number): number;
+/** 设置单位技能建造命令ID */
+declare function DzSetUnitAbilityBuildOrderId(
+  Unit: unit,
+  abil_code: number,
+  value: number
+): boolean;
+/** 获取单位技能建造命令ID */
+declare function DzGetUnitAbilityBuildOrderId(Unit: unit, abil_code: number): number;
+/**
+ * 设置技能建造模型
+ * 设置模型路径与缩放
+ */
+declare function DzSetUnitAbilityBuildModel(
+  Unit: unit,
+  abil_code: number,
+  model_path: string,
+  model_scale: number
+): boolean;
+/** 判断单位是否拥有技能 */
+declare function DzUnitHasAbility(Unit: unit, abil_code: number): boolean;
+
+/**
+ * 单位可放置检查
+ * 检查${obj}在(${x},${y})附近是否可放置
+ * 返回是否可在该点附近放置单位/建筑
+ */
+declare function DzUnitCanPlaceAround(obj: widget, x: number, y: number): boolean;
