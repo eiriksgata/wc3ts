@@ -1280,9 +1280,6 @@ declare function RequestExtraStringData(
  */
 declare function SetUnitState(whichUnit: unit, whichUnitState: unitstate, newVal: number): void;
 
-declare function DzSetUnitName(unit: unit, name: string): void;
-declare function DzSetUnitProperName(unit: unit, properName: string): void;
-
 // ============= KKAPI 扩展函数 =============
 
 /**
@@ -1454,83 +1451,6 @@ declare function DzGetActivePatron(store: unit, p: player): unit;
 declare function DzGetLocalSelectUnitCount(): number;
 
 /**
- * 获取本地选中单位
- * 获取本地选中单位${索引}
- * 返回指定索引的选中单位
- */
-declare function DzGetLocalSelectUnit(index: number): unit;
-
-/**
- * 获取JASS字符串表数量
- * 获取JASS字符串表数量
- * 返回当前JASS字符串表中的条目数量
- */
-declare function DzGetJassStringTableCount(): number;
-
-/**
- * 从缓存移除模型
- * 从缓存移除模型${路径}
- * 将指定路径的模型从内存缓存中移除
- */
-declare function DzModelRemoveFromCache(path: string): void;
-
-/**
- * 清空模型缓存
- * 清空所有模型缓存
- * 将所有模型从内存缓存中移除
- */
-declare function DzModelRemoveAllFromCache(): void;
-
-/**
- * 获取信息面板选择按钮
- * 获取信息面板选择按钮${索引}
- * 返回信息面板中指定索引的选择按钮
- */
-declare function DzFrameGetInfoPanelSelectButton(index: number): framehandle;
-
-/**
- * 获取信息面板Buff按钮
- * 获取信息面板Buff按钮${索引}
- * 返回信息面板中指定索引的Buff按钮
- */
-declare function DzFrameGetInfoPanelBuffButton(index: number): framehandle;
-
-/**
- * 获取农民栏
- * 获取农民栏Frame
- * 返回农民/工人显示栏的Frame
- */
-declare function DzFrameGetPeonBar(): framehandle;
-
-/**
- * 获取命令栏按钮数字文本
- * 获取命令栏按钮${按钮}的数字文本Frame
- * 返回命令栏按钮上显示数字的文本Frame
- */
-declare function DzFrameGetCommandBarButtonNumberText(whichframe: framehandle): framehandle;
-
-/**
- * 获取命令栏按钮数字覆盖层
- * 获取命令栏按钮${按钮}的数字覆盖层Frame
- * 返回命令栏按钮数字覆盖层的Frame
- */
-declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: framehandle): framehandle;
-
-/**
- * 获取命令栏按钮冷却指示器
- * 获取命令栏按钮${按钮}的冷却指示器Frame
- * 返回命令栏按钮冷却显示的Frame
- */
-declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: framehandle): framehandle;
-
-/**
- * 获取命令栏按钮自动施法指示器
- * 获取命令栏按钮${按钮}的自动施法指示器Frame
- * 返回命令栏按钮自动施法指示的Frame
- */
-declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: framehandle): framehandle;
-
-/**
  * 切换FPS显示
  * 切换FPS显示${显示}
  * 控制是否显示帧率信息
@@ -1571,13 +1491,6 @@ declare function DzWidgetSetMinimapIcon(whichunit: unit, path: string): void;
  * 控制单位在小地图上的图标是否显示
  */
 declare function DzWidgetSetMinimapIconEnable(whichunit: unit, enable: boolean): void;
-
-/**
- * 获取世界Frame消息
- * 获取世界Frame消息
- * 返回世界Frame消息的Frame引用
- */
-declare function DzFrameGetWorldFrameMessage(): framehandle;
 
 /**
  * 简单消息Frame添加消息
@@ -1774,174 +1687,6 @@ declare function DzGetAttackAbility(whichUnit: unit): ability;
  */
 declare function DzAttackAbilityEndCooldown(whichHandle: ability): void;
 
-// ============= 装饰物(Doodad)相关函数 =============
-
-/**
- * 创建装饰物
- * 创建装饰物ID${ID}变体${变体}位置(${X},${Y},${Z})旋转${旋转}缩放${缩放}
- * 在指定位置创建一个装饰物对象
- */
-declare function DzDoodadCreate(
-  id: number,
-  var_: number,
-  x: number,
-  y: number,
-  z: number,
-  rotate: number,
-  scale: number
-): number;
-
-/**
- * 获取装饰物类型ID
- * 获取${装饰物}的类型ID
- * 返回装饰物的类型标识符
- */
-declare function DzDoodadGetTypeId(doodad: number): number;
-
-/**
- * 设置装饰物模型
- * 设置${装饰物}模型为${模型文件}
- * 更改装饰物使用的模型文件
- */
-declare function DzDoodadSetModel(doodad: number, modelFile: string): void;
-
-/**
- * 设置装饰物队伍颜色
- * 设置${装饰物}队伍颜色为${颜色}
- * 修改装饰物的队伍颜色
- */
-declare function DzDoodadSetTeamColor(doodad: number, color: number): void;
-
-/**
- * 设置装饰物颜色
- * 设置${装饰物}颜色为${颜色}
- * 修改装饰物的整体颜色
- */
-declare function DzDoodadSetColor(doodad: number, color: number): void;
-
-/**
- * 获取装饰物X坐标
- * 获取${装饰物}的X坐标
- * 返回装饰物当前的X坐标
- */
-declare function DzDoodadGetX(doodad: number): number;
-
-/**
- * 获取装饰物Y坐标
- * 获取${装饰物}的Y坐标
- * 返回装饰物当前的Y坐标
- */
-declare function DzDoodadGetY(doodad: number): number;
-
-/**
- * 获取装饰物Z坐标
- * 获取${装饰物}的Z坐标
- * 返回装饰物当前的Z坐标
- */
-declare function DzDoodadGetZ(doodad: number): number;
-
-/**
- * 设置装饰物位置
- * 设置${装饰物}位置为(${X},${Y},${Z})
- * 移动装饰物到指定的三维坐标
- */
-declare function DzDoodadSetPosition(doodad: number, x: number, y: number, z: number): void;
-
-/**
- * 设置装饰物方向矩阵旋转
- * 设置${装饰物}方向矩阵旋转角度${角度}轴(${轴X},${轴Y},${轴Z})
- * 围绕指定轴旋转装饰物
- */
-declare function DzDoodadSetOrientMatrixRotate(
-  doodad: number,
-  angle: number,
-  axisX: number,
-  axisY: number,
-  axisZ: number
-): void;
-
-/**
- * 设置装饰物方向矩阵缩放
- * 设置${装饰物}方向矩阵缩放(${X},${Y},${Z})
- * 在各个轴向上缩放装饰物
- */
-declare function DzDoodadSetOrientMatrixScale(
-  doodad: number,
-  x: number,
-  y: number,
-  z: number
-): void;
-
-/**
- * 重置装饰物方向矩阵
- * 重置${装饰物}的方向矩阵
- * 将装饰物的变换矩阵重置为初始状态
- */
-declare function DzDoodadSetOrientMatrixResize(doodad: number): void;
-
-/**
- * 设置装饰物可见性
- * 设置${装饰物}可见性${启用}
- * 控制装饰物是否可见
- */
-declare function DzDoodadSetVisible(doodad: number, enable: boolean): void;
-
-/**
- * 设置装饰物动画
- * 设置${装饰物}动画${动画名}随机${随机}
- * 播放装饰物的指定动画
- */
-declare function DzDoodadSetAnimation(doodad: number, animName: string, animRandom: boolean): void;
-
-/**
- * 设置装饰物时间缩放
- * 设置${装饰物}时间缩放${缩放}
- * 修改装饰物动画播放的时间缩放
- */
-declare function DzDoodadSetTimeScale(doodad: number, scale: number): void;
-
-/**
- * 获取装饰物时间缩放
- * 获取${装饰物}的时间缩放
- * 返回装饰物当前的时间缩放值
- */
-declare function DzDoodadGetTimeScale(doodad: number): number;
-
-/**
- * 获取装饰物当前动画索引
- * 获取${装饰物}的当前动画索引
- * 返回装饰物当前播放的动画索引
- */
-declare function DzDoodadGetCurrentAnimationIndex(doodad: number): number;
-
-/**
- * 获取装饰物动画数量
- * 获取${装饰物}的动画数量
- * 返回装饰物包含的动画总数
- */
-declare function DzDoodadGetAnimationCount(doodad: number): number;
-
-/**
- * 获取装饰物动画名称
- * 获取${装饰物}第${索引}个动画的名称
- * 返回指定索引动画的名称
- */
-declare function DzDoodadGetAnimationName(doodad: number, index: number): string;
-
-/**
- * 获取装饰物动画时间
- * 获取${装饰物}第${索引}个动画的时间
- * 返回指定索引动画的持续时间
- */
-declare function DzDoodadGetAnimationTime(doodad: number, index: number): number;
-
-/**
- * 删除装饰物
- * 删除${装饰物}
- * 从游戏中移除指定的装饰物
- */
-declare function DzDoodadRemove(doodad: number): void;
-
 // ============= 其他实用函数 =============
 
 /**
@@ -2017,15 +1762,6 @@ declare function DzFrameSetAnimateByIndex(frame: framehandle, index: number, fla
  * 修改单位数据缓存中的整数值
  */
 declare function DzSetUnitDataCacheInteger(uid: number, id: number, index: number, v: number): void;
-
-/**
- * 单位UI添加等级数组整数
- * 单位ID${单位ID}数据ID${数据ID}等级${等级}值${值}
- * 向单位UI的等级数组中添加整数值
- */
-declare function DzUnitUIAddLevelArrayInteger(uid: number, id: number, lv: number, v: number): void;
-
-// ============= 补全缺失的函数声明 =============
 
 /**
  * 获取同步触发前缀
@@ -2484,185 +2220,6 @@ declare function DzBitShiftRight(i: number, bitsToShift: number): number;
  */
 declare function DzBitToInt(b1: number, b2: number, b3: number, b4: number): number;
 
-// ============= Issue 命令队列函数 =============
-
-/**
- * 队列单位组立即命令
- * 队列${whichGroup}执行立即命令${order}
- * 向单位组添加立即执行的命令到队列
- */
-declare function DzQueueGroupImmediateOrderById(whichGroup: group, order: number): boolean;
-
-/**
- * 队列单位组点目标命令
- * 队列${whichGroup}执行点目标命令${order}位置(${x},${y})
- * 向单位组添加点目标命令到队列
- */
-declare function DzQueueGroupPointOrderById(
-  whichGroup: group,
-  order: number,
-  x: number,
-  y: number
-): boolean;
-
-/**
- * 队列单位组单位目标命令
- * 队列${whichGroup}执行单位目标命令${order}目标${targetWidget}
- * 向单位组添加单位目标命令到队列
- */
-declare function DzQueueGroupTargetOrderById(
-  whichGroup: group,
-  order: number,
-  targetWidget: widget
-): boolean;
-
-/**
- * 队列单位立即命令
- * 队列${whichUnit}执行立即命令${order}
- * 向单位添加立即执行的命令到队列
- */
-declare function DzQueueIssueImmediateOrderById(whichUnit: unit, order: number): boolean;
-
-/**
- * 队列单位点目标命令
- * 队列${whichUnit}执行点目标命令${order}位置(${x},${y})
- * 向单位添加点目标命令到队列
- */
-declare function DzQueueIssuePointOrderById(
-  whichUnit: unit,
-  order: number,
-  x: number,
-  y: number
-): boolean;
-
-/**
- * 队列单位单位目标命令
- * 队列${whichUnit}执行单位目标命令${order}目标${targetWidget}
- * 向单位添加单位目标命令到队列
- */
-declare function DzQueueIssueTargetOrderById(
-  whichUnit: unit,
-  order: number,
-  targetWidget: widget
-): boolean;
-
-/**
- * 队列单位即时点目标命令
- * 队列${whichUnit}执行即时点目标命令${order}位置(${x},${y})即时目标${instantTargetWidget}
- * 向单位添加即时点目标命令到队列
- */
-declare function DzQueueIssueInstantPointOrderById(
-  whichUnit: unit,
-  order: number,
-  x: number,
-  y: number,
-  instantTargetWidget: widget
-): boolean;
-
-/**
- * 队列单位即时单位目标命令
- * 队列${whichUnit}执行即时单位目标命令${order}目标${targetWidget}即时目标${instantTargetWidget}
- * 向单位添加即时单位目标命令到队列
- */
-declare function DzQueueIssueInstantTargetOrderById(
-  whichUnit: unit,
-  order: number,
-  targetWidget: widget,
-  instantTargetWidget: widget
-): boolean;
-
-/**
- * 队列建造命令
- * 队列${whichPeon}建造单位${unitId}位置(${x},${y})
- * 向工人单位添加建造命令到队列
- */
-declare function DzQueueIssueBuildOrderById(
-  whichPeon: unit,
-  unitId: number,
-  x: number,
-  y: number
-): boolean;
-
-/**
- * 队列中立建筑立即命令
- * 队列玩家${forWhichPlayer}向中立建筑${neutralStructure}发出立即命令${unitId}
- * 向中立建筑添加立即命令到队列
- */
-declare function DzQueueIssueNeutralImmediateOrderById(
-  forWhichPlayer: player,
-  neutralStructure: unit,
-  unitId: number
-): boolean;
-
-/**
- * 队列中立建筑点目标命令
- * 队列玩家${forWhichPlayer}向中立建筑${neutralStructure}发出点目标命令${unitId}位置(${x},${y})
- * 向中立建筑添加点目标命令到队列
- */
-declare function DzQueueIssueNeutralPointOrderById(
-  forWhichPlayer: player,
-  neutralStructure: unit,
-  unitId: number,
-  x: number,
-  y: number
-): boolean;
-
-/**
- * 队列中立建筑单位目标命令
- * 队列玩家${forWhichPlayer}向中立建筑${neutralStructure}发出单位目标命令${unitId}目标${target}
- * 向中立建筑添加单位目标命令到队列
- */
-declare function DzQueueIssueNeutralTargetOrderById(
-  forWhichPlayer: player,
-  neutralStructure: unit,
-  unitId: number,
-  target: widget
-): boolean;
-
-/**
- * 获取单位命令数量
- * 获取${u}的命令数量
- * 返回单位队列中的命令数量
- */
-declare function DzUnitOrdersCount(u: unit): number;
-
-/**
- * 清空单位命令
- * 清空${u}的命令队列仅排队${onlyQueued}
- * 清空单位的命令队列
- */
-declare function DzUnitOrdersClear(u: unit, onlyQueued: boolean): void;
-
-/**
- * 执行单位命令
- * 执行${u}的命令队列
- * 立即执行单位队列中的所有命令
- */
-declare function DzUnitOrdersExec(u: unit): void;
-
-/**
- * 强制停止单位
- * 强制停止${u}清空队列${clearQueue}
- * 强制停止单位并可选择清空命令队列
- */
-declare function DzUnitOrdersForceStop(u: unit, clearQueue: boolean): void;
-
-/**
- * 反转单位命令队列
- * 反转${u}的命令队列
- * 将单位命令队列的顺序反转
- */
-declare function DzUnitOrdersReverse(u: unit): void;
-
-// ============= XLSX Excel文件操作函数 =============
-
-/**
- * 打开Excel文件
- * 打开Excel文件${filePath}
- * 打开指定路径的Excel文件，返回文件句柄
- */
-declare function DzXlsxOpen(filePath: string): number;
-
 /**
  * 关闭Excel文件
  * 关闭Excel文件${docHandle}
@@ -2743,19 +2300,6 @@ declare function DzXlsxWorksheetGetCellFloat(
   row: number,
   column: number
 ): number;
-
-/**
- * 设置Frame纹理坐标
- * 设置${frame}纹理坐标左${left}上${top}右${right}下${bottom}
- * 修改Frame的纹理映射坐标
- */
-declare function DzFrameSetTexCoord(
-  frame: number,
-  left: number,
-  top: number,
-  right: number,
-  bottom: number
-): void;
 
 // ============= 单位技能美术与投射物扩展函数（KKPRE） =============
 
@@ -2927,307 +2471,6 @@ declare function DzGetUnitAbilityMissileDamage(u: unit, abil_id: number): number
  */
 declare function DzGetUnitAbilityMissileMaxDamage(u: unit, abil_id: number): number;
 
-// ============= 单位技能属性设置函数 =============
-
-/**
- * 设置单位技能范围
- * 设置${Unit}技能${abil_code}范围为${value}
- * 修改单位技能的作用范围
- */
-declare function DzSetUnitAbilityRange(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能范围
- * 获取${Unit}技能${abil_code}的范围
- * 返回单位技能的作用范围
- */
-declare function DzGetUnitAbilityRange(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能作用区域
- * 设置${Unit}技能${abil_code}作用区域为${value}
- * 修改单位技能的作用区域大小
- */
-declare function DzSetUnitAbilityArea(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能作用区域
- * 获取${Unit}技能${abil_code}的作用区域
- * 返回单位技能的作用区域大小
- */
-declare function DzGetUnitAbilityArea(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能冷却时间
- * 设置${Unit}技能${abil_code}冷却时间${cool}最大冷却${max_cool}
- * 修改单位技能的冷却时间
- */
-declare function DzSetUnitAbilityCool(
-  Unit: unit,
-  abil_code: number,
-  cool: number,
-  max_cool: number
-): boolean;
-
-/**
- * 获取单位技能冷却时间
- * 获取${Unit}技能${abil_code}的冷却时间
- * 返回单位技能的当前冷却时间
- */
-declare function DzGetUnitAbilityCool(Unit: unit, abil_code: number): number;
-
-/**
- * 获取单位技能最大冷却时间
- * 获取${Unit}技能${abil_code}的最大冷却时间
- * 返回单位技能的最大冷却时间
- */
-declare function DzGetUnitAbilityMaxCool(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能数据A
- * 设置${Unit}技能${abil_code}数据A为${value}
- * 修改单位技能的数据A字段
- */
-declare function DzSetUnitAbilityDataA(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能数据A
- * 获取${Unit}技能${abil_code}的数据A
- * 返回单位技能的数据A字段值
- */
-declare function DzGetUnitAbilityDataA(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能数据B
- * 设置${Unit}技能${abil_code}数据B为${value}
- * 修改单位技能的数据B字段
- */
-declare function DzSetUnitAbilityDataB(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能数据B
- * 获取${Unit}技能${abil_code}的数据B
- * 返回单位技能的数据B字段值
- */
-declare function DzGetUnitAbilityDataB(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能数据C
- * 设置${Unit}技能${abil_code}数据C为${value}
- * 修改单位技能的数据C字段
- */
-declare function DzSetUnitAbilityDataC(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能数据C
- * 获取${Unit}技能${abil_code}的数据C
- * 返回单位技能的数据C字段值
- */
-declare function DzGetUnitAbilityDataC(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能数据D
- * 设置${Unit}技能${abil_code}数据D为${value}
- * 修改单位技能的数据D字段
- */
-declare function DzSetUnitAbilityDataD(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能数据D
- * 获取${Unit}技能${abil_code}的数据D
- * 返回单位技能的数据D字段值
- */
-declare function DzGetUnitAbilityDataD(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能数据E
- * 设置${Unit}技能${abil_code}数据E为${value}
- * 修改单位技能的数据E字段
- */
-declare function DzSetUnitAbilityDataE(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能数据E
- * 获取${Unit}技能${abil_code}的数据E
- * 返回单位技能的数据E字段值
- */
-declare function DzGetUnitAbilityDataE(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能按钮位置
- * 设置${Unit}技能${abil_code}按钮位置(${x},${y})
- * 修改单位技能在UI中的按钮位置
- */
-declare function DzSetUnitAbilityButtonPos(
-  Unit: unit,
-  abil_code: number,
-  x: number,
-  y: number
-): boolean;
-
-/**
- * 设置单位技能热键
- * 设置${Unit}技能${abil_code}热键为${key}
- * 修改单位技能的快捷键
- */
-declare function DzSetUnitAbilityHotkey(Unit: unit, abil_code: number, key: string): boolean;
-
-/**
- * 目标类型转字符串
- * 将目标类型${targs}转换为字符串
- * 将技能目标类型值转换为字符串格式
- */
-declare function DzConvertTargs2Str(targs: number): string;
-
-/**
- * 字符串转目标类型
- * 将字符串${targs}转换为目标类型
- * 将字符串格式的目标类型转换为数值
- */
-declare function DzConvertStr2Targs(targs: string): number;
-
-/**
- * 设置单位技能目标类型
- * 设置${Unit}技能${abil_code}目标类型为${value}
- * 修改单位技能的目标类型
- */
-declare function DzSetUnitAbilityTargs(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能目标类型
- * 获取${Unit}技能${abil_code}的目标类型
- * 返回单位技能的目标类型
- */
-declare function DzGetUnitAbilityTargs(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能消耗
- * 设置${Unit}技能${abil_code}消耗为${value}
- * 修改单位技能的魔法消耗
- */
-declare function DzSetUnitAbilityCost(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能消耗
- * 获取${Unit}技能${abil_code}的消耗
- * 返回单位技能的魔法消耗
- */
-declare function DzGetUnitAbilityCost(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能需求等级
- * 设置${Unit}技能${abil_code}需求等级为${value}
- * 修改单位技能的学习需求等级
- */
-declare function DzSetUnitAbilityReqLevel(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能需求等级
- * 获取${Unit}技能${abil_code}的需求等级
- * 返回单位技能的学习需求等级
- */
-declare function DzGetUnitAbilityReqLevel(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能单位ID
- * 设置${Unit}技能${abil_code}单位ID为${value}
- * 修改单位技能关联的单位ID
- */
-declare function DzSetUnitAbilityUnitId(Unit: unit, abil_code: number, value: number): boolean;
-
-/**
- * 获取单位技能单位ID
- * 获取${Unit}技能${abil_code}的单位ID
- * 返回单位技能关联的单位ID
- */
-declare function DzGetUnitAbilityUnitId(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能建造命令ID
- * 设置${Unit}技能${abil_code}建造命令ID为${value}
- * 修改单位技能的建造命令ID
- */
-declare function DzSetUnitAbilityBuildOrderId(
-  Unit: unit,
-  abil_code: number,
-  value: number
-): boolean;
-
-/**
- * 获取单位技能建造命令ID
- * 获取${Unit}技能${abil_code}的建造命令ID
- * 返回单位技能的建造命令ID
- */
-declare function DzGetUnitAbilityBuildOrderId(Unit: unit, abil_code: number): number;
-
-/**
- * 设置单位技能建造模型
- * 设置${Unit}技能${abil_code}建造模型${model_path}缩放${model_scale}
- * 修改单位技能的建造预览模型
- */
-declare function DzSetUnitAbilityBuildModel(
-  Unit: unit,
-  abil_code: number,
-  model_path: string,
-  model_scale: number
-): boolean;
-
-/**
- * 单位是否拥有技能
- * 检查${Unit}是否拥有技能${abil_code}
- * 检查单位是否拥有指定的技能
- */
-declare function DzUnitHasAbility(Unit: unit, abil_code: number): boolean;
-
-// ============= KK 命令按钮函数 =============
-
-/**
- * 创建KK命令按钮
- * 创建KK命令按钮
- * 创建一个KK系统的命令按钮，返回按钮ID
- */
-declare function KKCreateCommandButton(): number;
-
-/**
- * 销毁KK命令按钮
- * 销毁KK命令按钮${btn}
- * 销毁指定的KK命令按钮
- */
-declare function KKDestroyCommandButton(btn: number): void;
-
-/**
- * KK命令按钮点击
- * 点击KK命令按钮${btn}鼠标类型${mouse_type}
- * 模拟点击KK命令按钮
- */
-declare function KKCommandButtonClick(btn: number, mouse_type: number): void;
-
-/**
- * KK命令目标点击
- * KK命令目标点击鼠标类型${mouse_type}目标${target}
- * 执行KK命令的目标点击操作，返回是否成功
- */
-declare function KKCommandTargetClick(mouse_type: number, target: widget): boolean;
-
-/**
- * KK命令地面点击
- * KK命令地面点击鼠标类型${mouse_type}位置(${x},${y},${z})
- * 执行KK命令的地面点击操作，返回是否成功
- */
-declare function KKCommandTerrainClick(
-  mouse_type: number,
-  x: number,
-  y: number,
-  z: number
-): boolean;
-
-/**
- * 设置KK命令单位技能
- * 设置KK命令按钮${btn}单位${Unit}技能${abil_code}
- * 将KK命令按钮关联到单位的技能
- */
-declare function KKSetCommandUnitAbility(btn: number, Unit: unit, abil_code: number): void;
-
 // ============= 物品扩展函数 =============
 
 /**
@@ -3341,537 +2584,863 @@ declare function DzSetUnitHitIgnore(Unit: unit, ignore: boolean): void;
  * 将一个特效绑定到另一个对象的指定挂接点
  */
 declare function DzEffectBindEffect(Handle: agent, AttachName: string, eff: effect): void;
+// ============= KKPRE 新增函数声明 =============
 
-// ============= 物品模型和UI函数 =============
+/**
+ * 发送键盘事件给玩家
+ * 向${p}发送按键码${key_code}的键盘事件，${is_down}表示按下或抬起
+ * 模拟键盘事件发送到指定玩家
+ */
+declare function DzSendKeyboard(p: player, keyCode: number, isDown: number): void;
+
+/**
+ * 强制UI响应键盘事件
+ * 强制UI响应${p}的按键码${key_code}事件，${is_down}表示按下或抬起
+ * 强制游戏UI处理键盘事件
+ */
+declare function DzForceUiKeyboard(p: player, keyCode: number, isDown: number): void;
+
+/**
+ * 禁用窗口键盘事件
+ * 禁用${p}的按键码${key_code}的窗口键盘事件
+ * 禁止窗口处理特定按键
+ */
+declare function DzDisableWindowKeyboard(p: player, keyCode: number): void;
+
+/**
+ * 禁用游戏UI键盘事件
+ * 禁用${p}的按键码${key_code}的游戏UI键盘事件
+ * 禁止游戏UI处理特定按键
+ */
+declare function DzDisableGameUIKeyboard(p: player, keyCode: number): void;
+
+/**
+ * 判断位置是否可以放置物体
+ * 判断位置(${x},${y})是否可以放置${obj}，碰撞大小${collision_size}，碰撞类型${collision_type}
+ * 检查指定位置是否能放置单位或建筑
+ */
+declare function DzPositionCanPlaceAround(
+  x: number,
+  y: number,
+  collisionSize: number,
+  collisionType: number
+): boolean;
+
+/**
+ * 获取指定位置地形高度
+ * 获取位置(${x},${y})的地形高度
+ * 返回指定坐标处的地形Z坐标
+ */
+declare function DzGetTerrainZ(x: number, y: number): number;
+
+/**
+ * 获取单位所在高度
+ * 获取${u}所在的Z坐标
+ * 返回单位当前所在的高度
+ */
+declare function DzGetUnitZ(u: unit): number;
+
+/**
+ * 获取单位头顶偏移
+ * 获取${u}的头顶偏移
+ * 返回单位头顶的高度偏移量
+ */
+declare function DzGetUnitOverheadOffset(u: widget): number;
+
+/**
+ * 设置Frame宽屏模式
+ * 设置${frame}的宽屏模式为${is_enable}
+ * 启用或禁用Frame的宽屏显示模式
+ */
+declare function DzFrameSetModelEnableWideScreen(frame: number, isEnable: boolean): void;
+
+/**
+ * 启用单位技能
+ * 启用${u}的技能${abil_id}
+ * 恢复被禁用的单位技能，返回是否成功
+ */
+declare function DzSetUnitAbilityEnable(u: unit, abilId: number): boolean;
+
+/**
+ * 禁用单位技能
+ * 禁用${u}的技能${abil_id}
+ * 禁用单位的指定技能，返回是否成功
+ */
+declare function DzSetUnitAbilityDisable(u: unit, abilId: number): boolean;
+
+/**
+ * 判断单位技能是否被禁用
+ * 判断${u}的技能${abil_id}是否被禁用
+ * 检查技能是否处于禁用状态
+ */
+declare function DzGetUnitAbilityIsDisabled(u: unit, abilId: number): boolean;
+
+/**
+ * 获取单位技能禁用次数
+ * 获取${u}的技能${abil_id}的禁用次数
+ * 返回技能被禁用的次数
+ */
+declare function DzGetUnitAbilityDisabledCount(u: unit, abilId: number): number;
+
+/**
+ * 设置单位技能科技要求
+ * 设置${u}的技能${abil_id}的科技要求为${reach}
+ * 修改技能的科技依赖条件，返回是否成功
+ */
+declare function DzSetUnitAbilityTechReach(u: unit, abilId: number, reach: boolean): boolean;
+
+/**
+ * 获取单位技能科技要求
+ * 获取${u}的技能${abil_id}的科技要求
+ * 检查技能是否有科技依赖
+ */
+declare function DzGetUnitAbilityTechReach(u: unit, abilId: number): boolean;
+
+/**
+ * 设置单位技能科技要求提示
+ * 设置${u}的技能${abil_id}的科技要求提示为${tip}
+ * 修改科技不足时显示的提示文本，返回是否成功
+ */
+declare function DzSetUnitAbilityTechReachTip(u: unit, abilId: number, tip: string): boolean;
+
+/**
+ * 获取当前建筑技能ID（异步）
+ * 获取当前正在进行的建筑技能ID
+ * 在建筑事件中获取正在建造的技能ID
+ */
+declare function DzAsyncGetCurrentBuildingAbilityId(): number;
+
+/**
+ * 获取当前建筑单位ID（异步）
+ * 获取当前正在建造的单位ID
+ * 在建筑事件中获取要建造的单位ID
+ */
+declare function DzAsyncGetCurrentBuildingUnitId(): number;
+
+/**
+ * 解锁鼠标矩形限制
+ * 解锁鼠标矩形限制${is_unlock}
+ * 允许或禁止鼠标超出游戏窗口边界
+ */
+declare function DzFrameUnlockMouseRectLimit(isUnlock: boolean): void;
+
+/**
+ * 判断Simple Frame是否可见
+ * 判断Simple Frame ${simple_frame}是否可见
+ * 检查Simple Frame的显示状态
+ */
+declare function KKSimpleFrameIsVisible(simpleFrame: number): boolean;
+
+/**
+ * 获取聊天编辑栏Frame
+ * 获取聊天编辑栏Frame
+ * 返回聊天输入框的Frame句柄
+ */
+declare function DzFrameGetChatEditBar(): number;
+
+/**
+ * 获取本地聊天接收者
+ * 获取本地玩家的聊天接收对象
+ * 返回聊天消息的接收目标（所有玩家/仅盟友等）
+ */
+declare function DzGetLocalChatRecipient(): number;
+
+/**
+ * 玩家发送聊天消息
+ * 让${p}发送消息${msg}，接收者类型为${recipient}
+ * 向指定的目标发送聊天消息
+ */
+declare function DzPlayerSendChat(p: player, msg: string, recipient: number): void;
+
+/**
+ * 获取本地选中单位
+ * 获取本地玩家选中的第${index}个单位
+ * 返回指定索引的选中单位
+ */
+declare function DzGetLocalSelectUnit(index: number): unit;
+
+/**
+ * 获取JASS字符串表数量
+ * 获取JASS字符串表的数量
+ * 返回字符串表中的条目数
+ */
+declare function DzGetJassStringTableCount(): number;
+
+/**
+ * 从缓存中移除模型
+ * 从缓存中移除模型${path}
+ * 卸载指定的模型文件缓存
+ */
+declare function DzModelRemoveFromCache(path: string): void;
+
+/**
+ * 清空模型缓存
+ * 清空所有模型缓存
+ * 卸载所有已加载的模型缓存
+ */
+declare function DzModelRemoveAllFromCache(): void;
+
+/**
+ * 获取信息面板选择按钮
+ * 获取信息面板的第${index}个选择按钮
+ * 返回单位信息面板上的按钮
+ */
+declare function DzFrameGetInfoPanelSelectButton(index: number): number;
+
+/**
+ * 获取信息面板BUFF按钮
+ * 获取信息面板的第${index}个BUFF按钮
+ * 返回单位状态栏的BUFF按钮
+ */
+declare function DzFrameGetInfoPanelBuffButton(index: number): number;
+
+/**
+ * 获取民工条
+ * 获取民工条Frame
+ * 返回建筑进度条的Frame句柄
+ */
+declare function DzFrameGetPeonBar(): number;
+
+/**
+ * 获取命令栏按钮数字文本
+ * 获取${whichframe}的数字文本Frame
+ * 返回技能按钮上的等级数字显示
+ */
+declare function DzFrameGetCommandBarButtonNumberText(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮数字覆盖层
+ * 获取${whichframe}的数字覆盖层Frame
+ * 返回技能按钮的数字覆盖显示
+ */
+declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮冷却指示器
+ * 获取${whichframe}的冷却指示器Frame
+ * 返回技能按钮的冷却指示器
+ */
+declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: number): number;
+
+/**
+ * 获取命令栏按钮自动施法指示器
+ * 获取${whichframe}的自动施法指示器Frame
+ * 返回技能按钮的自动施法指示器
+ */
+declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: number): number;
+
+/**
+ * 获取世界Frame消息
+ * 获取世界Frame消息
+ * 返回最后一条世界事件消息的ID
+ */
+declare function DzFrameGetWorldFrameMessage(): number;
+
+/**
+ * 设置单位名称
+ * 设置${whichUnit}的名称为${name}
+ * 修改单位的显示名字
+ */
+declare function DzSetUnitName(whichUnit: unit, name: string): void;
+
+/**
+ * 设置单位专有名称
+ * 设置${whichUnit}的专有名称为${name}
+ * 修改单位的英雄名字
+ */
+declare function DzSetUnitProperName(whichUnit: unit, name: string): void;
+
+/**
+ * 设置英雄专有名称
+ * 设置单位ID${uid}的英雄专有名称为${name}
+ * 修改英雄类单位的名字
+ */
+declare function DzSetHeroTypeProperName(uid: number, name: string): void;
+
+/**
+ * 设置单位类型名称
+ * 设置单位ID${uid}的类型名称为${name}
+ * 修改单位在游戏中的显示名字
+ */
+declare function DzSetUnitTypeName(uid: number, name: string): void;
+
+/**
+ * 判断单位攻击类型
+ * 判断${whichUnit}的第${index}个攻击类型是否为${attackType}
+ * 检查单位是否具有特定攻击类型
+ */
+declare function DzIsUnitAttackType(
+  whichUnit: unit,
+  index: number,
+  attackType: attacktype
+): boolean;
+
+/**
+ * 设置单位攻击类型
+ * 设置${whichUnit}的第${index}个攻击类型为${attackType}
+ * 修改单位的攻击类型
+ */
+declare function DzSetUnitAttackType(whichUnit: unit, index: number, attackType: attacktype): void;
+
+/**
+ * 判断单位防甲类型
+ * 判断${whichUnit}的防甲类型是否为${defenseType}
+ * 检查单位是否具有特定防甲类型
+ */
+declare function DzIsUnitDefenseType(whichUnit: unit, defenseType: number): boolean;
+
+/**
+ * 设置单位防甲类型
+ * 设置${whichUnit}的防甲类型为${defenseType}
+ * 修改单位的防甲类型
+ */
+declare function DzSetUnitDefenseType(whichUnit: unit, defenseType: number): void;
+
+/**
+ * 创建装饰物
+ * 创建ID为${id}，变体${var}，位置(${x},${y},${z})，旋转${rotate}，缩放${scale}的装饰物
+ * 在指定位置创建装饰物，返回装饰物句柄
+ */
+declare function DzDoodadCreate(
+  id: number,
+  variant: number,
+  x: number,
+  y: number,
+  z: number,
+  rotate: number,
+  scale: number
+): number;
+
+/**
+ * 获取装饰物类型ID
+ * 获取${doodad}的类型ID
+ * 返回装饰物的单位类型ID
+ */
+declare function DzDoodadGetTypeId(doodad: number): number;
+
+/**
+ * 设置装饰物模型
+ * 设置${doodad}的模型为${modelFile}
+ * 替换装饰物的模型文件
+ */
+declare function DzDoodadSetModel(doodad: number, modelFile: string): void;
+
+/**
+ * 设置装饰物队伍颜色
+ * 设置${doodad}的队伍颜色为${color}
+ * 应用队伍颜色到装饰物
+ */
+declare function DzDoodadSetTeamColor(doodad: number, color: number): void;
+
+/**
+ * 设置装饰物颜色
+ * 设置${doodad}的颜色为${color}
+ * 修改装饰物的整体颜色
+ */
+declare function DzDoodadSetColor(doodad: number, color: number): void;
+
+/**
+ * 设置装饰物方向矩阵缩放
+ * 设置${doodad}的方向矩阵缩放为(${x},${y},${z})
+ * 改变装饰物的三维缩放
+ */
+declare function DzDoodadSetOrientMatrixScale(
+  doodad: number,
+  x: number,
+  y: number,
+  z: number
+): void;
+
+/**
+ * 重置装饰物方向矩阵
+ * 重置${doodad}的方向矩阵
+ * 恢复装饰物到默认变换
+ */
+declare function DzDoodadSetOrientMatrixResize(doodad: number): void;
+
+/**
+ * 设置装饰物动画
+ * 设置${doodad}播放动画${animName}，随机${animRandom}
+ * 播放指定的装饰物动画
+ */
+declare function DzDoodadSetAnimation(doodad: number, animName: string, animRandom: boolean): void;
+
+/**
+ * 设置装饰物时间缩放
+ * 设置${doodad}的时间缩放为${scale}
+ * 修改装饰物动画的播放速度
+ */
+declare function DzDoodadSetTimeScale(doodad: number, scale: number): void;
+
+/**
+ * 获取装饰物时间缩放
+ * 获取${doodad}的时间缩放
+ * 返回装饰物动画的播放速度倍数
+ */
+declare function DzDoodadGetTimeScale(doodad: number): number;
+
+/**
+ * 获取装饰物当前动画索引
+ * 获取${doodad}的当前动画索引
+ * 返回正在播放的动画序列号
+ */
+declare function DzDoodadGetCurrentAnimationIndex(doodad: number): number;
+
+/**
+ * 获取装饰物动画数量
+ * 获取${doodad}的动画数量
+ * 返回装饰物拥有的动画总数
+ */
+declare function DzDoodadGetAnimationCount(doodad: number): number;
+
+/**
+ * 获取装饰物动画名称
+ * 获取${doodad}的第${index}个动画名称
+ * 返回指定索引动画的名字
+ */
+declare function DzDoodadGetAnimationName(doodad: number, index: number): string;
+
+/**
+ * 获取装饰物动画时间
+ * 获取${doodad}的第${index}个动画时间
+ * 返回动画的总时长（毫秒）
+ */
+declare function DzDoodadGetAnimationTime(doodad: number, index: number): number;
+
+/**
+ * 单位UI添加升级数组整数
+ * 为单位${uid}的升级ID${id}添加等级${lv}的值${v}
+ * 在单位UI升级列表中添加整数值
+ */
+declare function DzUnitUIAddLevelArrayInteger(uid: number, id: number, lv: number, v: number): void;
 
 /**
  * 设置道具模型
- * 设置${whichItem}模型为${file}
- * 更改道具使用的模型文件
+ * 设置${whichItem}的模型为${file}
+ * 替换物品的显示模型
  */
 declare function DzItemSetModel(whichItem: item, file: string): void;
 
 /**
- * 设置道具颜色
- * 设置${whichItem}颜色为${color}
- * 修改道具的顶点颜色
+ * 设置道具顶点颜色
+ * 设置${whichItem}的顶点颜色为${color}
+ * 修改物品的显示颜色
  */
 declare function DzItemSetVertexColor(whichItem: item, color: number): void;
 
 /**
  * 设置道具透明度
- * 设置${whichItem}透明度为${color}
- * 修改道具的透明度值
+ * 设置${whichItem}的透明度为${color}
+ * 修改物品的透明度
  */
 declare function DzItemSetAlpha(whichItem: item, color: number): void;
 
 /**
- * 设置道具头像
- * 设置${whichItem}头像为${modelPath}
- * 更改道具在UI中显示的头像模型
+ * 设置道具肖像
+ * 设置${whichItem}的肖像为${modelPath}
+ * 修改物品的肖像显示
  */
 declare function DzItemSetPortrait(whichItem: item, modelPath: string): void;
 
 /**
- * 设置禁用Track事件
- * 设置${frame}是否忽略Track事件${ignore}
- * 控制Frame是否响应跟踪事件
- */
-declare function DzFrameSetIgnoreTrackEvents(frame: number, ignore: boolean): void;
-
-/**
- * 添加模型Frame
- * 在父控件${parent_frame}下添加一个模型Frame
- * 返回新创建的模型Frame句柄
- */
-declare function DzFrameAddModel(parent_frame: number): number;
-
-/**
- * 设置模型Frame模型
- * 设置模型Frame${model_frame}的模型文件为${model_file}队伍颜色${team_color_id}
- */
-declare function DzFrameSetModel2(
-  model_frame: number,
-  model_file: string,
-  team_color_id: number
-): void;
-
-/**
- * 为模型Frame添加特效
- * 在模型Frame${model_frame}的连接点${attach_point}添加模型特效${model_file}
- * 返回特效Frame句柄
- */
-declare function DzFrameAddModelEffect(
-  model_frame: number,
-  attach_point: string,
-  model_file: string
-): number;
-
-/**
- * 移除模型Frame上的特效
- * 从模型Frame${model_frame}移除特效Frame${effect_frame}
- */
-declare function DzFrameRemoveModelEffect(model_frame: number, effect_frame: number): void;
-
-/**
- * 设置模型Frame动画（索引）
- * 设置模型Frame${model_frame}播放索引为${anim_index}的动画
- */
-declare function DzFrameSetModelAnimationByIndex(model_frame: number, anim_index: number): void;
-
-/**
- * 设置模型Frame动画（名称）
- * 设置模型Frame${model_frame}播放动画${animation}
- */
-declare function DzFrameSetModelAnimation(model_frame: number, animation: string): void;
-
-/**
- * 设置模型相机源位置
- * 设置模型Frame${model_frame}相机源位置为(${x},${y},${z})
- */
-declare function DzFrameSetModelCameraSource(
-  model_frame: number,
-  x: number,
-  y: number,
-  z: number
-): void;
-
-/**
- * 设置模型相机目标位置
- * 设置模型Frame${model_frame}相机目标位置为(${x},${y},${z})
- */
-declare function DzFrameSetModelCameraTarget(
-  model_frame: number,
-  x: number,
-  y: number,
-  z: number
-): void;
-
-/**
- * 设置模型大小
- * 设置模型Frame${model_frame}大小为${size}
- */
-declare function DzFrameSetModelSize(model_frame: number, size: number): void;
-
-/**
- * 获取模型大小
- * 获取模型Frame${model_frame}的大小
- */
-declare function DzFrameGetModelSize(model_frame: number): number;
-
-/**
- * 设置模型位置
- * 设置模型Frame${model_frame}位置为(${x},${y},${z})
- */
-declare function DzFrameSetModelPosition(
-  model_frame: number,
-  x: number,
-  y: number,
-  z: number
-): void;
-
-/**
- * 设置模型X坐标
- * 设置模型Frame${model_frame}的X坐标为${x}
- */
-declare function DzFrameSetModelX(model_frame: number, x: number): void;
-
-/**
- * 获取模型X坐标
- * 获取模型Frame${model_frame}的X坐标
- */
-declare function DzFrameGetModelX(model_frame: number): number;
-
-/**
- * 设置模型Y坐标
- * 设置模型Frame${model_frame}的Y坐标为${y}
- */
-declare function DzFrameSetModelY(model_frame: number, y: number): void;
-
-/**
- * 获取模型Y坐标
- * 获取模型Frame${model_frame}的Y坐标
- */
-declare function DzFrameGetModelY(model_frame: number): number;
-
-/**
- * 设置模型Z坐标
- * 设置模型Frame${model_frame}的Z坐标为${z}
- */
-declare function DzFrameSetModelZ(model_frame: number, z: number): void;
-
-/**
- * 获取模型Z坐标
- * 获取模型Frame${model_frame}的Z坐标
- */
-declare function DzFrameGetModelZ(model_frame: number): number;
-
-/**
- * 设置模型动画速度
- * 设置模型Frame${model_frame}动画速度为${speed}
- */
-declare function DzFrameSetModelSpeed(model_frame: number, speed: number): void;
-
-/**
- * 获取模型动画速度
- * 获取模型Frame${model_frame}动画速度
- */
-declare function DzFrameGetModelSpeed(model_frame: number): number;
-
-/**
- * 设置模型缩放
- * 设置模型Frame${model_frame}缩放为(${x},${y},${z})
- */
-declare function DzFrameSetModelScale(model_frame: number, x: number, y: number, z: number): void;
-
-/**
- * 重置模型变换矩阵
- * 重置模型Frame${model_frame}的变换矩阵
- */
-declare function DzFrameSetModelMatReset(model_frame: number): void;
-
-/**
- * 模型绕X轴旋转
- * 设置模型Frame${model_frame}绕X轴旋转${x}
- */
-declare function DzFrameSetModelRotateX(model_frame: number, x: number): void;
-
-/**
- * 模型绕Y轴旋转
- * 设置模型Frame${model_frame}绕Y轴旋转${y}
- */
-declare function DzFrameSetModelRotateY(model_frame: number, y: number): void;
-
-/**
- * 模型绕Z轴旋转
- * 设置模型Frame${model_frame}绕Z轴旋转${z}
- */
-declare function DzFrameSetModelRotateZ(model_frame: number, z: number): void;
-
-/**
- * 设置模型颜色
- * 设置模型Frame${model_frame}颜色为${color}
- */
-declare function DzFrameSetModelColor(model_frame: number, color: number): void;
-
-/**
- * 获取模型颜色
- * 获取模型Frame${model_frame}颜色
- */
-declare function DzFrameGetModelColor(model_frame: number): number;
-
-/**
- * 设置模型贴图
- * 设置模型Frame${model_frame}贴图为${texture_file}替换ID${replace_texutre_id}
- */
-declare function DzFrameSetModelTexture(
-  model_frame: number,
-  texture_file: string,
-  replace_texutre_id: number
-): void;
-
-/**
- * 设置模型粒子系统大小
- * 设置模型Frame${model_frame}粒子系统大小为${scale}
- */
-declare function DzFrameSetModelParticle2Size(model_frame: number, scale: number): void;
-
-/**
- * 获取GlueUI
- * 获取GlueUI根Frame句柄
- */
-declare function DzGetGlueUI(): number;
-
-/**
- * 获取鼠标所在Frame
- * 获取当前鼠标所在的Frame句柄
- */
-declare function DzFrameGetMouse(): number;
-
-/**
- * 获取Frame上下文
- * 获取${frame}的Context值
- */
-declare function DzFrameGetContext(frame: number): number;
-
-/**
- * 设置Frame名称与上下文
- * 设置${frame}的名称为${name}上下文为${context}
- */
-declare function DzFrameSetNameContext(frame: number, name: string, context: number): void;
-
-/**
- * 设置文字间距
- * 设置文字Frame${text_frame}的字体间距为${spacing}
- */
-declare function DzFrameSetTextFontSpacing(text_frame: number, spacing: number): void;
-
-/**
- * 获取玩家最后选中的物品
- * 获取玩家${p}最后选中的物品
- */
-declare function DzGetPlayerLastSelectedItem(p: player): item;
-
-/**
- * 获取模型缓存数量
- * 获取当前缓存的模型数量
- */
-declare function DzGetCacheModelCount(): number;
-
-/**
- * 设置最大帧率
- * 设置游戏最大帧率为${max_fps}
- */
-declare function DzSetMaxFps(max_fps: number): void;
-
-/**
- * 启用单位技能面板绘制
- * 为单位${u}启用技能面板绘制${is_enable}
- */
-declare function DzEnableDrawSkillPanel(u: unit, is_enable: boolean): void;
-
-/**
- * 启用玩家技能面板绘制
- * 为玩家${p}启用技能面板绘制${is_enable}
- */
-declare function DzEnableDrawSkillPanelByPlayer(p: player, is_enable: boolean): void;
-
-/**
- * 设置特效雾可见性
- * 设置特效${eff}在战争迷雾中的可见性${is_visible}
- */
-declare function DzSetEffectFogVisible(eff: effect, is_visible: boolean): void;
-
-/**
- * 设置特效黑幕可见性
- * 设置特效${eff}在地图黑幕中的可见性${is_visible}
- */
-declare function DzSetEffectMaskVisible(eff: effect, is_visible: boolean): void;
-
-/**
- * 绑定Frame到世界单位
- * 绑定Frame${frame}到控件${u} 世界坐标(${world_x},${world_y},${world_z}) 屏幕坐标(${screen_x},${screen_y})
- */
-declare function DzFrameBindWidget(
-  frame: number,
-  u: widget,
-  world_x: number,
-  world_y: number,
-  world_z: number,
-  screen_x: number,
-  screen_y: number,
-  fog_visible: boolean,
-  unit_visible: boolean,
-  dead_visible: boolean
-): void;
-
-/**
- * 绑定Frame到世界坐标
- * 绑定Frame${frame}到世界坐标(${world_x},${world_y},${world_z}) 屏幕坐标(${screen_x},${screen_y})
- */
-declare function DzFrameBindWorldPos(
-  frame: number,
-  world_x: number,
-  world_y: number,
-  world_z: number,
-  screen_x: number,
-  screen_y: number,
-  fog_visible: boolean
-): void;
-
-/**
- * 解绑Frame
- * 解绑Frame${frame}与世界或单位的绑定
- */
-declare function DzFrameUnBind(frame: number): void;
-
-/**
- * 禁用单位预选UI
- * 禁用单位预选UI显示
- */
-declare function DzDisableUnitPreselectUi(): void;
-
-/**
- * 禁用道具预选UI
- * 禁用道具预选UI显示
- */
-declare function DzDisableItemPreselectUi(): void;
-
-/**
- * 获取下层Frame
- * 获取当前下层Frame句柄
- */
-declare function DzFrameGetLowerLevelFrame(): number;
-
-/**
- * 设置复选框选中状态
- * 设置复选框Frame${check_box_frame}选中状态为${checked}
- */
-declare function DzFrameSetCheckBoxState(check_box_frame: number, checked: boolean): void;
-
-/**
- * 获取复选框选中状态
- * 获取复选框Frame${check_box_frame}是否被选中
- */
-declare function DzFrameGetCheckBoxState(check_box_frame: number): boolean;
-
-/**
- * 判断Frame是否获得焦点
- * 判断Frame${frame}是否当前获得焦点
- */
-declare function DzFrameIsFocus(frame: number): boolean;
-
-/**
- * 设置编辑框激活状态
- * 设置编辑框Frame${frame}激活状态为${is_active}
- */
-declare function DzFrameSetEditBoxActive(frame: number, is_active: boolean): void;
-
-/**
- * 设置编辑框禁用输入法
- * 设置编辑框Frame${frame}禁用输入法${is_disable}
- */
-declare function DzFrameSetEditBoxDisableIme(frame: number, is_disable: boolean): void;
-
-/**
- * 判断是否窗口模式
- * 判断游戏是否运行在窗口模式
- */
-declare function DzIsWindowMode(): boolean;
-
-/**
- * 获取屏幕宽度
- * 获取系统屏幕宽度
- */
-declare function DzGetSystemMetricsWidth(): number;
-
-/**
- * 获取屏幕高度
- * 获取系统屏幕高度
- */
-declare function DzGetSystemMetricsHeight(): number;
-
-/**
- * 获取装饰物数量
- * 获取当前地图中装饰物总数量
- */
-declare function DzGetDoodadsCount(): number;
-
-/**
- * 钩取血条事件
- * 钩取血条事件处理函数${func}
- * 注册血条相关事件的处理函数
+ * 注册Frame血条事件钩子
+ * 注册血条事件回调函数${func}
+ * 监听单位血条的显示事件
  */
 declare function DzFrameHookHpBar(func: () => void): void;
 
 /**
- * 获取触发血条事件的单位
- * 获取触发血条事件的单位
- * 返回触发血条事件的单位对象
+ * 获取血条事件触发单位
+ * 获取血条事件的触发单位
+ * 在血条事件回调中获取相关单位
  */
 declare function DzFrameGetTriggerHpBarUnit(): unit;
 
 /**
- * 获取触发的血条
- * 获取触发的血条
- * 返回触发事件的血条Frame句柄
+ * 获取血条事件Frame
+ * 获取血条事件的Frame
+ * 在血条事件回调中获取血条Frame
  */
 declare function DzFrameGetTriggerHpBar(): number;
 
 /**
  * 获取单位血条
- * 获取${whichUnit}的血条
- * 返回指定单位的血条Frame句柄
+ * 获取${whichUnit}的血条Frame
+ * 返回单位对应的血条显示
  */
 declare function DzFrameGetUnitHpBar(whichUnit: unit): number;
 
 /**
- * 获取光标Frame
- * 获取光标Frame
- * 返回当前光标的Frame句柄
+ * 获取当前鼠标指向的Frame控件
+ * 获取鼠标当前指向的Frame
+ * 返回鼠标悬停的Frame句柄
  */
 declare function DzGetCursorFrame(): number;
 
 /**
- * 检查Frame锚点有效性
- * 检查${frame}锚点${anchor}是否有效
- * 检查Frame指定锚点是否有效设置
+ * 判断Frame锚点是否有效
+ * 判断${frame}的锚点${anchor}是否有效
+ * 检查Frame是否设置了该锚点
  */
 declare function DzFrameGetPointValid(frame: number, anchor: number): boolean;
 
 /**
- * 获取Frame相对锚点
- * 获取${frame}锚点${anchor}的相对Frame
- * 返回Frame锚点相对的目标Frame
+ * 获取Frame相对Frame
+ * 获取${frame}的锚点${anchor}所跟随的目标Frame
+ * 返回Frame锚点的参考对象
  */
 declare function DzFrameGetPointRelative(frame: number, anchor: number): number;
 
 /**
- * 获取Frame相对锚点位置
- * 获取${frame}锚点${anchor}的相对锚点位置
- * 返回Frame锚点相对的目标锚点位置
+ * 设置Frame纹理坐标
+ * 设置${frame}的纹理坐标为左${left}上${top}右${right}下${bottom}
+ * 修改Frame显示贴图的采样坐标范围
  */
-declare function DzFrameGetPointRelativePoint(frame: number, anchor: number): number;
+declare function DzFrameSetTexCoord(
+  frame: number,
+  left: number,
+  top: number,
+  right: number,
+  bottom: number
+): void;
 
 /**
- * 获取Frame锚点X坐标
- * 获取${frame}锚点${anchor}的X坐标
- * 返回Frame锚点的X坐标值
+ * 设置单位技能范围
+ * 设置${Unit}的技能${abil_code}的范围为${value}
+ * 修改技能的施法范围，返回是否成功
  */
-declare function DzFrameGetPointX(frame: number, anchor: number): number;
+declare function DzSetUnitAbilityRange(Unit: unit, abilCode: number, value: number): boolean;
 
 /**
- * 获取Frame锚点Y坐标
- * 获取${frame}锚点${anchor}的Y坐标
- * 返回Frame锚点的Y坐标值
+ * 获取单位技能范围
+ * 获取${Unit}的技能${abil_code}的范围
+ * 返回技能的施法范围
  */
-declare function DzFrameGetPointY(frame: number, anchor: number): number;
+declare function DzGetUnitAbilityRange(Unit: unit, abilCode: number): number;
 
 /**
- * 按键码转整数
- * 将按键码${i}转换为整数
- * 按键码到整数的转换函数
+ * 设置单位技能区域
+ * 设置${Unit}的技能${abil_code}的区域为${value}
+ * 修改技能的效果范围，返回是否成功
  */
-declare function DzK2I(i: number): number;
+declare function DzSetUnitAbilityArea(Unit: unit, abilCode: number, value: number): boolean;
 
 /**
- * 整数转按键码
- * 将整数${i}转换为按键码
- * 整数到按键码的转换函数
+ * 获取单位技能区域
+ * 获取${Unit}的技能${abil_code}的区域
+ * 返回技能的效果范围
  */
-declare function DzI2K(i: number): number;
+declare function DzGetUnitAbilityArea(Unit: unit, abilCode: number): number;
 
 /**
- * 注册商城道具同步数据
- * 注册${trigger}的商城道具同步数据事件
- * 监听商城道具相关的同步数据事件
+ * 设置单位技能冷却
+ * 设置${Unit}的技能${abil_code}的冷却为${cool}，最大冷却${max_cool}
+ * 修改技能的冷却时间，返回是否成功
  */
-declare function DzTriggerRegisterMallItemSyncData(trig: trigger): void;
+declare function DzSetUnitAbilityCool(
+  Unit: unit,
+  abilCode: number,
+  cool: number,
+  maxCool: number
+): boolean;
 
 /**
- * 注册商城道具消耗事件
- * 注册${trigger}的商城道具消耗事件
- * 监听玩家消耗/使用商城道具的事件
+ * 获取单位技能冷却
+ * 获取${Unit}的技能${abil_code}的冷却
+ * 返回技能的当前冷却时间
  */
-declare function DzTriggerRegisterMallItemConsumeEvent(trig: trigger): void;
+declare function DzGetUnitAbilityCool(Unit: unit, abilCode: number): number;
 
 /**
- * 注册商城道具删除事件
- * 注册${trigger}的商城道具删除事件
- * 监听玩家删除商城道具的事件
+ * 获取单位技能最大冷却
+ * 获取${Unit}的技能${abil_code}的最大冷却
+ * 返回技能的最大冷却时间
  */
-declare function DzTriggerRegisterMallItemRemoveEvent(trig: trigger): void;
+declare function DzGetUnitAbilityMaxCool(Unit: unit, abilCode: number): number;
 
 /**
- * 获取触发商城道具的玩家
- * 获取触发商城道具事件的玩家
- * 在商城道具事件中获取触发事件的玩家
+ * 设置单位技能数据A
+ * 设置${Unit}的技能${abil_code}的数据A为${value}
+ * 修改技能的A级数据，返回是否成功
  */
-declare function DzGetTriggerMallItemPlayer(): player;
+declare function DzSetUnitAbilityDataA(Unit: unit, abilCode: number, value: number): boolean;
 
 /**
- * 获取触发的商城道具
- * 获取触发事件的商城道具
- * 在商城道具事件中获取相关的道具信息
+ * 获取单位技能数据A
+ * 获取${Unit}的技能${abil_code}的数据A
+ * 返回技能的A级数据
  */
-declare function DzGetTriggerMallItem(): string;
+declare function DzGetUnitAbilityDataA(Unit: unit, abilCode: number): number;
+
+/**
+ * 设置单位技能数据B
+ * 设置${Unit}的技能${abil_code}的数据B为${value}
+ * 修改技能的B级数据，返回是否成功
+ */
+declare function DzSetUnitAbilityDataB(Unit: unit, abilCode: number, value: number): boolean;
+
+/**
+ * 获取单位技能数据B
+ * 获取${Unit}的技能${abil_code}的数据B
+ * 返回技能的B级数据
+ */
+declare function DzGetUnitAbilityDataB(Unit: unit, abilCode: number): number;
+
+/**
+ * 设置单位技能数据C
+ * 设置${Unit}的技能${abil_code}的数据C为${value}
+ * 修改技能的C级数据，返回是否成功
+ */
+declare function DzSetUnitAbilityDataC(Unit: unit, abilCode: number, value: number): boolean;
+
+/**
+ * 获取单位技能数据C
+ * 获取${Unit}的技能${abil_code}的数据C
+ * 返回技能的C级数据
+ */
+declare function DzGetUnitAbilityDataC(Unit: unit, abilCode: number): number;
+
+/**
+ * 设置单位技能数据D
+ * 设置${Unit}的技能${abil_code}的数据D为${value}
+ * 修改技能的D级数据，返回是否成功
+ */
+declare function DzSetUnitAbilityDataD(Unit: unit, abilCode: number, value: number): boolean;
+
+/**
+ * 获取单位技能数据D
+ * 获取${Unit}的技能${abil_code}的数据D
+ * 返回技能的D级数据
+ */
+declare function DzGetUnitAbilityDataD(Unit: unit, abilCode: number): number;
+
+/**
+ * 设置单位技能数据E
+ * 设置${Unit}的技能${abil_code}的数据E为${value}
+ * 修改技能的E级数据，返回是否成功
+ */
+declare function DzSetUnitAbilityDataE(Unit: unit, abilCode: number, value: number): boolean;
+
+/**
+ * 获取单位技能数据E
+ * 获取${Unit}的技能${abil_code}的数据E
+ * 返回技能的E级数据
+ */
+declare function DzGetUnitAbilityDataE(Unit: unit, abilCode: number): number;
+
+/**
+ * 设置单位技能按钮位置
+ * 设置${Unit}的技能${abil_code}的按钮位置为(${x},${y})
+ * 修改技能在命令栏的显示位置，返回是否成功
+ */
+declare function DzSetUnitAbilityButtonPos(
+  Unit: unit,
+  abilCode: number,
+  x: number,
+  y: number
+): boolean;
+
+/**
+ * 设置单位技能快捷键
+ * 设置${Unit}的技能${abil_code}的快捷键为${key}
+ * 修改技能的热键，返回是否成功
+ */
+declare function DzSetUnitAbilityHotkey(Unit: unit, abilCode: number, key: string): boolean;
+
+/**
+ * 转换目标类型为字符串
+ * 将目标类型${targs}转换为字符串
+ * 返回目标类型的字符串表示
+ */
+declare function DzConvertTargs2Str(targs: number): string;
+
+/**
+ * 转换字符串为目标类型
+ * 将字符串${targs}转换为目标类型
+ * 返回字符串对应的目标类型ID
+ */
+declare function DzConvertStr2Targs(targs: string): number;
+
+/**
+ * 设置单位技能目标类型
+ * 设置${Unit}的技能${abil_code}的目标类型为${value}
+ * 修改技能可以指向的目标类型，返回是否成功
+ */
+declare function DzSetUnitAbilityTargs(Unit: unit, abilCode: number, value: number): boolean;
+
+/**
+ * 获取单位技能目标类型
+ * 获取${Unit}的技能${abil_code}的目标类型
+ * 返回技能可以指向的目标类型
+ */
+declare function DzGetUnitAbilityTargs(Unit: unit, abilCode: number): number;
+
+// ============= 命令队列相关函数 =============
+
+/**
+ * 单位队列命令-立即指令
+ * 队列${whichUnit}的立即指令${order}
+ * 将立即命令加入单位的命令队列，返回是否成功
+ */
+declare function DzQueueIssueImmediateOrderById(whichUnit: unit, order: number): boolean;
+
+/**
+ * 单位队列命令-点位指令
+ * 队列${whichUnit}的点位指令${order}到(${x},${y})
+ * 将点位命令加入单位的命令队列，返回是否成功
+ */
+declare function DzQueueIssuePointOrderById(
+  whichUnit: unit,
+  order: number,
+  x: number,
+  y: number
+): boolean;
+
+/**
+ * 单位队列命令-目标指令
+ * 队列${whichUnit}的目标指令${order}到${targetWidget}
+ * 将目标命令加入单位的命令队列，返回是否成功
+ */
+declare function DzQueueIssueTargetOrderById(
+  whichUnit: unit,
+  order: number,
+  targetWidget: widget
+): boolean;
+
+/**
+ * 单位队列命令-即时点位指令
+ * 队列${whichUnit}的即时点位指令${order}到(${x},${y})，即时目标${instantTargetWidget}
+ * 将即时点位命令加入队列，返回是否成功
+ */
+declare function DzQueueIssueInstantPointOrderById(
+  whichUnit: unit,
+  order: number,
+  x: number,
+  y: number,
+  instantTargetWidget: widget
+): boolean;
+
+/**
+ * 单位队列命令-即时目标指令
+ * 队列${whichUnit}的即时目标指令${order}到${targetWidget}，即时目标${instantTargetWidget}
+ * 将即时目标命令加入队列，返回是否成功
+ */
+declare function DzQueueIssueInstantTargetOrderById(
+  whichUnit: unit,
+  order: number,
+  targetWidget: widget,
+  instantTargetWidget: widget
+): boolean;
+
+/**
+ * 单位队列命令-建筑指令
+ * 队列${whichPeon}的建筑指令，建筑ID${unitId}在(${x},${y})
+ * 将建筑命令加入队列，返回是否成功
+ */
+declare function DzQueueIssueBuildOrderById(
+  whichPeon: unit,
+  unitId: number,
+  x: number,
+  y: number
+): boolean;
+
+/**
+ * 队伍队列命令-立即指令
+ * 队列${whichGroup}的立即指令${order}
+ * 为队伍中的所有单位加入立即命令，返回是否成功
+ */
+declare function DzQueueGroupImmediateOrderById(whichGroup: group, order: number): boolean;
+
+/**
+ * 队伍队列命令-点位指令
+ * 队列${whichGroup}的点位指令${order}到(${x},${y})
+ * 为队伍中的所有单位加入点位命令，返回是否成功
+ */
+declare function DzQueueGroupPointOrderById(
+  whichGroup: group,
+  order: number,
+  x: number,
+  y: number
+): boolean;
+
+/**
+ * 队伍队列命令-目标指令
+ * 队列${whichGroup}的目标指令${order}到${targetWidget}
+ * 为队伍中的所有单位加入目标命令，返回是否成功
+ */
+declare function DzQueueGroupTargetOrderById(
+  whichGroup: group,
+  order: number,
+  targetWidget: widget
+): boolean;
+
+/**
+ * 中立结构队列命令-立即指令
+ * 队列${forWhichPlayer}的中立结构${neutralStructure}的立即指令${unitId}
+ * 为中立建筑加入立即命令，返回是否成功
+ */
+declare function DzQueueIssueNeutralImmediateOrderById(
+  forWhichPlayer: player,
+  neutralStructure: unit,
+  unitId: number
+): boolean;
+
+/**
+ * 中立结构队列命令-点位指令
+ * 队列${forWhichPlayer}的中立结构${neutralStructure}的点位指令${unitId}到(${x},${y})
+ * 为中立建筑加入点位命令，返回是否成功
+ */
+declare function DzQueueIssueNeutralPointOrderById(
+  forWhichPlayer: player,
+  neutralStructure: unit,
+  unitId: number,
+  x: number,
+  y: number
+): boolean;
+
+/**
+ * 中立结构队列命令-目标指令
+ * 队列${forWhichPlayer}的中立结构${neutralStructure}的目标指令${unitId}到${target}
+ * 为中立建筑加入目标命令，返回是否成功
+ */
+declare function DzQueueIssueNeutralTargetOrderById(
+  forWhichPlayer: player,
+  neutralStructure: unit,
+  unitId: number,
+  target: widget
+): boolean;
+
+/**
+ * 获取单位命令队列数量
+ * 获取${u}的命令队列数量
+ * 返回单位中待执行的命令个数
+ */
+declare function DzUnitOrdersCount(u: unit): number;
+
+/**
+ * 清空单位命令队列
+ * 清空${u}的命令队列，仅队列${onlyQueued}
+ * 移除单位的待执行命令
+ */
+declare function DzUnitOrdersClear(u: unit, onlyQueued: boolean): void;
+
+/**
+ * 执行单位命令队列
+ * 执行${u}的命令队列
+ * 立即开始执行队列中的所有命令
+ */
+declare function DzUnitOrdersExec(u: unit): void;
+
+/**
+ * 强制停止单位命令队列
+ * 强制停止${u}的命令执行，清除队列${clearQueue}
+ * 立即停止单位的当前命令
+ */
+declare function DzUnitOrdersForceStop(u: unit, clearQueue: boolean): void;
+
+/**
+ * 反转单位命令队列
+ * 反转${u}的命令队列
+ * 将待执行的命令顺序反转
+ */
+declare function DzUnitOrdersReverse(u: unit): void;
