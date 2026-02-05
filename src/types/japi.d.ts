@@ -2817,28 +2817,28 @@ declare function DzFrameGetPeonBar(): number;
  * 获取${whichframe}的数字文本Frame
  * 返回技能按钮上的等级数字显示
  */
-declare function DzFrameGetCommandBarButtonNumberText(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonNumberText(whichframe: framehandle): number;
 
 /**
  * 获取命令栏按钮数字覆盖层
  * 获取${whichframe}的数字覆盖层Frame
  * 返回技能按钮的数字覆盖显示
  */
-declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonNumberOverlay(whichframe: framehandle): number;
 
 /**
  * 获取命令栏按钮冷却指示器
  * 获取${whichframe}的冷却指示器Frame
  * 返回技能按钮的冷却指示器
  */
-declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonCooldownIndicator(whichframe: framehandle): number;
 
 /**
  * 获取命令栏按钮自动施法指示器
  * 获取${whichframe}的自动施法指示器Frame
  * 返回技能按钮的自动施法指示器
  */
-declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: number): number;
+declare function DzFrameGetCommandBarButtonAutoCastIndicator(whichframe: framehandle): number;
 
 /**
  * 获取世界Frame消息

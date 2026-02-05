@@ -4,6 +4,12 @@
 import { Handle } from "./handle";
 
 /**
+ * 运行时 framehandle 即为 number，部分原生 API 声明为 framehandle、部分为 number。
+ * 使用此类型在「接收」句柄时兼容两者，避免类型报错。
+ */
+export type FrameHandleLike = framehandle | number;
+
+/**
  * Warcraft III's UI uses a proprietary format known as FDF (Frame Definition Files).
  * This class provides the ability to manipulate and create them dynamically through code.
  *
@@ -87,7 +93,7 @@ export class Frame extends Handle<framehandle> {
       return;
     }
 
-    let handle: framehandle | undefined;
+    let handle: FrameHandleLike | undefined;
 
     if (createContext === undefined) {
       handle = DzCreateSimpleFrame(name, owner.handle, priority);
@@ -101,7 +107,7 @@ export class Frame extends Handle<framehandle> {
       Error("w3ts failed to create framehandle handle.");
     }
 
-    super(handle);
+    super(handle as framehandle);
   }
 
   /**
@@ -211,7 +217,7 @@ export class Frame extends Handle<framehandle> {
   }
 
   public get parent() {
-    return Frame.fromHandle(DzFrameGetParent(this.handle) as unknown as framehandle) as Frame;
+    return Frame.fromHandle(DzFrameGetParent(this.handle)) as Frame;
   }
 
   public set text(text: string) {
@@ -383,21 +389,21 @@ export class Frame extends Handle<framehandle> {
     return this;
   }
 
-  public static fromHandle(handle: framehandle | undefined): Frame | undefined {
-    return handle ? this.getObject(handle) : undefined;
+  public static fromHandle(handle: FrameHandleLike | undefined): Frame | undefined {
+    return handle != null ? this.getObject(handle as framehandle) : undefined;
   }
 
   public static fromName(name: string, createContext: number) {
-    return this.fromHandle(DzFrameFindByName(name, createContext) as unknown as framehandle);
+    return this.fromHandle(DzFrameFindByName(name, createContext));
   }
 
   public static loadTOC(filename: string) {
     return DzLoadToc(filename);
   }
 
-  public static fromOrigin(frameType: originframetype, index: number) {
+  public static fromOrigin(frameType: originframetype, index: number): Frame | null {
     if (frameType === ORIGIN_FRAME_GAME_UI) {
-      return this.fromHandle(DzGetGameUI());
+      return this.fromHandle(DzGetGameUI()) ?? null;
     }
     return null;
   }
