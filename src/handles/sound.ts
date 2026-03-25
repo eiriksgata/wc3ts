@@ -104,7 +104,7 @@ export class Sound extends Handle<sound> {
   }
 
   public setChannel(channel: number) {
-    SetSoundDistanceCutoff(this.handle, channel);
+    SetSoundChannel(this.handle, channel);
   }
 
   /**

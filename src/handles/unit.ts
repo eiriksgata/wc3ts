@@ -1011,7 +1011,7 @@ export class Unit extends Widget {
   }
 
   public removeType(whichUnitType: unittype) {
-    return UnitAddType(this.handle, whichUnitType);
+    return UnitRemoveType(this.handle, whichUnitType);
   }
 
   public removeUnitFromStock(itemId: number) {

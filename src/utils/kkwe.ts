@@ -240,7 +240,13 @@ export function KKAPIGetTimeDateFromTimestamp(timestamp: number): string {
     return cached.str;
   }
   const str = DzGetTimeDateFromTimestamp(timestamp);
-  // 这里可以实现缓存逻辑，但在TypeScript中我们简化处理
+  const parts = str.split(" ")[0].split("-");
+  timestampCache.set(timestamp, {
+    year: parseInt(parts[0], 10),
+    month: parseInt(parts[1], 10),
+    day: parseInt(parts[2], 10),
+    str,
+  });
   return str;
 }
 

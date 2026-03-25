@@ -72,7 +72,7 @@ export class Leaderboard extends Handle<leaderboard> {
   }
 
   public hasPlayerItem(p: MapPlayer) {
-    LeaderboardHasPlayerItem(this.handle, p.handle);
+    return LeaderboardHasPlayerItem(this.handle, p.handle);
   }
 
   public removeItem(index: number) {

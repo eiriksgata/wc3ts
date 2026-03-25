@@ -61,7 +61,7 @@ export class GameCache extends Handle<gamecache> {
   }
 
   public flushNumber(missionKey: string, key: string) {
-    FlushStoredInteger(this.handle, missionKey, key);
+    FlushStoredReal(this.handle, missionKey, key);
   }
 
   public flushString(missionKey: string, key: string) {

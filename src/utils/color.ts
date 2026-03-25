@@ -22,7 +22,7 @@ export class Color {
     readonly blue: ColorValue,
     alpha?: ColorValue
   ) {
-    if (alpha) {
+    if (alpha !== undefined) {
       this.alpha = alpha;
     } else {
       this.alpha = 255;

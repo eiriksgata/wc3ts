@@ -60,7 +60,7 @@ export class Region extends Handle<region> {
   }
 
   public containsPoint(whichPoint: Point) {
-    IsLocationInRegion(this.handle, whichPoint.handle);
+    return IsLocationInRegion(this.handle, whichPoint.handle);
   }
 
   public containsUnit(whichUnit: Unit) {

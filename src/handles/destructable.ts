@@ -55,11 +55,7 @@ export class Destructable extends Widget {
     if (scale === undefined) scale = 1;
     if (variation === undefined) variation = 0;
 
-    let handle: destructable | undefined;
-
-    if (skinId !== undefined) {
-      handle = CreateDestructable(objectId, x, y, face, scale, variation);
-    }
+    const handle = CreateDestructable(objectId, x, y, face, scale, variation);
 
     if (handle !== undefined) {
       const obj = this.getObject(handle) as Destructable;
@@ -100,10 +96,7 @@ export class Destructable extends Widget {
     if (scale === undefined) scale = 1;
     if (variation === undefined) variation = 0;
 
-    let handle: destructable | undefined;
-    if (skinId !== undefined) {
-      handle = CreateDestructableZ(objectId, x, y, z, face, scale, variation);
-    }
+    const handle = CreateDestructableZ(objectId, x, y, z, face, scale, variation);
 
     if (handle !== undefined) {
       const obj = this.getObject(handle) as Destructable;

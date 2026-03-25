@@ -59,7 +59,7 @@ export class Item extends Widget {
   }
 
   public set invulnerable(flag: boolean) {
-    SetItemInvulnerable(this.handle, true);
+    SetItemInvulnerable(this.handle, flag);
   }
 
   public get invulnerable() {
